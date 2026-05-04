@@ -531,6 +531,20 @@ main:focus { outline: none; }
   opacity: 1;
   filter: none;
   transform: scale(1.06);
+  mix-blend-mode: normal;
+}
+/* Para logos detallados (ej. Granja Magdalena ribbon) — preservar contraste interno */
+.hero-trust-logo-color {
+  height: 38px;
+  max-width: 130px;
+  filter: brightness(1.18) contrast(1.05);
+  mix-blend-mode: screen;
+  opacity: 0.95;
+}
+.hero-trust-logo-color:hover {
+  filter: none;
+  mix-blend-mode: normal;
+  opacity: 1;
 }
 .hero-google-rating {
   display: inline-flex;
