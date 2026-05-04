@@ -103,6 +103,7 @@ function App() {
     if (route === '/') return 'home';
     if (route === '/software-ia') return 'software-ia';
     if (route === '/nosotros') return 'nosotros';
+    if (route === '/contacto') return 'contacto';
     if (route === '/servicios' || SERVICE_DATA[route.replace('/','')]) return 'servicios';
     return '';
   })();

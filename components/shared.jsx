@@ -280,6 +280,7 @@ function Nav({ navigate, currentNav }) {
         <a href="#/servicios" aria-current={currentNav==='servicios'?'page':undefined} className={currentNav==='servicios'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/servicios');}}>Servicios</a>
         <a href="#/software-ia" aria-current={currentNav==='software-ia'?'page':undefined} className={currentNav==='software-ia'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/software-ia');}}>IA & Software</a>
         <a href="#/nosotros" aria-current={currentNav==='nosotros'?'page':undefined} className={currentNav==='nosotros'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/nosotros');}}>Estudio</a>
+        <a href="#/contacto" aria-current={currentNav==='contacto'?'page':undefined} className={currentNav==='contacto'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Contacto</a>
       </div>
       <div className="nav-right">
         <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="nav-cta hoverable" onClick={onWaClick('nav')}>
@@ -389,7 +390,7 @@ function Footer({ navigate }) {
           <h4>/ Estudio</h4>
           <a href="#/nosotros" onClick={(e)=>{e.preventDefault();navigate('/nosotros');}}>Sobre nosotros</a>
           <a href="#/casos" onClick={(e)=>{e.preventDefault();navigate('/casos');}}>Casos de éxito</a>
-          <a href="#/hablemos" onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}>Brief detallado</a>
+          <a href="#/contacto" onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Contacto</a>
           <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('footer-secondary')}>Cotizar por WhatsApp</a>
         </div>
         <div className="footer-col">
