@@ -1,0 +1,17 @@
+{
+  "name": "intothecom-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Intothecom — sitio web 2026",
+  "homepage": "https://intothecom.com",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "python3 -m http.server 5500"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -40,3 +40,4 @@ logs/
 # Mac
 .AppleDouble
 .LSOverride
+.vercel

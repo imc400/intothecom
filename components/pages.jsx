@@ -123,8 +123,8 @@ function Servicios({ navigate }) {
                 Una reunión de 45 min donde revisamos tu negocio, identificamos los 3 mayores bloqueos y te entregamos un plan accionable. Sin venta dura, sin presentaciones aburridas. Si encajamos, seguimos. Si no, te sales con valor.
               </p>
               <div style={{display:'flex', gap:14, flexWrap:'wrap', marginTop:32}}>
-                <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="btn hoverable">
-                  Agendar reunión por WhatsApp <span className="arrow">↗</span>
+                <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('servicios-final')} className="btn hoverable">
+                  Agendar reunión por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
                 </a>
                 <a href="#/hablemos"
                    onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}
@@ -157,8 +157,8 @@ function ServicePage({ navigate, data }) {
             <div className="row"><span>Disponibilidad</span><span>CL · BR · US · ES</span></div>
             <div className="row"><span>Duración mín.</span><span>{data.duration}</span></div>
             <div className="row"><span>Categorías</span><span>{data.categories}</span></div>
-            <a href={waLink(data.waKey || 'default')} target="_blank" rel="noopener noreferrer" className="btn invert hoverable" style={{marginTop:24}}>
-              Cotizar por WhatsApp <span className="arrow">↗</span>
+            <a href={waLink(data.waKey || 'default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick(`svc-${data.waKey || 'default'}-hero`)} className="btn invert hoverable" style={{marginTop:24}}>
+              Cotizar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
@@ -229,8 +229,8 @@ function ServicePage({ navigate, data }) {
                   </div>
                 ))}
               </div>
-              <a href={waLink(data.waKey || 'default')} target="_blank" rel="noopener noreferrer" className="btn hoverable" style={{marginTop:48}}>
-                Hablemos por WhatsApp <span className="arrow">↗</span>
+              <a href={waLink(data.waKey || 'default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick(`svc-${data.waKey || 'default'}-benefits`)} className="btn hoverable" style={{marginTop:48}}>
+                Hablemos por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
               </a>
             </Reveal>
           </div>
@@ -388,8 +388,8 @@ function SoftwareIA({ navigate }) {
             <div className="row"><span>Disponibilidad</span><span>CL · BR · US · ES</span></div>
             <div className="row"><span>Stack</span><span>Python · Node · Next · LLMs</span></div>
             <div className="row"><span>Modelos</span><span>GPT · Claude · Gemini · OSS</span></div>
-            <a href={waLink('software-ia')} target="_blank" rel="noopener noreferrer" className="btn invert hoverable" style={{marginTop:24}}>
-              Discutir por WhatsApp <span className="arrow">↗</span>
+            <a href={waLink('software-ia')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('software-ia-hero')} className="btn invert hoverable" style={{marginTop:24}}>
+              Discutir por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
@@ -571,7 +571,7 @@ function Nosotros({ navigate }) {
                 45 minutos sin costo, sin venta dura. Revisamos tu negocio, identificamos los 3 mayores bloqueos y te entregamos un plan accionable. Si encajamos, seguimos. Si no, te sales con valor.
               </p>
               <div style={{display:'flex', gap:14, flexWrap:'wrap', marginTop:32}}>
-                <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="btn hoverable">
+                <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('nosotros-final')} className="btn hoverable">
                   Agendar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
                 </a>
                 <a href="#/hablemos"
@@ -590,10 +590,48 @@ function Nosotros({ navigate }) {
 
 function Hablemos({ navigate }) {
   const [submitted, setSubmitted] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
+  const [error, setError] = React.useState(null);
   const [showMore, setShowMore] = React.useState(false);
   const [form, setForm] = React.useState({ name:'', company:'', email:'', service:'', budget:'', message:'' });
   const update = (k,v) => setForm(f => ({...f, [k]:v}));
-  const submit = (e) => { e.preventDefault(); setSubmitted(true); };
+  const submit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/info@intothecom.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `Nuevo brief desde intothecom.com — ${form.name}`,
+          _cc: 'ignacio@intothecom.com',
+          _template: 'table',
+          _captcha: 'false',
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          company: form.company || '—',
+          service: form.service || '—',
+          budget: form.budget || '—',
+          source: 'intothecom.com /hablemos',
+        }),
+      });
+      if (!res.ok) throw new Error('formsubmit failed');
+      if (window.fbqTrack) window.fbqTrack('Lead', { content_name: 'brief_form', value: 1, currency: 'CLP' });
+      if (window.fbqTrackCustom) window.fbqTrackCustom('FormSubmit', { service: form.service || 'unspecified' });
+      setSubmitted(true);
+    } catch (err) {
+      const subject = encodeURIComponent(`Brief desde intothecom.com — ${form.name}`);
+      const body = encodeURIComponent(
+        `Nombre: ${form.name}\nEmail: ${form.email}\nEmpresa: ${form.company || '—'}\nServicio: ${form.service || '—'}\nPresupuesto: ${form.budget || '—'}\n\nMensaje:\n${form.message}`
+      );
+      window.location.href = `mailto:info@intothecom.com?cc=ignacio@intothecom.com&subject=${subject}&body=${body}`;
+      setError('No pudimos enviar automáticamente. Te abrimos tu cliente de correo como respaldo.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
   return (
     <>
       <section className="hero" data-screen-label="08 Hablemos">
@@ -617,8 +655,8 @@ function Hablemos({ navigate }) {
                   <p className="body" style={{opacity:0.75, maxWidth:'46ch', marginBottom:24}}>
                     Respuesta en menos de 1h hábil. Sin formularios largos, sin call-center.
                   </p>
-                  <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="btn hoverable">
-                    Cotizar por WhatsApp <span className="arrow">↗</span>
+                  <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('hablemos-primary')} className="btn hoverable">
+                    Cotizar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
                   </a>
                 </div>
                 <div className="wa-primary-meta">
@@ -680,8 +718,11 @@ function Hablemos({ navigate }) {
                   <button type="button" className="form-toggle hoverable" aria-expanded={showMore} aria-controls="form-extra-fields" onClick={()=>setShowMore(s=>!s)}>
                     {showMore ? '— Menos detalles' : '+ Más detalles (opcional)'}
                   </button>
-                  <button type="submit" className="btn hoverable">Enviar brief <span className="arrow" aria-hidden="true">↗</span></button>
+                  <button type="submit" className="btn hoverable" disabled={submitting}>
+                    {submitting ? 'Enviando…' : 'Enviar brief'} <span className="arrow" aria-hidden="true">↗</span>
+                  </button>
                 </div>
+                {error && <p className="form-error" role="alert">{error}</p>}
                 <p className="form-privacy">
                   Al enviar aceptas que usemos tu información solo para responderte. Sin spam, sin listas. Cumplimos Ley 19.628 (CL) y GDPR.
                 </p>
@@ -707,21 +748,239 @@ function Hablemos({ navigate }) {
         <div className="container">
           <div className="contact-grid">
             <div className="contact-cell">
-              <div className="contact-label">/ Email</div>
+              <div className="contact-label">/ Email general</div>
               <a className="contact-value contact-link" href="mailto:info@intothecom.com">info@intothecom.com</a>
             </div>
             <div className="contact-cell">
-              <div className="contact-label">/ WhatsApp</div>
-              <a className="contact-value contact-link" href={waLink('default')} target="_blank" rel="noopener noreferrer">+56 9 5016 0966</a>
+              <div className="contact-label">/ Email founder</div>
+              <a className="contact-value contact-link" href="mailto:ignacio@intothecom.com">ignacio@intothecom.com</a>
             </div>
             <div className="contact-cell">
-              <div className="contact-label">/ Oficinas</div>
-              <div className="contact-value">Santiago · São Paulo · Miami · Madrid</div>
+              <div className="contact-label">/ WhatsApp</div>
+              <a className="contact-value contact-link" href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('hablemos-grid')}>+56 9 5016 0966</a>
+            </div>
+            <div className="contact-cell">
+              <div className="contact-label">/ Oficina HQ</div>
+              <a className="contact-value contact-link" href="https://www.google.com/maps/search/?api=1&query=Almirante+Pastene+333+Providencia+Santiago+Chile" target="_blank" rel="noopener noreferrer">Almirante Pastene 333, of. 402, Providencia</a>
+            </div>
+            <div className="contact-cell">
+              <div className="contact-label">/ Otras ciudades</div>
+              <div className="contact-value">São Paulo · Miami · Madrid</div>
             </div>
             <div className="contact-cell">
               <div className="contact-label">/ Horario</div>
               <div className="contact-value">Lun–Vie · 9:00–19:00 SCL</div>
             </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Contacto({ navigate }) {
+  const mapsQuery = encodeURIComponent('Almirante Pastene 333, Providencia, Santiago, Chile');
+  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+  const mapsEmbed = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
+  return (
+    <>
+      <section className="hero" data-screen-label="Contacto" style={{paddingBottom:48}}>
+        <DarkCanvas density={0.7}/>
+        <div className="hero-inner">
+          <div className="hero-top">
+            <span>Contacto · oficinas + canales</span>
+            <span>Respuesta &lt; 1h hábil</span>
+            <span>Lun–Vie · 9:00–19:00 SCL</span>
+          </div>
+          <h1 className="hero-headline" style={{maxWidth:'20ch'}}>
+            Conversemos en <span className="it">persona,</span> por mail o por WhatsApp.
+          </h1>
+        </div>
+        <div className="hero-inner">
+          <div className="hero-bottom" style={{gridTemplateColumns:'1fr', gap:0}}>
+            <p className="lead" style={{maxWidth:'56ch'}}>
+              Atendemos desde Providencia, Santiago. Coordinamos reuniones presenciales o por Meet con clientes en Chile, Brasil, USA y España.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="contact-layout">
+            <Reveal>
+              <div className="contact-channels">
+                <div className="contact-channel">
+                  <div className="contact-channel-label">/ WhatsApp Business</div>
+                  <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('contacto-channel')} className="contact-channel-value contact-channel-link">
+                    +56 9 5016 0966
+                  </a>
+                  <div className="contact-channel-meta">Respuesta promedio &lt; 1h hábil</div>
+                </div>
+                <div className="contact-channel">
+                  <div className="contact-channel-label">/ Email general</div>
+                  <a href="mailto:info@intothecom.com" className="contact-channel-value contact-channel-link">
+                    info@intothecom.com
+                  </a>
+                  <div className="contact-channel-meta">Briefs, prensa, partners</div>
+                </div>
+                <div className="contact-channel">
+                  <div className="contact-channel-label">/ Email founder</div>
+                  <a href="mailto:ignacio@intothecom.com" className="contact-channel-value contact-channel-link">
+                    ignacio@intothecom.com
+                  </a>
+                  <div className="contact-channel-meta">Conversaciones estratégicas</div>
+                </div>
+                <div className="contact-channel">
+                  <div className="contact-channel-label">/ Teléfono</div>
+                  <a href="tel:+56950160966" className="contact-channel-value contact-channel-link">
+                    +56 9 5016 0966
+                  </a>
+                  <div className="contact-channel-meta">Lun–Vie · 9:00–19:00 SCL</div>
+                </div>
+                <div className="contact-channel">
+                  <div className="contact-channel-label">/ Oficina central</div>
+                  <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="contact-channel-value contact-channel-link">
+                    Almirante Pastene 333, of. 402
+                  </a>
+                  <div className="contact-channel-meta">Providencia · Santiago de Chile</div>
+                </div>
+                <div className="contact-channel">
+                  <div className="contact-channel-label">/ Otras ciudades</div>
+                  <div className="contact-channel-value">São Paulo · Miami · Madrid</div>
+                  <div className="contact-channel-meta">Reuniones por Meet o presenciales</div>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="contact-map-wrap">
+                <iframe
+                  title="Oficina Intothecom — Almirante Pastene 333, Providencia"
+                  src={mapsEmbed}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="contact-map"
+                  allowFullScreen
+                ></iframe>
+                <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="contact-map-link">
+                  Abrir en Google Maps <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="section dark tight">
+        <div className="container">
+          <div className="split">
+            <Reveal className="split-title">
+              <div className="eyebrow mb-md" style={{opacity:0.55}}>/ camino rápido</div>
+              <h2 className="h1" style={{maxWidth:'18ch'}}>
+                ¿Quieres ir <span className="it">directo al grano?</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="body-lg" style={{maxWidth:'48ch', opacity:0.85}}>
+                Escríbenos por WhatsApp Business y respondemos en menos de una hora hábil. Sin formularios, sin call-center.
+              </p>
+              <div style={{display:'flex', gap:14, flexWrap:'wrap', marginTop:32}}>
+                <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('contacto-final')} className="btn hoverable">
+                  Cotizar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
+                </a>
+                <a href="#/hablemos"
+                   onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}
+                   className="btn ghost hoverable">
+                  Escribir un brief <span className="arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Casos({ navigate }) {
+  const cases = [
+    { sector:'Retail · LatAm', client:'Bullpadel Chile', title:'E-commerce headless con tracking server-side', summary:'Migración a Shopify Hydrogen + atribución limpia + paid integrado. Mes 1 de tracking nuevo desbloqueó audiencias que estaban siendo subreportadas un 38%.', metrics:[['+213%','revenue YoY'],['ROAS 6.2×','blended Q3'],['9 meses','time-to-result']] },
+    { sector:'B2B SaaS · CL/USA', client:'Equifax — SEC', title:'Calificación de leads con copiloto interno', summary:'Copiloto sobre 12k tickets históricos para que ventas pre-califique antes del primer contacto. Reduce tiempo de resolución y libera horas-persona del equipo senior.', metrics:[['−62%','tiempo resolución'],['+4×','leads calificados/mes'],['12k','tickets indexados']] },
+    { sector:'Industrial · Chile', client:'Imanix', title:'Automatización de inventario + agente conversacional B2B', summary:'Reemplazo de 3 procesos manuales por un agente que toma pedidos, valida stock en vivo y deriva a humano cuando hay duda. Onboarding en 6 semanas.', metrics:[['−47h','horas/mes liberadas'],['+27%','checkout completion'],['6 sem','prototipo a prod']] },
+  ];
+  return (
+    <>
+      <section className="hero" data-screen-label="Casos" style={{paddingBottom:48}}>
+        <DarkCanvas density={0.9}/>
+        <div className="hero-inner">
+          <div className="hero-top">
+            <span>Casos seleccionados · 03</span>
+            <span>+100 marcas asesoradas · 19 visibles</span>
+            <span>Datos verificables</span>
+          </div>
+          <h1 className="hero-headline" style={{maxWidth:'20ch'}}>
+            Cuando los datos hablan, <span className="it">la propuesta sobra.</span>
+          </h1>
+        </div>
+        <div className="hero-inner">
+          <div className="hero-bottom" style={{gridTemplateColumns:'1fr', gap:0}}>
+            <p className="lead" style={{maxWidth:'56ch'}}>
+              Casos seleccionados con métricas reales y fuentes verificables. Casos completos bajo NDA disponibles en reunión.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <Reveal>
+            <div className="eyebrow mb-md">/ casos destacados</div>
+          </Reveal>
+          <div className="cases-list">
+            {cases.map((c,i) => (
+              <Reveal key={i} delay={i*80}>
+                <article className="case-card">
+                  <div className="case-card-meta">
+                    <span className="case-card-num">0{i+1}</span>
+                    <span className="case-card-sector">{c.sector}</span>
+                    <span className="case-card-client">{c.client}</span>
+                  </div>
+                  <h2 className="case-card-title">{c.title}</h2>
+                  <p className="case-card-summary">{c.summary}</p>
+                  <div className="case-card-metrics">
+                    {c.metrics.map((m,j)=>(
+                      <div key={j} className="case-card-metric">
+                        <div className="case-card-metric-num">{m[0]}</div>
+                        <div className="case-card-metric-lbl">{m[1]}</div>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section dark tight">
+        <div className="container">
+          <div className="split">
+            <Reveal className="split-title">
+              <div className="eyebrow mb-md" style={{opacity:0.55}}>/ siguiente paso</div>
+              <h2 className="h1" style={{maxWidth:'18ch'}}>
+                ¿Quieres ver el <span className="it">tuyo acá?</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="body-lg" style={{maxWidth:'48ch', opacity:0.85}}>
+                Casos completos con metodología, anti-patrones evitados y métricas mensuales se comparten en reunión. WhatsApp es el camino más rápido.
+              </p>
+              <div style={{display:'flex', gap:14, flexWrap:'wrap', marginTop:32}}>
+                <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('casos-final')} className="btn hoverable">
+                  Pedir caso completo por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -735,3 +994,5 @@ window.Servicios = Servicios;
 window.SoftwareIA = SoftwareIA;
 window.Nosotros = Nosotros;
 window.Hablemos = Hablemos;
+window.Contacto = Contacto;
+window.Casos = Casos;

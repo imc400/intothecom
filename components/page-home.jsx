@@ -27,7 +27,7 @@ function Home({ navigate }) {
             Marketing, software <span className="it">&amp;</span> <span className="it">inteligencia.</span>
           </h1>
           <div className="hero-cta-pair">
-            <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="btn hoverable">
+            <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('hero-home')} className="btn hoverable">
               Cotizar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
             </a>
             <a href="#/servicios"
@@ -193,8 +193,8 @@ function Home({ navigate }) {
                   </div>
                 ))}
               </div>
-              <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="btn hoverable" style={{marginTop:32}}>
-                Agendar primera reunión <span className="arrow">↗</span>
+              <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('guarantees')} className="btn hoverable" style={{marginTop:32}}>
+                Agendar primera reunión <span className="arrow" aria-hidden="true">↗</span>
               </a>
             </Reveal>
           </div>
