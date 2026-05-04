@@ -9,7 +9,8 @@
     "dev": "python3 -m http.server 5500"
   },
   "devDependencies": {
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.24.0",
+    "sharp": "^0.34.5"
   },
   "engines": {
     "node": ">=18"

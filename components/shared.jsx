@@ -415,7 +415,7 @@ const CLIENTS = [
   { name: 'Granja Magdalena', file: 'granjamagdalena.png', url: 'https://granjamagdalena.cl' },
   { name: 'Toke', file: 'toke.png', url: 'https://toke.cl' },
   { name: 'Rebels Golf', file: 'rebelsgolf.jpg', url: 'https://rebelsgolf.cl' },
-  { name: 'Imanix', file: 'imanix.jpg', url: 'https://imanix.cl' },
+  { name: 'Imanix', file: 'imanix.png', url: 'https://imanix.cl' },
   { name: 'Spot Essence', file: 'spotessence.png', url: 'https://spotessence.cl' },
   { name: 'B Wild', file: 'bwild.png', url: 'https://bwild.cl' },
   { name: 'CJM Digitales', file: 'cjmdigitales.png', url: 'https://cjmdigitales.cl' },
