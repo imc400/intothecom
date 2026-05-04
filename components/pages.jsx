@@ -371,7 +371,7 @@ const SERVICE_DATA = {
 function SoftwareIA({ navigate }) {
   return (
     <>
-      <section className="svc-hero" data-screen-label="06 Software IA" style={{minHeight:'100vh'}}>
+      <section className="svc-hero" data-screen-label="06 Software IA">
         <DarkCanvas density={1.5}/>
         <div className="svc-hero-inner">
           <div>
@@ -402,6 +402,103 @@ function SoftwareIA({ navigate }) {
             <h2 className="h-display" style={{maxWidth:'18ch'}}>
               La IA útil <span className="it">no es un chatbot</span> en una esquina. Es código que reemplaza tareas reales.
             </h2>
+          </Reveal>
+          <Reveal delay={140}>
+            <div className="manifesto-grid">
+              <div className="manifesto-cell">
+                <div className="manifesto-num">/ 01</div>
+                <h4>Construimos, no revendemos.</h4>
+                <p>No te vendemos una suscripción a ChatGPT con copywriting encima. Diseñamos arquitectura: data, prompts versionados, eval, observabilidad y rollback.</p>
+              </div>
+              <div className="manifesto-cell">
+                <div className="manifesto-num">/ 02</div>
+                <h4>Tu data, tu propiedad.</h4>
+                <p>RAG y fine-tuning sobre tu información interna sin filtrarla a modelos públicos. On-prem, VPC privada o hybrid según tu nivel de criticidad.</p>
+              </div>
+              <div className="manifesto-cell">
+                <div className="manifesto-num">/ 03</div>
+                <h4>Métricas, no demos.</h4>
+                <p>Cada agente o automatización se mide en horas ahorradas, leads calificados o ingresos atribuidos. Si no mueve el negocio, lo apagamos.</p>
+              </div>
+              <div className="manifesto-cell">
+                <div className="manifesto-num">/ 04</div>
+                <h4>Producción en 6 semanas.</h4>
+                <p>Discovery 1 sem · Prototipo 2 sem · Producto 3 sem. Sin presentaciones eternas: el primer prototipo funcional con tu data en menos de 14 días.</p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section tight dark">
+        <div className="container">
+          <Reveal>
+            <div className="eyebrow mb-md" style={{opacity:0.55}}>/ stack & modelos</div>
+            <h3 className="h2 mb-lg" style={{maxWidth:'22ch'}}>Construimos con las herramientas <span className="it">correctas para cada problema.</span></h3>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="stack-grid">
+              <div className="stack-cell">
+                <div className="stack-label">/ modelos</div>
+                <div className="stack-tags">
+                  <span className="stack-tag">GPT-5</span>
+                  <span className="stack-tag">Claude Opus 4.7</span>
+                  <span className="stack-tag">Gemini 2.5</span>
+                  <span className="stack-tag">Llama 3</span>
+                  <span className="stack-tag">Mistral</span>
+                </div>
+              </div>
+              <div className="stack-cell">
+                <div className="stack-label">/ orquestación</div>
+                <div className="stack-tags">
+                  <span className="stack-tag">LangGraph</span>
+                  <span className="stack-tag">Vercel AI SDK</span>
+                  <span className="stack-tag">Anthropic Agent SDK</span>
+                  <span className="stack-tag">n8n</span>
+                </div>
+              </div>
+              <div className="stack-cell">
+                <div className="stack-label">/ vector & data</div>
+                <div className="stack-tags">
+                  <span className="stack-tag">Pinecone</span>
+                  <span className="stack-tag">Weaviate</span>
+                  <span className="stack-tag">pgvector</span>
+                  <span className="stack-tag">Postgres</span>
+                  <span className="stack-tag">BigQuery</span>
+                </div>
+              </div>
+              <div className="stack-cell">
+                <div className="stack-label">/ runtime & infra</div>
+                <div className="stack-tags">
+                  <span className="stack-tag">Python</span>
+                  <span className="stack-tag">Node.js</span>
+                  <span className="stack-tag">Next.js</span>
+                  <span className="stack-tag">AWS</span>
+                  <span className="stack-tag">GCP</span>
+                  <span className="stack-tag">DigitalOcean</span>
+                </div>
+              </div>
+              <div className="stack-cell">
+                <div className="stack-label">/ observabilidad</div>
+                <div className="stack-tags">
+                  <span className="stack-tag">LangSmith</span>
+                  <span className="stack-tag">Helicone</span>
+                  <span className="stack-tag">Sentry</span>
+                  <span className="stack-tag">PostHog</span>
+                </div>
+              </div>
+              <div className="stack-cell">
+                <div className="stack-label">/ integraciones típicas</div>
+                <div className="stack-tags">
+                  <span className="stack-tag">HubSpot</span>
+                  <span className="stack-tag">Salesforce</span>
+                  <span className="stack-tag">WhatsApp Business</span>
+                  <span className="stack-tag">Shopify</span>
+                  <span className="stack-tag">Notion</span>
+                  <span className="stack-tag">Slack</span>
+                </div>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>

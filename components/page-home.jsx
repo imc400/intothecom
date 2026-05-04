@@ -61,12 +61,21 @@ function Home({ navigate }) {
             </div>
           </div>
           <div className="hero-trust-strip">
-            <span className="hero-trust-label">Confían en nosotros</span>
+            <div className="hero-trust-header">
+              <span className="hero-trust-label">Confían en nosotros</span>
+              <span className="hero-trust-count">+100 marcas asesoradas</span>
+            </div>
             <div className="hero-trust-logos">
               {['equifax.svg','bullpadel.png','imanix.jpg','toke.png','rebelsgolf.jpg','granjamagdalena.png'].map(f => (
                 <img key={f} src={`assets/clients/${f}`} alt="" className="hero-trust-logo" loading="lazy"/>
               ))}
             </div>
+            <a href="https://www.google.com/search?q=intothecom" target="_blank" rel="noopener noreferrer" className="hero-google-rating hoverable">
+              <span className="hero-google-stars" aria-hidden="true">★★★★★</span>
+              <span className="hero-google-score">5.0</span>
+              <span className="hero-google-meta">17 reseñas en Google</span>
+              <span className="hero-google-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       </section>
@@ -205,10 +214,20 @@ function Home({ navigate }) {
       <section className="section tight" data-screen-label="06 Testimonios">
         <div className="container">
           <Reveal>
-            <div className="eyebrow mb-md">/ clientes</div>
-            <h2 className="h1 mb-lg" style={{maxWidth:'18ch'}}>
-              Lo que dicen <span className="it">de nosotros.</span>
-            </h2>
+            <div className="testi-header">
+              <div>
+                <div className="eyebrow mb-md">/ clientes</div>
+                <h2 className="h1" style={{maxWidth:'18ch'}}>
+                  Lo que dicen <span className="it">de nosotros.</span>
+                </h2>
+              </div>
+              <a href="https://www.google.com/search?q=intothecom" target="_blank" rel="noopener noreferrer" className="google-badge hoverable">
+                <div className="google-badge-stars" aria-hidden="true">★★★★★</div>
+                <div className="google-badge-score">5.0 / 5</div>
+                <div className="google-badge-meta">17 reseñas verificadas en Google</div>
+                <div className="google-badge-cta">Ver todas <span aria-hidden="true">↗</span></div>
+              </a>
+            </div>
           </Reveal>
           <Reveal delay={120}>
             <div className="testi-grid">
