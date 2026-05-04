@@ -1,0 +1,737 @@
+/* Service template + per-service data + Software/IA + Nosotros + Hablemos */
+
+const SERVICES_LIST = [
+  { num:'01', t:'Software & IA a medida', path:'/software-ia', tag:'NUEVO · 2026',
+    desc:'Agentes conversacionales, copilotos, automatizaciones y dashboards construidos para tu operación. No suscripciones genéricas — sistemas concretos.' },
+  { num:'02', t:'Paid Media', path:'/paid-media', tag:'Google · Meta · TikTok',
+    desc:'Impulsa tu negocio con campañas de anuncios efectivas. Tráfico calificado mediante anuncios pagados con foco en ROAS y CAC, no en impresiones vacías.' },
+  { num:'03', t:'Email Marketing', path:'/email-marketing', tag:'Klaviyo · HubSpot',
+    desc:'Potencia tus ventas con estrategias efectivas de email marketing. Segmentación precisa, automatizaciones y flows que convierten en tu canal más rentable.' },
+  { num:'04', t:'Diseño y Desarrollo Web', path:'/desarrollo-web', tag:'Next · Shopify · Headless',
+    desc:'Aumenta el valor de tu negocio con un sitio web atractivo y funcional. UI/UX con foco en conversión, performance Lighthouse 90+ y SEO técnico integrado.' },
+  { num:'05', t:'Community Management', path:'/community-management', tag:'IG · TikTok · LinkedIn',
+    desc:'Conecta con tu audiencia con criterio editorial y comunidad real, no vanity metrics. Línea editorial, producción de contenido y gestión de comunidad.' },
+];
+
+function Servicios({ navigate }) {
+  return (
+    <>
+      <section className="hero" data-screen-label="00 Servicios" style={{paddingBottom:48}}>
+        <DarkCanvas density={0.9}/>
+        <div className="hero-inner">
+          <div className="hero-top">
+            <span>Servicios · 05</span>
+            <span>Estudio digital · est. 2019</span>
+            <span>Chile · Brasil · USA · España</span>
+          </div>
+          <h1 className="hero-headline" style={{maxWidth:'20ch'}}>
+            Todo lo que tu negocio necesita <span className="it">para crecer en serio.</span>
+          </h1>
+        </div>
+        <div className="hero-inner">
+          <div className="hero-bottom" style={{gridTemplateColumns:'1fr', gap:0}}>
+            <p className="lead" style={{maxWidth:'62ch'}}>
+              Marketing digital, desarrollo de software & inteligencia artificial. Diseñamos cada servicio para integrarse con los demás — no como silos, sino como un motor que crece junto a tu negocio.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section tight" data-screen-label="01 Catálogo">
+        <div className="container">
+          <Reveal>
+            <div className="eyebrow mb-md">/ catálogo · 05 servicios</div>
+          </Reveal>
+          <div className="services-grid">
+            {SERVICES_LIST.map((s,i) => (
+              <Reveal key={s.num} delay={i*60}>
+                <a href={"#"+s.path}
+                   onClick={(e)=>{e.preventDefault();navigate(s.path);}}
+                   className="service-card hoverable">
+                  <div className="service-card-top">
+                    <span className="service-card-num">{s.num}</span>
+                    <span className="service-card-tag">{s.tag}</span>
+                  </div>
+                  <h3 className="service-card-title">{s.t}</h3>
+                  <p className="service-card-desc">{s.desc}</p>
+                  <span className="service-card-cta">
+                    Ver detalle <span className="service-card-arrow">↗</span>
+                  </span>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section dark tight" data-screen-label="02 Cómo">
+        <div className="container">
+          <div className="split">
+            <Reveal className="split-title">
+              <div className="eyebrow mb-md" style={{opacity:0.55}}>/ cómo trabajamos</div>
+              <h2 className="h1" style={{maxWidth:'18ch'}}>
+                Tres etapas. <span className="it">Sin teatro.</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="process">
+                <div className="process-step">
+                  <span className="step-num">01</span>
+                  <div>
+                    <h4>Construimos</h4>
+                    <p>Diseñamos, desarrollamos o mejoramos tu activo digital — sitio, sistema o agente IA — con foco en negocio.</p>
+                  </div>
+                </div>
+                <div className="process-step">
+                  <span className="step-num">02</span>
+                  <div>
+                    <h4>Lo posicionamos</h4>
+                    <p>SEO técnico + estrategia orgánica para que aparezcas donde tus clientes buscan.</p>
+                  </div>
+                </div>
+                <div className="process-step">
+                  <span className="step-num">03</span>
+                  <div>
+                    <h4>Lo promocionamos</h4>
+                    <p>Paid media, email y community con tracking server-side. Cada peso invertido tiene un retorno explícito.</p>
+                  </div>
+                </div>
+                <div className="process-step">
+                  <span className="step-num">04</span>
+                  <div>
+                    <h4>Lo escalamos</h4>
+                    <p>Cuando un ángulo funciona, escalamos vertical y horizontalmente. Reportes mensuales con decisiones, no con gráficos.</p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="split">
+            <Reveal className="split-title">
+              <div className="eyebrow mb-md">/ ¿no sabes por dónde empezar?</div>
+              <h2 className="h2" style={{maxWidth:'20ch'}}>
+                Conversemos sin <span className="it">compromiso.</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="body-lg" style={{maxWidth:'48ch'}}>
+                Una reunión de 45 min donde revisamos tu negocio, identificamos los 3 mayores bloqueos y te entregamos un plan accionable. Sin venta dura, sin presentaciones aburridas. Si encajamos, seguimos. Si no, te sales con valor.
+              </p>
+              <div style={{display:'flex', gap:14, flexWrap:'wrap', marginTop:32}}>
+                <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="btn hoverable">
+                  Agendar reunión por WhatsApp <span className="arrow">↗</span>
+                </a>
+                <a href="#/hablemos"
+                   onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}
+                   className="btn ghost hoverable">
+                  Escribir un brief <span className="arrow">↗</span>
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function ServicePage({ navigate, data }) {
+  return (
+    <>
+      <section className="svc-hero" data-screen-label={data.screenLabel}>
+        <DarkCanvas density={0.8}/>
+        <div className="svc-hero-inner">
+          <div>
+            <div className="eyebrow" style={{color:'#ededea', opacity:0.6, marginBottom:24}}>/ {data.eyebrow}</div>
+            <h1 className="h-display" style={{maxWidth:'14ch'}}>
+              {data.titlePre}<span className="it">{data.titleEm}</span>
+            </h1>
+          </div>
+          <div className="svc-meta">
+            <div className="row"><span>Servicio</span><span>{data.serviceCode}</span></div>
+            <div className="row"><span>Disponibilidad</span><span>CL · BR · US · ES</span></div>
+            <div className="row"><span>Duración mín.</span><span>{data.duration}</span></div>
+            <div className="row"><span>Categorías</span><span>{data.categories}</span></div>
+            <a href={waLink(data.waKey || 'default')} target="_blank" rel="noopener noreferrer" className="btn invert hoverable" style={{marginTop:24}}>
+              Cotizar por WhatsApp <span className="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="split">
+            <Reveal className="split-title">
+              <div className="eyebrow mb-md">/ qué es</div>
+              <h2 className="h2">{data.whatTitlePre}<span className="it">{data.whatTitleEm}</span></h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="body-lg" style={{maxWidth:'52ch'}}>{data.whatBody}</p>
+              {data.whatBullets && (
+                <ul className="what-list">
+                  {data.whatBullets.map((b,i)=>(
+                    <li key={i}>
+                      <span className="what-num">0{i+1}</span>
+                      <span className="what-text">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="section dark tight">
+        <div className="container">
+          <Reveal>
+            <div className="eyebrow mb-md" style={{opacity:0.55}}>/ proceso</div>
+            <h2 className="h1 mb-lg" style={{maxWidth:'20ch'}}>{data.howTitlePre}<span className="it">{data.howTitleEm}</span></h2>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="process">
+              {data.process.map((p,i)=>(
+                <div key={i} className="process-step">
+                  <span className="step-num">0{i+1}</span>
+                  <div>
+                    <h4>{p.t}</h4>
+                    <p>{p.d}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="split">
+            <Reveal className="split-title">
+              <div className="eyebrow mb-md">/ qué obtienes</div>
+              <h2 className="h2">Resultados <span className="it">medibles.</span></h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="benefits">
+                {data.benefits.map((b,i)=>(
+                  <div key={i} className="benefit-row">
+                    <span className="benefit-num">+0{i+1}</span>
+                    <div>
+                      <div className="benefit-title">{b.t}</div>
+                      <p className="benefit-body">{b.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <a href={waLink(data.waKey || 'default')} target="_blank" rel="noopener noreferrer" className="btn hoverable" style={{marginTop:48}}>
+                Hablemos por WhatsApp <span className="arrow">↗</span>
+              </a>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="section tight">
+        <div className="container">
+          <Reveal>
+            <div className="eyebrow mb-md">/ explorar</div>
+            <h3 className="h2 mb-lg">Otros <span className="it">servicios.</span></h3>
+          </Reveal>
+          <div className="services">
+            {data.others.map((o,i) => (
+              <a href={"#"+o.path} key={i}
+                 onClick={(e)=>{e.preventDefault();navigate(o.path);}}
+                 className="service-row">
+                <span className="num">{o.num}</span>
+                <h3 className="title">{o.t}</h3>
+                <p className="desc">{o.desc}</p>
+                <span className="go">↗</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+const SERVICE_DATA = {
+  'paid-media': {
+    waKey:'paid-media',
+    screenLabel:'02 Paid Media', eyebrow:'paid media',
+    titlePre:'Anuncios que ', titleEm:'venden.',
+    serviceCode:'PM-01', duration:'3 meses', categories:'Google · Meta · TikTok · LinkedIn',
+    whatTitlePre:'Tráfico calificado, ', whatTitleEm:'ROI medible.',
+    whatBody:'Paid Media se enfoca en aumentar el tráfico calificado mediante anuncios pagados. Diseñamos campañas con foco en resultados rápidos, medibles y un alto retorno de inversión — no en impresiones vacías.',
+    whatBullets:['Estrategia full-funnel: descubrimiento, consideración y conversión.','Creatividades A/B que no parecen ads.','Tracking server-side y atribución limpia.','Reportes semanales con decisiones, no con gráficos.'],
+    howTitlePre:'Un proceso construido para ', howTitleEm:'escalar.',
+    process:[
+      {t:'Auditoría',d:'Revisamos tu cuenta actual, audiencias, tracking y competencia para encontrar el techo real.'},
+      {t:'Setup',d:'Configuramos pixel, conversiones server-side, audiencias y estructura de campañas.'},
+      {t:'Lanzamiento',d:'Test creativo en paralelo, presupuesto controlado y aprendizaje rápido en 2 semanas.'},
+      {t:'Escala',d:'Cuando un ángulo funciona, escalamos vertical y horizontalmente sin reventar el CAC.'},
+    ],
+    benefits:[
+      {t:'Resultados rápidos y medibles',d:'Campañas con KPIs claros desde la semana uno: ROAS, CAC y LTV proyectado.'},
+      {t:'Alto retorno de inversión',d:'Optimizamos por ingreso, no por clics. Cada peso invertido tiene un objetivo de retorno explícito.'},
+      {t:'Estructura escalable',d:'Cuentas limpias y documentadas, listas para crecer sin canibalizar tus propias campañas.'},
+    ],
+    others:[
+      {num:'02',t:'Email Marketing',desc:'Automatizaciones que convierten.',path:'/email-marketing'},
+      {num:'03',t:'Software & IA',desc:'Productos digitales a medida.',path:'/software-ia'},
+      {num:'04',t:'Desarrollo Web',desc:'Sitios diseñados para vender.',path:'/desarrollo-web'},
+    ],
+  },
+  'email-marketing': {
+    waKey:'email-marketing',
+    screenLabel:'03 Email', eyebrow:'email marketing',
+    titlePre:'Inbox que ', titleEm:'convierte.',
+    serviceCode:'EM-01', duration:'3 meses', categories:'Klaviyo · Mailchimp · HubSpot · ActiveCampaign',
+    whatTitlePre:'Contacto directo, ', whatTitleEm:'sin intermediarios.',
+    whatBody:'El email es la única audiencia que realmente posees. Diseñamos estrategias personalizadas con segmentación, contenido relevante, automatizaciones y análisis continuo.',
+    whatBullets:['Segmentación precisa por comportamiento y valor.','Creación de contenido relevante y atractivo.','Análisis de métricas y optimización continua.','Flows: bienvenida, abandono, post-compra, win-back.'],
+    howTitlePre:'Del primer correo al ', howTitleEm:'noveno flow.',
+    process:[
+      {t:'Auditoría de listas',d:'Limpiamos, segmentamos y validamos tu base actual.'},
+      {t:'Estrategia',d:'Calendario editorial, plantillas master y mapa de automatizaciones.'},
+      {t:'Producción',d:'Diseñamos y programamos campañas con copywriting que no se ignora.'},
+      {t:'Optimización',d:'A/B test en asunto, hora, contenido y CTA. Mejora continua.'},
+    ],
+    benefits:[
+      {t:'Alto impacto en conversiones',d:'Email convierte 4–6× mejor que social. Bien hecho, es tu canal más rentable.'},
+      {t:'Tráfico sostenido',d:'Cada envío recuerda tu marca y alimenta el ciclo de retención.'},
+      {t:'Audiencia 100% propia',d:'Tu lista es un activo que no se evapora con un cambio de algoritmo.'},
+    ],
+    others:[
+      {num:'02',t:'Paid Media',desc:'Campañas con foco en ROAS y CAC.',path:'/paid-media'},
+      {num:'03',t:'Community Management',desc:'Comunidad real.',path:'/community-management'},
+      {num:'04',t:'Software & IA',desc:'Automatizaciones a medida.',path:'/software-ia'},
+    ],
+  },
+  'desarrollo-web': {
+    waKey:'desarrollo-web',
+    screenLabel:'04 Web', eyebrow:'diseño y desarrollo web',
+    titlePre:'Sitios que ', titleEm:'venden.',
+    serviceCode:'WEB-01', duration:'6–12 semanas', categories:'Next.js · Shopify · Webflow · Headless',
+    whatTitlePre:'Tu sitio es ', whatTitleEm:'tu mejor vendedor.',
+    whatBody:'Diseñamos y desarrollamos sitios web y e-commerce de forma personalizada. Cada decisión —velocidad, jerarquía, copy, microinteracción— está al servicio de la conversión.',
+    whatBullets:['Diseño UI/UX con foco en conversión.','Performance: Core Web Vitals en verde.','SEO técnico integrado: estructura, schema, sitemap.','Stack moderno: Next.js, headless, CMS desacoplado.'],
+    howTitlePre:'Diseño y código ', howTitleEm:'bajo el mismo techo.',
+    process:[
+      {t:'Discovery',d:'Definimos KPIs del sitio antes de tocar Figma.'},
+      {t:'Diseño',d:'Wireframes, sistema de diseño, prototipos navegables.'},
+      {t:'Desarrollo',d:'Código limpio, componentizado, con CMS para tu equipo.'},
+      {t:'Lanzamiento',d:'QA cross-browser, migración, redirects, monitoreo.'},
+    ],
+    benefits:[
+      {t:'Conversión medible',d:'Sitios construidos para vender, con tracking limpio desde el primer pixel.'},
+      {t:'Performance que se siente',d:'Lighthouse 90+ no negociable. Cada milisegundo cuenta.'},
+      {t:'Editable por tu equipo',d:'CMS amigable. Editás textos e imágenes sin llamarnos.'},
+    ],
+    others:[
+      {num:'02',t:'Software & IA',desc:'Productos digitales a medida.',path:'/software-ia'},
+      {num:'03',t:'Paid Media',desc:'Tráfico calificado para tu nuevo sitio.',path:'/paid-media'},
+      {num:'04',t:'Email Marketing',desc:'Convierte tráfico en clientes recurrentes.',path:'/email-marketing'},
+    ],
+  },
+  'community-management': {
+    waKey:'community-management',
+    screenLabel:'05 Community', eyebrow:'community management',
+    titlePre:'Comunidad ', titleEm:'real.',
+    serviceCode:'CM-01', duration:'3 meses', categories:'Instagram · TikTok · LinkedIn · X',
+    whatTitlePre:'Contenido con ', whatTitleEm:'criterio editorial.',
+    whatBody:'Construimos presencia social con voz propia, contenido que se comparte y comunidad que responde. No publicamos por publicar — cada pieza tiene un objetivo y se mide.',
+    whatBullets:['Línea editorial y tono de marca documentado.','Calendario mensual con ángulos, formatos y CTAs.','Producción de contenido: foto, motion, copy.','Gestión de comunidad: DMs, comentarios y crisis.'],
+    howTitlePre:'Más que ', howTitleEm:'postear bonito.',
+    process:[
+      {t:'Brand strategy',d:'Voz, tono, pilares de contenido y guía visual.'},
+      {t:'Producción',d:'Sesiones mensuales: foto, video y motion alineados con la estrategia.'},
+      {t:'Publicación',d:'Calendario aprobado, horarios óptimos por canal, copywriting nativo.'},
+      {t:'Comunidad',d:'Respondemos, moderamos y reportamos sentiment cada semana.'},
+    ],
+    benefits:[
+      {t:'Marca con personalidad',d:'Salimos del feed genérico. Tu marca se reconoce sin ver el logo.'},
+      {t:'Comunidad que compra',d:'Audiencia engaged, no inflada. Más DMs útiles, menos likes vacíos.'},
+      {t:'Reportes con insights',d:'Mensual, con qué funcionó, qué no, y qué probamos el mes que viene.'},
+    ],
+    others:[
+      {num:'02',t:'Paid Media',desc:'Amplifica tu mejor contenido orgánico.',path:'/paid-media'},
+      {num:'03',t:'Email Marketing',desc:'Convierte seguidores en clientes.',path:'/email-marketing'},
+      {num:'04',t:'Software & IA',desc:'Automatiza moderación y reportes.',path:'/software-ia'},
+    ],
+  },
+};
+
+function SoftwareIA({ navigate }) {
+  return (
+    <>
+      <section className="svc-hero" data-screen-label="06 Software IA" style={{minHeight:'100vh'}}>
+        <DarkCanvas density={1.5}/>
+        <div className="svc-hero-inner">
+          <div>
+            <div className="eyebrow" style={{color:'#ededea', opacity:0.6, marginBottom:24}}>/ nuevo · 2026</div>
+            <h1 className="h-display" style={{maxWidth:'16ch'}}>
+              Software <span className="it">&amp;</span> IA <span className="it">a medida.</span>
+            </h1>
+            <p className="body-lg" style={{maxWidth:'42ch', opacity:0.85, marginTop:32}}>
+              No vendemos suscripciones a herramientas genéricas. Construimos sistemas concretos para tu negocio.
+            </p>
+          </div>
+          <div className="svc-meta">
+            <div className="row"><span>Servicio</span><span>SW-01</span></div>
+            <div className="row"><span>Disponibilidad</span><span>CL · BR · US · ES</span></div>
+            <div className="row"><span>Stack</span><span>Python · Node · Next · LLMs</span></div>
+            <div className="row"><span>Modelos</span><span>GPT · Claude · Gemini · OSS</span></div>
+            <a href={waLink('software-ia')} target="_blank" rel="noopener noreferrer" className="btn invert hoverable" style={{marginTop:24}}>
+              Discutir por WhatsApp <span className="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <Reveal>
+            <div className="eyebrow mb-md">/ manifiesto</div>
+            <h2 className="h-display" style={{maxWidth:'18ch'}}>
+              La IA útil <span className="it">no es un chatbot</span> en una esquina. Es código que reemplaza tareas reales.
+            </h2>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section tight">
+        <div className="container">
+          <Reveal><div className="eyebrow mb-md">/ qué construimos</div><h3 className="h2 mb-lg">Capacidades.</h3></Reveal>
+          <Reveal delay={120}>
+            <div className="bento">
+              <div className="bento-cell dark" style={{gridColumn:'span 4', gridRow:'span 2'}}>
+                <span className="small" style={{opacity:0.55}}>01 · agentes</span>
+                <h4>Agentes conversacionales que cierran ventas, agendan reuniones y califican leads 24/7.</h4>
+              </div>
+              <div className="bento-cell feat" style={{gridColumn:'span 2'}}>
+                <span className="small">02 · rag</span><h4>RAG sobre tu data interna.</h4>
+              </div>
+              <div className="bento-cell" style={{gridColumn:'span 2'}}>
+                <span className="small">03 · automate</span><h4>Automatizaciones que reemplazan horas-persona.</h4>
+              </div>
+              <div className="bento-cell feat" style={{gridColumn:'span 2', gridRow:'span 2'}}>
+                <span className="small">04 · dashboards</span>
+                <h4>Dashboards de decisión con insights que el negocio entiende.</h4>
+                <div style={{display:'flex', gap:6, alignItems:'flex-end', height:50}}>
+                  {[40,60,30,80,55,90,70,50].map((h,i)=>(<div key={i} style={{flex:1, height:h+'%', background:'var(--ink)'}}></div>))}
+                </div>
+              </div>
+              <div className="bento-cell" style={{gridColumn:'span 2'}}>
+                <span className="small">05 · integrations</span><h4>Integraciones con tu CRM, ERP y herramientas existentes.</h4>
+              </div>
+              <div className="bento-cell dark" style={{gridColumn:'span 2'}}>
+                <span className="small" style={{opacity:0.55}}>06 · copilots</span><h4>Copilotos internos para tu equipo.</h4>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section dark">
+        <div className="container">
+          <Reveal>
+            <div className="eyebrow mb-md" style={{opacity:0.55}}>/ casos de uso reales</div>
+            <h2 className="h1 mb-lg" style={{maxWidth:'18ch'}}>Lo que <span className="it">ya construimos.</span></h2>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="cases">
+              {[
+                {sector:'Retail', title:'Agente WhatsApp con catálogo en vivo', metric:'+38%', desc:'conversión chat→compra'},
+                {sector:'B2B SaaS', title:'Copiloto interno sobre 12k tickets', metric:'−62%', desc:'tiempo de resolución'},
+                {sector:'Inmobiliaria', title:'Agente que precalifica y agenda visitas', metric:'+4×', desc:'leads calificados/mes'},
+                {sector:'E-commerce', title:'Pricing dinámico con elasticidad', metric:'+19%', desc:'margen sin perder volumen'},
+                {sector:'Educación', title:'RAG sobre cursos + tutor personalizado', metric:'+47%', desc:'completion rate'},
+              ].map((c,i)=>(
+                <div key={i} className="case-row">
+                  <span className="case-num">0{i+1}</span>
+                  <span className="case-sector">{c.sector}</span>
+                  <h4 className="case-title">{c.title}</h4>
+                  <div className="case-right">
+                    <div>
+                      <div className="case-metric">{c.metric}</div>
+                      <div className="case-desc">{c.desc}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section tight">
+        <div className="container">
+          <Reveal>
+            <div className="eyebrow mb-md">/ cómo trabajamos</div>
+            <h2 className="h1 mb-lg" style={{maxWidth:'20ch'}}>De idea a producción <span className="it">en 6 semanas.</span></h2>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="process">
+              <div className="process-step"><span className="step-num">01</span><div><h4>Discovery</h4><p>1 sem · Entendemos el problema, mapeamos data y definimos métricas de éxito.</p></div></div>
+              <div className="process-step"><span className="step-num">02</span><div><h4>Prototipo</h4><p>2 sem · Versión funcional con tu data real. Validamos antes de escalar.</p></div></div>
+              <div className="process-step"><span className="step-num">03</span><div><h4>Producto</h4><p>3 sem · UI, integraciones, observabilidad y eval continuo. Listo para usuarios.</p></div></div>
+              <div className="process-step"><span className="step-num">04</span><div><h4>Operación</h4><p>Mensual · Monitoreo, mejora de prompts y nuevas features.</p></div></div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Nosotros({ navigate }) {
+  return (
+    <>
+      <section className="hero" data-screen-label="07 Nosotros">
+        <DarkCanvas density={0.9}/>
+        <div className="hero-inner">
+          <div className="hero-top">
+            <span>El estudio</span><span>est. 2019</span><span>4 mercados</span>
+          </div>
+          <h1 className="hero-headline" style={{maxWidth:'18ch'}}>
+            <span className="it">Cinco años</span> haciendo crecer negocios.
+          </h1>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="split">
+            <Reveal className="split-title"><div className="eyebrow mb-md">/ qué somos</div><h2 className="h2">Una agencia con <span className="it">obsesión por los datos.</span></h2></Reveal>
+            <Reveal delay={120}>
+              <p className="body-lg" style={{maxWidth:'52ch'}}>
+                Empezamos en 2019 como una agencia de marketing digital en Chile. Cinco años después operamos en cuatro mercados, hemos asesorado más de 100 negocios y construimos software & IA a medida para clientes que necesitan más que campañas.
+              </p>
+              <p className="body-lg" style={{maxWidth:'52ch', marginTop:24}}>
+                Nos motiva el crecimiento medible. Si no se puede medir, no lo hacemos.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="section dark tight">
+        <div className="container">
+          <Reveal>
+            <div className="stats">
+              <div className="stat"><div className="num">+100</div><div className="lbl">Negocios asesorados</div></div>
+              <div className="stat"><div className="num">+5M</div><div className="lbl">USD vendidos por RRSS</div></div>
+              <div className="stat"><div className="num">+5</div><div className="lbl">Años en industria</div></div>
+              <div className="stat"><div className="num">04</div><div className="lbl">Mercados activos</div></div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <Reveal><div className="eyebrow mb-md">/ principios</div><h2 className="h1 mb-lg" style={{maxWidth:'20ch'}}>Cómo <span className="it">trabajamos.</span></h2></Reveal>
+          <Reveal delay={120}>
+            <div className="principles">
+              {[
+                ['Data sobre opinión','Cada decisión está respaldada por números. Las opiniones son hipótesis hasta que se prueban.'],
+                ['Transparencia radical','Reportes honestos, incluyendo lo que no funcionó. No tenemos nada que ocultar.'],
+                ['Foco en negocio','No optimizamos métricas vanidosas. Optimizamos ingresos, margen y LTV.'],
+                ['Equipo senior','Quien vende es quien ejecuta. No hay mid-funnel: trabajas directo con quien sabe.'],
+              ].map((p,i)=>(
+                <div key={i} className="principle-row">
+                  <span className="principle-num">0{i+1}</span>
+                  <h4 className="principle-title">{p[0]}</h4>
+                  <p className="principle-body">{p[1]}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section dark tight">
+        <div className="container">
+          <div className="split">
+            <Reveal className="split-title">
+              <div className="eyebrow mb-md" style={{opacity:0.55}}>/ siguiente paso</div>
+              <h2 className="h1" style={{maxWidth:'18ch'}}>
+                ¿Te suena? <span className="it">Hablemos.</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="body-lg" style={{maxWidth:'48ch', opacity:0.85}}>
+                45 minutos sin costo, sin venta dura. Revisamos tu negocio, identificamos los 3 mayores bloqueos y te entregamos un plan accionable. Si encajamos, seguimos. Si no, te sales con valor.
+              </p>
+              <div style={{display:'flex', gap:14, flexWrap:'wrap', marginTop:32}}>
+                <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="btn hoverable">
+                  Agendar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
+                </a>
+                <a href="#/hablemos"
+                   onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}
+                   className="btn ghost hoverable">
+                  Escribir un brief <span className="arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Hablemos({ navigate }) {
+  const [submitted, setSubmitted] = React.useState(false);
+  const [showMore, setShowMore] = React.useState(false);
+  const [form, setForm] = React.useState({ name:'', company:'', email:'', service:'', budget:'', message:'' });
+  const update = (k,v) => setForm(f => ({...f, [k]:v}));
+  const submit = (e) => { e.preventDefault(); setSubmitted(true); };
+  return (
+    <>
+      <section className="hero" data-screen-label="08 Hablemos">
+        <DarkCanvas density={0.7}/>
+        <div className="hero-inner">
+          <div className="hero-top"><span>Estás a un paso de partir hacia el éxito</span><span>info@intothecom.com</span><span>Respuesta &lt; 1h hábil</span></div>
+          <h1 className="hero-headline" style={{maxWidth:'20ch'}}>
+            Cuéntanos <span className="it">qué quieres hacer crecer.</span>
+          </h1>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container narrow">
+          {!submitted ? (
+            <>
+              <div className="wa-primary-block">
+                <div>
+                  <div className="eyebrow mb-md">/ camino rápido · recomendado</div>
+                  <h2 className="h2" style={{maxWidth:'18ch', marginBottom:14}}>Hablemos por <span className="it">WhatsApp.</span></h2>
+                  <p className="body" style={{opacity:0.75, maxWidth:'46ch', marginBottom:24}}>
+                    Respuesta en menos de 1h hábil. Sin formularios largos, sin call-center.
+                  </p>
+                  <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="btn hoverable">
+                    Cotizar por WhatsApp <span className="arrow">↗</span>
+                  </a>
+                </div>
+                <div className="wa-primary-meta">
+                  <div className="wa-meta-row"><span className="mono">/ número</span><span>+56 9 5016 0966</span></div>
+                  <div className="wa-meta-row"><span className="mono">/ horario</span><span>Lun–Vie 9–19 SCL</span></div>
+                  <div className="wa-meta-row"><span className="mono">/ respuesta</span><span>&lt; 1h hábil</span></div>
+                  <div className="wa-meta-row"><span className="mono">/ verificado</span><span>WhatsApp Business</span></div>
+                </div>
+              </div>
+
+              <div className="form-divider">
+                <span>o escríbenos un brief</span>
+              </div>
+
+              <form className="form" onSubmit={submit} noValidate aria-label="Brief de contacto">
+                <div className="form-row">
+                  <label htmlFor="f-name">01 / Nombre <span aria-label="requerido">*</span></label>
+                  <input id="f-name" required type="text" autoComplete="name" placeholder="Tu nombre completo" value={form.name} onChange={e=>update('name', e.target.value)} aria-required="true"/>
+                </div>
+                <div className="form-row">
+                  <label htmlFor="f-email">02 / Email <span aria-label="requerido">*</span></label>
+                  <input id="f-email" required type="email" autoComplete="email" placeholder="hola@tuempresa.com" value={form.email} onChange={e=>update('email', e.target.value)} aria-required="true"/>
+                </div>
+                <div className="form-row">
+                  <label htmlFor="f-msg">03 / Cuéntanos <span aria-label="requerido">*</span></label>
+                  <textarea id="f-msg" required placeholder="¿Qué problema quieres resolver?" rows={3} value={form.message} onChange={e=>update('message', e.target.value)} aria-required="true"/>
+                </div>
+
+                {showMore && (
+                  <div id="form-extra-fields">
+                    <div className="form-row">
+                      <label htmlFor="f-company">04 / Empresa</label>
+                      <input id="f-company" type="text" autoComplete="organization" placeholder="Nombre de tu empresa" value={form.company} onChange={e=>update('company', e.target.value)}/>
+                    </div>
+                    <div className="form-row">
+                      <label htmlFor="f-svc">05 / Servicio</label>
+                      <select id="f-svc" value={form.service} onChange={e=>update('service', e.target.value)}>
+                        <option value="">Selecciona un servicio</option>
+                        <option>Software & IA a medida</option>
+                        <option>Paid Media</option>
+                        <option>Email Marketing</option>
+                        <option>Desarrollo Web</option>
+                        <option>Community Management</option>
+                        <option>Strategy / multi-servicio</option>
+                      </select>
+                    </div>
+                    <div className="form-row">
+                      <label htmlFor="f-budget">06 / Presupuesto</label>
+                      <select id="f-budget" value={form.budget} onChange={e=>update('budget', e.target.value)}>
+                        <option value="">Rango mensual estimado</option>
+                        <option>USD 1.5k–3k</option><option>USD 3k–8k</option><option>USD 8k–20k</option>
+                        <option>USD 20k+</option><option>Aún no lo sé</option>
+                      </select>
+                    </div>
+                  </div>
+                )}
+
+                <div className="form-actions">
+                  <button type="button" className="form-toggle hoverable" aria-expanded={showMore} aria-controls="form-extra-fields" onClick={()=>setShowMore(s=>!s)}>
+                    {showMore ? '— Menos detalles' : '+ Más detalles (opcional)'}
+                  </button>
+                  <button type="submit" className="btn hoverable">Enviar brief <span className="arrow" aria-hidden="true">↗</span></button>
+                </div>
+                <p className="form-privacy">
+                  Al enviar aceptas que usemos tu información solo para responderte. Sin spam, sin listas. Cumplimos Ley 19.628 (CL) y GDPR.
+                </p>
+              </form>
+            </>
+          ) : (
+            <Reveal>
+              <div style={{textAlign:'center', padding:'60px 0'}}>
+                <div className="eyebrow mb-md" style={{justifyContent:'center'}}>/ mensaje recibido</div>
+                <h2 className="h-display" style={{maxWidth:'14ch', margin:'0 auto'}}>
+                  Gracias, <span className="it">{form.name || 'tu mensaje'}</span>.<br/>Te respondemos en 24h.
+                </h2>
+                <button className="btn hoverable" style={{marginTop:32}} onClick={()=>navigate('/')}>
+                  Volver al inicio <span className="arrow">↗</span>
+                </button>
+              </div>
+            </Reveal>
+          )}
+        </div>
+      </section>
+
+      <section className="section tight">
+        <div className="container">
+          <div className="contact-grid">
+            <div className="contact-cell">
+              <div className="contact-label">/ Email</div>
+              <a className="contact-value contact-link" href="mailto:info@intothecom.com">info@intothecom.com</a>
+            </div>
+            <div className="contact-cell">
+              <div className="contact-label">/ WhatsApp</div>
+              <a className="contact-value contact-link" href={waLink('default')} target="_blank" rel="noopener noreferrer">+56 9 5016 0966</a>
+            </div>
+            <div className="contact-cell">
+              <div className="contact-label">/ Oficinas</div>
+              <div className="contact-value">Santiago · São Paulo · Miami · Madrid</div>
+            </div>
+            <div className="contact-cell">
+              <div className="contact-label">/ Horario</div>
+              <div className="contact-value">Lun–Vie · 9:00–19:00 SCL</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+window.ServicePage = ServicePage;
+window.SERVICE_DATA = SERVICE_DATA;
+window.Servicios = Servicios;
+window.SoftwareIA = SoftwareIA;
+window.Nosotros = Nosotros;
+window.Hablemos = Hablemos;

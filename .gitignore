@@ -1,0 +1,42 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node (in case build pipeline is added later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+
+# Build artifacts (reserved)
+dist/
+build/
+.cache/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Vercel
+.vercel/
+
+# Logs
+*.log
+logs/
+
+# Mac
+.AppleDouble
+.LSOverride
