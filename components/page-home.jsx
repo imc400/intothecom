@@ -66,7 +66,7 @@ function Home({ navigate }) {
               <span className="hero-trust-count">+100 marcas asesoradas</span>
             </div>
             <div className="hero-trust-logos">
-              {['equifax.svg','bullpadel.png','imanix.jpg','toke.png','rebelsgolf.jpg','granjamagdalena.png'].map(f => (
+              {['equifax.svg','bullpadel.png','toke.png','granjamagdalena.png','parquetermalbotanico.svg','terrafirme.png'].map(f => (
                 <img key={f} src={`assets/clients/${f}`} alt="" className="hero-trust-logo" loading="lazy"/>
               ))}
             </div>
