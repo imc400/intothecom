@@ -40,7 +40,7 @@ const ROUTE_META = {
   },
   '/contacto': {
     title: 'Contacto · Oficina, WhatsApp, email | Intothecom',
-    description: 'Almirante Pastene 333, of. 402, Providencia, Santiago. WhatsApp +56 9 5016 0966 · info@intothecom.com · ignacio@intothecom.com.'
+    description: 'Almirante Pastene 333, of. 402, Providencia, Santiago. WhatsApp +56 9 7414 3642 · info@intothecom.com · ignacio@intothecom.com.'
   },
   '/casos': {
     title: 'Casos de éxito · Resultados verificables | Intothecom',

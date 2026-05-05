@@ -2,7 +2,7 @@
 const { useState, useEffect, useRef } = React;
 
 /* === WhatsApp config — single source of truth === */
-const WA_NUMBER = "56950160966";
+const WA_NUMBER = "56974143642";
 const WA_MESSAGES = {
   default: "Hola Intothecom, vi su sitio y me gustaría conversar sobre un proyecto para mi empresa. ¿Tienen disponibilidad esta semana?",
   'paid-media': "Hola, vengo de la página de Paid Media. Estoy invirtiendo en anuncios y quiero revisar mi ROAS. ¿Pueden auditar mi cuenta?",
@@ -23,8 +23,8 @@ const onWaClick = (source) => () => trackWhatsAppClick(source);
 window.waLink = waLink;
 window.trackWhatsAppClick = trackWhatsAppClick;
 window.onWaClick = onWaClick;
-window.WA_NUMBER_DISPLAY = "+56 9 5016 0966";
-window.WA_NUMBER_RAW = "+56950160966";
+window.WA_NUMBER_DISPLAY = "+56 9 7414 3642";
+window.WA_NUMBER_RAW = "+56974143642";
 window.OFFICE_ADDRESS = "Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile";
 window.CONTACT_EMAILS = ["info@intothecom.com", "ignacio@intothecom.com"];
 
@@ -398,7 +398,7 @@ function Footer({ navigate }) {
           <a href="#/contacto" onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Almirante Pastene 333, of. 402<br/>Providencia · Santiago, CL</a>
           <a href="mailto:info@intothecom.com">info@intothecom.com</a>
           <a href="mailto:ignacio@intothecom.com">ignacio@intothecom.com</a>
-          <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('footer')}>WhatsApp +56 9 5016 0966</a>
+          <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('footer')}>WhatsApp +56 9 7414 3642</a>
           <a href="https://www.instagram.com/intothecom_/" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
       </div>

@@ -48,7 +48,7 @@ Sitio web institucional de [Intothecom](https://intothecom.com) — estudio digi
 
 ## Conversion infrastructure
 
-- **CTA primario**: `Cotizar por WhatsApp` (verde `#25D366`) → `wa.me/56950160966` con mensaje pre-llenado por servicio
+- **CTA primario**: `Cotizar por WhatsApp` (verde `#25D366`) → `wa.me/56974143642` con mensaje pre-llenado por servicio
 - **Floating WhatsApp button** con animación de pulso, aparece después de 600px de scroll
 - **Status bar superior** con indicador online/offline según horario SCL (Lun-Vie 9-19)
 - **Garantías block**: 4 risk-reversal claims (reunión sin costo, mes a mes desde mes 4, reportes con acceso directo, equipo senior)
@@ -100,6 +100,6 @@ Headers de seguridad y rewrites configurados en `vercel.json`.
 
 ## Contacto
 
-- WhatsApp: +56 9 5016 0966
+- WhatsApp: +56 9 7414 3642
 - Email: info@intothecom.com
 - Instagram: [@intothecom_](https://instagram.com/intothecom_)

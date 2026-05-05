@@ -757,7 +757,7 @@ function Hablemos({ navigate }) {
                   </a>
                 </div>
                 <div className="wa-primary-meta">
-                  <div className="wa-meta-row"><span className="mono">/ número</span><span>+56 9 5016 0966</span></div>
+                  <div className="wa-meta-row"><span className="mono">/ número</span><span>+56 9 7414 3642</span></div>
                   <div className="wa-meta-row"><span className="mono">/ horario</span><span>Lun–Vie 9–19 SCL</span></div>
                   <div className="wa-meta-row"><span className="mono">/ respuesta</span><span>&lt; 1h hábil</span></div>
                   <div className="wa-meta-row"><span className="mono">/ verificado</span><span>WhatsApp Business</span></div>
@@ -854,7 +854,7 @@ function Hablemos({ navigate }) {
             </div>
             <div className="contact-cell">
               <div className="contact-label">/ WhatsApp</div>
-              <a className="contact-value contact-link" href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('hablemos-grid')}>+56 9 5016 0966</a>
+              <a className="contact-value contact-link" href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('hablemos-grid')}>+56 9 7414 3642</a>
             </div>
             <div className="contact-cell">
               <div className="contact-label">/ Oficina HQ</div>
@@ -910,7 +910,7 @@ function Contacto({ navigate }) {
                 <div className="contact-channel">
                   <div className="contact-channel-label">/ WhatsApp Business</div>
                   <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('contacto-channel')} className="contact-channel-value contact-channel-link">
-                    +56 9 5016 0966
+                    +56 9 7414 3642
                   </a>
                   <div className="contact-channel-meta">Respuesta promedio &lt; 1h hábil</div>
                 </div>
@@ -930,8 +930,8 @@ function Contacto({ navigate }) {
                 </div>
                 <div className="contact-channel">
                   <div className="contact-channel-label">/ Teléfono</div>
-                  <a href="tel:+56950160966" className="contact-channel-value contact-channel-link">
-                    +56 9 5016 0966
+                  <a href="tel:+56974143642" className="contact-channel-value contact-channel-link">
+                    +56 9 7414 3642
                   </a>
                   <div className="contact-channel-meta">Lun–Vie · 9:00–19:00 SCL</div>
                 </div>
