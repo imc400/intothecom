@@ -6,7 +6,9 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/:path((?!assets|dist|robots\\.txt|sitemap\\.xml|llms\\.txt|favicon\\.ico|og-cover|servicios|software-ia|paid-media|email-marketing|desarrollo-web|community-management|nosotros|hablemos|contacto|casos|recursos).*)", "destination": "/index.html" }
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/", "destination": "/admin/index.html" },
+    { "source": "/:path((?!assets|dist|data|api|admin|robots\\.txt|sitemap\\.xml|llms\\.txt|favicon\\.ico|og-cover|servicios|software-ia|paid-media|email-marketing|desarrollo-web|community-management|nosotros|hablemos|contacto|casos|recursos).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
