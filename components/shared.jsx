@@ -28,9 +28,24 @@ window.WA_NUMBER_RAW = "+56974143642";
 window.OFFICE_ADDRESS = "Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile";
 window.CONTACT_EMAILS = ["info@intothecom.com", "ignacio@intothecom.com"];
 
+// Detecta touch / mobile / reduced-motion para no montar canvases ni RAF en device sin cursor
+function shouldSkipMotion() {
+  if (typeof window === 'undefined') return true;
+  const isMobile = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
+  const isTouch = 'ontouchstart' in window || (navigator.maxTouchPoints > 0);
+  return isMobile || isTouch;
+}
+function prefersReducedMotion() {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 function Cursor() {
   const ref = useRef(null);
   useEffect(() => {
+    // Fix Agent5 #3: en mobile/touch el cursor custom no se ve (CSS lo oculta) pero el JS+RAF seguía
+    // corriendo gastando INP. Ahora no montamos listeners ni RAF en mobile/touch.
+    if (shouldSkipMotion()) return;
     const el = ref.current;
     if (!el) return;
     let x = 0, y = 0, tx = 0, ty = 0, raf;
@@ -49,8 +64,8 @@ function Cursor() {
         el.classList.remove("is-hover");
       }
     };
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseover", onOver);
+    window.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("mouseover", onOver, { passive: true });
     tick();
     return () => {
       cancelAnimationFrame(raf);
@@ -65,6 +80,8 @@ function Cursor() {
 function Ambient() {
   const ref = useRef(null);
   useEffect(() => {
+    // Fix Agent5 #3: skip canvas si prefers-reduced-motion para mejorar INP
+    if (prefersReducedMotion()) return;
     const canvas = ref.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -82,7 +99,7 @@ function Ambient() {
     let mx = w/2, my = h/2;
     let tmx = mx, tmy = my;
     const onMove = (e) => { tmx = e.clientX; tmy = e.clientY; };
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
 
     // Sample subtle blobs distributed in low frequency
     const N = 5;
@@ -158,6 +175,8 @@ function Ambient() {
 function DarkCanvas({ density = 1.0 }) {
   const ref = useRef(null);
   useEffect(() => {
+    // Fix Agent5 #3: respetar reduced-motion
+    if (prefersReducedMotion()) return;
     const canvas = ref.current; if (!canvas) return;
     const ctx = canvas.getContext("2d");
     let w, h, raf;
@@ -175,7 +194,7 @@ function DarkCanvas({ density = 1.0 }) {
       const r = canvas.getBoundingClientRect();
       tmx = e.clientX - r.left; tmy = e.clientY - r.top;
     };
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
 
     const N = Math.floor(7 * density);
     const blobs = Array.from({length:N}, () => ({

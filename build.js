@@ -246,6 +246,18 @@ function prerenderRoute(masterHtml, route, meta) {
     );
   }
 
+  // Hreflang per route — fix Agent5 #6: subpáginas deben self-reference, no apuntar al home
+  // Estrategia simple: una sola entrada hreflang="es" + x-default apuntando a la propia URL
+  const hreflangBlock = `<link rel="alternate" hreflang="es" href="${url}"/>\n<link rel="alternate" hreflang="x-default" href="${url}"/>`;
+  // Eliminar TODOS los hreflang previos (cualquier locale)
+  html = html.replace(/<link rel="alternate" hreflang="[^"]+" href="[^"]*"\s*\/?>\s*/g, '');
+  // Inyectar nuevos antes del canonical
+  html = html.replace(/<link rel="canonical"/, `${hreflangBlock}\n<link rel="canonical"`);
+
+  // FIX Agent5 #5: limpiar noscripts duplicados previos antes de inyectar el nuevo
+  // El regex anterior solo agregaba, nunca eliminaba; por eso se acumulaban en cada build.
+  html = html.replace(/<noscript>\s*<div style="max-width:720px[\s\S]*?<\/div>\s*<\/noscript>\s*/g, '');
+
   // Inject noscript fallback before </body> (crítico para AI bots sin JS)
   if (meta.noscript) {
     const noscriptBlock = `<noscript>
@@ -302,7 +314,8 @@ async function run() {
   let masterHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf-8');
 
   // Inyectar cache busting versions en los src
-  masterHtml = masterHtml.replace(/src="\/data\/articles\.js(\?v=[a-f0-9]+)?"/, `src="/data/articles.js?v=${articlesHash}"`);
+  // articles.js ahora es fetch async internamente → defer es seguro y mejora FCP
+  masterHtml = masterHtml.replace(/<script(\s+defer)?\s+src="\/data\/articles\.js(\?v=[a-f0-9]+)?"/, `<script defer src="/data/articles.js?v=${articlesHash}"`);
   masterHtml = masterHtml.replace(/src="\/dist\/shared\.js(\?v=[a-f0-9]+)?"/, `src="/dist/shared.js?v=${hashes['shared.js']}"`);
   masterHtml = masterHtml.replace(/src="\/dist\/page-home\.js(\?v=[a-f0-9]+)?"/, `src="/dist/page-home.js?v=${hashes['page-home.js']}"`);
   masterHtml = masterHtml.replace(/src="\/dist\/pages\.js(\?v=[a-f0-9]+)?"/, `src="/dist/pages.js?v=${hashes['pages.js']}"`);
