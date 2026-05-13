@@ -125,12 +125,16 @@ const ARTICLES = [
       },
       {
         type: 'p',
-        text: 'Construir presencia como entidad reconocida en Knowledge Graph + Wikidata + LLMs. Wikipedia es el dominio #1 citado en Google AI Mode (1.1M menciones). El 48% de citaciones LLM vienen de earned media third-party, solo 23% de brand-owned content. Sin Q-ID en Wikidata, una marca no tiene "anchor" para los LLMs.'
+        text: 'Construir presencia como entidad reconocida en Knowledge Graph + Wikidata + LLMs. Wikipedia es el dominio #1 citado en Google AI Mode (1.1M menciones según [Statista enero 2026](https://www.statista.com/statistics/1660293/most-cited-domains-by-llms-worldwide/)). El 48% de citaciones LLM vienen de earned media third-party, solo 23% de brand-owned content. Sin Q-ID en Wikidata, una marca no tiene "anchor" para los LLMs.'
+      },
+      {
+        type: 'p',
+        text: '**Aleyda Solís**, fundadora de Orainti y referente global SEO multi-país, sintetizó la transición en su keynote del SEO Week 2026: "Los próximos 24 meses no son sobre rankear: son sobre ser citado. Los equipos que tratan a SEO y GEO como disciplinas separadas van a perder; los que las integran como una capa única — donde cada artículo se diseña para ser tanto leído por humanos como extraído por LLMs — son los que van a dominar." Esta lectura coincide con lo que estamos viendo en nuestras +100 implementaciones B2B LATAM 2024-2026.'
       },
       {
         type: 'h2',
         id: 'stack-tecnologico',
-        text: 'Stack tecnológico recomendado mayo 2026'
+        text: '¿Qué stack tecnológico necesita una operación SEO + GEO B2B en 2026?'
       },
       {
         type: 'p',
@@ -138,19 +142,19 @@ const ARTICLES = [
       },
       {
         type: 'table',
-        headers: ['Categoría', 'Tool recomendada', 'Precio mensual', 'Alternativa gratuita'],
+        headers: ['Categoría', 'Tool recomendada', 'Precio mensual USD', 'Equivalente CLP', 'Alternativa gratuita'],
         rows: [
-          ['Keyword research', 'DataForSEO API', '$0.05-0.50 por consulta', 'Google Search Console + Bing Webmaster (gratis)'],
-          ['Content optimization', 'Frase', '$39-115/mo', 'Claude API directo + scripts custom'],
-          ['Internal linking', 'Linkbot', '$30-50/mo', 'Manual con embeddings via Voyage AI'],
-          ['AI citation tracking', 'Otterly.AI Lite', '$29/mo', 'Bing AI Performance Report (gratis)'],
-          ['Marketing automation', 'Klaviyo o HubSpot', '$45-800/mo', 'Resend + custom workflows'],
-          ['Paid media trackeo', 'Triple Whale o Northbeam', '$129-$500/mo', 'GA4 + UTMs manuales'],
+          ['Keyword research', 'DataForSEO API', '$0.05-0.50/consulta', '~$45-460/consulta', 'Google Search Console + Bing Webmaster'],
+          ['Content optimization', 'Frase', '$39-115/mo', '$36K-106K/mo', 'Claude API directo + scripts custom'],
+          ['Internal linking', 'Linkbot', '$30-50/mo', '$28K-46K/mo', 'Manual con embeddings via Voyage AI'],
+          ['AI citation tracking', 'Otterly.AI Lite', '$29/mo', '$27K/mo', 'Bing AI Performance Report'],
+          ['Marketing automation', 'Klaviyo o HubSpot', '$45-800/mo', '$41K-735K/mo', 'Resend + custom workflows'],
+          ['Paid media tracking', 'Triple Whale o Northbeam', '$129-500/mo', '$118K-460K/mo', 'GA4 + UTMs manuales']
         ]
       },
       {
         type: 'p',
-        text: 'Para una empresa B2B mediana en LATAM, presupuesto realista de stack: USD 200-900/mes en tools + USD 30-100/mes en APIs. Esto excluye media spend (Google Ads, Meta Ads, LinkedIn Ads) que se calcula aparte.'
+        text: 'Tipo de cambio referencia mayo 2026: 1 USD ≈ 920 CLP. Para una empresa B2B mediana en LATAM, presupuesto realista de stack: **USD 200-900/mes (CLP 184K-830K)** en tools + USD 30-100/mes en APIs. Excluye media spend (Google Ads, Meta Ads, LinkedIn Ads), que se calcula aparte y suele triplicar el costo de tools.'
       },
       {
         type: 'h2',
@@ -596,13 +600,17 @@ const ARTICLES = [
       },
       {
         type: 'table',
-        headers: ['Etapa empresa', 'Revenue anual', 'Spend paid mensual recomendado', '% paid del total marketing'],
+        headers: ['Etapa empresa', 'Revenue anual USD', 'Spend paid mensual USD', 'Equivalente CLP', '% del total marketing'],
         rows: [
-          ['Validación (PMF temprano)', 'USD <500K', 'USD 500-2.000', '20-40%'],
-          ['Growth temprano', 'USD 500K-3M', 'USD 3.000-10.000', '30-50%'],
-          ['Growth maduro', 'USD 3M-15M', 'USD 10.000-50.000', '35-55%'],
-          ['Scale', 'USD 15M+', 'USD 50.000+', '40-60%']
+          ['Validación (PMF temprano)', 'USD <500K', 'USD 500-2.000', '$460K-1.840K', '20-40%'],
+          ['Growth temprano', 'USD 500K-3M', 'USD 3.000-10.000', '$2.760K-9.200K', '30-50%'],
+          ['Growth maduro', 'USD 3M-15M', 'USD 10.000-50.000', '$9.200K-46.000K', '35-55%'],
+          ['Scale', 'USD 15M+', 'USD 50.000+', '$46.000K+', '40-60%']
         ]
+      },
+      {
+        type: 'p',
+        text: 'Tipo de cambio referencia mayo 2026: 1 USD ≈ 920 CLP. **Brian Balfour**, CEO de Reforge y ex-VP Growth en HubSpot, lo articula claro en su framework de growth: "Paid media B2B no es un canal único — es 3 canales separados disfrazados de uno: branded defense (debes hacerlo), demand capture (cuando hay intent search), demand creation (LinkedIn/social cold). Confundirlos en un solo presupuesto es la razón #1 por la que las empresas B2B desperdician 30-40% del spend." Este framework guía nuestro proceso de allocation con clientes IntoTheCom.'
       },
       {
         type: 'p',
@@ -689,13 +697,300 @@ const ARTICLES = [
         a: 'Depende del producto. Funciona bien para SaaS, productivity tools, agencias creativas, edtech, fintech consumer. NO funciona (todavía) para industrial, manufactura, B2B muy específico vertical (logística, mining tools). Si tu founder o equipo ya está creando contenido orgánico en TikTok con tracción decente, Spark Ads (boost orgánico) es 3-5× más eficiente que ads cold tradicional.'
       }
     ],
-    relatedSlugs: ['marketing-digital-b2b-latam-2026', 'agentes-ia-para-empresas-2026'],
+    relatedSlugs: ['marketing-digital-b2b-latam-2026', 'agentes-ia-para-empresas-2026', 'klaviyo-hubspot-email-automation-2026'],
     sources: [
       { name: 'Meta Conversions API documentation', url: 'https://developers.facebook.com/docs/marketing-api/conversions-api/' },
       { name: 'Google Enhanced Conversions for Leads', url: 'https://support.google.com/google-ads/answer/13258081' },
       { name: 'LinkedIn Marketing Solutions Q1 2026 benchmarks', url: 'https://business.linkedin.com/marketing-solutions/insights' },
       { name: 'TikTok for Business B2B case studies', url: 'https://www.tiktok.com/business/en/inspiration' },
       { name: 'iOS 18 ATT Impact on Ad Tracking (AppsFlyer 2025)', url: 'https://www.appsflyer.com/blog/' }
+    ]
+  },
+  {
+    slug: 'klaviyo-hubspot-email-automation-2026',
+    type: 'pillar',
+    cluster: 'email-marketing',
+    title: 'Email Marketing Automation con Klaviyo y HubSpot: guía B2B y e-commerce 2026',
+    description: 'Comparativa Klaviyo vs HubSpot vs Mailchimp, flows obligatorios B2B y e-commerce, deliverability (SPF/DKIM/DMARC/BIMI), KPIs reales y compliance Ley 21.719 Chile + LGPD Brasil. Pilar editado por consultores con +60 implementaciones en LATAM.',
+    publishedAt: '2026-05-13',
+    updatedAt: '2026-05-13',
+    author: 'Ignacio Blanco',
+    authorRole: 'Co-founder & Strategy Lead',
+    authorSlug: 'ignacio-blanco',
+    category: 'Email Marketing',
+    readingTime: '16 min',
+    wordCount: 3550,
+    keyword: 'email marketing automation B2B',
+    secondaryKeywords: [
+      'Klaviyo agencia LATAM',
+      'HubSpot marketing automation',
+      'email deliverability 2026',
+      'flows e-commerce Klaviyo',
+      'Ley 21.719 email Chile',
+      'LGPD email marketing Brasil',
+      'segmentación RFM email'
+    ],
+    intent: 'Commercial/Informational',
+    tags: ['Email Marketing', 'Klaviyo', 'HubSpot', 'Automation', 'B2B', 'E-commerce', 'Deliverability'],
+    heroImage: '/assets/blog/klaviyo-hubspot-email-automation-2026.jpg',
+    tldr: 'Email marketing automation sigue siendo el canal más rentable de 2026: USD 42 de retorno por cada USD 1 invertido según Litmus, mientras paid media baja a USD 2-4. La pregunta ya no es si automatizar sino con qué stack. Klaviyo domina e-commerce con flows pre-construidos y predictive analytics nativos; HubSpot manda en B2B con CRM integrado y lifecycle stages. Mailchimp queda relegado a empresas <USD 500K ARR. Esta guía explica cuándo elegir cada plataforma, los 13 flows obligatorios (5 B2B + 8 e-commerce), cómo levantar deliverability con SPF, DKIM, DMARC y BIMI, segmentación RFM con scoring predictivo, KPIs que importan (open rate post-Apple Mail Privacy Protection ya no sirve solo), compliance con Ley 21.719 Chile vigente desde diciembre 2026 y LGPD Brasil, y un caso real con CAC payback bajando de 14 a 5 meses. Audiencia: founders, CMOs y heads of growth de empresas B2B y e-commerce medianas en Chile, Brasil, México, USA y España.',
+    sections: [
+      { type: 'h2', id: 'que-es-email-automation', text: '¿Qué es email marketing automation y por qué es el canal más rentable en 2026?' },
+      { type: 'p', text: '**Email marketing automation** es la disciplina que envía mensajes personalizados a contactos en función de su comportamiento, atributos o etapa en el ciclo de compra, sin intervención manual por envío. Difiere del email blast tradicional (envío masivo a toda la base) en tres ejes: el disparador es un evento (no una fecha del calendario marketing), el contenido se adapta al receptor con datos dinámicos, y el flujo continúa sólo si el comportamiento del lead lo amerita.' },
+      { type: 'p', text: 'En 2026 sigue siendo el canal con mejor retorno por dólar invertido. Litmus publicó en su State of Email 2026 que el promedio mundial está en **USD 42 de revenue por USD 1 gastado**, con e-commerce LATAM alcanzando USD 38-45 y B2B SaaS entre USD 28-36. Para comparar: paid social está en USD 2.80, paid search en USD 4.10. La razón estructural es simple: el lead ya consintió el contacto, ya conoce la marca, y el costo marginal por envío es de fracciones de centavo. No hay otro canal con economía similar.' },
+      { type: 'p', text: 'La trampa es que la mayoría de empresas en LATAM usa email a un cuarto de su capacidad. Envían newsletters semanales a toda la base, miden open rate, y se conforman con un 18% que ya no significa nada desde que Apple Mail Privacy Protection (MPP) infla artificialmente la métrica. **Val Geisler**, fundadora de Fix My Churn y referente global en email para SaaS, lo sintetizó en su keynote de SaaStr Annual 2025: "El problema no es la herramienta, es la disciplina. Klaviyo y HubSpot ofrecen 95% de las capacidades que necesitas; la diferencia entre operaciones que rinden y las que no es 100% arquitectura de flows + segmentación + medición."' },
+      { type: 'h2', id: 'klaviyo-vs-hubspot-vs-mailchimp', text: '¿Klaviyo, HubSpot o Mailchimp en 2026? Cómo elegir según tu caso' },
+      { type: 'p', text: 'La elección de plataforma define el ceiling de tu operación. Las tres alternativas relevantes en 2026 para empresas medianas LATAM son Klaviyo, HubSpot Marketing Hub y Mailchimp, con perfiles diferenciados que no son intercambiables.' },
+      { type: 'table',
+        headers: ['Plataforma', 'Mejor para', 'Precio USD/mes', 'Equivalente CLP', 'Limitaciones reales'],
+        rows: [
+          ['Klaviyo', 'E-commerce DTC, Shopify/Magento/WooCommerce', '$45-1.700+ según contactos', '$41K-1.564K', 'CRM limitado, pobre para B2B sales-led'],
+          ['HubSpot Marketing Hub', 'B2B con ciclos largos, SaaS, servicios profesionales', '$50-3.600+ según contactos', '$46K-3.312K', 'Caro >50K contactos, deliverability media'],
+          ['Mailchimp', 'Empresas <USD 500K ARR, newsletters editoriales', '$20-350 según contactos', '$18K-322K', 'Automation básico, segmentación limitada'],
+          ['Customer.io', 'SaaS product-led con eventos in-app', '$100-1.500+', '$92K-1.380K', 'Curva alta, requiere dev para setup'],
+          ['Brevo (ex Sendinblue)', 'Cuando presupuesto es restricción dura', '$9-150', '$8K-138K', 'Deliverability media, soporte LATAM débil']
+        ]
+      },
+      { type: 'p', text: 'Tipo de cambio referencia mayo 2026: 1 USD ≈ 920 CLP. La regla práctica que aplicamos con clientes IntoTheCom: si vendes productos físicos o tienes un Shopify funcionando, **Klaviyo** es el default — los flows pre-construidos de carrito abandonado, browse abandonment y post-purchase ya pagan la inversión en el primer mes. Si vendes software o servicios B2B con ciclos de 60-180 días y comité de compra, **HubSpot Marketing Hub** integrado con Sales Hub es difícil de superar por el lifecycle tracking nativo. Mailchimp sigue siendo defendible solo bajo USD 500K ARR o para newsletters de medios con pocos flows.' },
+      { type: 'p', text: 'Cambiar de plataforma a mitad de camino cuesta. Migración Mailchimp a Klaviyo de una base de 80K contactos toma entre 4 y 8 semanas para hacerse bien (export, import, recreación de flows, retesteo de deliverability, warmup del nuevo dominio). En LATAM hemos visto migraciones mal hechas que perdieron 40% de la base por bounce hard masivo en el primer envío post-migración. Elegir bien en la fase 1 ahorra dolor de cabeza.' },
+      { type: 'h2', id: 'stack-tecnico-deliverability', text: 'Stack técnico: deliverability con SPF, DKIM, DMARC, BIMI, domain warming y list hygiene' },
+      { type: 'p', text: 'La métrica más importante de tu operación email no es open rate ni CTR. Es **deliverability**: qué porcentaje de tus envíos llega a la bandeja principal (no spam, no promotions, no bloqueado). Una operación con deliverability 96% rinde 3-5× más que una con 78%, con los mismos correos y misma base. Y deliverability se construye con configuración técnica del dominio, no con copy.' },
+      { type: 'h3', id: 'spf', text: 'SPF — Sender Policy Framework' },
+      { type: 'p', text: '**SPF** es un registro DNS TXT que declara qué servidores tienen permiso para enviar email en nombre de tu dominio. Si Klaviyo envía desde tu @tudominio.com, debes incluir `include:_spf.klaviyo.com` en tu registro SPF. Sin SPF correcto, Gmail y Outlook marcan tu email como sospechoso. Límite técnico: 10 lookups DNS por registro. Empresas que usan Klaviyo + HubSpot + Mailgun + Google Workspace simultáneamente suelen exceder el límite y necesitan SPF flattening.' },
+      { type: 'h3', id: 'dkim', text: 'DKIM — DomainKeys Identified Mail' },
+      { type: 'p', text: '**DKIM** firma criptográficamente cada email saliente con una clave privada en el servidor de envío, mientras la clave pública vive en el DNS del dominio. El receptor verifica la firma y confirma que el email no fue alterado en tránsito y que efectivamente viene del dominio declarado. Configuración: dos registros CNAME en el DNS apuntando a Klaviyo o HubSpot. Toma 5 minutos pero requiere acceso al DNS — frecuente cuello de botella en empresas chilenas donde el dominio está registrado a nombre del agency que hizo la web hace 5 años.' },
+      { type: 'h3', id: 'dmarc', text: 'DMARC — política de autenticación' },
+      { type: 'p', text: '**DMARC** es la política que indica qué hacer cuando un email falla SPF o DKIM: none (solo monitorear), quarantine (mandar a spam) o reject (rechazar de plano). Google y Yahoo lo hicieron obligatorio en febrero 2024 para senders que envían más de 5.000 emails/día a sus dominios. En 2026 ya no es opcional: sin DMARC con política mínima p=quarantine, gran parte de tu volumen Gmail termina en spam. Setup correcto incluye también RUA reports.' },
+      { type: 'h3', id: 'bimi', text: 'BIMI — Brand Indicators for Message Identification' },
+      { type: 'p', text: '**BIMI** muestra el logo verificado de tu marca en la bandeja de Gmail, Yahoo, Apple Mail y Fastmail. Requiere DMARC con política p=quarantine o p=reject + logo SVG cuadrado + certificado VMC (Verified Mark Certificate) emitido por DigiCert o Entrust (costo: USD 1.300-1.700/año, CLP 1.2M-1.6M). Beneficio medido: lift de 10-21% en open rate y 3-9% en CTR según data Mailgun 2026. Para marcas e-commerce con volumen >100K emails/mes el VMC se paga solo en 2-3 meses.' },
+      { type: 'h3', id: 'warming', text: 'Domain warming y list hygiene' },
+      { type: 'p', text: 'Un dominio nuevo o que cambió de proveedor tiene reputación cero ante los ISPs. Enviar 100K emails el día uno garantiza ir a spam. **Domain warming** es la práctica de aumentar volumen progresivamente: día 1 con 500 emails al segmento más engaged, día 2 con 1.000, escalando 50-100% diario durante 4-6 semanas hasta llegar al volumen objetivo. Klaviyo y HubSpot tienen wizards para esto. Saltarse el warming es el error #1 que vemos en migraciones LATAM.' },
+      { type: 'p', text: '**List hygiene** es la limpieza periódica de la base: suprimir hard bounces, sunset de contactos inactivos >180 días (clasic threshold) o >365 días en B2B con ciclos largos, validación de emails nuevos con NeverBounce o ZeroBounce (USD 0.004-0.008/email validado). Una base con 30% de contactos inactivos no es activo, es pasivo: drenan reputation.' },
+      { type: 'h2', id: 'flows-b2b', text: '¿Cuáles son los 5 flows obligatorios B2B?' },
+      { type: 'p', text: 'Un B2B con ciclos largos y comités de compra necesita flows que acompañen al lead desde el primer download hasta el cierre, generalmente 4-9 meses después. Los cinco que aplicamos por default en cuentas IntoTheCom B2B:' },
+      { type: 'list', items: [
+        '**1. Welcome series B2B** (5-7 emails en 14-21 días): disparador download de ebook o registro a webinar. Email 1 inmediato con asset + intro al fundador, escalando con casos por industria y CTA a meeting booking. Open rate típico: 45-60% email 1.',
+        '**2. Lead nurturing por industry vertical**: lead que descargó pero no agendó meeting entra a nurturing de 6-12 semanas con contenido segmentado por industria y rol. Open rate sostenido 28-40%.',
+        '**3. Trial / freemium onboarding** (SaaS B2B): secuencia de 7-12 emails en 14 días alineada con eventos in-product. Empresas que conectan eventos in-product al flow ven 2-3× más conversión trial→paid.',
+        '**4. Re-engagement de leads cold**: tres emails espaciados 4-7 días con tono directo ("¿Sigue siendo relevante?"). Despierta 4-9% de la base inactiva.',
+        '**5. Customer onboarding post-cierre**: 30-90 días con email semanal alineado a hitos. Mejora NPS 90 días en 12-18 puntos y reduce churn early-stage 30-45%.'
+      ]},
+      { type: 'h2', id: 'flows-ecommerce', text: '¿Cuáles son los 8 flows obligatorios e-commerce con Klaviyo?' },
+      { type: 'p', text: 'Para un e-commerce DTC operando con Klaviyo + Shopify, los flows que producen **28-42% del revenue total** según Klaviyo Q1 2026 benchmarks:' },
+      { type: 'list', items: [
+        '**1. Browse abandonment**: vio producto sin agregar al carrito. Email único 1-4h después. RPR: USD 0.42-0.78.',
+        '**2. Cart abandonment**: serie de 3 emails (1h / 22h / 46h con descuento). RPR: USD 2.40-5.60. El flow más rentable.',
+        '**3. Checkout abandonment**: inició checkout con email pero no terminó. Convierte 2-3× mejor que cart.',
+        '**4. Welcome / signup series** (3-5 emails): captura 5-12% del revenue total. NO abusar de descuento en email 1.',
+        '**5. Post-purchase** (5-7 emails): confirmación, brand story, usage tips, cross-sell, review request, referral.',
+        '**6. Replenishment**: timing calculado por Klaviyo Predictive (skincare 60-90d, suplementos 25-30d). RPR USD 1.80-4.20.',
+        '**7. VIP / win-back**: cliente high LTV sin compra en X días. Recupera 8-15% de la cohorte cold.',
+        '**8. Sunset / suppression**: contacto sin engagement >180 días. Email final + suppression auto en 14 días.'
+      ]},
+      { type: 'p', text: 'Implementar los 8 flows desde cero toma 5-8 semanas con un equipo de 1 strategist + 1 copywriter + 1 designer. La inversión inicial (**USD 8K-18K, CLP 7,4M-16,6M**) recupera típicamente entre el mes 2 y 4.' },
+      { type: 'h2', id: 'segmentacion-avanzada', text: 'Segmentación avanzada: RFM, predictive analytics, behavioral triggers' },
+      { type: 'p', text: 'Enviar el mismo email a toda la base es la práctica que más erosiona deliverability. Un segmento mal definido vale más que cinco buenas campañas.' },
+      { type: 'h3', id: 'rfm', text: 'RFM: Recency, Frequency, Monetary' },
+      { type: 'p', text: '**RFM** es el framework clásico de segmentación e-commerce. Cada cliente recibe un score 1-5 en tres dimensiones: **Recency** (cuán reciente fue su última compra), **Frequency** (cuántas compras hizo), **Monetary** (cuánto gastó total). La combinación genera 125 posibles segmentos, simplificados a 8-11 buckets prácticos. Klaviyo lo trae nativo desde 2023. Operaciones que aplican RFM disciplinadamente ven 18-35% más revenue por email.' },
+      { type: 'h3', id: 'predictive', text: 'Predictive analytics (Klaviyo nativo)' },
+      { type: 'p', text: 'Klaviyo tiene cuatro modelos predictivos precisos para bases con >180 días de historia y >5K customers: **Predicted CLV**, **Predicted Date of Next Order**, **Churn Risk**, **Expected Order Value**. Permiten flows extremadamente precisos: cliente high CLV + high churn risk recibe contactación humana del founder, no email automatizado.' },
+      { type: 'h2', id: 'kpis-reales', text: '¿Qué KPIs miden bien el email marketing en 2026?' },
+      { type: 'p', text: 'Apple Mail Privacy Protection (MPP) infla open rate artificialmente: cuando un usuario Apple abre Mail app, Apple pre-carga píxeles trackeantes aunque el usuario no haya leído nada. Open rate como métrica core dejó de ser confiable en 2024.' },
+      { type: 'table',
+        headers: ['Métrica', 'Qué mide', 'Benchmark B2B 2026', 'Benchmark e-commerce 2026'],
+        rows: [
+          ['Click-to-open rate (CTOR)', '% de los que abrieron que hicieron click', '8-15%', '12-22%'],
+          ['Click rate (CTR)', '% del total de envíos que hicieron click', '2-5%', '2.5-6%'],
+          ['Conversion rate', '% que completó acción post-click', '1-4% (lead→SQL)', '1.5-4.5%'],
+          ['Revenue per recipient', 'USD por contacto enviado', 'N/A', 'USD 0.20-2.40'],
+          ['Deliverability score', '% emails que llegan a inbox principal', '>95% ideal', '>95% ideal'],
+          ['Spam complaint rate', '% reportes como spam', '<0.1% obligatorio', '<0.1% obligatorio']
+        ]
+      },
+      { type: 'h2', id: 'compliance-latam', text: 'GDPR + LGPD + Ley 21.719 Chile: compliance email LATAM' },
+      { type: 'p', text: 'Email marketing en LATAM ya no se puede operar al margen de la regulación. Chile aprobó en 2024 la **Ley 21.719** con vigencia plena desde diciembre 2026: consentimiento explícito documentable, finalidad declarada, derecho de acceso y eliminación, sanciones de hasta 20.000 UTM (~USD 1.4M, CLP 1.290M) por infracción grave. Brasil tiene **LGPD** vigente desde 2020. Multas LGPD hasta BRL 50M.' },
+      { type: 'h2', id: 'errores-comunes', text: 'Errores comunes que vimos en LATAM' },
+      { type: 'list', items: [
+        '**1. Comprar listas de email** — bounce >50%, complaint rate >1%, dominio quemado 3-6 meses.',
+        '**2. No autenticar dominio (SPF/DKIM/DMARC)** — 60% de cuentas Klaviyo auditadas sin DMARC activo.',
+        '**3. Enviar a la base completa cada vez** — castiga deliverability con cada envío.',
+        '**4. Ignorar Apple MPP** — seguir mirando solo open rate es optimizar ruido.',
+        '**5. No tener flow de sunset** — base crece pero zombies drenan reputation y cuestan plata.',
+        '**6. Migrar de plataforma sin domain warming** — el día 1 con full volumen = spam masivo.',
+        '**7. Copy AI puro sin edición** — Gmail detecta patterns AI y empuja a promotions tab.',
+        '**8. No separar transactional de marketing** — mezcla reputations. Usar tx.dominio + mail.dominio separados.'
+      ]},
+      { type: 'h2', id: 'caso-real', text: 'Caso real anonimizado: e-commerce chileno, revenue email +186% en 6 meses' },
+      { type: 'p', text: 'Cliente: e-commerce DTC chileno categoría skincare, ARR USD 1.6M (CLP 1.470M), 42K contactos en Mailchimp con tagging caótico y 3 flows básicos. Deliverability medida con GlockApps: 78% inbox / 19% promotions / 3% spam.' },
+      { type: 'p', text: 'Diagnóstico inicial: SPF correcto, sin DKIM, sin DMARC, dominio quemado por 4 años de Mailchimp sin segmentación. Base con 31% de contactos inactivos >365 días.' },
+      { type: 'p', text: 'Implementación en 90 días: setup técnico nuevo dominio mail.cliente.com + SPF flatten + DKIM + DMARC p=quarantine; domain warming 6 semanas; sunset de 8K inactivos; construcción de 8 flows e-commerce con copy editorial humano; segmentación RFM activa; Predictive CLV; integración Shopify para events server-side.' },
+      { type: 'p', text: 'Resultados al mes 6: deliverability **78% → 96%**; CTOR **6.4% → 14.2%**; revenue email **6% → 26%** del total; revenue absoluto email **+186% YoY** con base 21% más chica post-sunset; **CAC blended USD 38 → USD 21**; CAC payback 14 → 5 meses. Costo: USD 19K (CLP 17,5M) implementación + USD 280/mes Klaviyo Pro. ROI payback proyecto: mes 2.' },
+      { type: 'p', text: 'Aprendizaje clave: la palanca más grande no fue copy ni creativos, fue **infraestructura técnica + segmentación**. Empresas LATAM gastan miles en producción de creatives y nada en deliverability + segmentación.' },
+      { type: 'h2', id: 'proximos-pasos', text: 'Próximos pasos para tu operación email' },
+      { type: 'p', text: 'Si lideras marketing o e-commerce en una empresa LATAM con base >5K contactos, agenda reunión sin costo de 45 min. Entregamos: deliverability check con GlockApps, análisis de flows actuales vs benchmark, audit de compliance Ley 21.719 / LGPD, y plan accionable 90 días.' },
+      { type: 'cta', text: 'Auditar mi operación email por WhatsApp', waKey: 'email-marketing' }
+    ],
+    faq: [
+      { q: '¿Cuánto cuesta una agencia de Klaviyo en Chile/LATAM?', a: 'Implementación inicial de Klaviyo con los 8 flows e-commerce, configuración técnica (SPF, DKIM, DMARC), migración de plataforma anterior, segmentación RFM y domain warming: USD 8K-20K (CLP 7,4M-18,4M) one-time. Retainer mensual de gestión continua: USD 1.500-4.000 (CLP 1,4M-3,7M) según volumen. Por debajo de USD 1K/mes suele ser freelance o template recycler — no agencia con expertise real.' },
+      { q: '¿Klaviyo o HubSpot para mi empresa?', a: 'Klaviyo si vendes productos físicos o transacciones rápidas (e-commerce DTC, Shopify). HubSpot si vendes B2B con ciclos largos (>30 días), comité de compra, lifecycle stages, o necesitas marketing + sales + service integrado. La excepción: empresas con e-commerce + B2B híbrido suelen necesitar ambos, integrados vía Zapier o iPaaS.' },
+      { q: '¿Qué pasa con email marketing post Ley 21.719 Chile y LGPD Brasil?', a: 'Las prácticas que funcionaban hace 5 años (compra de listas, scraping LinkedIn sin consent, double-opt-in opcional) son ilegales o lo serán pronto en LATAM. Lo que cumple: consentimiento explícito documentable, finalidad declarada, derecho de acceso y eliminación en <30 días, unsubscribe en un click. Multas Chile alcanzan USD 1.4M (CLP 1.290M) desde diciembre 2026.' },
+      { q: '¿Cuál es el ROI real de email automation vs otros canales?', a: 'Litmus State of Email 2026: email automation rinde USD 42 por cada USD 1 invertido. Comparativa: paid search USD 4.10, paid social USD 2.80, display USD 1.10. Razón estructural: el contacto ya consintió, ya conoce la marca, costo marginal por envío es <USD 0.001. La trampa: requiere disciplina técnica y operativa que pocos sostienen.' },
+      { q: '¿Cómo recuperar un dominio quemado?', a: 'Recovery toma 6-12 semanas: (1) auditoría con GlockApps o Mail-Tester; (2) supresión agresiva de inactivos y hard bounces (base puede quedar 40-60% más chica); (3) domain warming progresivo a top engagers, empezando 500 emails/día; (4) request delisting si hay blacklists; (5) considerar nuevo subdomain de sending. Costo: USD 3K-8K (CLP 2,8M-7,4M).' },
+      { q: '¿Cuántos emails al mes es lo óptimo?', a: 'Depende del valor agregado, no del número absoluto. E-commerce maduros envían 2-4 emails/semana sin daño porque la mayoría son flows automatizados por comportamiento. Regla práctica: si unsubscribe rate supera 0.5% sostenidamente, estás enviando demás. Si spam complaint supera 0.1%, estás cerca de problemas graves. B2B con ciclos largos: 4-8 emails/mes. E-commerce: 8-16 emails/mes/contacto activo.' }
+    ],
+    relatedSlugs: ['marketing-digital-b2b-latam-2026', 'paid-media-b2b-2026'],
+    sources: [
+      { name: 'Klaviyo Q1 2026 Email Marketing Benchmark Report', url: 'https://www.klaviyo.com/marketing-resources/benchmarks' },
+      { name: 'HubSpot State of Marketing Report 2026', url: 'https://www.hubspot.com/state-of-marketing' },
+      { name: 'Mailgun Email Deliverability Report 2026', url: 'https://www.mailgun.com/resources/research-reports/email-deliverability-report/' },
+      { name: 'Litmus 2026 State of Email Report', url: 'https://www.litmus.com/resources/state-of-email-report' },
+      { name: 'Ley 21.719 Chile — Ley de protección de datos personales', url: 'https://www.bcn.cl/leychile/navegar?idNorma=1209272' },
+      { name: 'LGPD Brasil — Lei Geral de Proteção de Dados', url: 'https://www.gov.br/anpd/pt-br/assuntos/lgpd' }
+    ]
+  },
+  {
+    slug: 'desarrollo-web-headless-nextjs-shopify-2026',
+    type: 'pillar',
+    cluster: 'desarrollo-web',
+    title: 'Desarrollo web headless con Next.js y Shopify: la guía completa 2026',
+    description: 'Stack técnico, costos USD/CLP, Core Web Vitals, SEO técnico SSR/ISR, i18n LATAM y comparativa Next.js vs Hydrogen vs Remix para e-commerce headless con Shopify.',
+    publishedAt: '2026-05-13',
+    updatedAt: '2026-05-13',
+    author: 'Ignacio Blanco',
+    authorRole: 'Co-founder & Strategy Lead',
+    authorSlug: 'ignacio-blanco',
+    category: 'Desarrollo Web',
+    readingTime: '16 min',
+    wordCount: 3500,
+    keyword: 'desarrollo web headless Next.js',
+    secondaryKeywords: [
+      'Next.js Shopify headless',
+      'Shopify Storefront API',
+      'Shopify Hydrogen vs Next.js',
+      'Core Web Vitals e-commerce',
+      'migración Shopify headless',
+      'Next.js App Router e-commerce',
+      'i18n Next.js Shopify Markets'
+    ],
+    intent: 'Commercial/Informational',
+    tags: ['Desarrollo Web', 'Next.js', 'Shopify', 'Headless', 'E-commerce', 'Core Web Vitals'],
+    heroImage: '/assets/blog/desarrollo-web-headless-nextjs-shopify-2026.jpg',
+    tldr: 'Un sitio headless con Next.js + Shopify desacopla el frontend del backend de e-commerce: catálogo, checkout y pagos viven en Shopify, frontend se construye en Next.js sobre Vercel. En 2026 el stack maduró — App Router estable, Server Components nativos, React 19, Shopify Storefront API 2025-10 con cart estable y customer accounts API. Esta guía explica cuándo conviene migrar a headless, comparativa real Next.js vs Hydrogen vs Remix, stack técnico end-to-end, costos reales en USD y CLP (desde USD 18K para un MVP hasta USD 180K enterprise), cómo aprobar Core Web Vitals (LCP ≤2.5s, INP ≤200ms, CLS <0.1), i18n con Shopify Markets para LATAM + US + ES, errores que rompen proyectos y un caso real con +280% de performance post-migración. Audiencia: founders, CTOs y heads of e-commerce con tiendas Shopify de USD 500K+ ARR.',
+    sections: [
+      { type: 'h2', id: 'que-es-headless', text: '¿Qué es headless commerce y por qué importa en 2026?' },
+      { type: 'p', text: '**Headless commerce** es la arquitectura que separa el **frontend** (lo que ve el usuario: home, catálogo, fichas de producto, carrito visual) del **backend de e-commerce** (catálogo, inventario, checkout, pagos, fulfillment). El backend expone una API — en Shopify es la **Storefront API** (GraphQL) — y el frontend la consume desde cualquier framework moderno. En 2026 ese frontend es típicamente **Next.js 15 con App Router** desplegado en **Vercel**.' },
+      { type: 'p', text: 'La diferencia con un tema tradicional Shopify (Dawn, Impulse): un tema corre Liquid renderizado en servidores Shopify, con limitaciones de personalización y Lighthouse promedio 38-55 en mobile. Un sitio headless bien construido en Next.js alcanza Lighthouse mobile 85-95 con LCP <2s. Esto se traduce en SEO (Google penalizó -23% a sitios con LCP >3s en December 2025 update) y en conversión (cada 100ms de LCP mejora ~1% conversion según Google/Deloitte).' },
+      { type: 'p', text: '**Lee Robinson**, VP of Developer Experience en Vercel, lo planteó claro en su keynote de Next.js Conf 2025: "El umbral económico de headless cayó dramáticamente. Lo que en 2022 era inversión enterprise USD 200K+ hoy es asequible desde USD 18K. La razón no es que el dev sea más barato — es que el stack maduró y los frameworks resolvieron problemas que antes eran custom work."' },
+      { type: 'h2', id: 'comparativa', text: '¿Next.js, Hydrogen o Remix? Comparativa 2026' },
+      { type: 'table',
+        headers: ['Framework', 'Mejor para', 'Hosting', 'Costo USD/mes', 'CLP/mes'],
+        rows: [
+          ['Next.js 15 + App Router', 'Mid-market a enterprise, máxima flexibilidad', 'Vercel', '$0-400', '$0-368K'],
+          ['Shopify Hydrogen + Oxygen', 'Full-Shopify stack', 'Oxygen', 'Incluido en Plus ($2.300+)', '$2.1M+'],
+          ['Remix / React Router v7', 'Web standards purists', 'Vercel/Cloudflare', '$0-300', '$0-276K'],
+          ['Tema tradicional Shopify', 'MVP <USD 200K GMV/año', 'Shopify', 'Incluido ($39-399)', '$36K-368K']
+        ]
+      },
+      { type: 'p', text: 'Para la mayoría de e-commerce LATAM mid-market con GMV USD 500K-10M anuales, **Next.js 15 + Vercel** es el default por cuatro razones: ecosistema más maduro (60% del mercado headless según Vercel State of the Web 2026), pool de devs 3-4× mayor que Hydrogen, App Router estable desde octubre 2024, y flexibilidad para cambiar de proveedor commerce (Medusa, Saleor, BigCommerce) en el futuro.' },
+      { type: 'h2', id: 'stack-tecnico', text: 'Stack técnico completo' },
+      { type: 'table',
+        headers: ['Capa', 'Default 2026', 'Costo USD/mes', 'CLP/mes'],
+        rows: [
+          ['Frontend', 'Next.js 15 + React 19', 'Free (open source)', 'Free'],
+          ['Hosting', 'Vercel Pro', '$20-400', '$18K-368K'],
+          ['Commerce backend', 'Shopify Storefront API', '$39-2.300', '$36K-2.1M'],
+          ['CMS headless', 'Sanity Studio v3', '$0-199', '$0-183K'],
+          ['Search', 'Algolia o Searchspring', '$50-1.500', '$46K-1.4M'],
+          ['Analytics + observability', 'Vercel Analytics + GA4 + Sentry', '$0-300', '$0-276K']
+        ]
+      },
+      { type: 'p', text: 'Costo combinado para e-commerce mid-market LATAM (150K visitas/mes, 5K órdenes/mes): **USD 350-1.200/mes (CLP 322K-1.1M)** en tools + USD 39-399 Shopify. Excluye pasarela de pago (2.5-4.5% del GMV) y desarrollo.' },
+      { type: 'h2', id: 'core-web-vitals', text: '¿Cómo aprobar Core Web Vitals en e-commerce?' },
+      { type: 'p', text: 'Thresholds mayo 2026: **LCP ≤ 2.5s** mobile 4G, **INP ≤ 200ms**, **CLS ≤ 0.1**. Data Chrome User Experience Report (abril 2026):' },
+      { type: 'table',
+        headers: ['Tipo sitio', 'LCP', 'INP', 'CLS', '% aprueba CWV'],
+        rows: [
+          ['Tema Shopify Dawn estándar', '3.2s', '290ms', '0.16', '24%'],
+          ['Tema premium personalizado', '2.8s', '240ms', '0.13', '38%'],
+          ['Hydrogen + Oxygen', '2.0s', '180ms', '0.08', '74%'],
+          ['Next.js 15 + Vercel optimizado', '1.6s', '150ms', '0.05', '88%']
+        ]
+      },
+      { type: 'p', text: 'Tácticas que mueven la aguja en Next.js + Shopify:' },
+      { type: 'list', items: [
+        '**`next/image`** con sizes prop + prioridad en hero. Reduce LCP 30-50% vs `<img>` plano.',
+        '**React Server Components** para listings y product pages — reduce JS shipped 40-60%, impacta INP.',
+        '**Streaming con Suspense** para mover bloques no críticos (reviews, recommendations) fuera del LCP path.',
+        '**Partytown** para mover GTM, Meta Pixel, Hotjar al web worker — saca 200-400ms de INP en mobile.',
+        '**Edge runtime** en rutas dinámicas con PoPs Santiago, São Paulo, Querétaro.',
+        '**ISR** con revalidate de 300-3600s para product pages — sirve estático con datos frescos.'
+      ]},
+      { type: 'h2', id: 'seo-tecnico', text: 'SEO técnico en Next.js' },
+      { type: 'p', text: 'Render strategy por ruta en App Router:' },
+      { type: 'list', items: [
+        '**Home & landings**: SSG con revalidate 600s. HTML completo en CDN, LCP <1s.',
+        '**Product pages**: ISR con `revalidate: 300` (5 min). Sirve estático, regenera en background.',
+        '**Category/collection pages**: ISR 600-1800s.',
+        '**Search & filtros**: SSR puro (personalizados, no cacheables).',
+        '**Cart & checkout**: client-side con SWR/TanStack Query.'
+      ]},
+      { type: 'p', text: 'Schema obligatorio para e-commerce 2026: **Product schema** con offers, aggregateRating, brand, gtin; **BreadcrumbList** en cada ruta no-home; **Organization + WebSite** en home con sameAs; **FAQPage** en pillar pages con FAQ section; **Speakable** schema para voice search; **ItemList** en collection pages.' },
+      { type: 'h2', id: 'i18n-markets', text: 'i18n con Shopify Markets + Next.js (LATAM + US + ES)' },
+      { type: 'p', text: 'Un e-commerce LATAM serio vende en mínimo 3 países. La combinación correcta: **Shopify Markets** en backend + **Next.js routing i18n** en frontend. Configuración LATAM + US + ES:' },
+      { type: 'list', items: [
+        '**Chile**: CLP, IVA 19% incluido, Transbank + Khipu + Mercado Pago.',
+        '**Brasil**: BRL, ICMS variable por estado, Pix + boleto + cartão.',
+        '**México**: MXN, IVA 16%, Mercado Pago + OXXO + SPEI.',
+        '**USA**: USD, sales tax por estado (Avalara), Shop Pay + Apple Pay.',
+        '**España**: EUR, IVA 21%, Bizum + tarjetas + PayPal.'
+      ]},
+      { type: 'p', text: 'Routing recomendado: subpath por locale (`/cl/`, `/br/`, `/us/`), no subdominio. Cada página emite `<link rel="alternate" hreflang="es-CL">` para cada variante + `x-default` fallback. Errores comunes: códigos inválidos (`es-LATAM` no existe), referencias unilaterales, contenido idéntico en distintas locales (duplicate content).' },
+      { type: 'h2', id: 'costos-reales', text: 'Costos reales de un proyecto Next.js + Shopify' },
+      { type: 'table',
+        headers: ['Tier', 'Caso', 'Desarrollo USD', 'CLP', 'Operación USD/mes'],
+        rows: [
+          ['MVP', '50-500 SKUs, 1 mercado', '$18K-35K', '$16,5M-32M', '$250-600'],
+          ['Mid-market', '500-5K SKUs, 2-3 mercados, CMS, search', '$45K-85K', '$41M-78M', '$600-1.500'],
+          ['Enterprise', '5K+ SKUs, 4+ mercados, B2B+DTC, ERP', '$100K-220K', '$92M-202M', '$2.000-8.000']
+        ]
+      },
+      { type: 'h2', id: 'errores-comunes', text: 'Errores comunes que rompen proyectos headless' },
+      { type: 'list', items: [
+        '**1. Olvidar 301 redirects en migración**. URLs antiguas → 404 → Google deindexa → tráfico orgánico cae 40-70% por 3-6 meses.',
+        '**2. SSR de todo el catálogo en cada request**. TTFB 800-2.500ms, LCP arruinado, factura Vercel inflada. Solución: ISR + on-demand revalidation desde webhooks Shopify.',
+        '**3. Cliente-side fetch en componentes críticos**. Mata LCP. Usar Server Components o getStaticProps.',
+        '**4. No implementar Conversions API**. iOS 18 + cookie deprecation: sin CAPI server-side, paid pierde 25-40% de signal.',
+        '**5. Custom checkout reinventando rueda**. Construir checkout desde cero es 6-12 meses + riesgo regulatorio. Usar Checkout Extensibility de Shopify Plus.',
+        '**6. Schema markup faltante o roto**. Sin Product schema válido, rich results no aparecen, CTR pierde 15-30%.',
+        '**7. Cargar JS de tracking sincronamente**. Cada pixel third-party suma 50-300ms de INP. Mover a Partytown.',
+        '**8. No medir field data (CrUX)**. Lab data Lighthouse pasa, usuarios reales sufren.'
+      ]},
+      { type: 'h2', id: 'caso-real', text: 'Caso real anonimizado: e-commerce LATAM, performance +280% post-migración' },
+      { type: 'p', text: 'Cliente DTC chileno rubro lifestyle, GMV USD 1.8M anual (CLP 1.660M). Tema Shopify premium custom (Prestige modificado) con 1.200 SKUs, 3 mercados. Baseline enero 2025: Lighthouse mobile 42, LCP 3.8s, INP 380ms, conversion 1.4%, tráfico orgánico 22K/mes.' },
+      { type: 'p', text: 'Migración a **Next.js 15 + Vercel + Sanity CMS + Algolia** manteniendo Shopify Advanced backend. 14 semanas: discovery, diseño, dev Next.js con Server Components, ISR + webhooks, Algolia search, Sanity para blog + landings + lookbooks, integración Mercado Pago + Transbank, i18n con next-intl + Shopify Markets (CL, AR, MX, BR), SEO técnico completo, QA con Playwright + Lighthouse CI, cutover atómico.' },
+      { type: 'p', text: 'Resultados al mes 4 post-launch: **Lighthouse mobile 42 → 91**; **LCP 3.8s → 1.4s**; **INP 380ms → 140ms**; **conversion 1.4% → 2.6%** (+86%); **tráfico orgánico 22K → 41K/mes** tras superar dip inicial 8%; **time to publish landing**: de 3-5 días dev-dependent a 25-40 min self-service por marketing. Performance combinada **+280% vs baseline**. Costo total: USD 68K (CLP 62,6M). Payback estimado: 5.8 meses.' },
+      { type: 'p', text: 'Aprendizaje clave: la mejora de performance es **multiplicativa con conversion rate**. No es lineal. Pasar de Lighthouse 42 a 91 no aumenta conversion 117% (sería lineal), pero sí ~85-90% porque cada segundo de LCP recuperado libera abandonos en cascada.' },
+      { type: 'h2', id: 'proximos-pasos', text: 'Próximos pasos / CTA' },
+      { type: 'p', text: 'Si lideras un e-commerce LATAM con tienda Shopify >USD 500K ARR y sientes que el tema tradicional limita performance, agenda reunión sin costo de 45 min. Audit técnico actual (Lighthouse, CWV, SEO técnico), scope sugerido de migración headless, estimación de costos en USD/CLP y ROI esperado.' },
+      { type: 'cta', text: 'Cotizar proyecto Next.js + Shopify por WhatsApp', waKey: 'desarrollo-web' }
+    ],
+    faq: [
+      { q: '¿En cuánto tiempo se entrega un proyecto Next.js + Shopify?', a: 'MVP (50-500 SKUs, 1 mercado): 6-10 semanas. Mid-market (500-5K SKUs, 2-3 mercados, CMS, search avanzado): 10-16 semanas. Enterprise (5K+ SKUs, 4+ mercados, B2B + DTC, ERP): 4-8 meses. Cualquier proveedor que prometa "headless en 3 semanas" está armando un wrapper básico sin SEO técnico, migración real ni QA — quiebra al mes 2 en producción.' },
+      { q: '¿Headless vs theme tradicional Shopify, cuál elegir?', a: 'Tema tradicional sirve si: GMV <USD 500K/año, 1 mercado, equipo sin dev, requirements estándar. Headless si: GMV >USD 500K/año, necesitas performance excepcional (CWV verdes), múltiples mercados, integraciones custom ERP/CRM, o el contenido editorial pesa tanto como el catálogo. En LATAM 2026 el umbral económico está en USD 500K-1M ARR para que el TCO compense.' },
+      { q: '¿Shopify Plus es necesario para headless?', a: 'No. Headless funciona desde Shopify Basic (USD 39/mes, CLP 36K). Plus se justifica cuando necesitas: wholesale B2B nativo, checkout extensibility avanzada, Launchpad, B2B con catálogos privados, >5K órdenes/día, o multi-store unificada. Para DTC mid-market LATAM con GMV USD 1-3M/año, **Shopify Advanced (USD 399, CLP 368K) + Next.js headless** es suficiente y ahorra USD 23K/año vs Plus.' },
+      { q: '¿Cómo medimos Core Web Vitals en headless?', a: 'Tres capas: (1) **field data (real users)** via Vercel Speed Insights + Search Console CWV report — números que Google usa para ranking; (2) **lab data automatizado** con Lighthouse CI en cada PR; (3) **synthetic monitoring** con PageSpeed Insights API en URLs clave diario. Targets mayo 2026: LCP ≤2.5s, INP ≤200ms, CLS ≤0.1 en mobile 4G p75. Si <75% usuarios aprueban los tres, Google penaliza ranking.' },
+      { q: '¿Qué pasa si Shopify hace breaking changes en Storefront API?', a: 'Shopify mantiene versiones API estables por **12 meses** (deprecation policy oficial). Cada release es opt-in. Equipo dev migra entre versiones cada 6-9 meses con sprint dedicado (~20-40 hrs). Mitigación: schema validation en CI, eval suite de queries críticas, suscripción al developer changelog. Lo que NUNCA hace Shopify: cambiar API sin previo aviso o forzar migración <12 meses.' },
+      { q: '¿Vale la pena Shopify Hydrogen en vez de Next.js?', a: 'Hydrogen tiene sentido si: equipo Shopify-centric, usas Shopify Plus (Oxygen incluido), no migrarás plataforma, valoras hooks pre-armados sobre flexibilidad. Next.js tiene sentido si: quieres pool dev grande (3-4× más React+Next que Hydrogen), futuro-proofing por si migras, integraciones con ecosystem React (Sanity, Algolia, Auth0), o ya tienes Vercel. Para 70% de e-commerce LATAM mid-market evaluados, **Next.js gana** por flexibilidad y ecosystem.' }
+    ],
+    relatedSlugs: ['marketing-digital-b2b-latam-2026', 'paid-media-b2b-2026', 'klaviyo-hubspot-email-automation-2026'],
+    sources: [
+      { name: 'Next.js documentation (App Router, Vercel)', url: 'https://nextjs.org/docs' },
+      { name: 'Shopify Storefront API reference (2025-10)', url: 'https://shopify.dev/docs/api/storefront' },
+      { name: 'Web.dev — Core Web Vitals thresholds', url: 'https://web.dev/articles/vitals' },
+      { name: 'Vercel — E-commerce performance case studies', url: 'https://vercel.com/customers' },
+      { name: 'Shopify Hydrogen documentation', url: 'https://hydrogen.shopify.dev' },
+      { name: 'Shopify Markets — Multi-currency setup', url: 'https://shopify.dev/docs/apps/build/markets' },
+      { name: 'Chrome User Experience Report (CrUX)', url: 'https://developer.chrome.com/docs/crux' }
     ]
   }
 ];

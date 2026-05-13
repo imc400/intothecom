@@ -157,14 +157,23 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://intothecom.com/#webpage",
-  "url": "https://intothecom.com/",
-  "name": "Intothecom · Marketing, software & IA para crecer en serio",
-  "isPartOf": {"@id": "https://intothecom.com/#website"},
-  "about": {"@id": "https://intothecom.com/#org"},
+  "@id": "https://intothecom.com/community-management#webpage",
+  "url": "https://intothecom.com/community-management",
+  "name": "Community Management · Contenido editorial y comunidad real | Intothecom",
+  "isPartOf": {
+    "@id": "https://intothecom.com/#website"
+  },
+  "about": {
+    "@id": "https://intothecom.com/#org"
+  },
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": [".hero-headline", ".lead", ".hero-stat", ".faq-q-text", ".faq-a"]
+    "cssSelector": [
+      ".hero-headline",
+      ".lead",
+      ".faq-q-text",
+      ".faq-a"
+    ]
   },
   "inLanguage": "es-CL"
 }
@@ -196,31 +205,16 @@
 {
   "@context":"https://schema.org",
   "@graph":[
-    {"@type":"Service","serviceType":"Software & Agentes de IA","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Agentes conversacionales, copilotos, RAG y automatizaciones a medida. De idea a producción en 6 semanas.","url":"https://intothecom.com/#/software-ia"},
-    {"@type":"Service","serviceType":"Paid Media","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Campañas en Google, Meta, TikTok y LinkedIn con foco en ROAS y CAC.","url":"https://intothecom.com/#/paid-media"},
-    {"@type":"Service","serviceType":"Email Marketing","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Segmentación, automatizaciones y flows en Klaviyo y HubSpot.","url":"https://intothecom.com/#/email-marketing"},
-    {"@type":"Service","serviceType":"Diseño y Desarrollo Web","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Sitios y e-commerce headless en Next.js y Shopify, Lighthouse 90+.","url":"https://intothecom.com/#/desarrollo-web"},
-    {"@type":"Service","serviceType":"Community Management","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Línea editorial, contenido y gestión en IG, TikTok y LinkedIn.","url":"https://intothecom.com/#/community-management"}
+    {"@type":"Service","@id":"https://intothecom.com/software-ia#service","serviceType":"Software & Agentes de IA","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Agentes conversacionales, copilotos, RAG y automatizaciones a medida. De idea a producción en 6 semanas.","url":"https://intothecom.com/software-ia"},
+    {"@type":"Service","@id":"https://intothecom.com/paid-media#service","serviceType":"Paid Media","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Campañas en Google, Meta, TikTok y LinkedIn con foco en ROAS y CAC.","url":"https://intothecom.com/paid-media"},
+    {"@type":"Service","@id":"https://intothecom.com/email-marketing#service","serviceType":"Email Marketing","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Segmentación, automatizaciones y flows en Klaviyo y HubSpot.","url":"https://intothecom.com/email-marketing"},
+    {"@type":"Service","@id":"https://intothecom.com/desarrollo-web#service","serviceType":"Diseño y Desarrollo Web","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Sitios y e-commerce headless en Next.js y Shopify, Lighthouse 90+.","url":"https://intothecom.com/desarrollo-web"},
+    {"@type":"Service","@id":"https://intothecom.com/community-management#service","serviceType":"Community Management","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Línea editorial, contenido y gestión en IG, TikTok y LinkedIn.","url":"https://intothecom.com/community-management"}
   ]
 }
 </script>
 
-<!-- Structured data: FAQ -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "@id": "https://intothecom.com/#faq",
-  "mainEntity":[
-    {"@type":"Question","name":"¿Cuánto demora ver resultados?","acceptedAnswer":{"@type":"Answer","text":"Paid Media: 2 a 3 semanas. Email: primer flow en vivo en 30 días. Web: 6 a 12 semanas. Software & IA: prototipo funcional en 3 semanas."}},
-    {"@type":"Question","name":"¿Trabajan con retainer mensual o por proyecto?","acceptedAnswer":{"@type":"Answer","text":"Ambos. Servicios continuos son retainer 3 meses mínimo. Web y software son fixed-scope con hito de pago."}},
-    {"@type":"Question","name":"¿Trabajan con clientes fuera de Chile?","acceptedAnswer":{"@type":"Answer","text":"60% de nuestros clientes opera en mercados externos. Reuniones por Meet, contratos en USD o moneda local, facturamos como prestador en CL/ES."}},
-    {"@type":"Question","name":"¿Tienen exclusividad por industria?","acceptedAnswer":{"@type":"Answer","text":"Sí. Una marca por categoría dentro de un mismo mercado."}},
-    {"@type":"Question","name":"¿Qué pasa si no veo resultados?","acceptedAnswer":{"@type":"Answer","text":"Mes 1 es onboarding. Si al mes 3 no se cumplieron los KPIs acordados por escrito, devolvemos el último mes o ajustamos scope sin costo."}},
-    {"@type":"Question","name":"¿Quién ejecuta mi cuenta?","acceptedAnswer":{"@type":"Answer","text":"Un lead senior más un especialista. No tercerizamos a freelancers."}}
-  ]
-}
-</script>
+<!-- FAQ schema removed from non-home pages: content not visible here -->
 
 <!-- Structured data: Person (Ignacio Blanco, Co-founder) — placeholder, completar bio real -->
 <script type="application/ld+json">
@@ -322,6 +316,14 @@
 <script defer src="dist/pages.js"></script>
 <script defer src="dist/page-recursos.js"></script>
 <script defer src="dist/app.js"></script>
+<noscript>
+  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
+    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
+    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
+    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
+    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
+  </div>
+</noscript>
 <noscript>
   <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
     <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>

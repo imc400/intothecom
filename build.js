@@ -202,6 +202,37 @@ function prerenderRoute(masterHtml, route, meta) {
     `<script type="application/ld+json" id="ld-breadcrumb">\n${breadcrumbJSON}\n</script>`
   );
 
+  // FIX CRIT-1: Update WebPage schema per route (no usar siempre el del home)
+  const webPageId = `${DOMAIN}${route === '/' ? '/' : route}#webpage`;
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": webPageId,
+    "url": url,
+    "name": meta.title,
+    "isPartOf": {"@id": `${DOMAIN}/#website`},
+    "about": {"@id": `${DOMAIN}/#org`},
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": route === '/'
+        ? [".hero-headline", ".lead", ".hero-stat", ".faq-q-text", ".faq-a"]
+        : (route.startsWith('/recursos/') ? [".article-tldr", ".article-h1", ".faq-q-text", ".faq-a"] : [".hero-headline", ".lead", ".faq-q-text", ".faq-a"])
+    },
+    "inLanguage": "es-CL"
+  };
+  html = html.replace(
+    /<script type="application\/ld\+json">\s*\{\s*"@context":\s*"https:\/\/schema\.org",\s*"@type":\s*"WebPage"[\s\S]*?<\/script>/,
+    `<script type="application/ld+json">\n${JSON.stringify(webPageSchema, null, 2)}\n</script>`
+  );
+
+  // FIX CRIT-2: Remove home FAQPage from non-home pages (FAQ del home no se ve en otras rutas → schema invisible → penalizable)
+  if (route !== '/') {
+    html = html.replace(
+      /<!-- Structured data: FAQ -->\s*<script type="application\/ld\+json">\s*\{\s*"@context":\s*"https:\/\/schema\.org",\s*"@type":\s*"FAQPage",\s*"@id":\s*"https:\/\/intothecom\.com\/#faq"[\s\S]*?<\/script>/,
+      '<!-- FAQ schema removed from non-home pages: content not visible here -->'
+    );
+  }
+
   // Inject noscript fallback before </body> (crítico para AI bots sin JS)
   if (meta.noscript) {
     const noscriptBlock = `<noscript>

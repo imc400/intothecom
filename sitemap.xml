@@ -131,4 +131,18 @@
     <priority>0.85</priority>
   </url>
 
+  <url>
+    <loc>https://intothecom.com/recursos/klaviyo-hubspot-email-automation-2026</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://intothecom.com/recursos/desarrollo-web-headless-nextjs-shopify-2026</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
 </urlset>
