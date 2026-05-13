@@ -32,13 +32,13 @@
 <link rel="alternate" hreflang="es" href="https://intothecom.com/"/>
 <link rel="alternate" hreflang="x-default" href="https://intothecom.com/"/>
 
-<link rel="icon" type="image/png" href="assets/mark-dark.png"/>
-<link rel="apple-touch-icon" href="assets/mark-dark.png"/>
+<link rel="icon" type="image/png" href="/assets/mark-dark.png"/>
+<link rel="apple-touch-icon" href="/assets/mark-dark.png"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="/styles.css"/>
 
 <!-- Structured data: Organization (con sameAs cross-platform + aggregateRating + founders) -->
 <script type="application/ld+json">
@@ -308,14 +308,22 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 
 <!-- Article data (cargado antes de los components, contenido del blog/recursos) -->
-<script src="data/articles.js"></script>
+<script src="/data/articles.js"></script>
 
 <!-- Pre-compiled JSX bundles (esbuild). Order: shared → page-home → pages → page-recursos → app -->
-<script defer src="dist/shared.js"></script>
-<script defer src="dist/page-home.js"></script>
-<script defer src="dist/pages.js"></script>
-<script defer src="dist/page-recursos.js"></script>
-<script defer src="dist/app.js"></script>
+<script defer src="/dist/shared.js"></script>
+<script defer src="/dist/page-home.js"></script>
+<script defer src="/dist/pages.js"></script>
+<script defer src="/dist/page-recursos.js"></script>
+<script defer src="/dist/app.js"></script>
+<noscript>
+  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
+    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
+    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
+    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
+    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
+  </div>
+</noscript>
 <noscript>
   <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
     <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
