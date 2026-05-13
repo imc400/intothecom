@@ -117,80 +117,16 @@ function ResourceArticle({ navigate, slug }) {
   const article = articles.find(a => a.slug === slug);
 
   React.useEffect(() => {
-    // Inyectar BlogPosting + FAQPage schema cuando se renderiza un artículo
+    // FIX CRIT-3: NO inyectamos schemas BlogPosting/FAQPage dinamicamente.
+    // El build.js genera HTMLs pre-renderizados con BlogPosting + FAQPage estaticos.
+    // Inyectar versiones dinamicas duplicaba el schema y causaba @id duplicados (penalizable por Google).
+    // Solo actualizamos meta description + document.title cuando navegamos client-side dentro del SPA.
     if (!article) return;
 
-    const blogPosting = {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "@id": `https://intothecom.com/recursos/${article.slug}#article`,
-      "headline": article.title,
-      "description": article.description,
-      "image": [`https://intothecom.com${article.heroImage || '/assets/og-cover.jpg'}`],
-      "datePublished": article.publishedAt,
-      "dateModified": article.updatedAt,
-      "inLanguage": "es-CL",
-      "wordCount": article.wordCount,
-      "keywords": [article.keyword, ...(article.secondaryKeywords || [])].join(', '),
-      "articleSection": article.category,
-      "author": {
-        "@type": "Person",
-        "@id": `https://intothecom.com/equipo/${article.authorSlug}#person`,
-        "name": article.author,
-        "jobTitle": article.authorRole,
-        "worksFor": {"@id": "https://intothecom.com/#org"}
-      },
-      "publisher": {"@id": "https://intothecom.com/#org"},
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": `https://intothecom.com/recursos/${article.slug}`
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [".article-tldr", ".article-h1", ".faq-q-text", ".faq-a"]
-      }
-    };
-
-    const faqPage = article.faq && article.faq.length > 0 ? {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "@id": `https://intothecom.com/recursos/${article.slug}#faq`,
-      "mainEntity": article.faq.map(qa => ({
-        "@type": "Question",
-        "name": qa.q,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": qa.a
-        }
-      }))
-    } : null;
-
-    // Insertar en el head
-    const cleanup = [];
-    const insertSchema = (id, data) => {
-      let el = document.getElementById(id);
-      if (!el) {
-        el = document.createElement('script');
-        el.type = 'application/ld+json';
-        el.id = id;
-        document.head.appendChild(el);
-        cleanup.push(el);
-      }
-      el.textContent = JSON.stringify(data);
-    };
-
-    insertSchema('ld-blogposting', blogPosting);
-    if (faqPage) insertSchema('ld-faqpage-article', faqPage);
-
-    // Update meta description con article.description
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', article.description);
 
     document.title = `${article.title} | Recursos Intothecom`;
-
-    return () => {
-      cleanup.forEach(el => el.remove());
-    };
   }, [slug, article]);
 
   if (!article) {
