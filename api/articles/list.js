@@ -56,8 +56,26 @@ module.exports = async (req, res) => {
   const repo = process.env.GITHUB_REPO || 'imc400/intothecom';
   const branch = process.env.GITHUB_BRANCH || 'main';
 
+  // Fallback: si no hay GITHUB_PAT, leer del filesystem del deploy actual.
+  // Esto permite read-only mode (lista articles) hasta que se configure PAT para writes.
   if (!ghToken) {
-    res.status(500).json({error: 'GITHUB_PAT not configured'});
+    try {
+      const fs = require('fs');
+      const path = require('path');
+      const localPath = path.join(process.cwd(), 'data', 'articles.json');
+      if (fs.existsSync(localPath)) {
+        const data = JSON.parse(fs.readFileSync(localPath, 'utf-8'));
+        res.status(200).json({
+          articles: data.articles || [],
+          plannedPillars: data.plannedPillars || [],
+          sha: null,
+          readOnly: true,
+          warning: 'GITHUB_PAT not configured — read-only mode. Saves will fail until PAT is set.'
+        });
+        return;
+      }
+    } catch (e) { /* fall through to error */ }
+    res.status(500).json({error: 'GITHUB_PAT not configured and filesystem fallback failed'});
     return;
   }
 
