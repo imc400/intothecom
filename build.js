@@ -1,9 +1,15 @@
 /* Build pipeline — mayo 2026.
    1. Compila JSX con esbuild → dist/*.js (elimina Babel runtime ~870KB).
-   2. Pre-renderiza HTML por ruta para que cada URL tenga meta tags + JSON-LD
+   2. Calcula hash content-based de cada bundle para cache busting.
+   3. Inyecta los hashes en los src de los scripts en el master HTML.
+   4. Pre-renderiza HTML por ruta para que cada URL tenga meta tags + JSON-LD
       correctos sin depender de JS. Crítico para AI bots (ChatGPT-User,
       PerplexityBot, Claude-Web) que no ejecutan JavaScript al crawlear.
-   3. Genera noscript fallback con texto resumen para SEO técnico.
+   5. Genera noscript fallback con texto resumen para SEO técnico.
+
+   Cache busting: vercel.json sirve /dist/* con Cache-Control immutable
+   (max-age=1año). Para que browsers reciban actualizaciones, agregamos
+   ?v=<contentHash> a cada src — query string cambia → URL nueva → cache nuevo.
 
    Run: `npm run build` (también automático en Vercel via package.json).
 */
@@ -11,10 +17,16 @@
 const { build } = require('esbuild');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const root = __dirname;
 const outdir = path.join(root, 'dist');
 fs.mkdirSync(outdir, { recursive: true });
+
+function contentHash(filePath) {
+  const content = fs.readFileSync(filePath);
+  return crypto.createHash('sha256').update(content).digest('hex').substring(0, 8);
+}
 
 const entries = [
   'components/shared.jsx',
@@ -267,9 +279,34 @@ async function run() {
   });
   console.log('   ✓ Build complete →', outdir);
 
+  // 1b. Compute content hashes for cache busting
+  console.log('\n🔐 Computing content hashes for cache busting...');
+  const hashes = {
+    'shared.js': contentHash(path.join(outdir, 'shared.js')),
+    'page-home.js': contentHash(path.join(outdir, 'page-home.js')),
+    'pages.js': contentHash(path.join(outdir, 'pages.js')),
+    'page-recursos.js': contentHash(path.join(outdir, 'page-recursos.js')),
+    'app.js': contentHash(path.join(outdir, 'app.js'))
+  };
+  const articlesHash = contentHash(path.join(root, 'data', 'articles.js'));
+  console.log('   shared.js:', hashes['shared.js']);
+  console.log('   page-home.js:', hashes['page-home.js']);
+  console.log('   pages.js:', hashes['pages.js']);
+  console.log('   page-recursos.js:', hashes['page-recursos.js']);
+  console.log('   app.js:', hashes['app.js']);
+  console.log('   data/articles.js:', articlesHash);
+
   // 2. Prerender HTML per route
   console.log('\n📄 Prerendering per-route HTML files...');
-  const masterHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf-8');
+  let masterHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf-8');
+
+  // Inyectar cache busting versions en los src
+  masterHtml = masterHtml.replace(/src="\/data\/articles\.js(\?v=[a-f0-9]+)?"/, `src="/data/articles.js?v=${articlesHash}"`);
+  masterHtml = masterHtml.replace(/src="\/dist\/shared\.js(\?v=[a-f0-9]+)?"/, `src="/dist/shared.js?v=${hashes['shared.js']}"`);
+  masterHtml = masterHtml.replace(/src="\/dist\/page-home\.js(\?v=[a-f0-9]+)?"/, `src="/dist/page-home.js?v=${hashes['page-home.js']}"`);
+  masterHtml = masterHtml.replace(/src="\/dist\/pages\.js(\?v=[a-f0-9]+)?"/, `src="/dist/pages.js?v=${hashes['pages.js']}"`);
+  masterHtml = masterHtml.replace(/src="\/dist\/page-recursos\.js(\?v=[a-f0-9]+)?"/, `src="/dist/page-recursos.js?v=${hashes['page-recursos.js']}"`);
+  masterHtml = masterHtml.replace(/src="\/dist\/app\.js(\?v=[a-f0-9]+)?"/, `src="/dist/app.js?v=${hashes['app.js']}"`);
   let count = 0;
 
   for (const [route, meta] of Object.entries(ROUTE_META)) {
