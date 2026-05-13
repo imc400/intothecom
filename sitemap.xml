@@ -124,4 +124,11 @@
     <priority>0.85</priority>
   </url>
 
+  <url>
+    <loc>https://intothecom.com/recursos/paid-media-b2b-2026</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
 </urlset>

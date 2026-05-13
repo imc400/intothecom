@@ -445,7 +445,7 @@ const ARTICLES = [
         a: 'In-house funciona si tienes: (1) al menos 1 ingeniero senior con experiencia en LLM APIs o dispuesto a invertir 4-8 semanas en aprendizaje activo; (2) infraestructura ML básica (logging, monitoring, deploy automatizado); (3) cultura de iteración sobre data (medir, ajustar, repetir). Consultora externa tiene sentido cuando necesitas velocidad (3-6x más rápido), no tienes el perfil senior internamente, o el caso requiere expertise específico (MCP, multi-agente, compliance regulado). En IntoTheCom hemos implementado en ambos modelos según el cliente.'
       }
     ],
-    relatedSlugs: ['marketing-digital-b2b-latam-2026'],
+    relatedSlugs: ['marketing-digital-b2b-latam-2026', 'paid-media-b2b-2026'],
     sources: [
       { name: 'Anthropic MCP — Model Context Protocol official spec', url: 'https://modelcontextprotocol.io' },
       { name: 'LangGraph documentation', url: 'https://langchain-ai.github.io/langgraph/' },
@@ -453,12 +453,255 @@ const ARTICLES = [
       { name: 'Claude API pricing — Anthropic', url: 'https://www.anthropic.com/pricing#anthropic-api' },
       { name: 'Princeton GEO paper — Aggarwal et al.', url: 'https://arxiv.org/abs/2311.09735' }
     ]
+  },
+  {
+    slug: 'paid-media-b2b-2026',
+    type: 'pillar',
+    cluster: 'paid-media',
+    title: 'Guía Paid Media B2B 2026: Google, Meta, LinkedIn y TikTok Ads para empresas',
+    description: 'Estrategia, presupuestos reales, atribución multi-touch, Conversions API y errores comunes del paid media B2B en LATAM. Por consultores con +20M USD gestionados en cuentas reales.',
+    publishedAt: '2026-05-13',
+    updatedAt: '2026-05-13',
+    author: 'Ignacio Blanco',
+    authorRole: 'Co-founder & Strategy Lead',
+    authorSlug: 'ignacio-blanco',
+    category: 'Paid Media',
+    readingTime: '17 min',
+    wordCount: 3700,
+    keyword: 'paid media B2B 2026',
+    secondaryKeywords: [
+      'Google Ads B2B',
+      'Meta Ads para empresas',
+      'LinkedIn Ads ROAS',
+      'TikTok Ads B2B',
+      'Conversions API server side',
+      'atribución multi-touch B2B',
+      'CAC pipeline B2B Chile'
+    ],
+    intent: 'Commercial/Informational',
+    tags: ['Paid Media', 'B2B', 'Google Ads', 'Meta Ads', 'LinkedIn Ads', 'Atribución'],
+    heroImage: '/assets/blog/paid-media-b2b-2026.jpg',
+    tldr: 'El paid media B2B en 2026 cambió en cuatro frentes simultáneos: tracking degradado por iOS 18 y eliminación de cookies third-party (Conversions API ya no es opcional), saturación de LinkedIn Ads con CPL promedio +35% YoY, llegada agresiva de TikTok B2B (especialmente para SaaS y tools dev), y AI bidding (Performance Max, Advantage+) que decide más que el operador humano. Esta guía explica cómo construir una operación paid B2B que mide pipeline real (no MQLs vanity), distribuye presupuesto por etapa del funnel, y sobrevive a la pérdida de signals de tracking. Audiencia: founders, CMOs y growth leads de empresas B2B medianas en LATAM con ventas USD 1M-20M anuales.',
+    sections: [
+      { type: 'h2', id: 'que-es-paid-b2b', text: '¿Qué es Paid Media B2B y por qué es distinto al B2C?' },
+      {
+        type: 'p',
+        text: '**Paid Media B2B** es la disciplina de adquirir tráfico y leads cualificados de otras empresas usando publicidad pagada en plataformas digitales: Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, X Ads, Reddit Ads. La diferencia con B2C no es la plataforma — es el modelo de medición y los ciclos de venta.'
+      },
+      {
+        type: 'p',
+        text: 'B2C optimiza CAC, AOV y LTV con feedback loop rápido (compra ocurre minutos u horas post-click). B2B optimiza **pipeline generation, SQL rate, CAC payback** con feedback loop de 30-180 días (lead → demo → propuesta → cierre). Esta diferencia operativa rompe la mayoría de optimizaciones automatic bidding que funcionan en B2C — Performance Max y Advantage+ optimizan a conversiones inmediatas, no a deals cerrados 90 días después.'
+      },
+      {
+        type: 'p',
+        text: 'La consecuencia: en B2B necesitas pasar **valor de pipeline en tiempo real** al algoritmo, no MQLs. Sin Conversions API + value-based bidding, optimizas vanity metrics y quemas presupuesto.'
+      },
+      { type: 'h2', id: 'plataformas-2026', text: 'Stack de plataformas B2B en 2026' },
+      {
+        type: 'h3', id: 'google-ads', text: 'Google Ads' }, { type: 'p',
+        text: 'Plataforma #1 para captura de demand existente. Tres campañas core para B2B: (1) **Search brand defense** — protege tu nombre de competidores y comparadores; (2) **Search non-brand high-intent** — categorías de producto + modificadores comerciales ("X agency Chile", "X software pricing"); (3) **Performance Max** — solo cuando tienes ≥30 conversiones/mes en una sola conversion goal de alto valor. Antes de eso, PMax aprende mal y desperdicia presupuesto.'
+      },
+      {
+        type: 'p',
+        text: 'Display y YouTube ads en B2B funcionan en remarketing y view-through assist, no en cold demand. Comprar Display cold sin estar haciendo bien Search es una de las decisiones que más quema budget B2B.'
+      },
+      { type: 'h3', id: 'meta-ads', text: 'Meta Ads (Facebook + Instagram)' },
+      {
+        type: 'p',
+        text: 'Mejor para **awareness mid-funnel** y nutrición de audiencias custom (visitantes web, listas CRM). Advantage+ Shopping no aplica a B2B genérico (es para e-commerce); usar **Advantage+ Audiences** con seed audience de tus mejores clientes. Pixel + Conversions API ya **obligatorio** en 2026 — sin CAPI pierdes 25-40% de signals iOS.'
+      },
+      { type: 'h3', id: 'linkedin-ads', text: 'LinkedIn Ads' },
+      {
+        type: 'p',
+        text: 'Plataforma B2B por excelencia, pero saturada. CPL promedio LATAM aumentó **+35% YoY** entre 2024 y 2025 (LinkedIn Marketing Solutions Q1 2026). Tres tácticas que aún rinden: (1) **Sponsored Content** con video corto + lead gen form nativo (no landing externa); (2) **Conversation Ads** con CTA a meeting booking — convierten 3-4× más que message ads tradicionales; (3) **Document ads** (PDF carruseles) — formato más barato y con higher engagement.'
+      },
+      {
+        type: 'p',
+        text: 'Segmentación crítica: NO usar solo job titles. Combinar **job functions + seniority + company size + industry + member skills**. La búsqueda de talento abusó tanto de job titles que la audiencia se diluyó.'
+      },
+      { type: 'h3', id: 'tiktok-ads', text: 'TikTok Ads — la sorpresa B2B 2025-2026' },
+      {
+        type: 'p',
+        text: 'TikTok rompió en B2B en 2025. Casos exitosos: SaaS (Notion, Linear, Vercel hacen ads), dev tools, agencias creativas, productividad. CPL TikTok B2B en LATAM puede ser **40-60% más bajo** que LinkedIn para targets similares. Limitación: solo funciona si tu producto tiene ángulo "showable" (UI, output visual, transformación). Si vendes ERP a manufactura, sigue siendo LinkedIn.'
+      },
+      {
+        type: 'p',
+        text: 'Formato recomendado 2026: TikTok Spark Ads (boost de contenido orgánico ya validado) > TikTok In-Feed Ads cold. El orgánico de la marca/founder hace el trabajo de validación creativa, paid solo amplifica.'
+      },
+      { type: 'h2', id: 'tracking-2026', text: 'Tracking server-side: por qué Conversions API ya no es opcional' },
+      {
+        type: 'p',
+        text: 'iOS 18 (lanzado septiembre 2024) y la deprecación progresiva de cookies third-party rompieron el tracking client-side tradicional. Para mayo 2026, el setup mínimo B2B B2B serio es:'
+      },
+      {
+        type: 'list',
+        items: [
+          '**Server-side GTM** (Google Tag Manager Server-side) hosteado en un subdomain propio (tag.tudominio.com). Reduce signal loss 25-40%.',
+          '**Conversions API** en cada plataforma de paid: Meta CAPI, Google Enhanced Conversions, LinkedIn CAPI (lanzado oficialmente Q4 2024).',
+          '**First-party data layer** con event_id deduplication para evitar double-counting entre pixel y CAPI.',
+          '**Server-side cookies** (1st-party) para attribution windows ampliados (90-180 días B2B).',
+          '**Hashed PII** (email, teléfono) enviada a las plataformas para enhanced matching — sube match rate 15-30%.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Costo de implementación 2026 para una empresa B2B mediana: USD 3-8K one-time dev + USD 50-150/mes hosting (Cloud Run o similar). ROI documentado: signal recovery genera 12-25% más conversiones medibles, que el algoritmo luego usa para optimizar mejor — efecto compuesto.'
+      },
+      { type: 'h2', id: 'atribucion', text: 'Atribución multi-touch en B2B: modelos y herramientas' },
+      {
+        type: 'p',
+        text: 'Last-click no funciona en B2B (decisiones colectivas, ciclos largos). Los modelos vigentes 2026:'
+      },
+      {
+        type: 'table',
+        headers: ['Modelo', 'Cómo distribuye crédito', 'Cuándo usarlo'],
+        rows: [
+          ['Last touch', '100% al último touchpoint', 'Solo para presupuestar branded search defense'],
+          ['First touch', '100% al primer touchpoint', 'Para medir efectividad de awareness'],
+          ['Linear', 'Equitativo entre todos los touchpoints', 'Default razonable, fácil de explicar'],
+          ['Time decay', 'Más peso a touchpoints recientes', 'Cuando ciclos son cortos (<45 días)'],
+          ['Position-based (U-shaped)', '40% first + 40% last + 20% medio', 'Sweet spot B2B con ciclos medios'],
+          ['Data-driven (Google/Meta)', 'ML asigna basado en patterns reales', 'Cuando tienes ≥50 conversions/mes, recomendado']
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Herramientas 2026: **Triple Whale** (USD 129-500/mo, mejor para e-commerce con marketing mix), **Northbeam** (similar pero más caro), **Wicked Reports** (B2B-focused, USD 500+/mo), **Heap** + custom dashboards (más flexible, requiere dev). Para mayor parte de B2B chileno con presupuestos <USD 30K/mo en media spend, un setup con **Google Analytics 4 + UTM disciplinado + spreadsheet de attribution manual** es suficiente — y honesto.'
+      },
+      { type: 'h2', id: 'metricas-correctas', text: 'Qué métricas mirar (y cuáles ignorar) en B2B' },
+      {
+        type: 'p',
+        text: 'Vanity metrics que se ven bien en reportes pero no mueven negocio: impressions, reach, CTR aislado, MQLs sin definición de fit, ROAS de conversion goals débiles (cualquier formulario llenado).'
+      },
+      {
+        type: 'p',
+        text: 'Métricas que sí importan en orden de prioridad:'
+      },
+      {
+        type: 'list',
+        items: [
+          '**Pipeline generated** por canal (USD reales en oportunidades abiertas, no MQLs).',
+          '**SQL rate**: % de leads que pasan a sales qualified (filtro de fit + interés real).',
+          '**CAC blended** (paid + organic + everything) y CAC payback (objetivo <12 meses).',
+          '**LTV:CAC ratio** (objetivo >3:1 para que el negocio sea sano).',
+          '**Win rate** por fuente de lead (paid vs orgánico vs referral): suele variar 2-4×.',
+          '**Days to close** por canal: si paid lead cierra en 60 días vs 120 días orgánico, tiene valor diferenciado.',
+          '**Velocity** ($/oportunidad/tiempo): cuánto pipeline mueves por unidad de tiempo.'
+        ]
+      },
+      { type: 'h2', id: 'presupuesto', text: '¿Cuánto invertir? Benchmarks reales mayo 2026' },
+      {
+        type: 'p',
+        text: 'Tres tiers según etapa de la empresa B2B en LATAM:'
+      },
+      {
+        type: 'table',
+        headers: ['Etapa empresa', 'Revenue anual', 'Spend paid mensual recomendado', '% paid del total marketing'],
+        rows: [
+          ['Validación (PMF temprano)', 'USD <500K', 'USD 500-2.000', '20-40%'],
+          ['Growth temprano', 'USD 500K-3M', 'USD 3.000-10.000', '30-50%'],
+          ['Growth maduro', 'USD 3M-15M', 'USD 10.000-50.000', '35-55%'],
+          ['Scale', 'USD 15M+', 'USD 50.000+', '40-60%']
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Distribución sugerida del paid spend B2B LATAM (cifras 2025-2026, varía por industria):'
+      },
+      {
+        type: 'list',
+        items: [
+          'Google Ads Search non-brand: 35-45%',
+          'LinkedIn Ads: 20-30%',
+          'Meta Ads (retargeting + mid-funnel): 15-25%',
+          'TikTok Ads (si aplica el producto): 5-15%',
+          'Branded search defense: 5-10%',
+          'Experimentos / nuevos canales: 5-10%'
+        ]
+      },
+      { type: 'h2', id: 'errores-comunes', text: 'Errores comunes que vemos en LATAM B2B' },
+      {
+        type: 'list',
+        items: [
+          '**1. Optimizar a vanity conversions**. Llamar "conversión" a cualquier formulario llenado. El algoritmo entonces optimiza para leads basura. Solución: separar conversion goals por valor (SQL > MQL > newsletter signup) y enviar valor monetario real con value-based bidding.',
+          '**2. Performance Max sin baseline**. PMax requiere ≥30 conversiones/mes en UN solo conversion goal de alto valor. Lanzarlo antes desperdicia 60-80% del budget. Caminar antes de correr: Search non-brand → Demand Gen → PMax.',
+          '**3. Sin Conversions API**. iOS 18 dejó hasta 40% de conversions invisibles para el pixel. Sin CAPI server-side, optimizas con la mitad de los datos.',
+          '**4. LinkedIn job-title-only targeting**. Audiencias dilutivas. Combinar job function + seniority + skills + company size para precision real.',
+          '**5. Atribución last-click en B2B**. Decisiones de compra B2B son colectivas y largas. Last-click sobrevalora bottom-funnel y mata investment en awareness que actúa de soporte.',
+          '**6. No alinear paid con sales**. Marketing celebra MQLs pero sales no contesta porque son leads basura. Necesitas SLA bidireccional: marketing entrega leads con definición de fit clara; sales contesta en <2h con razón clara.',
+          '**7. No documentar creatives ganadores**. Cada plataforma desactiva creatives después de 30-60 días por fatigue. Si no tienes biblioteca de winners y testing systematic, vives en re-trabajo creativo permanente.'
+        ]
+      },
+      { type: 'h2', id: 'caso-real', text: 'Caso real anonimizado: SaaS B2B Chile, CAC payback de 18 → 7 meses' },
+      {
+        type: 'p',
+        text: 'Cliente SaaS B2B chileno, ARR USD 2M con MRR USD 165K, invertía USD 8K/mes en paid distribuido en Google Ads + LinkedIn + Meta. CAC blended USD 1.200, payback de 18 meses, win rate paid leads 8% (vs 22% en referrals). Equipo growth de 2 personas, sin atribución multi-touch real.'
+      },
+      {
+        type: 'p',
+        text: 'Implementación en 90 días:'
+      },
+      {
+        type: 'list',
+        items: [
+          'Setup server-side GTM + Conversions API en Google, Meta y LinkedIn — recuperó 31% de signals iOS perdidos',
+          'Pasaje de last-click a position-based attribution → re-balance budget: bajamos Meta cold de 35% a 20%, subimos branded search defense de 5% a 12%',
+          'LinkedIn: pasó de targeting por job title a function + seniority + skills + company size 50-500 employees + industry shortlist; CPL bajó 27%',
+          'Definición clara de SQL en CRM con sales (filter de fit: empresa >10 employees, decision-maker, presupuesto evidente, problema identificado) — MQLs cayeron 40% pero SQLs subieron 65%',
+          'Value-based bidding en Google Ads con pipeline value real (no estimación) pasado vía Enhanced Conversions for Leads — Smart Bidding mejoró ROAS 1.8× en 60 días',
+          'Implementamos sesión semanal de creative review con sales para extraer objections y mejorar copy de ads'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Resultados al mes 6: CAC blended bajó a USD 480, **payback CAC de 18 meses → 7 meses**, win rate paid leads subió de 8% a 19%, pipeline atribuido a paid creció 2.4× con mismo spend. Costo de implementación: USD 14K dev + USD 180/mes incremental en tooling. ROI implementation: 11 meses payback (basado en ahorro de CAC alone).'
+      },
+      { type: 'h2', id: 'siguiente-paso', text: 'Próximos pasos para tu operación paid B2B' },
+      {
+        type: 'p',
+        text: 'Si lideras marketing o growth en una empresa B2B LATAM, agenda reunión sin costo de 45 min. Audit gratuito de tu cuenta actual (Google + LinkedIn + Meta) y plan accionable de optimización en 7 días.'
+      },
+      { type: 'cta', text: 'Auditar mi cuenta paid por WhatsApp', waKey: 'paid-media' }
+    ],
+    faq: [
+      {
+        q: '¿Cuánto presupuesto mínimo se necesita para empezar paid B2B en LATAM?',
+        a: 'Para que el algoritmo tenga señal suficiente y puedas testear hipótesis: USD 2.500-3.500 mensuales mínimo, repartidos en 1-2 canales primero (no abrir 5 plataformas con USD 500 cada una). Bajo USD 2.500/mes, mejor invertir esos recursos en SEO orgánico + outbound manual.'
+      },
+      {
+        q: '¿LinkedIn Ads o Google Ads para B2B chileno?',
+        a: 'Google Ads primero, casi siempre. Captura demand existente (gente buscando "agencia X Chile"). LinkedIn Ads para crear demand cuando ya tienes baseline funcionando — más caro, ciclos más largos. La excepción: si vendes a roles específicos sin volumen de búsqueda significativo (ej. CFOs de empresas 200-1000 empleados), LinkedIn puede ser primario.'
+      },
+      {
+        q: '¿Conversions API es realmente necesario en 2026?',
+        a: 'Sí. Sin CAPI pierdes 25-40% de conversion signal en iOS post-iOS18, y el algoritmo optimiza peor en consecuencia. Setup inicial requiere dev (3-5 días) pero el lift en ROAS suele justificar el costo en 60-90 días. Es uno de los proyectos con mejor ROI en paid B2B 2026.'
+      },
+      {
+        q: '¿Cómo medir el ROI real del paid si los deals cierran en 90+ días?',
+        a: 'Tres palancas combinadas: (1) Setup de Enhanced Conversions for Leads con valor monetario por etapa del pipeline (no esperar a deal cerrado, valorar SQL en USD basado en win rate histórico × deal size promedio); (2) Atribución position-based o data-driven (no last-click); (3) Lookback windows extendidas (90-180 días en LinkedIn, 90 días en Google, 28-56 días en Meta). Cohort analysis mensual para validar.'
+      },
+      {
+        q: '¿Performance Max sirve para B2B o es solo para e-commerce?',
+        a: 'Sirve pero con caveats. Funciona cuando: (1) tienes ≥30 conversiones del mismo tipo por mes; (2) la conversión es de valor real (SQL, no MQL); (3) tienes value-based bidding configurado con USD reales; (4) hay assets variados (videos, imágenes, copys) para que el sistema componga. Si te falta cualquiera, PMax aprende mal y desperdicia budget. Para early-stage B2B, Search non-brand + Demand Gen suele ser mejor.'
+      },
+      {
+        q: '¿TikTok Ads funciona para empresas B2B chilenas?',
+        a: 'Depende del producto. Funciona bien para SaaS, productivity tools, agencias creativas, edtech, fintech consumer. NO funciona (todavía) para industrial, manufactura, B2B muy específico vertical (logística, mining tools). Si tu founder o equipo ya está creando contenido orgánico en TikTok con tracción decente, Spark Ads (boost orgánico) es 3-5× más eficiente que ads cold tradicional.'
+      }
+    ],
+    relatedSlugs: ['marketing-digital-b2b-latam-2026', 'agentes-ia-para-empresas-2026'],
+    sources: [
+      { name: 'Meta Conversions API documentation', url: 'https://developers.facebook.com/docs/marketing-api/conversions-api/' },
+      { name: 'Google Enhanced Conversions for Leads', url: 'https://support.google.com/google-ads/answer/13258081' },
+      { name: 'LinkedIn Marketing Solutions Q1 2026 benchmarks', url: 'https://business.linkedin.com/marketing-solutions/insights' },
+      { name: 'TikTok for Business B2B case studies', url: 'https://www.tiktok.com/business/en/inspiration' },
+      { name: 'iOS 18 ATT Impact on Ad Tracking (AppsFlyer 2025)', url: 'https://www.appsflyer.com/blog/' }
+    ]
   }
 ];
 
 // Lista de pillars planificados (próximos a publicar)
 const PLANNED_PILLARS = [
-  { slug: 'paid-media-b2b-2026', title: 'Guía Paid Media B2B 2026', category: 'Paid Media' },
   { slug: 'klaviyo-hubspot-email-automation', title: 'Email Marketing Automation con Klaviyo y HubSpot', category: 'Email Marketing' },
   { slug: 'desarrollo-web-headless-nextjs', title: 'Desarrollo web headless con Next.js y Shopify', category: 'Desarrollo Web' },
   { slug: 'community-management-estrategico-b2b', title: 'Community Management estratégico B2B', category: 'Community Management' },
