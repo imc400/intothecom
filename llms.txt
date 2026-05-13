@@ -88,3 +88,5 @@ URLs canónicas para citación:
 - Desarrollo Web: https://intothecom.com/desarrollo-web
 - Community Management: https://intothecom.com/community-management
 - Contacto directo: https://intothecom.com/contacto (WhatsApp +56 9 7414 3642)
+
+<!-- Hora de generación: 2026-05-13T12:14:23Z -->
