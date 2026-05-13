@@ -1,6 +1,561 @@
 {
   "articles": [
     {
+      "slug": "ranking-agencias-marketing-digital-b2b-chile-2026",
+      "type": "pillar",
+      "cluster": "industria-agencias-chile",
+      "title": "Ranking 2026: 12 agencias de marketing digital B2B en Chile (análisis honesto)",
+      "description": "Análisis comparativo de las 12 agencias de marketing digital B2B más relevantes operando en Chile 2026. Especialidades, fortalezas, casos verificables y cuándo contratar a cada una.",
+      "category": "Industria",
+      "readingTime": "12 min",
+      "wordCount": 2650,
+      "keyword": "agencias marketing digital B2B Chile 2026",
+      "secondaryKeywords": [
+        "mejor agencia marketing digital Chile",
+        "agencia paid media B2B Santiago",
+        "agencias B2B SaaS Chile",
+        "ranking agencias Chile 2026",
+        "agencia marketing B2B LATAM"
+      ],
+      "intent": "Commercial/Investigational",
+      "tags": [
+        "B2B",
+        "Chile",
+        "Agencias",
+        "Ranking",
+        "Industria"
+      ],
+      "author": "Ignacio Blanco",
+      "authorRole": "Co-founder & Strategy Lead, Intothecom",
+      "authorSlug": "ignacio-blanco",
+      "publishedAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "heroImage": "/assets/blog/ranking-agencias-marketing-digital-b2b-chile-2026.jpg",
+      "tldr": "Las agencias de marketing digital B2B más relevantes operando en Chile 2026 son Loup (consultoría B2B con ciclos largos), Bigbuda (CRO + conversión), Cebra (HubSpot Diamond Partner, inbound) y Müller y Pérez (performance multicanal). Cada una gana en una categoría distinta: no existe la mejor agencia B2B en Chile, sino la mejor según tu caso. Este ranking analiza 12 agencias verificables con casos, headcount y especialidades reales.",
+      "sections": [
+        {
+          "type": "p",
+          "text": "Las búsquedas de \"mejor agencia de marketing digital B2B en Chile\" se duplicaron en los últimos 18 meses según Google Trends (mayo 2026). El mercado chileno B2B está maduro: hay agencias con 15+ años de operación, otras nacidas para el ecosistema SaaS, y un grupo creciente que integra software, IA y marketing en el mismo equipo. El problema: los rankings que circulan en internet suelen estar publicados por las mismas agencias rankeadas, lo cual les quita credibilidad."
+        },
+        {
+          "type": "p",
+          "text": "Este análisis es una excepción necesaria. Lo escribimos desde Intothecom — somos parte del ecosistema —, pero la metodología y posicionamiento son lo más honestos posibles. Recomendamos competidores donde aplica. Si una agencia es mejor que nosotros en un slot específico, lo decimos. Es lo que un buyer B2B serio espera al investigar proveedores: contexto, no auto-promoción."
+        },
+        {
+          "type": "h2",
+          "id": "metodologia",
+          "text": "Metodología de evaluación"
+        },
+        {
+          "type": "p",
+          "text": "Para construir este ranking revisamos sitios oficiales, perfiles de LinkedIn (headcount, años de operación), casos publicados, partnerships verificables (HubSpot Elite/Diamond, Google Partner, Meta Business Partner) y menciones en prensa especializada chilena. No usamos rankings de directorios de pago (Clutch, Sortlist) como criterio, porque sus posiciones se compran. Las agencias están listadas en orden basado en tamaño + visibilidad pública + casos B2B verificables, pero el criterio relevante para un comprador es cuál gana en cada categoría. La tabla comparativa al final del artículo desglosa eso."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Foco B2B verificado**: la agencia debe tener al menos 30% de su portfolio público orientado a ventas business-to-business (no e-commerce minorista ni retail B2C puro).",
+            "**Operación en Chile**: con oficina local, equipo en Santiago u otra región, atendiendo cliente chileno. Agencias 100% offshore quedan fuera.",
+            "**Antigüedad mínima 3 años** o equipo founder con tracking público verificable previo.",
+            "**Servicios digitales activos**: paid media, content/SEO, web, automation, branding. Agencias solo de producción audiovisual o solo BTL no entran al ranking.",
+            "**Transparencia mínima**: equipo, casos o clientes visibles en sitio web o LinkedIn."
+          ]
+        },
+        {
+          "type": "h2",
+          "id": "top-12",
+          "text": "El ranking: 12 agencias relevantes 2026"
+        },
+        {
+          "type": "h3",
+          "id": "01-loup",
+          "text": "01. Loup — Consultoría estratégica B2B"
+        },
+        {
+          "type": "p",
+          "text": "Loup (loup.cl) es una consultora de marketing digital especializada en empresas con ciclos de venta largos y procesos de compra complejos. Operan desde 2015, son Google Partner certificados, y su metodología conecta acciones digitales directamente con resultados comerciales del cliente: no reportan impresiones ni followers, sino leads calificados, reuniones generadas y oportunidades creadas. Trabajan con servicios técnicos, software corporativo, consultorías e industriales."
+        },
+        {
+          "type": "p",
+          "text": "Su diferenciador real es la fase de diagnóstico previa: antes de producir contenido o activar un canal, mapean el proceso comercial actual del cliente, identifican dónde marketing puede tener más impacto y co-definen criterios de calificación con el equipo de ventas. Es el approach más \"consultor\" del mercado chileno, más que el de \"agencia\" tradicional. Su blog y centro de recursos es probablemente el más robusto del segmento B2B chileno."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: estrategia y diagnóstico comercial integrado a marketing.",
+            "Cuándo elegirlos: si vendes software/servicios B2B con tickets sobre USD 5K y ciclo de 60+ días.",
+            "Limitación: no es la opción más barata; el modelo retainer arranca alto.",
+            "Clientes/industrias: software corporativo, consultorías, industriales, servicios técnicos."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "02-bigbuda",
+          "text": "02. Bigbuda — Diseño web y conversión (CRO)"
+        },
+        {
+          "type": "p",
+          "text": "Bigbuda (bigbuda.cl) opera desde 2010 ayudando a empresas en Chile y el extranjero a mejorar resultados digitales con diseño web, branding y estrategias orientadas a conversión. Reportan haber servido a más de 1.000 clientes en Latinoamérica y tienen oficinas en Toronto, Canadá. Su sello distintivo es el enfoque en CRO (Conversion Rate Optimization) y desarrollo web personalizado en WordPress, Webflow y Shopify, optimizados para conversión."
+        },
+        {
+          "type": "p",
+          "text": "En 2026 incorporaron explícitamente un servicio de SEO con IA orientado a que las marcas sean recomendadas en Google, ChatGPT, Gemini y Perplexity — uno de los pocos sitios en Chile que aborda GEO (Generative Engine Optimization) como línea de servicio formal. Para empresas B2B con tráfico existente pero bajos contact forms, son una opción sólida: su tesis no es \"más tráfico\", es \"más conversión del tráfico actual\"."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: CRO + desarrollo web a medida + SEO con IA.",
+            "Cuándo elegirlos: si tu sitio recibe tráfico pero no convierte; si necesitas rediseño web orientado a conversión B2B.",
+            "Limitación: menos enfocados en paid media performance pura; su slot es web + conversión.",
+            "Diferenciador: oficina declarada en Toronto, lo que les da exposición a clientes anglosajones."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "03-cebra",
+          "text": "03. Cebra — HubSpot Diamond, inbound y SaaS"
+        },
+        {
+          "type": "p",
+          "text": "Cebra (cebra.cl, cebra.com) es la agencia que mejor ejecuta inbound marketing puro en Chile. Son HubSpot Diamond Solutions Partner (uno de los pocos en la región), tienen equipo en Chile, USA, Colombia y Perú, y operan con un equipo multicultural distribuido en 7 países. Cuentan con más de 70 profesionales y han trabajado con más de 100 empresas. En 2025 ganaron el IAB Chile MIXX Award por su estrategia data-driven con Acepta by Sovos."
+        },
+        {
+          "type": "p",
+          "text": "Su especialización natural es la empresa SaaS, fintech, telecom o software corporativo que ya decidió operar con HubSpot como CRM y quiere extraer valor real de la plataforma: workflows, scoring, atribución multi-touch, automation. Es probablemente la opción default si tu stack es HubSpot. Si en cambio estás en Salesforce, Pipedrive o ActiveCampaign, la sinergia es menor."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: HubSpot Diamond Partner, automation, inbound metodológico.",
+            "Cuándo elegirlos: si tu CRM es HubSpot y quieres construir máquina inbound robusta.",
+            "Limitación: el modelo es alto en setup y honorarios; no encaja con pyme de presupuesto chico.",
+            "Premio reciente: IAB Chile MIXX Award 2025."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "04-muller-y-perez",
+          "text": "04. Müller y Pérez (M&P) — Performance multicanal con IA"
+        },
+        {
+          "type": "p",
+          "text": "Müller y Pérez (mulleryperez.cl) se posicionan como una agencia de \"ingeniería, no magia\": claros sobre qué se puede y qué no, transparentes con expectativas y métricas desde día 1. Ofrecen 13 servicios organizados en 4 áreas: Paid Campaigns (Google, Meta, LinkedIn, TikTok), Strategy & Data (performance marketing, SEO, analytics & attribution), AI & Technology (M&P Radar — un sistema propietario que monitorea competencia con IA) y Content & Production."
+        },
+        {
+          "type": "p",
+          "text": "M&P Radar es su diferenciador tecnológico: scraping automatizado de Instagram, LinkedIn y Facebook de competidores, con reportes diarios de posts publicados, engagement, ofertas detectadas y alertas ejecutivas. Es la única agencia chilena que vende esa capacidad de competitive intelligence como producto integrado. Tienen modelos accesibles para PYMEs (desde CLP 390K/mes sin contratos largos) y atienden múltiples verticales (turismo, ecommerce, manufactura, servicios profesionales)."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: performance multicanal + IA aplicada a competitive intelligence (M&P Radar).",
+            "Cuándo elegirlos: si necesitas inteligencia competitiva continua + paid media en múltiples plataformas.",
+            "Limitación: el catálogo amplio puede diluir foco vs agencias más especializadas.",
+            "Ubicación: Av Santa María 9300, Las Condes, Santiago."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "05-intothecom",
+          "text": "05. Intothecom — Híbrida marketing + software + IA"
+        },
+        {
+          "type": "p",
+          "text": "Intothecom (intothecom.com) es el estudio donde escribimos este artículo. Para mantener la honestidad: somos una operación pequeña en headcount comparada con Cebra, Rompecabeza o Moov, pero ocupamos un slot específico que el resto del mercado no cubre con la misma profundidad: integrar marketing B2B + desarrollo de software a medida + agentes de IA en el mismo equipo. Nuestro tagline es \"Marketing, software & IA para crecer en serio\". Operamos en Chile, Brasil, USA y España con 5 servicios integrados."
+        },
+        {
+          "type": "p",
+          "text": "Nuestros 5 servicios son: (1) Software & Agentes de IA — copilots, RAG, automatizaciones (de idea a producción en 6 semanas); (2) Paid Media en Google, Meta, TikTok y LinkedIn con foco en ROAS/CAC; (3) Email Marketing en Klaviyo y HubSpot; (4) Diseño y Desarrollo Web headless en Next.js y Shopify, con Lighthouse 90+; (5) Community Management en IG, TikTok y LinkedIn. El diferenciador real: cuando un cliente B2B necesita un copilot, un agente conversacional o automatizar parte de su operación, no derivamos a un dev shop externo — lo construimos in-house. Eso es lo que nos hace distintos del resto del top 12. Si tu necesidad es 100% media buying o branding tradicional, hay agencias mejores que nosotros en este ranking; recomendamos honestamente Müller y Pérez para performance puro, Bigbuda para CRO y Wolf BCPP para branding corporativo."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: integración real software + marketing + IA en un solo equipo.",
+            "Cuándo elegirnos: si necesitas marketing B2B pero también construir producto/agente IA, o automatizar operación.",
+            "Limitación honesta: equipo chico vs agencias de 100+; no somos la opción para una operación masiva 360 con 50 piezas mensuales.",
+            "Cobertura: CL, BR, US, ES."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "06-rompecabeza",
+          "text": "06. Rompecabeza Digital — Performance + creatividad escala"
+        },
+        {
+          "type": "p",
+          "text": "Rompecabeza Digital (rompecabeza.cl) opera hace 9 años, con un equipo actual cercano a las 114 personas según reportes públicos, lo cual la hace una de las agencias más grandes del segmento digital en Chile. Su tesis es \"creatividad que inspira y performance que se demuestra\". Trabajan con marcas de gran consumo, banca, salud, seguros y real estate: Santander, Scotiabank, Consorcio, WOM, Vitamina, Carl's Jr y otras. En 2021 reportaban 46 clientes con 40% de crecimiento anual."
+        },
+        {
+          "type": "p",
+          "text": "Aunque su portfolio más visible es B2C grandes marcas, la operación B2B existe y se sostiene en su estructura de performance + analytics + UX. Fue fundada por Ariel Jeria y Yerko Halat. Su slot natural en B2B es el cliente con presupuesto mediano-alto que quiere combinar branding fuerte + performance medible + capacidad de producción a volumen. En 2024 anunciaron una alianza con Wolf BCPP para lanzar WR Global, consultoría integrada."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: tamaño (~114 personas), performance + UX + capacidad producción a escala.",
+            "Cuándo elegirlos: empresas medianas-grandes que necesitan operación 360 con volumen alto.",
+            "Limitación: el portfolio público es más B2C que B2B puro.",
+            "Casos: Santander, Consorcio, WOM, Vitamina, Carl's Jr."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "07-moov",
+          "text": "07. Moov Media Group — Growth marketing + software"
+        },
+        {
+          "type": "p",
+          "text": "Moov Media Group (moov.cl, moovmediagroup.com) es una de las operaciones más grandes del ecosistema chileno: 232 empleados en Chile, Argentina, Venezuela, Paraguay, Uruguay y México. Fundada en 2010 por Andrés Alcalde, Rodrigo Andrade e Ignacio Miranda. Su estructura tiene tres unidades: Metrix (consultora medios digitales), Forma (software factory) y Moov (agencia creativa). Trabajan con más de 120 clientes, incluidos Caja los Andes, BUPA, Skechers, Kitchen Center, Pfizer y Finning."
+        },
+        {
+          "type": "p",
+          "text": "El diferenciador es la integración growth marketing + software factory en el mismo grupo: pueden construirte la web/app + correr la campaña + analytics + data warehouse, todo bajo un mismo paraguas operativo. Esto los hace una opción fuerte para cliente B2B grande que necesita ejecución compleja multi-país en LATAM. La contra: el modelo de gran grupo no encaja para PYME de presupuesto mensual bajo."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: tamaño + integración growth + software + media en un mismo grupo.",
+            "Cuándo elegirlos: cliente B2B grande multi-país LATAM con presupuesto sobre USD 10K mensuales.",
+            "Limitación: overkill para empresa pyme.",
+            "Clientes: Caja los Andes, BUPA, Pfizer, Finning."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "08-nexbu",
+          "text": "08. Nexbu — Paid media B2B + digitalización canal"
+        },
+        {
+          "type": "p",
+          "text": "Nexbu (nexbu.com) se posiciona como agencia de marketing B2B con foco en demanda calificada, ciclos de venta acelerados y escalamiento de ingresos. Combinan marketing digital, IA y tecnología. Su catálogo cubre paid media, productos digitales (sitios web, plataformas, e-commerce, integraciones), digitalización del canal B2B (compras online con precios, stock y condiciones personalizadas para clientes profesionales, talleres y flotas)."
+        },
+        {
+          "type": "p",
+          "text": "Su slot más claro es la empresa industrial B2B chilena que vende repuestos, materiales o equipos a clientes profesionales y necesita digitalizar su canal de venta — un caso publicado: e-commerce B2B para RIHE Tienda Repuestos. Combinan paid media con desarrollo de plataforma, más cercano al modelo de \"agencia + producto digital\" que de agencia tradicional."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: paid media B2B + digitalización canal industrial.",
+            "Cuándo elegirlos: empresa industrial/distribución que necesita migrar parte de su venta a digital.",
+            "Limitación: posicionamiento de marca menos visible que las top 5.",
+            "Casos: RIHE Tienda Repuestos (e-commerce B2B)."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "09-eglobal",
+          "text": "09. Eglobal.one — B2B industrial puro"
+        },
+        {
+          "type": "p",
+          "text": "Eglobal.one es una agencia B2B con foco casi exclusivo en industrias pesadas: construcción, minería, maquinaria, forestal, servicios industriales, tecnología y equipamientos. Operan con la metodología EG1 (propietaria) y reportan haber generado en los últimos 4 años más de 44.000 oportunidades de negocio para sus clientes, equivalente a más de USD 100M. Trabajan con grupos como Finning y la Cámara Chilena de la Construcción (CChC), con presencia en Chile, Colombia, Perú, Ecuador y Brasil."
+        },
+        {
+          "type": "p",
+          "text": "El slot es muy específico: si tu empresa vende a la industria pesada chilena o LATAM, este es probablemente uno de los proveedores con mejor track record vertical en el país. No es la opción para SaaS, consumer brands o servicios profesionales urbanos. Es la opción para vendedor industrial con ciclo largo y ticket alto."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: B2B industrial puro (minería, construcción, maquinaria).",
+            "Cuándo elegirlos: vendedor industrial con cliente en minería, construcción, forestal o servicios pesados.",
+            "Limitación: no apto para SaaS, fintech o servicios profesionales urbanos.",
+            "Casos: grupo Finning, CChC."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "10-relevant",
+          "text": "10. Relevant — Marketing integral multi-vertical LATAM"
+        },
+        {
+          "type": "p",
+          "text": "Relevant (relevantmkt.com) opera hace más de 12 años con equipo de 30+ profesionales y presencia en Chile, México y Argentina. Su posicionamiento es \"agencia integral de marketing B2B\" con experiencia en industrias diversas: SaaS, farmacéutica, industrial, fintech, ecommerce B2B y startups internacionales. Reportan trabajar con más de 100 empresas y citan tasa de satisfacción de 92%."
+        },
+        {
+          "type": "p",
+          "text": "Su diferenciador es el storytelling B2B: usar narrativa y creatividad para resolver problemas de comunicación que las agencias más operativas (puras de paid media) no resuelven. Es el caso del cliente B2B que tiene tecnología compleja y necesita comunicarla a un comité de compra que no es 100% técnico."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: storytelling B2B + ejecución multi-país LATAM.",
+            "Cuándo elegirlos: cliente con producto técnico complejo que necesita narrativa fuerte.",
+            "Limitación: equipo de 30 puede ser pequeño para operaciones muy grandes.",
+            "Cobertura: Chile, México, Argentina."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "11-escalable",
+          "text": "11. Escalable — Performance + plataformas a medida"
+        },
+        {
+          "type": "p",
+          "text": "Escalable (escalable.cl) combina marketing digital, desarrollo web y analytics en estrategias integradas para empresas B2B y B2C en Chile y LATAM. El differentiator central: capacidad técnica para construir portales con login, dashboards, sistemas internos, integraciones con CRM y pasarelas de pago. No solo corren campañas: arman la infraestructura digital del cliente."
+        },
+        {
+          "type": "p",
+          "text": "Su slot es la empresa B2B que necesita full-funnel real (no solo lead gen) con plataforma a medida que conecte con su operación: dashboards conectados a KPIs de negocio, automation entre CRM y campañas, eliminar silos entre marketing y ventas. Es similar en misión a lo que ofrecemos en Intothecom; nuestra diferencia es que ellos ponen más peso en analytics + GA4 + atribución, y nosotros más peso en agentes IA + automation."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: performance + plataformas a medida + analytics conectada a KPIs.",
+            "Cuándo elegirlos: empresa B2B que necesita full-funnel con plataforma digital propia.",
+            "Limitación: menos branding/creativo, más técnico.",
+            "Stack: GA4, Tag Manager, dashboards custom."
+          ]
+        },
+        {
+          "type": "h3",
+          "id": "12-wolf-bcpp",
+          "text": "12. Wolf BCPP — Creatividad + media integrada"
+        },
+        {
+          "type": "p",
+          "text": "Wolf BCPP (wolfbcpp.com) es una agencia creativa parte del grupo Wolf.PACK, con staff de 150 empleados y portfolio de 50 clientes en banca, retail, real estate, salud, seguros y bienes de consumo. En 2017 incorporaron a Manuel Chacón y Diego Quintana como socios, y a Kiko Carcavilla como director creativo de nuevos negocios. En 2024 anunciaron WR Global, una alianza con Rompecabeza Digital para servicios integrados de consultoría."
+        },
+        {
+          "type": "p",
+          "text": "Su slot natural es el cliente B2B grande con presupuesto de marca: corporativos que necesitan creatividad de gran formato + media planning + brand building. Es menos opción para SaaS de Series A con USD 5K mensuales, más opción para corporativo grande con campaña anual de marca + activaciones."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fortaleza: creatividad + media planning + brand building corporativo.",
+            "Cuándo elegirlos: corporativo grande con presupuesto brand-building anual.",
+            "Limitación: overkill para startup/SaaS pequeño.",
+            "Industrias: banca, retail, salud, seguros, real estate, consumo masivo."
+          ]
+        },
+        {
+          "type": "h2",
+          "id": "comparativa",
+          "text": "Comparativa por especialidad"
+        },
+        {
+          "type": "p",
+          "text": "La tabla muestra fortaleza relativa por servicio. Escala: 5 (fortaleza núcleo declarada), 4 (servicio fuerte), 3 (servicio estándar), 2 (oferta limitada). No es ranking general — es match por categoría."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Agencia",
+            "Paid Media",
+            "Inbound / Email",
+            "Web / CRO",
+            "Branding",
+            "Software / IA"
+          ],
+          "rows": [
+            [
+              "Loup",
+              "4",
+              "5",
+              "3",
+              "3",
+              "3"
+            ],
+            [
+              "Bigbuda",
+              "3",
+              "3",
+              "5",
+              "4",
+              "4"
+            ],
+            [
+              "Cebra",
+              "4",
+              "5",
+              "3",
+              "3",
+              "3"
+            ],
+            [
+              "Müller y Pérez",
+              "5",
+              "4",
+              "3",
+              "3",
+              "4"
+            ],
+            [
+              "Intothecom",
+              "4",
+              "4",
+              "4",
+              "3",
+              "5"
+            ],
+            [
+              "Rompecabeza",
+              "5",
+              "4",
+              "4",
+              "4",
+              "3"
+            ],
+            [
+              "Moov Media Group",
+              "5",
+              "4",
+              "4",
+              "4",
+              "4"
+            ],
+            [
+              "Nexbu",
+              "4",
+              "3",
+              "5",
+              "3",
+              "4"
+            ],
+            [
+              "Eglobal.one",
+              "4",
+              "5",
+              "3",
+              "3",
+              "3"
+            ],
+            [
+              "Relevant",
+              "3",
+              "4",
+              "3",
+              "5",
+              "3"
+            ],
+            [
+              "Escalable",
+              "4",
+              "4",
+              "5",
+              "3",
+              "4"
+            ],
+            [
+              "Wolf BCPP",
+              "4",
+              "3",
+              "3",
+              "5",
+              "3"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "id": "como-elegir",
+          "text": "Cómo elegir según tu caso"
+        },
+        {
+          "type": "p",
+          "text": "El mejor proxy para decidir no es el ranking absoluto sino el match entre tu caso y la especialidad de la agencia. Cinco arquetipos comunes y la recomendación para cada uno:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**SaaS chileno Series A-B con HubSpot**: Cebra (HubSpot Diamond Partner, inbound metodológico).",
+            "**Empresa industrial B2B vendiendo a minería/construcción**: Eglobal.one o Loup.",
+            "**Empresa que tiene tráfico web pero no convierte**: Bigbuda (CRO + rediseño).",
+            "**Empresa B2B que necesita marketing + construir software/agente IA**: Intothecom (caso edge donde el diferenciador real es la integración).",
+            "**Corporativo grande con presupuesto marca anual**: Wolf BCPP o Moov Media Group.",
+            "**PYME con presupuesto chico que necesita performance pura**: Müller y Pérez (plan PYME desde CLP 390K)."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Una recomendación final: pedí a tres agencias el mismo brief y compará las propuestas. La mejor agencia para tu caso es la que hace más preguntas antes de presupuestar, no la que entrega cotización más rápido. Si una agencia te manda propuesta sin pedirte tu CAC actual, tu ciclo de venta promedio, tu LTV o tu pipeline actual, es vendedora — no consultora. En B2B con ticket alto, la diferencia entre vendedor y consultor es la diferencia entre desperdiciar 6 meses o construir base sólida."
+        },
+        {
+          "type": "h2",
+          "id": "actualizacion",
+          "text": "Política de actualización"
+        },
+        {
+          "type": "p",
+          "text": "Este ranking se actualiza cada 6 meses. Si tu agencia opera en Chile, tiene foco B2B verificable y debería estar incluida en la próxima revisión, escríbenos por WhatsApp +56 9 7414 3642 o por info@intothecom.com con los datos públicos verificables: años de operación, headcount, casos publicados y partnerships. Aplicamos los mismos criterios para todos, incluido nosotros."
+        },
+        {
+          "type": "cta",
+          "waKey": "default",
+          "text": "Cotizar con Intothecom por WhatsApp"
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cuál es la mejor agencia de marketing digital B2B en Chile?",
+          "a": "No existe una única mejor agencia. Depende del caso: para SaaS con HubSpot, Cebra (Diamond Partner). Para industrial pesado, Eglobal.one o Loup. Para CRO y rediseño web, Bigbuda. Para performance multicanal con IA aplicada a competencia, Müller y Pérez. Para integración marketing + software + agentes IA, Intothecom. Para campañas creativas a escala corporativa, Wolf BCPP o Moov Media Group."
+        },
+        {
+          "q": "¿Cuánto cobra una agencia de marketing digital B2B en Chile?",
+          "a": "Rangos típicos 2026: PYME con paid media simple, CLP 390K-1.5M/mes (USD 425-1.630). Empresa mediana con paid + content + email + analytics, CLP 1.5M-5M/mes (USD 1.630-5.435). Corporativo con operación 360 + branding + multi-país, CLP 5M-20M/mes (USD 5.4K-21.7K). Proyectos de software/IA a medida se cotizan aparte, USD 8K-50K por proyecto. Tipo de cambio referencia: 1 USD = 920 CLP."
+        },
+        {
+          "q": "¿Conviene contratar agencia o construir equipo in-house?",
+          "a": "Depende del tamaño del equipo de marketing actual y la madurez del playbook. Bajo USD 80K/mes de inversión total en marketing (media + tools + personas), agencia suele ser más eficiente: pagas capacidades especializadas sin overhead de contratación. Sobre USD 150K/mes, in-house o modelo híbrido (in-house lidera, agencia ejecuta verticales específicos) suele ganar en ROI. Entre USD 80K-150K es zona gris: se evalúa por madurez del proceso, no solo por presupuesto."
+        },
+        {
+          "q": "¿Qué preguntar en la primera reunión con una agencia B2B?",
+          "a": "Cinco preguntas que separan vendedor de consultor: (1) ¿Qué casos similares al mío resolvieron en los últimos 24 meses, con métricas verificables? (2) ¿Cuál es tu metodología de diagnóstico antes de proponer presupuesto? (3) ¿Cómo atribuyen leads/pipeline a marketing (modelo de atribución)? (4) ¿Quién es exactamente la persona del equipo que va a trabajar en mi cuenta (no la de venta — la de delivery)? (5) ¿Qué sucede si las métricas no se cumplen al mes 4 — cuál es el proceso de revisión contractual?"
+        },
+        {
+          "q": "¿Trabajan agencias chilenas con clientes en otros países LATAM?",
+          "a": "Sí. Cebra opera en Chile, USA, Colombia y Perú. Moov Media Group está en 6 países (Chile, Argentina, Venezuela, Paraguay, Uruguay, México). Eglobal.one trabaja con clientes en Chile, Colombia, Perú, Ecuador y Brasil. Relevant tiene operación en Chile, México y Argentina. Bigbuda tiene oficina en Toronto, Canadá. Intothecom atiende Chile, Brasil, USA y España. Para operaciones multi-país, validar localización real (no solo traducción) y compliance regulatorio (LGPD Brasil, GDPR España, Ley 21.719 Chile)."
+        }
+      ],
+      "sources": [
+        {
+          "name": "Loup - Las 10 mejores agencias de marketing digital Chile (2026)",
+          "url": "https://loup.cl/agencias-de-marketing-digital-chile/"
+        },
+        {
+          "name": "Bigbuda - Mejores agencias de marketing digital en Chile (Ranking 2026)",
+          "url": "https://bigbuda.cl/mejores-agencias-marketing-digital-chile"
+        },
+        {
+          "name": "Müller y Pérez - Ranking Agencias Marketing Digital Chile 2026",
+          "url": "https://www.mulleryperez.cl/ranking-agencias-marketing-digital-chile"
+        },
+        {
+          "name": "Cebra - HubSpot Solutions Partner Directory",
+          "url": "https://ecosystem.hubspot.com/marketplace/solutions/agencia-digital-cebra"
+        },
+        {
+          "name": "Rompecabeza Digital - AMDD aniversario y crecimiento",
+          "url": "https://www.amddchile.com/rompecabeza-digital-aniversario/"
+        },
+        {
+          "name": "Moov Media Group - Endeavor Brand&Growth aliado",
+          "url": "https://www.amddchile.com/moov-media-group-se-convierte-en-el-primer-aliado-de-la-nueva-area-de-servicio-brandgrowth-de-endeavor/"
+        },
+        {
+          "name": "Eglobal.one - Sexto aniversario y métricas",
+          "url": "https://www.eglobal.one/blog/n/en-eglobal-one-celebramos-nuestro-sexto-aniversario"
+        },
+        {
+          "name": "Relevant - Las 10 mejores agencias de marketing B2B en Chile",
+          "url": "https://relevantmkt.com/mejores-agencias-marketing-b2b/"
+        },
+        {
+          "name": "Nexbu - Las mejores agencias de marketing digital en Chile 2026",
+          "url": "https://nexbu.com/blog/las-mejores-agencias-de-marketing-digital-en-chile-analisis-definitivo-2026"
+        },
+        {
+          "name": "Wolf BCPP - sitio oficial",
+          "url": "https://wolfbcpp.com/"
+        },
+        {
+          "name": "Escalable - Agencia de Marketing Digital B2B en Chile",
+          "url": "https://escalable.cl/"
+        }
+      ]
+    },
+    {
       "slug": "marketing-digital-b2b-latam-2026",
       "type": "pillar",
       "cluster": "marketing-digital-latam",
