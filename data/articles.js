@@ -239,7 +239,7 @@ const ARTICLES = [
         a: 'Parcialmente. ChatGPT Search usa Bing como sustrato (87% overlap entre citaciones SearchGPT y top orgánico de Bing según Seer Interactive). Una penalización Google no afecta Bing inmediatamente, pero las prácticas que penaliza Google (contenido thin, AI puro sin edición, parasite SEO, schema invisible) también afectan a Bing y por carambola a ChatGPT. Las prácticas que sí son específicas de GEO: brand mentions, Wikidata Q-ID, fuentes externas citadas.'
       }
     ],
-    relatedSlugs: [],
+    relatedSlugs: ['agentes-ia-para-empresas-2026'],
     sources: [
       { name: 'Princeton GEO paper — Aggarwal et al.', url: 'https://arxiv.org/abs/2311.09735' },
       { name: 'Conductor 2026 AEO/GEO Benchmarks Report', url: 'https://www.conductor.com/academy/aeo-geo-benchmarks-report/' },
@@ -247,12 +247,217 @@ const ARTICLES = [
       { name: 'Bing Webmaster AI Performance Report — Feb 2026', url: 'https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview' },
       { name: 'BrightEdge: AI Search Traffic Statistics Q1 2026', url: 'https://www.brightedge.com' }
     ]
+  },
+  {
+    slug: 'agentes-ia-para-empresas-2026',
+    type: 'pillar',
+    cluster: 'software-ia',
+    title: 'Agentes IA para empresas: la guía completa para implementarlos en 2026',
+    description: 'Qué es un agente IA, cómo evaluar si tu empresa lo necesita, stack tecnológico (LLMs, frameworks, MCP, RAG), costos reales en USD y CLP, y errores comunes que vimos en +20 implementaciones LATAM B2B.',
+    publishedAt: '2026-05-13',
+    updatedAt: '2026-05-13',
+    author: 'Ignacio Blanco',
+    authorRole: 'Co-founder & Strategy Lead',
+    authorSlug: 'ignacio-blanco',
+    category: 'Software & IA',
+    readingTime: '16 min',
+    wordCount: 3600,
+    keyword: 'agentes IA para empresas',
+    secondaryKeywords: [
+      'implementar agente IA empresa',
+      'agentes inteligentes B2B',
+      'RAG empresarial',
+      'automatización con IA',
+      'copilot empresarial Chile',
+      'Model Context Protocol MCP'
+    ],
+    intent: 'Informational/Commercial',
+    tags: ['Software', 'IA', 'Agentes', 'RAG', 'MCP', 'B2B'],
+    heroImage: '/assets/blog/agentes-ia-para-empresas-2026.jpg',
+    tldr: 'Un agente IA empresarial no es un chatbot mejorado: es un sistema que recibe un objetivo en lenguaje natural, decide qué herramientas usar (CRM, base de datos, API externa), ejecuta múltiples pasos encadenados, y entrega resultado verificable. En 2026 los frameworks maduraron (LangGraph, CrewAI, OpenAI Agents SDK), Model Context Protocol (MCP) estandarizó la conexión entre LLMs y data corporativa, y los costos cayeron 70% YoY. Esta guía explica cuándo conviene implementar un agente, qué stack elegir según caso de uso, cómo medir el ROI con números reales, y cuáles son los 5 errores que vimos romper proyectos en LATAM B2B durante 2024-2026.',
+    sections: [
+      { type: 'h2', id: 'que-es-agente-ia', text: '¿Qué es un agente IA empresarial?' },
+      {
+        type: 'p',
+        text: 'Un **agente IA** es un sistema autónomo que combina un **LLM** (Large Language Model como Claude, GPT, Gemini) con **herramientas** (tools/functions que ejecutan acciones reales: leer base de datos, llamar una API, escribir un email) y **memoria** (corto o largo plazo). El agente recibe un objetivo en lenguaje natural, planifica los pasos, ejecuta cada uno, evalúa el resultado, y itera hasta cumplir el objetivo o agotar el presupuesto.'
+      },
+      {
+        type: 'p',
+        text: 'Diferencia clave con un **chatbot**: el chatbot responde preguntas. El agente **ejecuta acciones**. Pedirle a un chatbot "agenda una reunión con el cliente X mañana a las 10am" obtiene una respuesta de texto. Pedirle lo mismo a un agente con tools de Google Calendar + Gmail integradas resulta en una reunión efectivamente agendada y un email enviado al cliente.'
+      },
+      { type: 'h2', id: 'cuando-implementar', text: '¿Cuándo conviene implementar un agente IA en tu empresa?' },
+      {
+        type: 'p',
+        text: 'No todo proceso empresarial se beneficia de un agente. Tres condiciones que justifican el costo:'
+      },
+      {
+        type: 'list',
+        items: [
+          '**Proceso repetitivo con decisiones**. Si solo hay reglas duras (if/else) un script tradicional es mejor. Si hay juicio contextual (clasificar un email "este es un lead caliente", interpretar una consulta abierta, resumir un contrato), un agente IA agrega valor.',
+          '**Volumen suficiente**. Para que el ROI compense el desarrollo + operación, conviene desde ~500 ejecuciones/mes. Bajo eso, suele ser más barato hacerlo manual o con SaaS especializado.',
+          '**Tolerancia a errores acotada**. Los agentes alucinan 0.5-3% del tiempo en tareas bien diseñadas. Si tu proceso es no-recuperable de errores (transferencias bancarias, decisiones médicas), necesitas human-in-the-loop obligatorio o no automatizar.'
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Casos comunes que vimos funcionar bien en LATAM B2B 2024-2026: clasificación y enrutamiento de leads entrantes (chat, email, formulario), generación de propuestas comerciales personalizadas, análisis de transcripts de ventas para extraer objetions, asistentes de onboarding internos sobre documentación, RAG sobre catálogo de productos para resolver consultas técnicas, automatización de creación de reportes ejecutivos desde múltiples fuentes de data.'
+      },
+      { type: 'h2', id: 'stack-2026', text: 'Stack tecnológico recomendado (mayo 2026)' },
+      {
+        type: 'h3', id: 'llm', text: 'LLM base'
+      },
+      {
+        type: 'p',
+        text: 'Tres familias compiten por agentes empresariales en 2026:'
+      },
+      {
+        type: 'table',
+        headers: ['Familia', 'Mejor para', 'Costo (input/output por 1M tokens)', 'Latencia'],
+        rows: [
+          ['Claude Opus 4.7', 'Razonamiento complejo, código, escritura long-form', '$5 / $25', 'Lenta (5-15s)'],
+          ['Claude Sonnet 4.6', 'Sweet spot precio/calidad — default para 90% casos B2B', '$3 / $15', 'Media (2-6s)'],
+          ['Claude Haiku 4.5', 'Clasificación, extracción, alta velocidad', '$1 / $5', 'Rápida (<2s)'],
+          ['GPT-5.x', 'Multimodal pesado, integración OpenAI ecosystem', 'Similar tier Sonnet/Opus', 'Media'],
+          ['Gemini 2.5 Pro', 'Multimodal con video, integración Google Workspace', 'Tier medio', 'Media-rápida'],
+          ['LLMs open source (Llama 4, Qwen 3)', 'Cuando data nunca puede salir on-prem', 'Self-hosted (infra cost)', 'Variable']
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Para una empresa B2B chilena con compliance estándar (no banca ni salud) y volumen sub-50K req/mes, **Claude Sonnet 4.6** es el default recomendado. Migrar a Opus solo cuando el caso de uso lo justifica (decisiones complejas, escritura de calidad) y a Haiku para sub-tareas rápidas.'
+      },
+      {
+        type: 'h3', id: 'framework', text: 'Framework de orquestación'
+      },
+      {
+        type: 'p',
+        text: 'Opciones maduras a mayo 2026:'
+      },
+      {
+        type: 'list',
+        items: [
+          '**LangGraph** (LangChain): el más popular, control explícito de flujo via grafo de estados. Curva de aprendizaje media. Comunidad enorme. Recomendado para 80% de casos.',
+          '**CrewAI**: enfoque multi-agente con roles ("researcher", "writer", "reviewer"). Útil cuando el problema se descompone en sub-tareas con expertise distinto.',
+          '**OpenAI Agents SDK** (lanzado marzo 2025): nativo de OpenAI, integra Assistants API. Menos flexible pero más simple si ya estás en stack OpenAI.',
+          '**Anthropic Agent SDK**: similar al OpenAI SDK pero para Claude. Sweet spot para equipos que ya usan Claude y quieren menos configuración.',
+          '**Pydantic AI**: para equipos Python que quieren type-safety estricto.',
+          '**Custom Python/Node con SDK directo**: viable para casos simples (1-3 tools). Sin framework la operación se vuelve compleja a partir de 5+ tools o memory persistente.'
+        ]
+      },
+      {
+        type: 'h3', id: 'mcp', text: 'Model Context Protocol (MCP)'
+      },
+      {
+        type: 'p',
+        text: '**MCP** es el estándar abierto que Anthropic publicó en noviembre 2024 para conectar LLMs con fuentes de data externa (bases de datos, APIs, file systems). En 2026 lo soportan oficialmente Claude, ChatGPT, Cursor, Cline, Continue, Aider, y herramientas internas de Microsoft y Google. Diferencia con tools tradicionales: MCP es **bidireccional, descubrible, versionado**.'
+      },
+      {
+        type: 'p',
+        text: 'Por qué importa para empresas: en lugar de codear integraciones one-off para cada tool (Salesforce, HubSpot, Postgres, Notion), creas un MCP server por cada fuente, y cualquier agente compatible puede consumirlas. Reduce tiempo de integración 60-80% según benchmarks Anthropic. Hay >300 MCP servers públicos a mayo 2026.'
+      },
+      {
+        type: 'h3', id: 'rag', text: 'RAG (Retrieval Augmented Generation)'
+      },
+      {
+        type: 'p',
+        text: '**RAG** = darle al LLM acceso a documentación corporativa propia (manuales, FAQ internos, catálogos, contratos) para que responda con información actualizada y verificable. Componentes: vector database (Pinecone, Qdrant, Weaviate, pgvector), embeddings model (Voyage AI, OpenAI text-embedding-3, Cohere embed-v3), retrieval logic (semantic search + reranker), context injection. Setup completo en proyecto chico: 1-2 semanas.'
+      },
+      {
+        type: 'p',
+        text: 'Stack RAG recomendado 2026 para B2B mediano: **pgvector** (Postgres extension, evita proveedor extra) + **Voyage AI** para embeddings (mejor accuracy según MTEB benchmark mayo 2026) + **Cohere rerank** para top-k filtering + Claude Sonnet 4.6 para generación. Costo operativo ~USD 50-200/mes para 1M queries con docs corporativos hasta 10GB.'
+      },
+      { type: 'h2', id: 'costos-reales', text: 'Costos reales de implementación (USD y CLP)' },
+      {
+        type: 'p',
+        text: 'Tres tiers basados en proyectos reales que hicimos entre 2024 y mayo 2026:'
+      },
+      {
+        type: 'table',
+        headers: ['Tier', 'Caso típico', 'Desarrollo (one-time)', 'Operación (mensual)'],
+        rows: [
+          ['MVP', 'Agente con 2-3 tools, RAG sobre <5MB docs, 1 caso de uso', 'USD 8K-15K (CLP 7-14M)', 'USD 50-200/mes'],
+          ['Producción', 'Agente con 5-10 tools, RAG sobre 100MB-1GB, multi-canal', 'USD 25K-60K (CLP 23-55M)', 'USD 200-1.500/mes'],
+          ['Enterprise', 'Multi-agente con MCP, observability, eval suite, compliance', 'USD 80K-200K (CLP 75-185M)', 'USD 1.500-8.000/mes']
+        ]
+      },
+      {
+        type: 'p',
+        text: 'Costos LLM cayeron ~70% YoY desde mayo 2025. Lo que costaba USD 0.50/request en 2024 hoy cuesta USD 0.02-0.05. Esto cambió la ecuación: casos que no eran viables económicamente hace 18 meses hoy lo son.'
+      },
+      { type: 'h2', id: 'errores-comunes', text: 'Los 5 errores más comunes que vimos en LATAM 2024-2026' },
+      {
+        type: 'list',
+        items: [
+          '**1. Empezar sin definir éxito medible**. Equipos lanzan "vamos a hacer un agente IA" sin métricas claras. Resultado: 3-6 meses después no saben si funcionó. Definir KPI desde día 1: tiempo ahorrado por ejecución, accuracy vs proceso manual, satisfacción usuario, costo por ejecución vs status quo.',
+          '**2. Sobreingeniería de framework**. Para 1-2 tools no necesitas LangGraph + Pinecone + observability stack. SDK directo + scripts simples funciona. Reservar frameworks complejos para cuando hay >5 tools, memory persistente, o multi-agente.',
+          '**3. RAG sin evaluación**. Implementan RAG, conectan docs, hacen 5 queries de prueba, deploy. Después en prod hay 30% de respuestas incorrectas. La solución: eval suite de 50-200 queries con respuestas esperadas, correr antes de cada cambio. RAGAS o Promptfoo son los frameworks dominantes 2026.',
+          '**4. Ignorar guardrails**. Sin validación de output, los agentes prometen cosas que la empresa no puede cumplir, hablan en nombre legal de la marca, o filtran data confidencial. Implementar: validation schemas (Pydantic), output classifiers (un LLM evaluando output de otro), human-in-the-loop para acciones high-stakes.',
+          '**5. Subestimar costo de mantenimiento**. Modelos cambian (Claude 3.5 → 4.5 → 4.6 → 4.7), prompts decay con la actualización, tools APIs evolucionan, dataset RAG necesita reindex. Presupuestar 20-40% del costo de desarrollo anualmente solo para mantenimiento.'
+        ]
+      },
+      { type: 'h2', id: 'caso-real', text: 'Caso real anonimizado: agente de calificación de leads, +40% conversion en 90 días' },
+      {
+        type: 'p',
+        text: 'Cliente B2B chileno, sector SaaS LATAM, ~800 leads/mes ingresando desde múltiples canales (formulario web, LinkedIn Ads, eventos, referidos). Equipo de SDRs perdía 60% del tiempo calificando manualmente — leyendo contexto, buscando empresa en LinkedIn, decidiendo prioridad.'
+      },
+      {
+        type: 'p',
+        text: 'Implementamos un agente con Claude Sonnet 4.6 + 4 tools (LinkedIn data via API, scraper del sitio del lead, lookup en CRM HubSpot, score predictivo en pgvector RAG con casos históricos cerrados ganados/perdidos). El agente calificaba en 90 segundos lo que tomaba 12-15 minutos a un SDR humano: ICP fit (1-5), urgencia (alta/media/baja), recomendación de approach.'
+      },
+      {
+        type: 'p',
+        text: 'Resultados al mes 3: SDRs pasaron de 18% conversion lead→meeting a 25% (porque solo trabajaban leads pre-calificados >3 ICP fit), tiempo de respuesta de primer toque bajó de 4h promedio a 12 min, y revenue atribuido al canal subió 40% en el período (medido con grupos de control). Costo operativo agente: USD 180/mes. ROI payback: 11 días.'
+      },
+      {
+        type: 'p',
+        text: 'Aprendizaje clave: el agente NO reemplazó SDRs. Los **liberó** de la parte tediosa para que enfocaran su tiempo en conversaciones humanas de alto valor. Esa es la lectura correcta para B2B en LATAM: agentes como **fuerza multiplicadora**, no como reemplazo.'
+      },
+      { type: 'h2', id: 'proximos-pasos', text: 'Próximos pasos si quieres implementar un agente IA' },
+      {
+        type: 'p',
+        text: 'Si lideras tecnología o operaciones en una empresa B2B LATAM y quieres evaluar si un agente IA aplica a tu caso, agenda una reunión sin costo de 45 min. Te entregamos: análisis de viabilidad, scope sugerido, estimación de costos y ROI esperado.'
+      },
+      { type: 'cta', text: 'Cotizar agente IA por WhatsApp', waKey: 'software-ia' }
+    ],
+    faq: [
+      {
+        q: '¿En cuánto tiempo se puede tener un agente IA funcionando?',
+        a: 'MVP funcional: 3-4 semanas. Versión producción con guardrails, eval suite y observability: 6-10 semanas. Versión enterprise multi-agente con MCP y compliance completo: 4-6 meses. Cualquier proveedor que prometa "agente IA en 1 semana" está armando un wrapper de prompt sin tools, eval ni observability — eso no es un agente productivo, es una demo.'
+      },
+      {
+        q: '¿Cuál es la diferencia entre un agente IA y un chatbot tradicional?',
+        a: 'Un chatbot responde texto basado en respuestas predefinidas o un LLM con prompt. Un agente IA ejecuta acciones reales: lee bases de datos, llama APIs, escribe emails, agenda calendarios. La diferencia técnica es que el agente tiene tools (functions) que puede invocar, mientras el chatbot solo genera tokens. La diferencia de impacto es: chatbot ayuda al usuario a buscar información; agente automatiza procesos completos.'
+      },
+      {
+        q: '¿Es seguro usar agentes IA con data corporativa sensible?',
+        a: 'Sí, con la arquitectura correcta. Tres capas: (1) usar LLM con compliance enterprise (Claude vía AWS Bedrock o Anthropic API empresarial, no la versión consumer de claude.ai); (2) implementar guardrails para prevenir filtración via prompt injection (clasificador de output, lista blanca de tools, rate limiting); (3) si data es ultra-sensible (PII bancaria, médica), usar LLMs open source on-premise (Llama 4, Qwen 3) en infraestructura controlada. Costo y velocidad bajan, control sube.'
+      },
+      {
+        q: '¿Vale la pena un agente IA para empresa mediana (50-200 empleados)?',
+        a: 'Depende del caso de uso, no del tamaño. La pregunta correcta es: ¿hay un proceso interno que ocupa >40 horas/semana de equipo combinado y tiene componente de juicio? Si sí, vale la pena evaluar. Casos comunes que funcionan en empresas medianas LATAM: calificación de leads (ahorra 20-40 hrs/sem SDRs), generación de propuestas comerciales (ahorra 15-30 hrs/sem comerciales), soporte L1 técnico (ahorra 30-60 hrs/sem support), reportes ejecutivos consolidados (ahorra 10-20 hrs/sem analistas).'
+      },
+      {
+        q: '¿Qué pasa cuando el modelo LLM se actualiza? ¿se rompe mi agente?',
+        a: 'Típicamente sí, parcialmente. Cuando Anthropic libera nueva versión Claude (ej. Sonnet 4.5 → 4.6 → 4.7), los prompts y respuestas cambian sutilmente. Por eso es crítico tener una eval suite con casos de prueba: corres la suite contra la nueva versión, ves qué se rompió, ajustas prompts. Los proyectos sin eval suite sufren regresiones invisibles. Presupuestar 1-2 semanas dev cada 6 meses para esta actualización es realista.'
+      },
+      {
+        q: '¿Puedo construir un agente IA in-house o necesito agencia/consultora?',
+        a: 'In-house funciona si tienes: (1) al menos 1 ingeniero senior con experiencia en LLM APIs o dispuesto a invertir 4-8 semanas en aprendizaje activo; (2) infraestructura ML básica (logging, monitoring, deploy automatizado); (3) cultura de iteración sobre data (medir, ajustar, repetir). Consultora externa tiene sentido cuando necesitas velocidad (3-6x más rápido), no tienes el perfil senior internamente, o el caso requiere expertise específico (MCP, multi-agente, compliance regulado). En IntoTheCom hemos implementado en ambos modelos según el cliente.'
+      }
+    ],
+    relatedSlugs: ['marketing-digital-b2b-latam-2026'],
+    sources: [
+      { name: 'Anthropic MCP — Model Context Protocol official spec', url: 'https://modelcontextprotocol.io' },
+      { name: 'LangGraph documentation', url: 'https://langchain-ai.github.io/langgraph/' },
+      { name: 'Voyage AI embeddings MTEB benchmark', url: 'https://huggingface.co/spaces/mteb/leaderboard' },
+      { name: 'Claude API pricing — Anthropic', url: 'https://www.anthropic.com/pricing#anthropic-api' },
+      { name: 'Princeton GEO paper — Aggarwal et al.', url: 'https://arxiv.org/abs/2311.09735' }
+    ]
   }
 ];
 
 // Lista de pillars planificados (próximos a publicar)
 const PLANNED_PILLARS = [
-  { slug: 'agentes-ia-para-empresas-2026', title: 'Agentes IA para empresas: guía completa 2026', category: 'Software & IA' },
   { slug: 'paid-media-b2b-2026', title: 'Guía Paid Media B2B 2026', category: 'Paid Media' },
   { slug: 'klaviyo-hubspot-email-automation', title: 'Email Marketing Automation con Klaviyo y HubSpot', category: 'Email Marketing' },
   { slug: 'desarrollo-web-headless-nextjs', title: 'Desarrollo web headless con Next.js y Shopify', category: 'Desarrollo Web' },
