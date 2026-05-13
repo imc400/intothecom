@@ -34,6 +34,7 @@ const entries = [
   'components/pages.jsx',
   'components/page-recursos.jsx',
   'components/app.jsx',
+  'components/admin.jsx',
 ];
 
 // === ROUTE METADATA (debe espejar ROUTE_META en components/app.jsx) ===
@@ -307,6 +308,18 @@ async function run() {
   masterHtml = masterHtml.replace(/src="\/dist\/pages\.js(\?v=[a-f0-9]+)?"/, `src="/dist/pages.js?v=${hashes['pages.js']}"`);
   masterHtml = masterHtml.replace(/src="\/dist\/page-recursos\.js(\?v=[a-f0-9]+)?"/, `src="/dist/page-recursos.js?v=${hashes['page-recursos.js']}"`);
   masterHtml = masterHtml.replace(/src="\/dist\/app\.js(\?v=[a-f0-9]+)?"/, `src="/dist/app.js?v=${hashes['app.js']}"`);
+
+  // 1c. Inyectar cache busting en admin/index.html
+  const adminHash = contentHash(path.join(outdir, 'admin.js'));
+  hashes['admin.js'] = adminHash;
+  console.log('   admin.js:', adminHash);
+  const adminHtmlPath = path.join(root, 'admin', 'index.html');
+  if (fs.existsSync(adminHtmlPath)) {
+    let adminHtml = fs.readFileSync(adminHtmlPath, 'utf-8');
+    adminHtml = adminHtml.replace(/src="\/dist\/admin\.js(\?v=[a-f0-9]+)?"/, `src="/dist/admin.js?v=${adminHash}"`);
+    fs.writeFileSync(adminHtmlPath, adminHtml, 'utf-8');
+    console.log('   ✓ admin/index.html updated with hash');
+  }
   let count = 0;
 
   for (const [route, meta] of Object.entries(ROUTE_META)) {
