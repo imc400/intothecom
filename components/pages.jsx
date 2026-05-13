@@ -45,7 +45,7 @@ function Servicios({ navigate }) {
           <div className="services-grid">
             {SERVICES_LIST.map((s,i) => (
               <Reveal key={s.num} delay={i*60}>
-                <a href={"#"+s.path}
+                <a href={s.path}
                    onClick={(e)=>{e.preventDefault();navigate(s.path);}}
                    className="service-card hoverable">
                   <div className="service-card-top">
@@ -126,7 +126,7 @@ function Servicios({ navigate }) {
                 <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('servicios-final')} className="btn hoverable">
                   Agendar reunión por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
                 </a>
-                <a href="#/hablemos"
+                <a href="/hablemos"
                    onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}
                    className="btn ghost hoverable">
                   Escribir un brief <span className="arrow">↗</span>
@@ -245,7 +245,7 @@ function ServicePage({ navigate, data }) {
           </Reveal>
           <div className="services">
             {data.others.map((o,i) => (
-              <a href={"#"+o.path} key={i}
+              <a href={o.path} key={i}
                  onClick={(e)=>{e.preventDefault();navigate(o.path);}}
                  className="service-row">
                 <span className="num">{o.num}</span>
@@ -671,7 +671,7 @@ function Nosotros({ navigate }) {
                 <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('nosotros-final')} className="btn hoverable">
                   Agendar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
                 </a>
-                <a href="#/hablemos"
+                <a href="/hablemos"
                    onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}
                    className="btn ghost hoverable">
                   Escribir un brief <span className="arrow" aria-hidden="true">↗</span>
@@ -985,7 +985,7 @@ function Contacto({ navigate }) {
                 <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('contacto-final')} className="btn hoverable">
                   Cotizar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
                 </a>
-                <a href="#/hablemos"
+                <a href="/hablemos"
                    onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}
                    className="btn ghost hoverable">
                   Escribir un brief <span className="arrow" aria-hidden="true">↗</span>

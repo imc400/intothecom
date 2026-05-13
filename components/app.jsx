@@ -45,28 +45,47 @@ const ROUTE_META = {
   '/casos': {
     title: 'Casos de éxito · Resultados verificables | Intothecom',
     description: 'Casos seleccionados con métricas reales. Equifax, Bullpadel, Imanix y +100 marcas. Cuando los datos hablan, la propuesta sobra.'
+  },
+  '/recursos': {
+    title: 'Recursos · Guías técnicas de marketing B2B LATAM | Intothecom',
+    description: 'Pillar pages, casos de estudio y benchmarks de marketing digital B2B, GEO, AEO, paid media, email automation y desarrollo web. Editados por consultores con +100 implementaciones reales.'
   }
 };
 
 const { useState: _useState, useEffect: _useEffect } = React;
 
+/* Migración hash router → History API (mayo 2026).
+   Razones: con hash, Google solo indexa el home. Con History API + Vercel SPA rewrites,
+   cada ruta es indexable independientemente.
+   Backward compat: si llegan con #/ruta legado, los redirigimos a /ruta. */
+
 function App() {
-  const [route, setRoute] = _useState(window.location.hash.replace('#','') || '/');
+  const getInitialRoute = () => {
+    // Si llega con hash legado #/ruta → migrar a pathname
+    if (window.location.hash && window.location.hash.startsWith('#/')) {
+      const legacyRoute = window.location.hash.replace('#','');
+      window.history.replaceState({}, '', legacyRoute);
+      return legacyRoute;
+    }
+    return window.location.pathname || '/';
+  };
+
+  const [route, setRoute] = _useState(getInitialRoute());
   const [transitioning, setTransitioning] = _useState(false);
 
   _useEffect(() => {
-    const onHash = () => {
+    const onPopState = () => {
       setTransitioning(true);
       setTimeout(() => {
-        const newRoute = window.location.hash.replace('#','') || '/';
+        const newRoute = window.location.pathname || '/';
         setRoute(newRoute);
         window.scrollTo(0, 0);
         if (window.fbqTrack) window.fbqTrack('PageView', { route: newRoute });
         setTimeout(() => setTransitioning(false), 50);
       }, 480);
     };
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
   _useEffect(() => {
@@ -79,11 +98,48 @@ function App() {
     setMeta('meta[name="description"]', 'content', meta.description);
     setMeta('meta[property="og:title"]', 'content', meta.title);
     setMeta('meta[property="og:description"]', 'content', meta.description);
-    const url = `https://intothecom.com/${route === '/' ? '' : '#' + route}`;
+    const url = `https://intothecom.com${route === '/' ? '/' : route}`;
     setMeta('meta[property="og:url"]', 'content', url);
     setMeta('link[rel="canonical"]', 'href', url);
     setMeta('meta[name="twitter:title"]', 'content', meta.title);
     setMeta('meta[name="twitter:description"]', 'content', meta.description);
+
+    /* Update BreadcrumbList schema dinámicamente según ruta */
+    const bcEl = document.getElementById('ld-breadcrumb');
+    if (bcEl) {
+      const crumbs = [{name: 'Inicio', path: '/'}];
+      if (route !== '/') {
+        const ROUTE_LABELS = {
+          '/servicios': 'Servicios',
+          '/software-ia': 'Software & IA',
+          '/paid-media': 'Paid Media',
+          '/email-marketing': 'Email Marketing',
+          '/desarrollo-web': 'Desarrollo Web',
+          '/community-management': 'Community Management',
+          '/nosotros': 'Nosotros',
+          '/casos': 'Casos de éxito',
+          '/hablemos': 'Hablemos',
+          '/contacto': 'Contacto',
+          '/recursos': 'Recursos'
+        };
+        const label = ROUTE_LABELS[route] || route.replace('/','').replace(/-/g,' ');
+        // Si es un servicio detalle, agregar Servicios como nivel intermedio
+        if (['/software-ia','/paid-media','/email-marketing','/desarrollo-web','/community-management'].includes(route)) {
+          crumbs.push({name: 'Servicios', path: '/servicios'});
+        }
+        crumbs.push({name: label, path: route});
+      }
+      bcEl.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": crumbs.map((c, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": c.name,
+          "item": `https://intothecom.com${c.path === '/' ? '/' : c.path}`
+        }))
+      });
+    }
   }, [route]);
 
   _useEffect(() => {
@@ -96,7 +152,14 @@ function App() {
 
   const navigate = (path) => {
     if (path === route) return;
-    window.location.hash = path;
+    window.history.pushState({}, '', path);
+    setTransitioning(true);
+    setTimeout(() => {
+      setRoute(path);
+      window.scrollTo(0, 0);
+      if (window.fbqTrack) window.fbqTrack('PageView', { route: path });
+      setTimeout(() => setTransitioning(false), 50);
+    }, 480);
   };
 
   const currentNav = (() => {
@@ -116,6 +179,11 @@ function App() {
   else if (route === '/contacto') page = <Contacto navigate={navigate}/>;
   else if (route === '/casos') page = <Casos navigate={navigate}/>;
   else if (route === '/servicios') page = <Servicios navigate={navigate}/>;
+  else if (route === '/recursos') page = <RecursosHub navigate={navigate}/>;
+  else if (route.startsWith('/recursos/')) {
+    const slug = route.replace('/recursos/', '');
+    page = <ResourceArticle navigate={navigate} slug={slug}/>;
+  }
   else if (SERVICE_DATA[route.replace('/','')]) {
     page = <ServicePage navigate={navigate} data={SERVICE_DATA[route.replace('/','')]}/>;
   } else page = <Home navigate={navigate}/>;

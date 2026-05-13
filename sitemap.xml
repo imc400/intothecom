@@ -1,4 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://intothecom.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ============================ -->
+  <!-- Páginas core (priority alta) -->
+  <!-- ============================ -->
+
+  <url>
+    <loc>https://intothecom.com/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://intothecom.com/"/>
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://intothecom.com/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://intothecom.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://intothecom.com/"/>
+  </url>
+
+  <url>
+    <loc>https://intothecom.com/servicios</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ============================ -->
+  <!-- 5 Service pages -->
+  <!-- ============================ -->
+
+  <url>
+    <loc>https://intothecom.com/software-ia</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://intothecom.com/paid-media</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://intothecom.com/email-marketing</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://intothecom.com/desarrollo-web</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://intothecom.com/community-management</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ============================ -->
+  <!-- Páginas institucionales -->
+  <!-- ============================ -->
+
+  <url>
+    <loc>https://intothecom.com/nosotros</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://intothecom.com/casos</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://intothecom.com/hablemos</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://intothecom.com/contacto</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ============================ -->
+  <!-- Hub de recursos / blog -->
+  <!-- ============================ -->
+
+  <url>
+    <loc>https://intothecom.com/recursos</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ============================ -->
+  <!-- Pillar pages publicadas -->
+  <!-- ============================ -->
+
+  <url>
+    <loc>https://intothecom.com/recursos/marketing-digital-b2b-latam-2026</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
 </urlset>
