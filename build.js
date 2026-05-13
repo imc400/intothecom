@@ -42,30 +42,35 @@ const ROUTE_META = {
     title: 'Software & IA a medida · Agentes y automatizaciones | Intothecom',
     description: 'Construimos agentes conversacionales, copilotos internos, RAG sobre tu data y dashboards de decisión. De idea a producción en 6 semanas.',
     noscript: 'Software & IA a medida de Intothecom: agentes conversacionales, copilotos internos, RAG sobre data propia, automatizaciones con n8n/Make y dashboards de decisión. De idea a producción en 6 semanas. Prototipo funcional en 3 semanas. Para empresas B2B en CL, BR, US, ES.',
+    ogImage: '/assets/og/software-ia.jpg',
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Servicios', path: '/servicios'}, {name: 'Software & IA', path: '/software-ia'}]
   },
   '/paid-media': {
     title: 'Paid Media · Google, Meta, TikTok y LinkedIn | Intothecom',
     description: 'Campañas con foco en ROAS y CAC. Tracking server-side, creatividades A/B y reportes con decisiones. Escalamos lo que funciona, no impresiones.',
     noscript: 'Paid Media B2B con Intothecom: campañas en Google Ads, Meta Ads, TikTok Ads y LinkedIn Ads con foco en ROAS y CAC. Tracking server-side, Conversions API, creatividades A/B y reportes con decisiones. Resultados visibles en 2-3 semanas. Sin tercerización a freelancers.',
+    ogImage: '/assets/og/paid-media.jpg',
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Servicios', path: '/servicios'}, {name: 'Paid Media', path: '/paid-media'}]
   },
   '/email-marketing': {
     title: 'Email Marketing · Klaviyo, HubSpot y flows que venden | Intothecom',
     description: 'Email marketing con segmentación quirúrgica, automatizaciones y A/B test continuo. Convierte 4–6× más que social. Tu canal más rentable.',
     noscript: 'Email Marketing Automation con Intothecom: Klaviyo y HubSpot, segmentación avanzada, flows transaccionales, campañas, A/B test continuo. Primer flow en vivo en 30 días. Convierte 4-6× más que redes sociales. Para e-commerce y B2B en LATAM, USA y España.',
+    ogImage: '/assets/og/email-marketing.jpg',
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Servicios', path: '/servicios'}, {name: 'Email Marketing', path: '/email-marketing'}]
   },
   '/desarrollo-web': {
     title: 'Diseño y Desarrollo Web · Next.js y Shopify Headless | Intothecom',
     description: 'Sitios y e-commerce con Lighthouse 90+, SEO técnico y CMS editable por tu equipo. UI/UX y código bajo el mismo techo, listos para vender.',
     noscript: 'Diseño y Desarrollo Web con Intothecom: sitios institucionales y e-commerce headless con Next.js + Shopify. Lighthouse 90+. SEO técnico integrado. CMS editable. UI/UX y código bajo el mismo techo. Para empresas B2B y D2C en Chile, LATAM, USA y España.',
+    ogImage: '/assets/og/desarrollo-web.jpg',
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Servicios', path: '/servicios'}, {name: 'Desarrollo Web', path: '/desarrollo-web'}]
   },
   '/community-management': {
     title: 'Community Management · Contenido editorial y comunidad real | Intothecom',
     description: 'Línea editorial documentada, producción mensual de foto y video, gestión de DMs y crisis. Comunidad que compra, no vanity metrics.',
     noscript: 'Community Management con Intothecom: línea editorial documentada, producción mensual de foto y video, gestión de DMs y crisis management. Instagram, TikTok y LinkedIn. Comunidad que compra, no vanity metrics. Reportes mensuales con métricas reales.',
+    ogImage: '/assets/og/community-management.jpg',
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Servicios', path: '/servicios'}, {name: 'Community Management', path: '/community-management'}]
   },
   '/nosotros': {
@@ -165,6 +170,19 @@ function prerenderRoute(masterHtml, route, meta) {
     `<meta property="og:url" content="${url}"/>`
   );
 
+  // Replace OG image (per-route si existe asset, sino fallback al cover global)
+  if (meta.ogImage) {
+    const ogImageUrl = `${DOMAIN}${meta.ogImage}`;
+    html = html.replace(
+      /<meta property="og:image" content="[^"]*"\s*\/?>/,
+      `<meta property="og:image" content="${ogImageUrl}"/>`
+    );
+    html = html.replace(
+      /<meta name="twitter:image" content="[^"]*"\s*\/?>/,
+      `<meta name="twitter:image" content="${ogImageUrl}"/>`
+    );
+  }
+
   // Replace Twitter title
   html = html.replace(
     /<meta name="twitter:title" content="[^"]*"\s*\/?>/,
@@ -256,6 +274,7 @@ async function run() {
       title: `${article.title} | Recursos Intothecom`,
       description: article.description,
       noscript: articleNoscript,
+      ogImage: `/assets/og/${article.slug}.jpg`,
       breadcrumb: [
         {name: 'Inicio', path: '/'},
         {name: 'Recursos', path: '/recursos'},
