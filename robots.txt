@@ -1,5 +1,162 @@
+# robots.txt — Intothecom
+# Estrategia: PERMITIR AI search bots (que generan citaciones)
+#            BLOQUEAR AI training bots (que usan tu contenido sin atribución)
+# Última actualización: 2026-05-13
+
+# ============================================
+# Search engines tradicionales (PERMITIR)
+# ============================================
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /dist/
+Disallow: /admin/
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /dist/
+Disallow: /admin/
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ============================================
+# AI Search bots (PERMITIR — generan citaciones que dan tráfico)
+# ============================================
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot-User
+Allow: /
+
+User-agent: Google-Inspection-Tool
+Allow: /
+
+# ============================================
+# AI Training bots (BLOQUEAR — usan tu contenido para entrenar modelos sin atribución)
+# Decisión estratégica: queremos ser citados (search bots),
+# no entrenar modelos sin compensación (training bots).
+# ============================================
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+# ============================================
+# SEO scrapers de competencia (BLOQUEAR)
+# Si tu equipo paga estas herramientas, las usan desde su navegador, no necesitan crawl
+# ============================================
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: SemrushBot-SA
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: rogerbot
+Disallow: /
+
+User-agent: AwarioRssBot
+Disallow: /
+
+User-agent: AwarioSmartBot
+Disallow: /
+
+# ============================================
+# Catch-all
+# ============================================
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /dist/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*?*
 
+# ============================================
+# Sitemap
+# ============================================
 Sitemap: https://intothecom.com/sitemap.xml

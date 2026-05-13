@@ -271,16 +271,16 @@ function StatusBar() {
 function Nav({ navigate, currentNav }) {
   return (
     <nav className="nav" aria-label="Principal">
-      <a href="#/" className="nav-logo" onClick={(e)=>{e.preventDefault();navigate('/');}}>
+      <a href="/" className="nav-logo" onClick={(e)=>{e.preventDefault();navigate('/');}}>
         <span className="mark"><img src="assets/mark-white.png" alt="" aria-hidden="true"/></span>
         <span>Intothecom</span>
       </a>
       <div className="nav-links">
-        <a href="#/" aria-current={currentNav==='home'?'page':undefined} className={currentNav==='home'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/');}}>Inicio</a>
-        <a href="#/servicios" aria-current={currentNav==='servicios'?'page':undefined} className={currentNav==='servicios'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/servicios');}}>Servicios</a>
-        <a href="#/software-ia" aria-current={currentNav==='software-ia'?'page':undefined} className={currentNav==='software-ia'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/software-ia');}}>IA & Software</a>
-        <a href="#/nosotros" aria-current={currentNav==='nosotros'?'page':undefined} className={currentNav==='nosotros'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/nosotros');}}>Estudio</a>
-        <a href="#/contacto" aria-current={currentNav==='contacto'?'page':undefined} className={currentNav==='contacto'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Contacto</a>
+        <a href="/" aria-current={currentNav==='home'?'page':undefined} className={currentNav==='home'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/');}}>Inicio</a>
+        <a href="/servicios" aria-current={currentNav==='servicios'?'page':undefined} className={currentNav==='servicios'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/servicios');}}>Servicios</a>
+        <a href="/software-ia" aria-current={currentNav==='software-ia'?'page':undefined} className={currentNav==='software-ia'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/software-ia');}}>IA & Software</a>
+        <a href="/nosotros" aria-current={currentNav==='nosotros'?'page':undefined} className={currentNav==='nosotros'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/nosotros');}}>Estudio</a>
+        <a href="/contacto" aria-current={currentNav==='contacto'?'page':undefined} className={currentNav==='contacto'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Contacto</a>
       </div>
       <div className="nav-right">
         <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="nav-cta hoverable" onClick={onWaClick('nav')}>
@@ -380,22 +380,22 @@ function Footer({ navigate }) {
         </div>
         <div className="footer-col">
           <h4>/ Servicios</h4>
-          <a href="#/paid-media" onClick={(e)=>{e.preventDefault();navigate('/paid-media');}}>Paid Media</a>
-          <a href="#/email-marketing" onClick={(e)=>{e.preventDefault();navigate('/email-marketing');}}>Email Marketing</a>
-          <a href="#/desarrollo-web" onClick={(e)=>{e.preventDefault();navigate('/desarrollo-web');}}>Desarrollo Web</a>
-          <a href="#/community-management" onClick={(e)=>{e.preventDefault();navigate('/community-management');}}>Community</a>
-          <a href="#/software-ia" onClick={(e)=>{e.preventDefault();navigate('/software-ia');}}>Software & IA</a>
+          <a href="/paid-media" onClick={(e)=>{e.preventDefault();navigate('/paid-media');}}>Paid Media</a>
+          <a href="/email-marketing" onClick={(e)=>{e.preventDefault();navigate('/email-marketing');}}>Email Marketing</a>
+          <a href="/desarrollo-web" onClick={(e)=>{e.preventDefault();navigate('/desarrollo-web');}}>Desarrollo Web</a>
+          <a href="/community-management" onClick={(e)=>{e.preventDefault();navigate('/community-management');}}>Community</a>
+          <a href="/software-ia" onClick={(e)=>{e.preventDefault();navigate('/software-ia');}}>Software & IA</a>
         </div>
         <div className="footer-col">
           <h4>/ Estudio</h4>
-          <a href="#/nosotros" onClick={(e)=>{e.preventDefault();navigate('/nosotros');}}>Sobre nosotros</a>
-          <a href="#/casos" onClick={(e)=>{e.preventDefault();navigate('/casos');}}>Casos de éxito</a>
-          <a href="#/contacto" onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Contacto</a>
+          <a href="/nosotros" onClick={(e)=>{e.preventDefault();navigate('/nosotros');}}>Sobre nosotros</a>
+          <a href="/casos" onClick={(e)=>{e.preventDefault();navigate('/casos');}}>Casos de éxito</a>
+          <a href="/contacto" onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Contacto</a>
           <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('footer-secondary')}>Cotizar por WhatsApp</a>
         </div>
         <div className="footer-col">
           <h4>/ Contacto</h4>
-          <a href="#/contacto" onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Almirante Pastene 333, of. 402<br/>Providencia · Santiago, CL</a>
+          <a href="/contacto" onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Almirante Pastene 333, of. 402<br/>Providencia · Santiago, CL</a>
           <a href="mailto:info@intothecom.com">info@intothecom.com</a>
           <a href="mailto:ignacio@intothecom.com">ignacio@intothecom.com</a>
           <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('footer')}>WhatsApp +56 9 7414 3642</a>

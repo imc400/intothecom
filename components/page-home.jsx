@@ -30,7 +30,7 @@ function Home({ navigate }) {
             <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('hero-home')} className="btn hoverable">
               Cotizar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
             </a>
-            <a href="#/servicios"
+            <a href="/servicios"
                onClick={(e)=>{e.preventDefault();navigate('/servicios');}}
                className="btn ghost hoverable">
               Ver servicios <span className="arrow" aria-hidden="true">↗</span>
@@ -112,7 +112,7 @@ function Home({ navigate }) {
               { num: "04", t: "Desarrollo Web", desc: "Sitios y e-commerce headless, rápidos y diseñados para vender.", path:"/desarrollo-web" },
               { num: "05", t: "Community Management", desc: "Contenido con criterio editorial y comunidad real, no vanity metrics.", path:"/community-management" },
             ].map(s => (
-              <a href={"#"+s.path} key={s.num}
+              <a href={s.path} key={s.num}
                  onClick={(e)=>{e.preventDefault();navigate(s.path);}}
                  className="service-row">
                 <span className="num">{s.num}</span>
