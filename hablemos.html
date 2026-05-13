@@ -8,6 +8,8 @@
 <meta name="theme-color" content="#0a0a0b"/>
 <meta name="author" content="Intothecom"/>
 
+<link rel="alternate" hreflang="es" href="https://intothecom.com/hablemos"/>
+<link rel="alternate" hreflang="x-default" href="https://intothecom.com/hablemos"/>
 <link rel="canonical" href="https://intothecom.com/hablemos"/>
 
 <meta property="og:type" content="website"/>
@@ -26,17 +28,13 @@
 <meta name="twitter:description" content="Escríbenos por WhatsApp o brief. Respuesta < 1h hábil. Primera reunión sin costo de 45 min con auditoría aplicable. Lun–Vie 9–19 SCL."/>
 <meta name="twitter:image" content="https://intothecom.com/assets/og-cover.jpg"/>
 
-<link rel="alternate" hreflang="es-CL" href="https://intothecom.com/"/>
-<link rel="alternate" hreflang="es-ES" href="https://intothecom.com/"/>
-<link rel="alternate" hreflang="es-MX" href="https://intothecom.com/"/>
-<link rel="alternate" hreflang="es" href="https://intothecom.com/"/>
-<link rel="alternate" hreflang="x-default" href="https://intothecom.com/"/>
-
 <link rel="icon" type="image/png" href="/assets/mark-dark.png"/>
 <link rel="apple-touch-icon" href="/assets/mark-dark.png"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="dns-prefetch" href="https://connect.facebook.net">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css"/>
 
@@ -261,18 +259,39 @@
 }
 </script>
 
-<!-- Meta Pixel Code · Replace 1332352548957136 with the real ID -->
+<!-- Meta Pixel Code · lazy-loaded para no bloquear LCP/INP (Agent5 fix #4) -->
 <script>
   window.META_PIXEL_ID = "1332352548957136";
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-  document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', window.META_PIXEL_ID);
-  fbq('track', 'PageView');
-  window.fbqTrack = (event, params) => { try { if (window.fbq) fbq('track', event, params || {}); } catch(e){} };
-  window.fbqTrackCustom = (event, params) => { try { if (window.fbq) fbq('trackCustom', event, params || {}); } catch(e){} };
+  // Cola para tracks que ocurran ANTES de que cargue el pixel
+  window._fbqQueue = window._fbqQueue || [];
+  window.fbqTrack = (event, params) => {
+    if (window.fbq) { try { fbq('track', event, params || {}); } catch(e){} }
+    else { window._fbqQueue.push(['track', event, params || {}]); }
+  };
+  window.fbqTrackCustom = (event, params) => {
+    if (window.fbq) { try { fbq('trackCustom', event, params || {}); } catch(e){} }
+    else { window._fbqQueue.push(['trackCustom', event, params || {}]); }
+  };
+
+  function loadMetaPixel() {
+    if (window.fbq) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', window.META_PIXEL_ID);
+    fbq('track', 'PageView');
+    // Drenar cola pendiente
+    (window._fbqQueue || []).forEach(args => { try { fbq.apply(null, args); } catch(e){} });
+    window._fbqQueue = [];
+  }
+  // Cargar tras idle (max 2.5s) o primera interacción real
+  if ('requestIdleCallback' in window) requestIdleCallback(loadMetaPixel, { timeout: 2500 });
+  else setTimeout(loadMetaPixel, 2000);
+  ['scroll','mousedown','touchstart','keydown','pointerdown'].forEach(ev =>
+    window.addEventListener(ev, loadMetaPixel, { once: true, passive: true })
+  );
 </script>
 <noscript><img height="1" width="1" style="display:none" alt=""
   src="https://www.facebook.com/tr?id=1332352548957136&ev=PageView&noscript=1"/></noscript>
@@ -302,142 +321,14 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 
 <!-- Article data (cargado antes de los components, contenido del blog/recursos) -->
-<script src="/data/articles.js?v=df191213"></script>
+<script defer src="/data/articles.js?v=b7cc9eb5"></script>
 
 <!-- Pre-compiled JSX bundles (esbuild). Order: shared → page-home → pages → page-recursos → app -->
-<script defer src="/dist/shared.js?v=544194e3"></script>
+<script defer src="/dist/shared.js?v=52fa9a38"></script>
 <script defer src="/dist/page-home.js?v=561bce08"></script>
 <script defer src="/dist/pages.js?v=1ca2f720"></script>
-<script defer src="/dist/page-recursos.js?v=c66b0323"></script>
+<script defer src="/dist/page-recursos.js?v=01797fe6"></script>
 <script defer src="/dist/app.js?v=a7d91dd4"></script>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
-<noscript>
-  <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
-    <h1>Intothecom · Marketing, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.</p>
-    <p><strong>Contacto:</strong> WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · <a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
-    <p><strong>Servicios:</strong> <a href="/software-ia">Software & IA</a> · <a href="/paid-media">Paid Media</a> · <a href="/email-marketing">Email Marketing</a> · <a href="/desarrollo-web">Desarrollo Web</a> · <a href="/community-management">Community Management</a></p>
-  </div>
-</noscript>
 <noscript>
   <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
     <h1>Hablemos · Cotiza tu proyecto en menos de 1 hora | Intothecom</h1>

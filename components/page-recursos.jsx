@@ -4,9 +4,24 @@
    - /recursos/<slug>   → ResourceArticle (lectura individual)
 */
 
+// Hook que se re-renderiza cuando articles.json llega via fetch async
+function useArticles() {
+  const [, forceUpdate] = React.useState(0);
+  React.useEffect(() => {
+    if (window.ARTICLES_READY) return;
+    const handler = () => forceUpdate(v => v + 1);
+    window.addEventListener('articles-ready', handler);
+    return () => window.removeEventListener('articles-ready', handler);
+  }, []);
+  return {
+    articles: window.ARTICLES || [],
+    planned: window.PLANNED_PILLARS || [],
+    ready: window.ARTICLES_READY === true
+  };
+}
+
 function RecursosHub({ navigate }) {
-  const articles = (window.ARTICLES || []);
-  const planned = (window.PLANNED_PILLARS || []);
+  const { articles, planned, ready } = useArticles();
 
   return (
     <>
@@ -113,21 +128,27 @@ function RecursosHub({ navigate }) {
 }
 
 function ResourceArticle({ navigate, slug }) {
-  const articles = (window.ARTICLES || []);
+  const { articles, ready } = useArticles();
   const article = articles.find(a => a.slug === slug);
 
   React.useEffect(() => {
-    // FIX CRIT-3: NO inyectamos schemas BlogPosting/FAQPage dinamicamente.
-    // El build.js genera HTMLs pre-renderizados con BlogPosting + FAQPage estaticos.
-    // Inyectar versiones dinamicas duplicaba el schema y causaba @id duplicados (penalizable por Google).
-    // Solo actualizamos meta description + document.title cuando navegamos client-side dentro del SPA.
     if (!article) return;
-
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', article.description);
-
     document.title = `${article.title} | Recursos Intothecom`;
   }, [slug, article]);
+
+  // Loading state mientras articles.json se descarga (fetch async)
+  if (!ready) {
+    return (
+      <section className="section">
+        <div className="container" style={{paddingTop:120, paddingBottom:120, textAlign:'center'}}>
+          <div className="eyebrow mb-md">/ cargando</div>
+          <p className="body" style={{opacity:0.5}}>Cargando recurso…</p>
+        </div>
+      </section>
+    );
+  }
 
   if (!article) {
     return (
