@@ -89,20 +89,35 @@ function App() {
   }, []);
 
   _useEffect(() => {
-    const meta = ROUTE_META[route] || ROUTE_META['/'];
-    document.title = meta.title;
-    const setMeta = (sel, attr, value) => {
-      const el = document.querySelector(sel);
-      if (el) el.setAttribute(attr, value);
-    };
-    setMeta('meta[name="description"]', 'content', meta.description);
-    setMeta('meta[property="og:title"]', 'content', meta.title);
-    setMeta('meta[property="og:description"]', 'content', meta.description);
-    const url = `https://intothecom.com${route === '/' ? '/' : route}`;
-    setMeta('meta[property="og:url"]', 'content', url);
-    setMeta('link[rel="canonical"]', 'href', url);
-    setMeta('meta[name="twitter:title"]', 'content', meta.title);
-    setMeta('meta[name="twitter:description"]', 'content', meta.description);
+    /* NO sobreescribir title/meta para rutas /recursos/<slug>:
+       ResourceArticle se encarga de actualizar title/desc segun el articulo.
+       Si App lo sobreescribe aqui despues que el child lo seteo, el title flickea. */
+    const isArticleRoute = route.startsWith('/recursos/') && route !== '/recursos';
+    if (isArticleRoute) {
+      /* Solo actualizar canonical + og:url segun la ruta (esos no varian por articulo) */
+      const url = `https://intothecom.com${route}`;
+      const setMeta = (sel, attr, value) => {
+        const el = document.querySelector(sel);
+        if (el) el.setAttribute(attr, value);
+      };
+      setMeta('meta[property="og:url"]', 'content', url);
+      setMeta('link[rel="canonical"]', 'href', url);
+    } else {
+      const meta = ROUTE_META[route] || ROUTE_META['/'];
+      document.title = meta.title;
+      const setMeta = (sel, attr, value) => {
+        const el = document.querySelector(sel);
+        if (el) el.setAttribute(attr, value);
+      };
+      setMeta('meta[name="description"]', 'content', meta.description);
+      setMeta('meta[property="og:title"]', 'content', meta.title);
+      setMeta('meta[property="og:description"]', 'content', meta.description);
+      const url = `https://intothecom.com${route === '/' ? '/' : route}`;
+      setMeta('meta[property="og:url"]', 'content', url);
+      setMeta('link[rel="canonical"]', 'href', url);
+      setMeta('meta[name="twitter:title"]', 'content', meta.title);
+      setMeta('meta[name="twitter:description"]', 'content', meta.description);
+    }
 
     /* Update BreadcrumbList schema dinámicamente según ruta */
     const bcEl = document.getElementById('ld-breadcrumb');
