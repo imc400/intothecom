@@ -20,6 +20,15 @@ function useArticles() {
   };
 }
 
+// Parser de markdown inline: **bold** + [text](url). Internal links se vuelven <a>
+// con onClick para navegación SPA (sin reload); externos abren en nueva pestaña.
+function parseInlineMarkdown(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\((\/[^)]+)\)/g, '<a href="$2" data-spa="1">$1</a>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+}
+
 function RecursosHub({ navigate }) {
   const { articles, planned, ready } = useArticles();
 
