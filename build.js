@@ -41,8 +41,8 @@ const entries = [
 const ROUTE_META = {
   '/': {
     title: 'Intothecom · Marketing, software & IA para crecer en serio',
-    description: 'Estudio digital con +100 negocios asesorados. Paid media, email, web, community y agentes de IA a medida. Chile, Brasil, USA, España.',
-    noscript: 'Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, Brasil, USA y España. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.',
+    description: 'Estudio digital con +100 negocios asesorados. Paid media, email, web, community y agentes de IA a medida. Chile, USA, España, Colombia, Perú.',
+    noscript: 'Intothecom es un estudio digital chileno fundado en 2019. Ofrece 5 servicios integrados: Software & IA a medida, Paid Media, Email Marketing, Diseño y Desarrollo Web, y Community Management. +100 negocios asesorados en Chile, USA, España, Colombia y Perú. Contacto: WhatsApp +56 9 7414 3642 · info@intothecom.com.',
     breadcrumb: [{name: 'Inicio', path: '/'}]
   },
   '/servicios': {
@@ -89,7 +89,7 @@ const ROUTE_META = {
   '/nosotros': {
     title: 'Nosotros · Estudio digital desde 2019 | Intothecom',
     description: '+5 años, +100 negocios y 4 mercados. Una agencia con obsesión por los datos: si no se puede medir, no lo hacemos. Equipo senior dedicado.',
-    noscript: 'Nosotros · Intothecom es un estudio digital chileno fundado en 2019. +5 años de operación, +100 negocios asesorados, +5M USD generados vía RRSS para clientes, -50% CAC promedio. 5.0★ en Google con 17 reseñas. Mercados: Chile, Brasil, USA, España. Equipo senior in-house.',
+    noscript: 'Nosotros · Intothecom es un estudio digital chileno fundado en 2019. +5 años de operación, +100 negocios asesorados, +5M USD generados vía RRSS para clientes, -50% CAC promedio. 5.0★ en Google con 17 reseñas. Mercados: Chile, USA, España, Colombia, Perú. Equipo senior in-house.',
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Nosotros', path: '/nosotros'}]
   },
   '/hablemos': {
@@ -101,7 +101,7 @@ const ROUTE_META = {
   '/contacto': {
     title: 'Contacto · Oficina, WhatsApp, email | Intothecom',
     description: 'Almirante Pastene 333, of. 402, Providencia, Santiago. WhatsApp +56 9 7414 3642 · info@intothecom.com · ignacio@intothecom.com.',
-    noscript: 'Contacto Intothecom: Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile. WhatsApp +56 9 7414 3642. Email: info@intothecom.com / ignacio@intothecom.com. Horario: Lunes a Viernes 9:00-19:00 hora Santiago. Operamos en Chile, Brasil, USA y España.',
+    noscript: 'Contacto Intothecom: Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile. WhatsApp +56 9 7414 3642. Email: info@intothecom.com / ignacio@intothecom.com. Horario: Lunes a Viernes 9:00-19:00 hora Santiago. Operamos en Chile, USA, España, Colombia y Perú.',
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Contacto', path: '/contacto'}]
   },
   '/casos': {
@@ -113,7 +113,7 @@ const ROUTE_META = {
   '/recursos': {
     title: 'Recursos · Guías técnicas de marketing B2B LATAM | Intothecom',
     description: 'Pillar pages, casos de estudio y benchmarks de marketing digital B2B, GEO, AEO, paid media, email automation y desarrollo web. Editados por consultores con +100 implementaciones reales.',
-    noscript: 'Recursos Intothecom: blog con pillar pages y guías técnicas sobre marketing digital B2B en LATAM, Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), paid media B2B, email marketing automation con Klaviyo y HubSpot, desarrollo web headless con Next.js y Shopify, agentes IA empresariales, y community management estratégico. Editado por consultores con +100 implementaciones reales en Chile, Brasil, USA y España.',
+    noscript: 'Recursos Intothecom: blog con pillar pages y guías técnicas sobre marketing digital B2B en LATAM, Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), paid media B2B, email marketing automation con Klaviyo y HubSpot, desarrollo web headless con Next.js y Shopify, agentes IA empresariales, y community management estratégico. Editado por consultores con +100 implementaciones reales en Chile, USA, España, Colombia y Perú.',
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Recursos', path: '/recursos'}]
   }
 };

@@ -54,7 +54,7 @@
     "height": "60"
   },
   "image": "https://intothecom.com/assets/og-cover.jpg",
-  "description": "Estudio digital chileno fundado en 2019. Marketing, desarrollo de software y agentes de IA a medida para empresas B2B. +100 negocios asesorados, +5M USD generados vía RRSS para clientes, -50% CAC promedio. Operamos en Chile, Brasil, USA y España.",
+  "description": "Estudio digital chileno fundado en 2019. Marketing, desarrollo de software y agentes de IA a medida para empresas B2B. +100 negocios asesorados, +5M USD generados vía RRSS para clientes, -50% CAC promedio. Operamos en Chile, USA, España, Colombia y Perú.",
   "foundingDate": "2019",
   "foundingLocation": {
     "@type": "Place",
@@ -97,9 +97,10 @@
   ],
   "areaServed": [
     {"@type":"Country","name":"Chile"},
-    {"@type":"Country","name":"Brazil"},
     {"@type":"Country","name":"United States"},
-    {"@type":"Country","name":"Spain"}
+    {"@type":"Country","name":"Spain"},
+    {"@type":"Country","name":"Colombia"},
+    {"@type":"Country","name":"Peru"}
   ],
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -115,7 +116,7 @@
     "email":"info@intothecom.com",
     "availableLanguage":["es","en","pt"],
     "hoursAvailable":"Mo-Fr 09:00-19:00",
-    "areaServed": ["CL", "BR", "US", "ES"]
+    "areaServed": ["CL", "US", "ES", "CO", "PE"]
   }],
   "address": {
     "@type": "PostalAddress",
@@ -203,18 +204,18 @@
 {
   "@context":"https://schema.org",
   "@graph":[
-    {"@type":"Service","@id":"https://intothecom.com/software-ia#service","serviceType":"Software & Agentes de IA","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Agentes conversacionales, copilotos, RAG y automatizaciones a medida. De idea a producción en 6 semanas.","url":"https://intothecom.com/software-ia"},
-    {"@type":"Service","@id":"https://intothecom.com/paid-media#service","serviceType":"Paid Media","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Campañas en Google, Meta, TikTok y LinkedIn con foco en ROAS y CAC.","url":"https://intothecom.com/paid-media"},
-    {"@type":"Service","@id":"https://intothecom.com/email-marketing#service","serviceType":"Email Marketing","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Segmentación, automatizaciones y flows en Klaviyo y HubSpot.","url":"https://intothecom.com/email-marketing"},
-    {"@type":"Service","@id":"https://intothecom.com/desarrollo-web#service","serviceType":"Diseño y Desarrollo Web","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Sitios y e-commerce headless en Next.js y Shopify, Lighthouse 90+.","url":"https://intothecom.com/desarrollo-web"},
-    {"@type":"Service","@id":"https://intothecom.com/community-management#service","serviceType":"Community Management","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","BR","US","ES"],"description":"Línea editorial, contenido y gestión en IG, TikTok y LinkedIn.","url":"https://intothecom.com/community-management"}
+    {"@type":"Service","@id":"https://intothecom.com/software-ia#service","serviceType":"Software & Agentes de IA","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","US","ES","CO","PE"],"description":"Agentes conversacionales, copilotos, RAG y automatizaciones a medida. De idea a producción en 6 semanas.","url":"https://intothecom.com/software-ia"},
+    {"@type":"Service","@id":"https://intothecom.com/paid-media#service","serviceType":"Paid Media","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","US","ES","CO","PE"],"description":"Campañas en Google, Meta, TikTok y LinkedIn con foco en ROAS y CAC.","url":"https://intothecom.com/paid-media"},
+    {"@type":"Service","@id":"https://intothecom.com/email-marketing#service","serviceType":"Email Marketing","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","US","ES","CO","PE"],"description":"Segmentación, automatizaciones y flows en Klaviyo y HubSpot.","url":"https://intothecom.com/email-marketing"},
+    {"@type":"Service","@id":"https://intothecom.com/desarrollo-web#service","serviceType":"Diseño y Desarrollo Web","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","US","ES","CO","PE"],"description":"Sitios y e-commerce headless en Next.js y Shopify, Lighthouse 90+.","url":"https://intothecom.com/desarrollo-web"},
+    {"@type":"Service","@id":"https://intothecom.com/community-management#service","serviceType":"Community Management","provider":{"@id":"https://intothecom.com/#org"},"areaServed":["CL","US","ES","CO","PE"],"description":"Línea editorial, contenido y gestión en IG, TikTok y LinkedIn.","url":"https://intothecom.com/community-management"}
   ]
 }
 </script>
 
 <!-- FAQ schema removed from non-home pages: content not visible here -->
 
-<!-- Structured data: Person (Ignacio Blanco, Co-founder) — placeholder, completar bio real -->
+<!-- Structured data: Person (Ignacio Blanco, Co-founder) — anchored a Wikidata Q37378421 -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -226,14 +227,26 @@
   "jobTitle": "Co-founder & Strategy Lead",
   "worksFor": {"@id": "https://intothecom.com/#org"},
   "email": "ignacio@intothecom.com",
+  "nationality": {"@type": "Country", "name": "Chile"},
   "knowsAbout": [
     "Marketing digital B2B",
     "Paid media",
     "Inteligencia artificial empresarial",
     "Email marketing automation",
-    "Estrategia de growth"
+    "Estrategia de growth",
+    "Generative Engine Optimization",
+    "Agentes IA empresariales"
   ],
-  "sameAs": []
+  "sameAs": [
+    "https://www.wikidata.org/wiki/Q37378421"
+  ],
+  "identifier": [
+    {
+      "@type": "PropertyValue",
+      "propertyID": "Wikidata",
+      "value": "Q37378421"
+    }
+  ]
 }
 </script>
 
@@ -331,7 +344,7 @@
 
 <!-- Pre-compiled JSX bundles (esbuild). Order: shared → page-home → pages → page-recursos → app -->
 <script defer src="/dist/shared.js?v=52fa9a38"></script>
-<script defer src="/dist/page-home.js?v=561bce08"></script>
+<script defer src="/dist/page-home.js?v=6ad0fd2f"></script>
 <script defer src="/dist/pages.js?v=1ca2f720"></script>
 <script defer src="/dist/page-recursos.js?v=01797fe6"></script>
 <script defer src="/dist/app.js?v=a7d91dd4"></script>

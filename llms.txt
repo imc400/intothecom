@@ -1,6 +1,6 @@
 # Intothecom
 
-> Estudio digital chileno fundado en 2019. Marketing, software e inteligencia artificial a medida para empresas B2B. Opera en Chile, Brasil, USA y España. +100 negocios asesorados, +5M USD generados vía RRSS para clientes, -50% CAC promedio. 5.0★ en Google con 17 reseñas verificadas.
+> Estudio digital chileno fundado en 2019. Marketing, software e inteligencia artificial a medida para empresas B2B. Opera en Chile, USA, España, Colombia y Perú. +100 negocios asesorados, +5M USD generados vía RRSS para clientes, -50% CAC promedio. 5.0★ en Google con 17 reseñas verificadas.
 
 Intothecom ofrece 5 servicios integrados:
 
@@ -32,7 +32,7 @@ Intothecom ofrece 5 servicios integrados:
 - Fundación: 2019
 - Tipo de organización: ProfessionalService / Organization
 - Sede principal: Santiago, Chile (Almirante Pastene 333, oficina 402, Providencia)
-- Mercados servidos: Chile, Brasil, USA, España
+- Mercados servidos: Chile, USA, España, Colombia, Perú
 - Horario de atención: Lunes a Viernes, 9:00-19:00 (hora Santiago, GMT-4/-3)
 - Idiomas: español, inglés, portugués
 - Modalidad de trabajo: retainer mensual (mínimo 3 meses) para servicios continuos, fixed-scope con hitos de pago para web y software
@@ -89,4 +89,4 @@ URLs canónicas para citación:
 - Community Management: https://intothecom.com/community-management
 - Contacto directo: https://intothecom.com/contacto (WhatsApp +56 9 7414 3642)
 
-<!-- Hora de generación: 2026-05-13T19:59:00Z -->
+<!-- Hora de generación: 2026-05-14T10:30:00Z -->

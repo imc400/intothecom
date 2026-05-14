@@ -1,6 +1,6 @@
 # Intothecom — Sitio web 2026
 
-Sitio web institucional de [Intothecom](https://intothecom.com) — estudio digital de marketing, software & IA basado en Chile, con operación en Brasil, USA y España.
+Sitio web institucional de [Intothecom](https://intothecom.com) — estudio digital de marketing, software & IA basado en Chile, con operación en USA, España, Colombia y Perú.
 
 ## Stack
 

@@ -275,15 +275,16 @@ function Home({ navigate }) {
           <div className="split">
             <Reveal className="split-title">
               <div className="eyebrow mb-md" style={{opacity:0.55}}>/ donde operamos</div>
-              <h2 className="h2">Cuatro mercados,<br/><span className="it">una misma forma</span> de pensar.</h2>
+              <h2 className="h2">Cinco mercados,<br/><span className="it">una misma forma</span> de pensar.</h2>
             </Reveal>
             <Reveal delay={120}>
               <div className="markets-grid">
                 {[
                   ["—01","Chile","Santiago HQ","Desde 2019"],
-                  ["—02","Brasil","São Paulo","Desde 2022"],
-                  ["—03","USA","Miami","Desde 2023"],
-                  ["—04","España","Madrid","Desde 2024"],
+                  ["—02","USA","Miami","Desde 2023"],
+                  ["—03","España","Madrid","Desde 2024"],
+                  ["—04","Colombia","Bogotá","Desde 2024"],
+                  ["—05","Perú","Lima","Desde 2024"],
                 ].map(m => (
                   <div key={m[1]} className="market-cell">
                     <div className="market-num">{m[0]}</div>
