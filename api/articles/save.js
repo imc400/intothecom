@@ -6,6 +6,7 @@
 
 const https = require('https');
 const { parseCookies, verify } = require('../_lib/jwt.js');
+const { pingIndexNow } = require('../_lib/indexnow.js');
 
 function isAuthenticated(req) {
   const cookies = parseCookies(req.headers.cookie);
@@ -170,11 +171,22 @@ module.exports = async (req, res) => {
       return;
     }
 
+    // Fire-and-forget: notificar IndexNow con todas las URLs de artículos.
+    // No bloqueamos la respuesta al admin — el ping es best-effort.
+    const articleUrls = body.articles
+      .filter(a => a.slug)
+      .map(a => `https://www.intothecom.com/recursos/${a.slug}`);
+    articleUrls.push('https://www.intothecom.com/recursos');
+    articleUrls.push('https://www.intothecom.com/sitemap.xml');
+    pingIndexNow(articleUrls).then(r => {
+      console.log('IndexNow ping:', r.status, 'urls:', articleUrls.length);
+    }).catch(e => console.log('IndexNow error:', e.message));
+
     res.status(200).json({
       ok: true,
       commitUrl: result.body.commit?.html_url,
       newSha: result.body.content?.sha,
-      message: 'Articles saved. Vercel will redeploy in ~30-60s.'
+      message: 'Articles saved. Vercel will redeploy in ~30-60s. IndexNow notified.'
     });
   } catch (e) {
     res.status(500).json({error: e.message});

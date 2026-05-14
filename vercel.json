@@ -8,7 +8,7 @@
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/", "destination": "/admin/index.html" },
-    { "source": "/:path((?!assets|dist|data|api|admin|robots\\.txt|sitemap\\.xml|llms\\.txt|favicon\\.ico|og-cover|servicios|software-ia|paid-media|email-marketing|desarrollo-web|community-management|nosotros|hablemos|contacto|casos|recursos).*)", "destination": "/index.html" }
+    { "source": "/:path((?!assets|dist|data|api|admin|robots\\.txt|sitemap\\.xml|llms\\.txt|cb1731ec3af4f7044b282eee96cd9c48\\.txt|favicon\\.ico|og-cover|servicios|software-ia|paid-media|email-marketing|desarrollo-web|community-management|nosotros|hablemos|contacto|casos|recursos).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
