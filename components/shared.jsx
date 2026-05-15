@@ -296,7 +296,8 @@ const RECURSOS_GROUPS = [
   ]},
   { title: 'Tech & IA', items: [
     { slug: 'crm-b2b-que-es-como-elegir-2026', label: 'CRM B2B: cómo elegir' },
-    { slug: 'agentes-ia-para-empresas-2026', label: 'Agentes IA para empresas' },
+    { slug: 'agentes-ia-para-empresas-2026', label: 'Asistente IA para empresas' },
+    { slug: 'asistente-ia-atencion-cliente-2026', label: 'Asistente IA atención al cliente' },
     { slug: 'tech-stack-minimo-growth-b2b-latam-2026', label: 'Tech stack mínimo growth' },
     { slug: 'desarrollo-web-headless-nextjs-shopify-2026', label: 'Desarrollo web headless Next.js' }
   ]},
