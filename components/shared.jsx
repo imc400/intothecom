@@ -315,6 +315,22 @@ const RECURSOS_GROUPS = [
 function RecursosDropdown({ navigate, currentNav }) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef(null);
+  const closeTimerRef = useRef(null);
+
+  const handleEnter = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+    setOpen(true);
+  };
+
+  // Delay de 220ms antes de cerrar — tolera micro-gaps del mouse cuando el usuario
+  // navega del trigger "Recursos" al contenido del menú, evita cierres por accidente.
+  const handleLeave = () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = setTimeout(() => setOpen(false), 220);
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -330,12 +346,17 @@ function RecursosDropdown({ navigate, currentNav }) {
     };
   }, [open]);
 
+  // Limpieza del timer al desmontar
+  useEffect(() => () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+  }, []);
+
   const isActive = currentNav === 'recursos';
 
   return (
     <span className="nav-dropdown-wrap" ref={wrapRef}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
     >
       <a
         href="/recursos"
@@ -344,7 +365,7 @@ function RecursosDropdown({ navigate, currentNav }) {
         aria-current={isActive ? 'page' : undefined}
         className={`nav-dropdown-trigger ${isActive ? 'active' : ''}`}
         onClick={(e)=>{e.preventDefault(); navigate('/recursos');}}
-        onFocus={() => setOpen(true)}
+        onFocus={handleEnter}
       >
         Recursos <span className="nav-dropdown-chev" aria-hidden="true">▾</span>
       </a>
