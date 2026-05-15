@@ -4,7 +4,7 @@
 const ROUTE_META = {
   '/': {
     title: 'Intothecom · Marketing, software & IA para crecer en serio',
-    description: 'Estudio digital con +100 negocios asesorados. Paid media, email, web, community y agentes de IA a medida. Chile, Brasil, USA, España.'
+    description: 'Estudio digital con +100 negocios asesorados. Paid media, email, web, community y agentes de IA a medida. Chile, USA, España, Colombia, Perú.'
   },
   '/servicios': {
     title: 'Servicios · Marketing digital, software e IA | Intothecom',

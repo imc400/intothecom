@@ -394,7 +394,7 @@ function Footer({ navigate }) {
         <div className="footer-col">
           <img src="assets/logo-white.png" alt="Intothecom" className="footer-logo"/>
           <p className="body" style={{opacity:0.7, maxWidth:'34ch'}}>
-            Marketing digital, desarrollo de software & inteligencia artificial a medida. Operamos en Chile, Brasil, USA y España.
+            Marketing digital, desarrollo de software & inteligencia artificial a medida. Operamos en Chile, USA, España, Colombia y Perú.
           </p>
         </div>
         <div className="footer-col">
@@ -423,7 +423,7 @@ function Footer({ navigate }) {
       </div>
       <div className="footer-bottom container">
         <span>© 2026 Intothecom · todos los derechos reservados</span>
-        <span>Santiago · São Paulo · Miami · Madrid</span>
+        <span>Santiago · Miami · Madrid · Bogotá · Lima</span>
       </div>
     </footer>
   );

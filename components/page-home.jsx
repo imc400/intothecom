@@ -20,7 +20,7 @@ function Home({ navigate }) {
         <div className="hero-inner">
           <div className="hero-top">
             <span>Estudio digital · est. 2019</span>
-            <span>Chile · Brasil · USA · España</span>
+            <span>Chile · USA · España · Colombia · Perú</span>
             <span>v.2026</span>
           </div>
           <h1 className="hero-headline">

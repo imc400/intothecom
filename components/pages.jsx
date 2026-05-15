@@ -22,7 +22,7 @@ function Servicios({ navigate }) {
           <div className="hero-top">
             <span>Servicios · 05</span>
             <span>Estudio digital · est. 2019</span>
-            <span>Chile · Brasil · USA · España</span>
+            <span>Chile · USA · España · Colombia · Perú</span>
           </div>
           <h1 className="hero-headline" style={{maxWidth:'20ch'}}>
             Todo lo que tu negocio necesita <span className="it">para crecer en serio.</span>
@@ -862,7 +862,7 @@ function Hablemos({ navigate }) {
             </div>
             <div className="contact-cell">
               <div className="contact-label">/ Otras ciudades</div>
-              <div className="contact-value">São Paulo · Miami · Madrid</div>
+              <div className="contact-value">Miami · Madrid · Bogotá · Lima</div>
             </div>
             <div className="contact-cell">
               <div className="contact-label">/ Horario</div>
@@ -896,7 +896,7 @@ function Contacto({ navigate }) {
         <div className="hero-inner">
           <div className="hero-bottom" style={{gridTemplateColumns:'1fr', gap:0}}>
             <p className="lead" style={{maxWidth:'56ch'}}>
-              Atendemos desde Providencia, Santiago. Coordinamos reuniones presenciales o por Meet con clientes en Chile, Brasil, USA y España.
+              Atendemos desde Providencia, Santiago. Coordinamos reuniones presenciales o por Meet con clientes en Chile, USA, España, Colombia y Perú.
             </p>
           </div>
         </div>
@@ -944,7 +944,7 @@ function Contacto({ navigate }) {
                 </div>
                 <div className="contact-channel">
                   <div className="contact-channel-label">/ Otras ciudades</div>
-                  <div className="contact-channel-value">São Paulo · Miami · Madrid</div>
+                  <div className="contact-channel-value">Miami · Madrid · Bogotá · Lima</div>
                   <div className="contact-channel-meta">Reuniones por Meet o presenciales</div>
                 </div>
               </div>

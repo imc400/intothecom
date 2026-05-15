@@ -40,7 +40,7 @@ function RecursosHub({ navigate }) {
           <div className="hero-top">
             <span>Recursos</span>
             <span>Estudio digital · est. 2019</span>
-            <span>Chile · Brasil · USA · España</span>
+            <span>Chile · USA · España · Colombia · Perú</span>
           </div>
           <h1 className="hero-headline" style={{maxWidth:'22ch'}}>
             Guías técnicas y análisis <span className="it">de marketing B2B real.</span>

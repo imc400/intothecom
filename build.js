@@ -372,7 +372,7 @@ async function run() {
       breadcrumb: [
         {name: 'Inicio', path: '/'},
         {name: 'Recursos', path: '/recursos'},
-        {name: article.title.substring(0, 50), path: articleRoute}
+        {name: article.title, path: articleRoute}
       ]
     };
 
@@ -394,6 +394,7 @@ async function run() {
       "articleSection": article.category,
       "author": {
         "@type": "Person",
+        "@id": "https://intothecom.com/equipo/ignacio-blanco#person",
         "name": article.author,
         "jobTitle": article.authorRole,
         "worksFor": {"@id": "https://intothecom.com/#org"}
@@ -404,6 +405,18 @@ async function run() {
         "@id": `https://intothecom.com${articleRoute}`
       }
     };
+
+    // OG meta para artículos: og:type=article + article:* tags (FB/LinkedIn previews + AI bots)
+    const ogImageAlt = `${article.title} — recurso de Intothecom`;
+    const articleOgMeta = `
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="${article.publishedAt}T00:00:00Z"/>
+<meta property="article:modified_time" content="${article.updatedAt}T00:00:00Z"/>
+<meta property="article:author" content="https://intothecom.com/equipo/ignacio-blanco#person"/>
+<meta property="article:section" content="${article.category}"/>
+${(article.tags || []).map(t => `<meta property="article:tag" content="${t}"/>`).join('\n')}
+<meta property="og:image:alt" content="${ogImageAlt}"/>
+`;
 
     const faqSchema = article.faq && article.faq.length > 0 ? {
       "@context": "https://schema.org",
@@ -418,7 +431,17 @@ async function run() {
 
     const articleSchemas = `\n<script type="application/ld+json">\n${JSON.stringify(blogPostingSchema, null, 2)}\n</script>\n${faqSchema ? `<script type="application/ld+json">\n${JSON.stringify(faqSchema, null, 2)}\n</script>\n` : ''}`;
 
-    const finalHtml = articleHtml.replace('</head>', `${articleSchemas}</head>`);
+    // Reemplazar og:type=website por og:type=article + inyectar article:* meta + alt específico
+    let finalHtml = articleHtml.replace(
+      /<meta property="og:type" content="website"\/?>/,
+      ''
+    );
+    // Reemplazar og:image:alt genérico por específico del artículo
+    finalHtml = finalHtml.replace(
+      /<meta property="og:image:alt" content="[^"]*"\/?>/,
+      ''
+    );
+    finalHtml = finalHtml.replace('</head>', `${articleOgMeta}${articleSchemas}</head>`);
 
     const outPath = path.join(recursosDir, `${article.slug}.html`);
     fs.writeFileSync(outPath, finalHtml, 'utf-8');

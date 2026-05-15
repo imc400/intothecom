@@ -6,6 +6,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/la-agencia", "destination": "/nosotros", "permanent": true },
+    { "source": "/la-agencia/", "destination": "/nosotros", "permanent": true },
+    { "source": "/seo-y-posicionamiento-web", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
+    { "source": "/seo-y-posicionamiento-web/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
     { "source": "/blog/que-es-un-crm-para-que-sirve-y-caracteristicas", "destination": "/recursos/crm-b2b-que-es-como-elegir-2026", "permanent": true },
     { "source": "/blog/que-es-un-crm-para-que-sirve-y-caracteristicas/", "destination": "/recursos/crm-b2b-que-es-como-elegir-2026", "permanent": true },
     { "source": "/blog/reunion-kick-off-que-es", "destination": "/recursos/kick-off-proyecto-guia-completa-2026", "permanent": true },
