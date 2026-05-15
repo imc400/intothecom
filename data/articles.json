@@ -2447,7 +2447,7 @@
       "type": "pillar",
       "cluster": "marketing-digital-latam",
       "title": "Guía completa de marketing digital B2B para empresas en LATAM en 2026",
-      "description": "Estrategia, herramientas y errores comunes del marketing digital B2B en Chile, Brasil, México, USA y España. Pilar editado por consultores con +100 implementaciones reales.",
+      "description": "Estrategia, herramientas y errores comunes del marketing digital B2B en Chile, Colombia, Perú, USA y España. Pilar editado por consultores con +100 implementaciones reales.",
       "publishedAt": "2026-05-13",
       "updatedAt": "2026-05-13",
       "author": "Ignacio Blanco",
@@ -2473,7 +2473,7 @@
         "AEO"
       ],
       "heroImage": "/assets/blog/marketing-digital-b2b-latam-2026.jpg",
-      "tldr": "El marketing digital B2B en LATAM ya no se trata solo de Google Ads y LinkedIn. En 2026 la atención fragmenta entre cinco capas: SXO (search experience), AIO (AI operations), GEO (citaciones en ChatGPT/Perplexity), AEO (featured snippets) y Entity SEO (autoridad de marca verificable). Esta guía explica cómo construir una operación de marketing B2B que rankee en Google, sea citada por LLMs y genere demand qualificada — con benchmarks y stack tecnológico actualizados a mayo 2026. Audiencia: founders y CMOs de empresas medianas que venden a otras empresas en Chile, Brasil, México, USA o España.",
+      "tldr": "El marketing digital B2B en LATAM ya no se trata solo de Google Ads y LinkedIn. En 2026 la atención fragmenta entre cinco capas: SXO (search experience), AIO (AI operations), GEO (citaciones en ChatGPT/Perplexity), AEO (featured snippets) y Entity SEO (autoridad de marca verificable). Esta guía explica cómo construir una operación de marketing B2B que rankee en Google, sea citada por LLMs y genere demand qualificada — con benchmarks y stack tecnológico actualizados a mayo 2026. Audiencia: founders y CMOs de empresas medianas que venden a otras empresas en Chile, Colombia, Perú, USA o España.",
       "sections": [
         {
           "type": "h2",
@@ -3553,7 +3553,7 @@
         "Deliverability"
       ],
       "heroImage": "/assets/blog/klaviyo-hubspot-email-automation-2026.jpg",
-      "tldr": "Email marketing automation sigue siendo el canal más rentable de 2026: USD 42 de retorno por cada USD 1 invertido según Litmus, mientras paid media baja a USD 2-4. La pregunta ya no es si automatizar sino con qué stack. Klaviyo domina e-commerce con flows pre-construidos y predictive analytics nativos; HubSpot manda en B2B con CRM integrado y lifecycle stages. Mailchimp queda relegado a empresas <USD 500K ARR. Esta guía explica cuándo elegir cada plataforma, los 13 flows obligatorios (5 B2B + 8 e-commerce), cómo levantar deliverability con SPF, DKIM, DMARC y BIMI, segmentación RFM con scoring predictivo, KPIs que importan (open rate post-Apple Mail Privacy Protection ya no sirve solo), compliance con Ley 21.719 Chile vigente desde diciembre 2026 y LGPD Brasil, y un caso real con CAC payback bajando de 14 a 5 meses. Audiencia: founders, CMOs y heads of growth de empresas B2B y e-commerce medianas en Chile, Brasil, México, USA y España.",
+      "tldr": "Email marketing automation sigue siendo el canal más rentable de 2026: USD 42 de retorno por cada USD 1 invertido según Litmus, mientras paid media baja a USD 2-4. La pregunta ya no es si automatizar sino con qué stack. Klaviyo domina e-commerce con flows pre-construidos y predictive analytics nativos; HubSpot manda en B2B con CRM integrado y lifecycle stages. Mailchimp queda relegado a empresas <USD 500K ARR. Esta guía explica cuándo elegir cada plataforma, los 13 flows obligatorios (5 B2B + 8 e-commerce), cómo levantar deliverability con SPF, DKIM, DMARC y BIMI, segmentación RFM con scoring predictivo, KPIs que importan (open rate post-Apple Mail Privacy Protection ya no sirve solo), compliance con Ley 21.719 Chile vigente desde diciembre 2026 y LGPD Brasil, y un caso real con CAC payback bajando de 14 a 5 meses. Audiencia: founders, CMOs y heads of growth de empresas B2B y e-commerce medianas en Chile, Colombia, Perú, USA y España.",
       "sections": [
         {
           "type": "h2",
@@ -4222,15 +4222,15 @@
           "type": "list",
           "items": [
             "**Chile**: CLP, IVA 19% incluido, Transbank + Khipu + Mercado Pago.",
-            "**Brasil**: BRL, ICMS variable por estado, Pix + boleto + cartão.",
-            "**México**: MXN, IVA 16%, Mercado Pago + OXXO + SPEI.",
+            "**Colombia**: COP, IVA 19%, PSE + Wompi + tarjetas + Mercado Pago.",
+            "**Perú**: PEN, IGV 18%, Culqi + Niubiz + Yape + Mercado Pago.",
             "**USA**: USD, sales tax por estado (Avalara), Shop Pay + Apple Pay.",
             "**España**: EUR, IVA 21%, Bizum + tarjetas + PayPal."
           ]
         },
         {
           "type": "p",
-          "text": "Routing recomendado: subpath por locale (`/cl/`, `/br/`, `/us/`), no subdominio. Cada página emite `<link rel=\"alternate\" hreflang=\"es-CL\">` para cada variante + `x-default` fallback. Errores comunes: códigos inválidos (`es-LATAM` no existe), referencias unilaterales, contenido idéntico en distintas locales (duplicate content)."
+          "text": "Routing recomendado: subpath por locale (`/cl/`, `/co/`, `/us/`), no subdominio. Cada página emite `<link rel=\"alternate\" hreflang=\"es-CL\">` para cada variante + `x-default` fallback. Errores comunes: códigos inválidos (`es-LATAM` no existe), referencias unilaterales, contenido idéntico en distintas locales (duplicate content)."
         },
         {
           "type": "h2",

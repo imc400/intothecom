@@ -43,7 +43,7 @@
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/", "destination": "/admin/index.html" },
-    { "source": "/:path((?!assets|dist|data|api|admin|robots\\.txt|sitemap\\.xml|llms\\.txt|cb1731ec3af4f7044b282eee96cd9c48\\.txt|favicon\\.ico|og-cover|servicios|software-ia|paid-media|email-marketing|desarrollo-web|community-management|nosotros|hablemos|contacto|casos|recursos).*)", "destination": "/index.html" }
+    { "source": "/:path((?!assets|dist|data|api|admin|robots\\.txt|sitemap\\.xml|llms\\.txt|cb1731ec3af4f7044b282eee96cd9c48\\.txt|favicon\\.ico|og-cover|servicios|software-ia|paid-media|email-marketing|desarrollo-web|community-management|nosotros|hablemos|contacto|casos|recursos|equipo).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
@@ -55,6 +55,14 @@
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" }
       ]
+    },
+    {
+      "source": "/recursos/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400, must-revalidate" }]
+    },
+    {
+      "source": "/equipo/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400, must-revalidate" }]
     },
     {
       "source": "/assets/(.*)",
