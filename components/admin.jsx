@@ -1075,7 +1075,299 @@ function SeoDashboard() {
 }
 
 // ============================================================================
-// AdminApp (lista + editor + dashboard)
+// HealthCenter — dashboard "Estado SEO" con 6 cards + hero + lista del día
+// ============================================================================
+function HealthCard({title, tooltip, mainValue, mainLabel, subItems, verdict, action, loading}) {
+  const colors = {
+    ok: '#2e7d32', warn: '#f39200', critical: '#c62828', loading: 'rgba(0,0,0,0.3)'
+  };
+  const icons = { ok: '✅', warn: '⚠️', critical: '🔴', loading: '⏳' };
+  const labels = { ok: 'Saludable', warn: 'Revisar', critical: 'Acción urgente', loading: 'Cargando…' };
+  const color = colors[verdict] || colors.loading;
+
+  return (
+    <div className="health-card">
+      <div className="health-card-head">
+        <span className="health-card-icon">{icons[verdict] || icons.loading}</span>
+        <span className="health-card-title">{title}</span>
+        {tooltip && <Tooltip text={tooltip} />}
+        <span className="health-card-verdict" style={{color}}>{labels[verdict] || ''}</span>
+      </div>
+      <div className="health-card-main" style={{color}}>{loading ? '—' : mainValue}</div>
+      <div className="health-card-mainlabel">{mainLabel}</div>
+      {subItems && subItems.length > 0 && (
+        <ul className="health-card-subs">
+          {subItems.map((s, i) => <li key={i}><span className="hsub-label">{s.label}:</span> <span className="hsub-value">{s.value}</span></li>)}
+        </ul>
+      )}
+      {action && verdict !== 'ok' && (
+        <div className="health-card-action">→ {action}</div>
+      )}
+    </div>
+  );
+}
+
+function HealthCenter() {
+  const [trends, setTrends] = useState(null);
+  const [quickwins, setQuickwins] = useState(null);
+  const [contentHealth, setContentHealth] = useState(null);
+  const [technical, setTechnical] = useState(null);
+  const [penalties, setPenalties] = useState(null);
+  const [aiSearch, setAiSearch] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const [lastUpdate, setLastUpdate] = useState(null);
+
+  const loadAll = useCallback(() => {
+    setRefreshing(true);
+    Promise.allSettled([
+      fetch('/api/seo/trends').then(r => r.json()).then(setTrends),
+      fetch('/api/seo/quickwins').then(r => r.json()).then(setQuickwins),
+      fetch('/api/seo/content-health').then(r => r.json()).then(setContentHealth),
+      fetch('/api/seo/technical').then(r => r.json()).then(setTechnical),
+      fetch('/api/seo/penalties').then(r => r.json()).then(setPenalties),
+      fetch('/api/seo/ai-search').then(r => r.json()).then(setAiSearch)
+    ]).finally(() => {
+      setRefreshing(false);
+      setLastUpdate(new Date());
+    });
+  }, []);
+
+  useEffect(() => { loadAll(); }, [loadAll]);
+
+  const fmtPct = (n) => `${(n * 100).toFixed(2)}%`;
+  const fmtNum = (n) => (n || 0).toLocaleString('es-CL');
+  const fmtDelta = (n, isPct) => {
+    if (n == null || isNaN(n)) return '—';
+    const sign = n > 0 ? '+' : '';
+    return `${sign}${isPct ? n.toFixed(1) + '%' : Math.round(n)}`;
+  };
+
+  // ========= Card A: Penalizaciones =========
+  const penaltiesVerdict = !penalties ? 'loading'
+    : penalties.summary?.overallVerdict === 'critical' ? 'critical'
+    : penalties.issues?.length > 0 ? 'warn'
+    : 'ok';
+
+  // ========= Card B: Performance vs mes pasado =========
+  let perfVerdict = 'loading';
+  if (trends) {
+    const dc = trends.deltas?.clicksPct;
+    const dp = trends.deltas?.position;
+    if (dc <= -10 || dp >= 1.0) perfVerdict = 'critical';
+    else if (dc >= 5 || dp <= -0.3) perfVerdict = 'ok';
+    else perfVerdict = 'warn';
+  }
+
+  // ========= Card C: Acción urgente HOY =========
+  const totalOps = quickwins?.totalOpportunities || 0;
+  const urgentVerdict = !quickwins ? 'loading'
+    : totalOps >= 6 ? 'critical' : totalOps >= 2 ? 'warn' : 'ok';
+
+  // ========= Card D: Salud técnica =========
+  let techVerdict = 'loading';
+  if (technical) techVerdict = technical.summary?.overallVerdict || 'loading';
+
+  // ========= Card E: Calidad contenido =========
+  let contentVerdict = 'loading';
+  if (contentHealth) {
+    if (contentHealth.avgScore >= 80 && contentHealth.daysSinceLastPublish <= 30) contentVerdict = 'ok';
+    else if (contentHealth.avgScore < 60 || contentHealth.daysSinceLastPublish > 60) contentVerdict = 'critical';
+    else contentVerdict = 'warn';
+  }
+
+  // ========= Card F: AI Search =========
+  let aiVerdict = 'loading';
+  if (aiSearch) aiVerdict = aiSearch.summary?.verdict || 'loading';
+
+  // ========= Hero box =========
+  const allVerdicts = [penaltiesVerdict, perfVerdict, urgentVerdict, techVerdict, contentVerdict, aiVerdict];
+  const criticalCount = allVerdicts.filter(v => v === 'critical').length;
+  const warnCount = allVerdicts.filter(v => v === 'warn').length;
+  const loadingCount = allVerdicts.filter(v => v === 'loading').length;
+
+  let heroEmoji, heroMsg, heroColor;
+  if (loadingCount === 6) {
+    heroEmoji = '⏳'; heroMsg = 'Cargando data de todas las fuentes…'; heroColor = 'rgba(0,0,0,0.3)';
+  } else if (criticalCount > 0) {
+    heroEmoji = '🔴'; heroMsg = `${criticalCount} ${criticalCount === 1 ? 'item' : 'items'} requieren acción urgente`; heroColor = '#c62828';
+  } else if (warnCount > 0) {
+    heroEmoji = '⚠️'; heroMsg = `${warnCount} ${warnCount === 1 ? 'item' : 'items'} necesitan revisión esta semana`; heroColor = '#f39200';
+  } else {
+    heroEmoji = '✅'; heroMsg = 'Todo saludable — sitio en buen estado'; heroColor = '#2e7d32';
+  }
+
+  // ========= "Tu lista del día" =========
+  const todayList = [];
+  if (penalties?.issues?.length > 0) {
+    penalties.issues.slice(0, 2).forEach(i => todayList.push({ sev: i.sev, msg: i.msg, source: 'Penalizaciones' }));
+  }
+  if (quickwins?.strikingDistance?.length > 0) {
+    quickwins.strikingDistance.slice(0, 2).forEach(q => todayList.push({
+      sev: 'warn',
+      msg: `Query "${q.query}" en posición ${q.position.toFixed(1)}. Quick win: subir a top 5 = +${Math.round(q.impressions * 0.04)} clicks/mes.`,
+      source: 'Quick Wins'
+    }));
+  }
+  if (trends?.droppedPages?.length > 0) {
+    trends.droppedPages.slice(0, 1).forEach(p => todayList.push({
+      sev: 'critical',
+      msg: `Página ${p.page.replace('https://www.intothecom.com', '')} bajó ${Math.abs(p.deltaClicks)} clicks vs mes pasado.`,
+      source: 'Trends'
+    }));
+  }
+  if (contentHealth?.bottomArticles?.[0]?.score < 70) {
+    todayList.push({
+      sev: 'warn',
+      msg: `Artículo "${contentHealth.bottomArticles[0].title}" tiene Quality Score ${contentHealth.bottomArticles[0].score}/100. Issues: ${contentHealth.bottomArticles[0].topIssues.join('; ')}.`,
+      source: 'Quality Content'
+    });
+  }
+
+  return (
+    <div>
+      <div className="header-row">
+        <div className="h1">🎯 Estado SEO</div>
+        <button onClick={loadAll} disabled={refreshing} className="btn btn-ghost" style={{padding:'8px 14px',fontSize:13,color:'#1a1a1d',borderColor:'rgba(0,0,0,0.15)'}}>
+          {refreshing ? '⏳ Cargando…' : '🔄 Refresh'}
+        </button>
+      </div>
+
+      {/* Hero box */}
+      <div className="health-hero" style={{borderColor: heroColor, background: `${heroColor}0d`}}>
+        <div className="health-hero-emoji">{heroEmoji}</div>
+        <div className="health-hero-msg" style={{color: heroColor}}>{heroMsg}</div>
+        {lastUpdate && <div className="health-hero-update">Actualizado {Math.round((Date.now() - lastUpdate) / 1000)}s atrás</div>}
+      </div>
+
+      {/* Grid 3x2 cards */}
+      <div className="health-grid">
+        <HealthCard
+          title="Penalizaciones Google"
+          tooltip="Castigos manuales de Google que pueden ocultar tu sitio en búsquedas. Idealmente '0 activas'."
+          mainValue={penalties?.errorCount || 0}
+          mainLabel={penaltiesVerdict === 'ok' ? 'sin penalizaciones detectadas' : 'errores indexación'}
+          verdict={penaltiesVerdict}
+          subItems={penalties ? [
+            { label: 'URLs muestreadas', value: penalties.sampleSize },
+            { label: 'Indexadas OK', value: penalties.indexedCount },
+            { label: 'Bloqueadas', value: penalties.blockedCount }
+          ] : null}
+          action={penalties?.issues?.[0]?.msg ? `Revisar: ${penalties.issues[0].msg}` : null}
+          loading={!penalties}
+        />
+
+        <HealthCard
+          title="Performance vs mes pasado"
+          tooltip="Comparación clicks/impresiones/posición últimos 28 días vs los 28 anteriores. Verde si crece >5%, rojo si cae >10%."
+          mainValue={trends ? fmtDelta(trends.deltas?.clicksPct, true) : '—'}
+          mainLabel="clicks vs mes anterior"
+          verdict={perfVerdict}
+          subItems={trends ? [
+            { label: 'Δ impresiones', value: fmtDelta(trends.deltas?.impressionsPct, true) },
+            { label: 'Δ posición', value: fmtDelta(trends.deltas?.position, false) },
+            { label: 'Δ CTR', value: trends.deltas?.ctr ? `${(trends.deltas.ctr * 100).toFixed(2)}%` : '—' }
+          ] : null}
+          action={trends?.droppedPages?.[0] ? `Top caída: ${trends.droppedPages[0].page.replace('https://www.intothecom.com', '')} (${trends.droppedPages[0].deltaClicks} clicks)` : null}
+          loading={!trends}
+        />
+
+        <HealthCard
+          title="Acción urgente HOY"
+          tooltip="Quick wins identificados: queries en posición 8-20 (página 2-3 de Google, basta subir un poco para multiplicar clicks 5x) + páginas con CTR sub-óptimo."
+          mainValue={totalOps}
+          mainLabel={totalOps === 1 ? 'oportunidad activa' : 'oportunidades activas'}
+          verdict={urgentVerdict}
+          subItems={quickwins ? [
+            { label: 'Striking distance', value: quickwins.strikingDistance?.length || 0 },
+            { label: 'CTR bajo', value: quickwins.lowCtr?.length || 0 }
+          ] : null}
+          action={quickwins?.strikingDistance?.[0] ? `Optimizar: "${quickwins.strikingDistance[0].query}" (pos ${quickwins.strikingDistance[0].position.toFixed(1)})` : null}
+          loading={!quickwins}
+        />
+
+        <HealthCard
+          title="Salud técnica"
+          tooltip="Velocidad y estabilidad del sitio en mobile/desktop según Core Web Vitals de Google. Verde si todas las métricas están en rango bueno."
+          mainValue={technical?.avgScore != null ? technical.avgScore : '—'}
+          mainLabel="score Lighthouse promedio"
+          verdict={techVerdict}
+          subItems={technical?.psiResults ? [
+            { label: 'Home mobile', value: technical.psiResults[0]?.data?.score ?? '—' },
+            { label: 'Home desktop', value: technical.psiResults[1]?.data?.score ?? '—' },
+            { label: 'Errores sitemap', value: technical.sitemaps?.errors || 0 }
+          ] : null}
+          action={technical?.issues?.[0]?.msg ? technical.issues[0].msg.slice(0, 80) + '…' : null}
+          loading={!technical}
+        />
+
+        <HealthCard
+          title="Calidad del contenido"
+          tooltip="Quality Score promedio de todos los artículos publicados (0-100). Verde si avg ≥80 y último publish fue hace <30 días."
+          mainValue={contentHealth?.avgScore != null ? `${contentHealth.avgScore}/100` : '—'}
+          mainLabel={`${contentHealth?.total || 0} artículos publicados`}
+          verdict={contentVerdict}
+          subItems={contentHealth ? [
+            { label: 'Artículos < 80 score', value: contentHealth.articlesUnder80 },
+            { label: 'Último publish', value: contentHealth.daysSinceLastPublish === 0 ? 'hoy' : `hace ${contentHealth.daysSinceLastPublish}d` },
+            { label: 'Total críticos', value: contentHealth.totalCriticalIssues }
+          ] : null}
+          action={contentHealth?.bottomArticles?.[0]?.score < 70 ? `Mejorar: ${contentHealth.bottomArticles[0].title.slice(0, 60)}…` : null}
+          loading={!contentHealth}
+        />
+
+        <HealthCard
+          title="AI Search (ChatGPT/Copilot)"
+          tooltip="Cuántas veces tu sitio fue citado en Microsoft Copilot, ChatGPT search y Bing Chat en los últimos 28 días. Verde si ≥50 citations."
+          mainValue={aiSearch?.summary?.totalBingClicks ?? '—'}
+          mainLabel="clicks desde AI engines"
+          verdict={aiVerdict}
+          subItems={aiSearch ? [
+            { label: 'Impresiones Bing', value: fmtNum(aiSearch.summary?.totalBingImpressions || 0) },
+            { label: 'Top grounding queries', value: (aiSearch.summary?.topGroundingQueries || []).length },
+            { label: 'API Bing', value: aiSearch.bingApiConfigured ? '✓ configurada' : '⚠ falta key' }
+          ] : null}
+          action={!aiSearch?.bingApiConfigured ? 'Agregar BING_API_KEY en Vercel env vars' : (aiSearch?.summary?.recommendations?.[0] || null)}
+          loading={!aiSearch}
+        />
+      </div>
+
+      {/* Tu lista del día */}
+      {todayList.length > 0 && (
+        <div className="health-todo">
+          <h2 className="health-todo-title">📋 Tu lista del día</h2>
+          <ul className="health-todo-list">
+            {todayList.map((item, i) => (
+              <li key={i} className={`health-todo-item htodo-${item.sev}`}>
+                <span className="htodo-icon">{item.sev === 'critical' ? '🔴' : item.sev === 'warn' ? '🟡' : 'ℹ️'}</span>
+                <div className="htodo-body">
+                  <div className="htodo-msg">{item.msg}</div>
+                  <div className="htodo-source">{item.source}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div className="health-footer">
+        <div>
+          Última actualización: {lastUpdate ? `${Math.round((Date.now() - lastUpdate) / 1000)}s atrás` : '—'} ·
+          GSC: {trends ? '✓' : '⏳'} ·
+          PSI: {technical ? '✓' : '⏳'} ·
+          Bing: {aiSearch?.bingApiConfigured ? '✓' : '✗'}
+        </div>
+        <div style={{display:'flex',gap:8,marginTop:8}}>
+          <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" className="hfooter-link">Abrir GSC</a>
+          <a href="https://www.bing.com/webmasters/" target="_blank" rel="noopener noreferrer" className="hfooter-link">Abrir Bing WMT</a>
+          <a href="https://www.intothecom.com/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hfooter-link">Ver sitemap</a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// AdminApp (lista + editor + dashboard + health center)
 // ============================================================================
 function AdminApp() {
   const [user, setUser] = useState(null);
@@ -1207,6 +1499,9 @@ function AdminApp() {
           <button className="admin-nav-item" onClick={handleNew}>
             ＋ Nuevo artículo
           </button>
+          <button className={`admin-nav-item ${view === 'health' ? 'active' : ''}`} onClick={() => {setView('health'); setEditing(null);}}>
+            🎯 Estado SEO
+          </button>
           <button className={`admin-nav-item ${view === 'seo' ? 'active' : ''}`} onClick={() => {setView('seo'); setEditing(null);}}>
             📊 SEO Dashboard
           </button>
@@ -1310,6 +1605,7 @@ function AdminApp() {
           />
         )}
 
+        {view === 'health' && <HealthCenter />}
         {view === 'seo' && <SeoDashboard />}
       </main>
     </div>

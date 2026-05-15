@@ -425,6 +425,79 @@
     height: 1px; background: rgba(244,239,230,0.1); margin: 16px 0;
   }
 
+  /* === Health Center === */
+  .health-hero {
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px 24px; border: 2px solid; border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  .health-hero-emoji { font-size: 32px; }
+  .health-hero-msg { font-size: 18px; font-weight: 500; flex: 1; }
+  .health-hero-update { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(0,0,0,0.45); }
+  .health-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px;
+  }
+  @media (max-width: 1100px) { .health-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) { .health-grid { grid-template-columns: 1fr; } }
+  .health-card {
+    background: white; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px;
+    padding: 18px 20px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .health-card-head {
+    display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(0,0,0,0.6);
+  }
+  .health-card-icon { font-size: 14px; }
+  .health-card-title { flex: 1; }
+  .health-card-verdict { font-size: 10px; font-weight: 600; }
+  .health-card-main { font-family: 'Sora', sans-serif; font-size: 36px; font-weight: 600; line-height: 1; }
+  .health-card-mainlabel { font-size: 12px; color: rgba(0,0,0,0.55); margin-top: -2px; }
+  .health-card-subs {
+    list-style: none; padding: 10px 0 0 0; border-top: 1px solid rgba(0,0,0,0.06);
+    font-size: 12px; color: rgba(0,0,0,0.7); line-height: 1.8;
+  }
+  .hsub-label { color: rgba(0,0,0,0.5); }
+  .hsub-value { font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+  .health-card-action {
+    margin-top: 8px; padding: 8px 10px;
+    background: rgba(243,146,0,0.08); border-radius: 5px;
+    font-size: 11px; color: #c66800; line-height: 1.45;
+  }
+
+  /* Lista del día */
+  .health-todo {
+    background: white; border: 1px solid rgba(0,0,0,0.06); border-radius: 10px;
+    padding: 20px 22px; margin-bottom: 24px;
+  }
+  .health-todo-title { font-size: 16px; font-weight: 500; margin-bottom: 14px; }
+  .health-todo-list { list-style: none; padding: 0; margin: 0; }
+  .health-todo-item {
+    display: flex; gap: 10px; padding: 10px 12px; margin-bottom: 6px; border-radius: 6px;
+  }
+  .htodo-critical { background: rgba(198,40,40,0.06); }
+  .htodo-warn { background: rgba(243,146,0,0.06); }
+  .htodo-info { background: rgba(21,101,192,0.04); }
+  .htodo-icon { flex-shrink: 0; font-size: 14px; line-height: 20px; }
+  .htodo-body { flex: 1; }
+  .htodo-msg { font-size: 13px; line-height: 1.5; color: #1a1a1d; }
+  .htodo-source {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: rgba(0,0,0,0.45); margin-top: 4px; letter-spacing: 0.5px;
+  }
+
+  /* Footer */
+  .health-footer {
+    background: rgba(0,0,0,0.02); padding: 14px 18px; border-radius: 8px;
+    font-size: 12px; color: rgba(0,0,0,0.55);
+  }
+  .hfooter-link {
+    display: inline-block; padding: 4px 10px; background: white;
+    border: 1px solid rgba(0,0,0,0.1); border-radius: 4px; text-decoration: none;
+    color: #1565c0; font-size: 11px;
+    font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .hfooter-link:hover { border-color: #1565c0; }
+
   /* === SEO Dashboard === */
   .dashboard-health {
     display: flex; flex-wrap: wrap; gap: 8px;
@@ -502,6 +575,6 @@
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-<script defer src="/dist/admin.js?v=3bb2394f"></script>
+<script defer src="/dist/admin.js?v=057d0cde"></script>
 </body>
 </html>

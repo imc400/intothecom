@@ -215,4 +215,39 @@ async function getSitemaps() {
   });
 }
 
-module.exports = { loadServiceAccount, getAccessToken, query, getSitemaps, getAuthMethod };
+// Inspect una URL específica (lighthouse de indexación + manual actions)
+async function urlInspect(inspectionUrl) {
+  const token = await getAccessToken();
+  const propertyUrl = process.env.GSC_PROPERTY_URL;
+  return new Promise((resolve, reject) => {
+    const body = JSON.stringify({
+      inspectionUrl,
+      siteUrl: propertyUrl,
+      languageCode: 'es-CL'
+    });
+    const req = https.request({
+      hostname: 'searchconsole.googleapis.com',
+      path: '/v1/urlInspection/index:inspect',
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(body)
+      },
+      timeout: 15000
+    }, (resp) => {
+      let chunks = '';
+      resp.on('data', (c) => chunks += c);
+      resp.on('end', () => {
+        try { resolve({ status: resp.statusCode, body: JSON.parse(chunks) }); }
+        catch { resolve({ status: resp.statusCode, body: chunks }); }
+      });
+    });
+    req.on('error', reject);
+    req.on('timeout', () => { req.destroy(); reject(new Error('GSC timeout')); });
+    req.write(body);
+    req.end();
+  });
+}
+
+module.exports = { loadServiceAccount, getAccessToken, query, getSitemaps, getAuthMethod, urlInspect };

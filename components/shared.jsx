@@ -287,6 +287,98 @@ function StatusBar() {
   );
 }
 
+// Estructura del dropdown Recursos: categorías + top picks (orden por intent comercial)
+const RECURSOS_GROUPS = [
+  { title: 'Estrategia & Growth', items: [
+    { slug: 'marketing-digital-b2b-latam-2026', label: 'Marketing digital B2B LATAM' },
+    { slug: 'funnel-aarrr-pirate-b2b-latam-2026', label: 'Funnel AARRR para B2B' },
+    { slug: 'buyer-personas-b2b-chile-2026', label: 'Buyer personas B2B Chile' }
+  ]},
+  { title: 'Tech & IA', items: [
+    { slug: 'crm-b2b-que-es-como-elegir-2026', label: 'CRM B2B: cómo elegir' },
+    { slug: 'agentes-ia-para-empresas-2026', label: 'Agentes IA para empresas' },
+    { slug: 'tech-stack-minimo-growth-b2b-latam-2026', label: 'Tech stack mínimo growth' },
+    { slug: 'desarrollo-web-headless-nextjs-shopify-2026', label: 'Desarrollo web headless Next.js' }
+  ]},
+  { title: 'Canales', items: [
+    { slug: 'paid-media-b2b-2026', label: 'Paid Media B2B 2026' },
+    { slug: 'klaviyo-hubspot-email-automation-2026', label: 'Email automation Klaviyo/HubSpot' },
+    { slug: 'community-management-b2b-2026', label: 'Community Management B2B' }
+  ]},
+  { title: 'Industria', items: [
+    { slug: 'kick-off-proyecto-guia-completa-2026', label: 'Kick off meeting B2B' },
+    { slug: 'ranking-agencias-marketing-digital-b2b-chile-2026', label: 'Ranking agencias B2B Chile' }
+  ]}
+];
+
+function RecursosDropdown({ navigate, currentNav }) {
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (e) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(false);
+    };
+    const onEsc = (e) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('mousedown', onClick);
+    document.addEventListener('keydown', onEsc);
+    return () => {
+      document.removeEventListener('mousedown', onClick);
+      document.removeEventListener('keydown', onEsc);
+    };
+  }, [open]);
+
+  const isActive = currentNav === 'recursos';
+
+  return (
+    <span className="nav-dropdown-wrap" ref={wrapRef}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <a
+        href="/recursos"
+        aria-haspopup="true"
+        aria-expanded={open}
+        aria-current={isActive ? 'page' : undefined}
+        className={`nav-dropdown-trigger ${isActive ? 'active' : ''}`}
+        onClick={(e)=>{e.preventDefault(); navigate('/recursos');}}
+        onFocus={() => setOpen(true)}
+      >
+        Recursos <span className="nav-dropdown-chev" aria-hidden="true">▾</span>
+      </a>
+      {open && (
+        <div className="nav-dropdown-menu" role="menu">
+          <div className="nav-dropdown-grid">
+            {RECURSOS_GROUPS.map(group => (
+              <div key={group.title} className="nav-dropdown-col">
+                <div className="nav-dropdown-coltitle">{group.title}</div>
+                <ul className="nav-dropdown-collist">
+                  {group.items.map(it => (
+                    <li key={it.slug}>
+                      <a
+                        href={`/recursos/${it.slug}`}
+                        onClick={(e)=>{e.preventDefault(); setOpen(false); navigate(`/recursos/${it.slug}`);}}
+                        role="menuitem"
+                      >{it.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="nav-dropdown-foot">
+            <a
+              href="/recursos"
+              onClick={(e)=>{e.preventDefault(); setOpen(false); navigate('/recursos');}}
+            >Ver todos los recursos →</a>
+          </div>
+        </div>
+      )}
+    </span>
+  );
+}
+
 function Nav({ navigate, currentNav }) {
   return (
     <nav className="nav" aria-label="Principal">
@@ -298,6 +390,7 @@ function Nav({ navigate, currentNav }) {
         <a href="/" aria-current={currentNav==='home'?'page':undefined} className={currentNav==='home'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/');}}>Inicio</a>
         <a href="/servicios" aria-current={currentNav==='servicios'?'page':undefined} className={currentNav==='servicios'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/servicios');}}>Servicios</a>
         <a href="/software-ia" aria-current={currentNav==='software-ia'?'page':undefined} className={currentNav==='software-ia'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/software-ia');}}>IA & Software</a>
+        <RecursosDropdown navigate={navigate} currentNav={currentNav} />
         <a href="/nosotros" aria-current={currentNav==='nosotros'?'page':undefined} className={currentNav==='nosotros'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/nosotros');}}>Estudio</a>
         <a href="/contacto" aria-current={currentNav==='contacto'?'page':undefined} className={currentNav==='contacto'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Contacto</a>
       </div>

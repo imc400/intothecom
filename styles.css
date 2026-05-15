@@ -224,6 +224,66 @@ main:focus { outline: none; }
   content: "•";
   margin-right: 6px;
 }
+
+/* === Nav Recursos Dropdown === */
+.nav-dropdown-wrap { position: relative; display: inline-block; }
+.nav-dropdown-trigger {
+  display: inline-flex; align-items: center; gap: 4px;
+  opacity: 0.65; cursor: pointer; transition: opacity 0.15s;
+  color: inherit; text-decoration: none;
+  font-family: inherit; font-size: inherit;
+}
+.nav-dropdown-trigger:hover, .nav-dropdown-trigger.active { opacity: 1; }
+.nav-dropdown-trigger.active { color: var(--orange); }
+.nav-dropdown-chev { font-size: 9px; opacity: 0.7; transition: transform 0.15s; }
+.nav-dropdown-wrap:hover .nav-dropdown-chev { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  z-index: 1000; min-width: 720px; max-width: 90vw;
+  background: #0a0a0b; border: 1px solid #1a1a1d; border-radius: 12px;
+  padding: 24px 28px; box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  animation: navDropdownIn 0.15s ease-out;
+}
+@keyframes navDropdownIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.nav-dropdown-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+}
+.nav-dropdown-col { min-width: 0; }
+.nav-dropdown-coltitle {
+  font-family: var(--font-mono); font-size: 10px;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--orange); margin-bottom: 10px;
+}
+.nav-dropdown-collist { list-style: none; padding: 0; margin: 0; }
+.nav-dropdown-collist li { margin-bottom: 6px; }
+.nav-dropdown-collist a {
+  display: block; padding: 5px 8px; margin: 0 -8px;
+  color: var(--ink); text-decoration: none;
+  font-size: 13px; line-height: 1.4; border-radius: 4px;
+  transition: background 0.12s, color 0.12s;
+  opacity: 0.85;
+}
+.nav-dropdown-collist a:hover {
+  background: rgba(243,146,0,0.1); color: var(--orange); opacity: 1;
+}
+.nav-dropdown-foot {
+  margin-top: 18px; padding-top: 16px; border-top: 1px solid #1a1a1d;
+  text-align: center;
+}
+.nav-dropdown-foot a {
+  color: var(--orange); text-decoration: none;
+  font-family: var(--font-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.nav-dropdown-foot a:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  /* En mobile el dropdown desktop no aplica — el menú hamburger maneja */
+  .nav-dropdown-menu { display: none; }
+}
 .nav-right {
   justify-self: end;
   display: flex;
