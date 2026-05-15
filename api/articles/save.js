@@ -1,12 +1,14 @@
-/* api/articles/save.js — POST: actualiza data/articles.json en GitHub via API.
-   Vercel detecta el commit y redeploya automaticamente.
+/* api/articles/save.js — POST: commit atómico de articles.json + sitemap.xml + llms.txt
+   via GitHub Git Trees API. Vercel detecta el commit y redeploya automáticamente.
 
-   Body: { articles: [...], plannedPillars: [...], sha: 'currentSha' }
-   Response: { ok: true, commitUrl: '...', newSha: '...' } */
+   Body: { articles: [...], plannedPillars: [...], sha: 'currentSha (legacy, opcional) ' }
+   Response: { ok: true, commitUrl: '...' } */
 
 const https = require('https');
 const { parseCookies, verify } = require('../_lib/jwt.js');
 const { pingIndexNow } = require('../_lib/indexnow.js');
+const { commitMultipleFiles } = require('../_lib/github-tree.js');
+const { generateSitemap, generateLlms } = require('../_lib/seo-updates.js');
 
 function isAuthenticated(req) {
   const cookies = parseCookies(req.headers.cookie);
@@ -17,47 +19,13 @@ function isAuthenticated(req) {
   return payload;
 }
 
-function ghRequest({method, path, token, body}) {
-  return new Promise((resolve, reject) => {
-    const data = body ? JSON.stringify(body) : null;
-    const req = https.request({
-      hostname: 'api.github.com',
-      path: path,
-      method: method,
-      headers: {
-        'Accept': 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2022-11-28',
-        'Authorization': `Bearer ${token}`,
-        'User-Agent': 'intothecom-admin',
-        ...(data ? { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(data) } : {})
-      }
-    }, (resp) => {
-      let chunks = '';
-      resp.on('data', (c) => chunks += c);
-      resp.on('end', () => {
-        try {
-          resolve({status: resp.statusCode, body: JSON.parse(chunks)});
-        } catch (e) {
-          resolve({status: resp.statusCode, body: chunks});
-        }
-      });
-    });
-    req.on('error', reject);
-    if (data) req.write(data);
-    req.end();
-  });
-}
-
 function readJsonBody(req) {
   return new Promise((resolve, reject) => {
     let chunks = '';
     req.on('data', (c) => chunks += c);
     req.on('end', () => {
-      try {
-        resolve(chunks ? JSON.parse(chunks) : {});
-      } catch (e) {
-        reject(new Error('Invalid JSON body'));
-      }
+      try { resolve(chunks ? JSON.parse(chunks) : {}); }
+      catch (e) { reject(new Error('Invalid JSON body')); }
     });
     req.on('error', reject);
   });
@@ -101,19 +69,11 @@ module.exports = async (req, res) => {
   }
 
   let body;
-  try {
-    body = await readJsonBody(req);
-  } catch (e) {
-    res.status(400).json({error: e.message});
-    return;
-  }
+  try { body = await readJsonBody(req); }
+  catch (e) { res.status(400).json({error: e.message}); return; }
 
   if (!Array.isArray(body.articles)) {
     res.status(400).json({error: 'articles must be array'});
-    return;
-  }
-  if (!body.sha) {
-    res.status(400).json({error: 'sha required (current articles.json sha for conflict detection)'});
     return;
   }
 
@@ -138,41 +98,28 @@ module.exports = async (req, res) => {
     plannedPillars: body.plannedPillars || []
   };
 
-  const newContent = JSON.stringify(newData, null, 2);
-  const newContentBase64 = Buffer.from(newContent, 'utf-8').toString('base64');
+  const articlesContent = JSON.stringify(newData, null, 2);
+  const sitemapContent = generateSitemap(body.articles);
+  const llmsContent = generateLlms(body.articles);
 
-  // Commit message
-  const message = `feat(blog): update articles via admin [${user.email}]\n\nEdited by ${user.name || user.email} at ${new Date().toISOString()}`;
+  const message = `feat(blog): update via admin [${user.email}]\n\nAuto-actualizados: data/articles.json + sitemap.xml + llms.txt\nEditor: ${user.name || user.email}\nTimestamp: ${new Date().toISOString()}\nTotal artículos: ${body.articles.length}`;
 
   try {
-    const result = await ghRequest({
-      method: 'PUT',
-      path: `/repos/${repo}/contents/data/articles.json`,
-      token: ghToken,
-      body: {
-        message: message,
-        content: newContentBase64,
-        sha: body.sha,
-        branch: branch,
-        committer: {
-          name: user.name || 'IntoTheCom Admin',
-          email: user.email
-        }
+    const result = await commitMultipleFiles({
+      repo, branch, token: ghToken,
+      files: [
+        { path: 'data/articles.json', content: articlesContent },
+        { path: 'sitemap.xml', content: sitemapContent },
+        { path: 'llms.txt', content: llmsContent }
+      ],
+      message,
+      committer: {
+        name: user.name || 'IntoTheCom Admin',
+        email: user.email
       }
     });
 
-    if (result.status === 409 || (result.status === 422 && result.body && result.body.message && result.body.message.includes('sha'))) {
-      res.status(409).json({error: 'Conflict: articles.json was modified by someone else. Reload and retry.'});
-      return;
-    }
-
-    if (result.status !== 200 && result.status !== 201) {
-      res.status(500).json({error: 'GitHub API error', status: result.status, detail: result.body});
-      return;
-    }
-
     // Fire-and-forget: notificar IndexNow con todas las URLs de artículos.
-    // No bloqueamos la respuesta al admin — el ping es best-effort.
     const articleUrls = body.articles
       .filter(a => a.slug)
       .map(a => `https://www.intothecom.com/recursos/${a.slug}`);
@@ -184,9 +131,9 @@ module.exports = async (req, res) => {
 
     res.status(200).json({
       ok: true,
-      commitUrl: result.body.commit?.html_url,
-      newSha: result.body.content?.sha,
-      message: 'Articles saved. Vercel will redeploy in ~30-60s. IndexNow notified.'
+      commitUrl: result.commitUrl,
+      commitSha: result.commitSha,
+      message: 'Articles + sitemap.xml + llms.txt commiteados en un solo commit. Vercel redeploya en ~30-60s. IndexNow notificado a Bing/Yandex/Naver/DDG.'
     });
   } catch (e) {
     res.status(500).json({error: e.message});

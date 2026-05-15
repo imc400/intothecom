@@ -182,13 +182,13 @@ function ResourceArticle({ navigate, slug }) {
         {/* Article hero */}
         <section className="article-hero">
           <div className="container">
-            <div className="article-breadcrumb">
+            <nav aria-label="Breadcrumb" className="article-breadcrumb">
               <a href="/" onClick={(e)=>{e.preventDefault();navigate('/');}}>Inicio</a>
-              <span>·</span>
+              <span aria-hidden="true">·</span>
               <a href="/recursos" onClick={(e)=>{e.preventDefault();navigate('/recursos');}}>Recursos</a>
-              <span>·</span>
-              <span style={{opacity:0.5}}>{article.category}</span>
-            </div>
+              <span aria-hidden="true">·</span>
+              <span aria-current="page" style={{opacity:0.7}}>{article.category}</span>
+            </nav>
             <div className="eyebrow mb-md">/ {article.category} · {article.readingTime} de lectura</div>
             <h1 className="article-h1" style={{maxWidth:'24ch'}}>{article.title}</h1>
             <p className="article-tldr">

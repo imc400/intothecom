@@ -268,6 +268,162 @@
     font-size: 13px;
     line-height: 1.6;
   }
+
+  /* === Tooltip system === */
+  .tooltip-wrap { position: relative; display: inline-block; margin-left: 6px; }
+  .tooltip-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: rgba(26,26,29,0.1); color: rgba(26,26,29,0.6);
+    font-size: 10px; font-weight: 600; cursor: help; user-select: none;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .tooltip-icon:hover, .tooltip-icon:focus { background: #f39200; color: #fff; outline: none; }
+  .tooltip-body {
+    position: absolute; left: 24px; top: -4px;
+    z-index: 100; min-width: 240px; max-width: 320px;
+    padding: 10px 12px; border-radius: 6px;
+    background: #1a1a1d; color: #f4efe6;
+    font-size: 12px; line-height: 1.5; font-weight: 400;
+    text-transform: none; letter-spacing: 0;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    pointer-events: none;
+  }
+
+  /* === Field hints + counters === */
+  .field-hint-row { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; gap: 12px; }
+  .field-hint { font-size: 11px; color: rgba(26,26,29,0.5); font-family: 'JetBrains Mono', monospace; }
+  .field-counter { font-size: 11px; font-family: 'JetBrains Mono', monospace; padding: 2px 6px; border-radius: 3px; }
+  .field-counter.is-empty { background: rgba(0,0,0,0.05); color: rgba(0,0,0,0.4); }
+  .field-counter.is-low { background: rgba(243,146,0,0.15); color: #c66800; }
+  .field-counter.is-high { background: rgba(198,40,40,0.12); color: #c62828; }
+  .field-counter.is-ok { background: rgba(46,125,50,0.12); color: #2e7d32; }
+
+  /* === Collapsible === */
+  .collapsible { background: white; border: 1px solid rgba(26,26,29,0.08); border-radius: 8px; margin-bottom: 16px; }
+  .collapsible-head {
+    width: 100%; display: flex; align-items: center; gap: 10px;
+    padding: 16px 20px; background: rgba(26,26,29,0.02); border: none; cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 500; color: #1a1a1d;
+    text-align: left;
+  }
+  .collapsible-head:hover { background: rgba(26,26,29,0.04); }
+  .collapsible-chevron { font-size: 12px; color: rgba(26,26,29,0.5); width: 12px; }
+  .collapsible-title { flex: 1; }
+  .collapsible-badge {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 2px 8px;
+    border-radius: 3px; background: rgba(198,40,40,0.12); color: #c62828;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .collapsible-body { padding: 20px; border-top: 1px solid rgba(26,26,29,0.06); }
+
+  /* === Editor shell (sidebar + main) === */
+  .editor-shell { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: flex-start; }
+  .editor-main { min-width: 0; }
+  .header-row.sticky {
+    position: sticky; top: 0; z-index: 50;
+    background: #f4efe6; padding: 16px 0;
+    margin: -16px 0 16px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  @media (max-width: 1100px) {
+    .editor-shell { grid-template-columns: 1fr; }
+  }
+
+  /* === Quality Score Card === */
+  .qs-card {
+    position: sticky; top: 24px;
+    background: white; border: 1px solid rgba(26,26,29,0.1); border-radius: 12px;
+    padding: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+  .qs-score-circle {
+    width: 110px; height: 110px; border-radius: 50%;
+    border: 6px solid #f39200; margin: 0 auto 12px auto;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: white;
+  }
+  .qs-score-num { font-family: 'Sora', sans-serif; font-size: 36px; font-weight: 600; line-height: 1; }
+  .qs-score-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(0,0,0,0.4); margin-top: 2px; }
+  .qs-status { text-align: center; font-weight: 500; font-size: 14px; margin-bottom: 14px; }
+  .qs-counts {
+    background: rgba(26,26,29,0.03); border-radius: 6px; padding: 10px 12px;
+    font-size: 12px; line-height: 1.7; margin-bottom: 16px;
+  }
+  .qs-counts strong { font-family: 'JetBrains Mono', monospace; color: #1a1a1d; }
+  .qs-issues-title {
+    font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(26,26,29,0.65); margin-bottom: 10px; line-height: 1.4;
+  }
+  .qs-issues-list { list-style: none; padding: 0; margin: 0; max-height: 360px; overflow-y: auto; }
+  .qs-issue { display: flex; gap: 8px; padding: 8px 10px; border-radius: 4px; margin-bottom: 4px; font-size: 12px; line-height: 1.45; }
+  .qs-issue-critical { background: rgba(198,40,40,0.07); }
+  .qs-issue-warn { background: rgba(243,146,0,0.07); }
+  .qs-issue-info { background: rgba(21,101,192,0.06); }
+  .qs-issue-sev { flex-shrink: 0; }
+  .qs-issue-msg { color: #1a1a1d; }
+  .qs-all-good {
+    text-align: center; padding: 16px; background: rgba(46,125,50,0.08);
+    border-radius: 6px; color: #2e7d32; font-size: 13px; margin-bottom: 12px;
+  }
+  .qs-helper { margin-top: 16px; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 14px; }
+  .qs-helper-toggle {
+    width: 100%; background: transparent; border: none; cursor: pointer;
+    padding: 6px 0; text-align: left; font-size: 12px; font-weight: 500;
+    color: rgba(26,26,29,0.7);
+  }
+  .qs-helper-body { margin-top: 8px; max-height: 220px; overflow-y: auto; }
+  .qs-helper-link {
+    display: flex; gap: 6px; padding: 6px 8px; margin-bottom: 4px;
+    background: rgba(26,26,29,0.03); border-radius: 4px;
+    font-size: 10px; align-items: center;
+  }
+  .qs-helper-link code {
+    flex: 1; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: #1a1a1d; word-break: break-all;
+  }
+  .qs-copy-btn {
+    background: #f39200; color: white; border: none; padding: 3px 8px;
+    border-radius: 3px; font-size: 9px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .qs-copy-btn:hover { background: #ff9d0a; }
+  .qs-legend {
+    margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);
+    font-size: 11px; line-height: 1.6; color: rgba(26,26,29,0.55);
+  }
+  .qs-legend strong { color: #1a1a1d; }
+
+  /* === Stats grid (dashboard list view) === */
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px;
+  }
+  .stat-card {
+    background: white; border: 1px solid rgba(0,0,0,0.06); border-radius: 8px; padding: 16px 18px;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px;
+    text-transform: uppercase; color: rgba(0,0,0,0.5); margin-bottom: 6px;
+  }
+  .stat-value { font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 500; }
+  @media (max-width: 800px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* === Article list quality badges === */
+  .article-item-row { display: flex; gap: 16px; align-items: flex-start; }
+  .article-quality-badge {
+    flex-shrink: 0; width: 80px; padding: 10px 8px; border: 2px solid #f39200; border-radius: 8px;
+    text-align: center; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+  .article-quality-score { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 600; line-height: 1; }
+  .article-quality-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(0,0,0,0.4); }
+  .article-quality-critical, .article-quality-warn, .article-quality-ok {
+    font-size: 11px; margin-top: 4px;
+  }
+
+  /* === Admin divider === */
+  .admin-divider {
+    height: 1px; background: rgba(244,239,230,0.1); margin: 16px 0;
+  }
 </style>
 </head>
 <body>
@@ -275,6 +431,6 @@
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-<script defer src="/dist/admin.js?v=21870978"></script>
+<script defer src="/dist/admin.js?v=f9007c02"></script>
 </body>
 </html>

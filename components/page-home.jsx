@@ -66,8 +66,22 @@ function Home({ navigate }) {
               <span className="hero-trust-count">+100 marcas asesoradas</span>
             </div>
             <div className="hero-trust-logos">
-              {['equifax.svg','bullpadel.png','imanix.png','granjamagdalena.png','toke.png','parquetermalbotanico.svg'].map(f => (
-                <img key={f} src={`assets/clients/${f}`} alt="" className={`hero-trust-logo${f.includes('granjamagdalena') ? ' hero-trust-logo-color' : ''}`} loading="lazy"/>
+              {[
+                {file: 'equifax.svg', name: 'Equifax'},
+                {file: 'bullpadel.png', name: 'Bullpadel'},
+                {file: 'imanix.png', name: 'Imanix'},
+                {file: 'granjamagdalena.png', name: 'Granja Magdalena'},
+                {file: 'toke.png', name: 'Toke'},
+                {file: 'parquetermalbotanico.svg', name: 'Parque Termal Botánico'}
+              ].map(c => (
+                <img
+                  key={c.file}
+                  src={`assets/clients/${c.file}`}
+                  alt={`Logo de ${c.name}, cliente de Intothecom`}
+                  className={`hero-trust-logo${c.file.includes('granjamagdalena') ? ' hero-trust-logo-color' : ''}`}
+                  loading="lazy"
+                  decoding="async"
+                />
               ))}
             </div>
             <a href="https://www.google.com/search?q=intothecom" target="_blank" rel="noopener noreferrer" className="hero-google-rating hoverable">
