@@ -352,8 +352,74 @@ async function run() {
   fs.writeFileSync(path.join(root, 'index.html'), homeHtml, 'utf-8');
   console.log(`   ✓ index.html (updated with noscript fallback)`);
 
+  // Helpers para renderizar sections como HTML estático (NO solo para schemas)
+  // Soporta el mismo parser inline-markdown que el componente React (negrita + internal links)
+  function escapeHtml(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  function parseInlineMarkdown(text) {
+    return escapeHtml(text)
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\[([^\]]+)\]\((\/[^)]+)\)/g, '<a href="$2">$1</a>')
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+  }
+  function renderSectionsToHTML(sections) {
+    if (!Array.isArray(sections)) return '';
+    return sections.map(s => {
+      if (s.type === 'h2') return `<h2 id="${escapeHtml(s.id || '')}">${parseInlineMarkdown(s.text)}</h2>`;
+      if (s.type === 'h3') return `<h3 id="${escapeHtml(s.id || '')}">${parseInlineMarkdown(s.text)}</h3>`;
+      if (s.type === 'p') return `<p>${parseInlineMarkdown(s.text)}</p>`;
+      if (s.type === 'list') {
+        const items = (s.items || []).map(it => `<li>${parseInlineMarkdown(it)}</li>`).join('');
+        return `<ul>${items}</ul>`;
+      }
+      if (s.type === 'table') {
+        const thead = `<thead><tr>${(s.headers || []).map(h => `<th>${escapeHtml(h)}</th>`).join('')}</tr></thead>`;
+        const tbody = `<tbody>${(s.rows || []).map(r => `<tr>${r.map(c => `<td>${escapeHtml(c)}</td>`).join('')}</tr>`).join('')}</tbody>`;
+        return `<div class="article-table-wrap"><table class="article-table">${thead}${tbody}</table></div>`;
+      }
+      if (s.type === 'cta') return `<div class="article-cta"><a href="https://wa.me/56974143642" target="_blank" rel="noopener noreferrer">${escapeHtml(s.text)} ↗</a></div>`;
+      return '';
+    }).join('\n');
+  }
+  // Texto plano (para articleBody schema) — sin HTML tags
+  function renderSectionsToPlainText(sections) {
+    if (!Array.isArray(sections)) return '';
+    return sections.map(s => {
+      if (s.type === 'h2' || s.type === 'h3') return s.text;
+      if (s.type === 'p') return (s.text || '').replace(/\*\*(.+?)\*\*/g, '$1').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+      if (s.type === 'list') return (s.items || []).map(it => '- ' + it.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')).join('\n');
+      if (s.type === 'table') {
+        const hdr = (s.headers || []).join(' | ');
+        const rows = (s.rows || []).map(r => r.join(' | ')).join('\n');
+        return hdr + '\n' + rows;
+      }
+      return '';
+    }).filter(Boolean).join('\n\n');
+  }
+  function renderFaqHTML(faq) {
+    if (!Array.isArray(faq) || faq.length === 0) return '';
+    const items = faq.map((qa, i) => `
+      <div class="article-faq-item">
+        <h3 class="faq-q-text">${escapeHtml(qa.q)}</h3>
+        <p class="faq-a">${parseInlineMarkdown(qa.a)}</p>
+      </div>
+    `).join('');
+    return `<section class="article-faq-section" id="faq-prerendered"><h2>Preguntas frecuentes</h2>${items}</section>`;
+  }
+  function renderSourcesHTML(sources) {
+    if (!Array.isArray(sources) || sources.length === 0) return '';
+    const items = sources.map(s => `<li><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.name)}</a></li>`).join('');
+    return `<section class="article-sources-section"><h2>Fuentes citadas</h2><ol class="article-sources">${items}</ol></section>`;
+  }
+
   // 4. Pre-render artículos del blog en /recursos/<slug>.html
-  console.log('\n📰 Prerendering blog articles...');
+  console.log('\n📰 Prerendering blog articles (con body HTML completo)...');
   const recursosDir = path.join(root, 'recursos');
   fs.mkdirSync(recursosDir, { recursive: true });
 
@@ -378,6 +444,12 @@ async function run() {
 
     const articleHtml = prerenderRoute(masterHtml, articleRoute, articleMeta);
 
+    // Body real del artículo: HTML estático completo + texto plano para articleBody schema
+    const articleBodyPlain = renderSectionsToPlainText(article.sections);
+    const articleBodyHTML = renderSectionsToHTML(article.sections);
+    const faqHTML = renderFaqHTML(article.faq);
+    const sourcesHTML = renderSourcesHTML(article.sources);
+
     // Inyectar también el BlogPosting + FAQPage schema en el HTML pre-rendered
     const blogPostingSchema = {
       "@context": "https://schema.org",
@@ -392,6 +464,8 @@ async function run() {
       "wordCount": article.wordCount,
       "keywords": [article.keyword, ...(article.secondaryKeywords || [])].join(', '),
       "articleSection": article.category,
+      // articleBody con texto plano completo — LLMs lo extraen directo del JSON-LD sin parsear HTML
+      "articleBody": articleBodyPlain,
       "author": {
         "@type": "Person",
         "@id": "https://intothecom.com/equipo/ignacio-blanco#person",
@@ -429,23 +503,93 @@ ${(article.tags || []).map(t => `<meta property="article:tag" content="${t}"/>`)
       }))
     } : null;
 
-    const articleSchemas = `\n<script type="application/ld+json">\n${JSON.stringify(blogPostingSchema, null, 2)}\n</script>\n${faqSchema ? `<script type="application/ld+json">\n${JSON.stringify(faqSchema, null, 2)}\n</script>\n` : ''}`;
+    // Schemas extra por tipo de artículo
+    const extraSchemas = [];
+
+    // ItemList para ranking pages
+    if (article.slug.startsWith('ranking-')) {
+      const h3Items = article.sections.filter(s => s.type === 'h3' && /^\d+\./.test(s.text || ''));
+      if (h3Items.length > 0) {
+        extraSchemas.push({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "@id": `https://intothecom.com${articleRoute}#itemlist`,
+          "itemListOrder": "https://schema.org/ItemListOrderAscending",
+          "numberOfItems": h3Items.length,
+          "itemListElement": h3Items.map((s, i) => ({
+            "@type": "ListItem",
+            "position": i + 1,
+            "name": s.text.replace(/^\d+\.\s*/, '')
+          }))
+        });
+      }
+    }
+
+    // HowTo para artículos con structure "5 pasos" o "guía completa"
+    if (/guia-completa|kick-off-proyecto/.test(article.slug)) {
+      const stepH2s = article.sections.filter(s => s.type === 'h2');
+      if (stepH2s.length >= 3) {
+        extraSchemas.push({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "@id": `https://intothecom.com${articleRoute}#howto`,
+          "name": article.title,
+          "description": article.description,
+          "totalTime": "PT2H",
+          "step": stepH2s.slice(0, 8).map((s, i) => ({
+            "@type": "HowToStep",
+            "position": i + 1,
+            "name": s.text,
+            "url": `https://intothecom.com${articleRoute}#${s.id || ''}`
+          }))
+        });
+      }
+    }
+
+    const allSchemas = [blogPostingSchema, faqSchema, ...extraSchemas].filter(Boolean);
+    const articleSchemas = '\n' + allSchemas.map(s => `<script type="application/ld+json">\n${JSON.stringify(s, null, 2)}\n</script>`).join('\n') + '\n';
 
     // Reemplazar og:type=website por og:type=article + inyectar article:* meta + alt específico
     let finalHtml = articleHtml.replace(
       /<meta property="og:type" content="website"\/?>/,
       ''
     );
-    // Reemplazar og:image:alt genérico por específico del artículo
     finalHtml = finalHtml.replace(
       /<meta property="og:image:alt" content="[^"]*"\/?>/,
       ''
     );
     finalHtml = finalHtml.replace('</head>', `${articleOgMeta}${articleSchemas}</head>`);
 
+    // CRÍTICO: inyectar BODY HTML completo antes de </body> dentro de un <article hidden> para
+    // que crawlers AI bots (sin JS) lean todo el contenido. React lo oculta visualmente al
+    // montarse (style display:none → React render the proper UI). Los bots SÍ lo leen.
+    const ssrBody = `
+<article class="article-ssr-body" id="article-ssr" itemscope itemtype="https://schema.org/BlogPosting" style="position:absolute;left:-99999px;top:0;width:1px;height:1px;overflow:hidden;">
+  <nav aria-label="Breadcrumb" class="article-breadcrumb">
+    <a href="/">Inicio</a> · <a href="/recursos">Recursos</a> · <span aria-current="page">${escapeHtml(article.title)}</span>
+  </nav>
+  <h1 class="article-h1" itemprop="headline">${escapeHtml(article.title)}</h1>
+  <p class="article-tldr" itemprop="abstract"><strong>TL;DR.</strong> ${escapeHtml(article.tldr || '')}</p>
+  <div class="article-meta">
+    <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+      <strong itemprop="name">${escapeHtml(article.author || 'Ignacio Blanco')}</strong> · <span itemprop="jobTitle">${escapeHtml(article.authorRole || '')}</span>
+    </span>
+    · Publicado <time itemprop="datePublished" datetime="${article.publishedAt}">${article.publishedAt}</time>
+    ${article.updatedAt !== article.publishedAt ? `· Actualizado <time itemprop="dateModified" datetime="${article.updatedAt}">${article.updatedAt}</time>` : ''}
+    · ${escapeHtml(article.readingTime || '')} de lectura
+  </div>
+  <div class="article-prose" itemprop="articleBody">
+${articleBodyHTML}
+  </div>
+${faqHTML}
+${sourcesHTML}
+</article>`;
+
+    finalHtml = finalHtml.replace('</body>', `${ssrBody}\n</body>`);
+
     const outPath = path.join(recursosDir, `${article.slug}.html`);
     fs.writeFileSync(outPath, finalHtml, 'utf-8');
-    console.log(`   ✓ recursos/${article.slug}.html`);
+    console.log(`   ✓ recursos/${article.slug}.html (${articleBodyPlain.length} chars body)`);
     articleCount++;
   }
 
