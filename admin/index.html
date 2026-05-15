@@ -424,6 +424,77 @@
   .admin-divider {
     height: 1px; background: rgba(244,239,230,0.1); margin: 16px 0;
   }
+
+  /* === SEO Dashboard === */
+  .dashboard-health {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 16px; padding: 12px 14px;
+    background: white; border-radius: 8px; border: 1px solid rgba(0,0,0,0.06);
+    align-items: center;
+  }
+  .dh-pill {
+    padding: 4px 10px; border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .dh-pill-mono {
+    padding: 4px 10px; border-radius: 12px;
+    background: rgba(26,26,29,0.04); color: rgba(26,26,29,0.7);
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  }
+  .dashboard-error {
+    background: rgba(198,40,40,0.06); border-left: 3px solid #c62828;
+    padding: 16px 20px; border-radius: 8px; margin: 16px 0;
+    font-size: 14px; line-height: 1.6;
+  }
+  .dashboard-error code {
+    background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  }
+  .dashboard-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;
+  }
+  @media (max-width: 1100px) {
+    .dashboard-row { grid-template-columns: 1fr; }
+  }
+  .dashboard-card {
+    background: white; border: 1px solid rgba(0,0,0,0.06); border-radius: 8px;
+    padding: 18px 20px; min-width: 0;
+  }
+  .dashboard-card-head {
+    display: flex; align-items: center; gap: 4px;
+    margin-bottom: 14px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: rgba(26,26,29,0.7);
+  }
+  .dashboard-empty {
+    color: rgba(0,0,0,0.4); font-size: 13px; padding: 20px 0;
+  }
+  .dashboard-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+  }
+  .dashboard-table th {
+    text-align: left; padding: 8px 6px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .dashboard-table td {
+    padding: 8px 6px; border-bottom: 1px solid rgba(0,0,0,0.04);
+    vertical-align: top;
+  }
+  .dashboard-table .dt-query {
+    max-width: 240px; word-break: break-word;
+  }
+  .dashboard-table .dt-query a {
+    color: #1565c0; text-decoration: none;
+  }
+  .dashboard-table .dt-query a:hover { text-decoration: underline; }
+  .dashboard-table .dt-num {
+    text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    white-space: nowrap;
+  }
 </style>
 </head>
 <body>
@@ -431,6 +502,6 @@
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-<script defer src="/dist/admin.js?v=f9007c02"></script>
+<script defer src="/dist/admin.js?v=3bb2394f"></script>
 </body>
 </html>

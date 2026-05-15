@@ -836,7 +836,246 @@ function newArticle() {
 }
 
 // ============================================================================
-// AdminApp (lista + editor)
+// SeoDashboard — consume /api/seo/dashboard y muestra métricas GSC
+// ============================================================================
+function SeoDashboard() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [days, setDays] = useState(28);
+  const [health, setHealth] = useState(null);
+
+  const load = useCallback((d = days) => {
+    setLoading(true);
+    setError(null);
+    fetch(`/api/seo/dashboard?days=${d}`)
+      .then(r => r.json())
+      .then(json => {
+        if (json.error) setError(json.error);
+        else setData(json);
+        setLoading(false);
+      })
+      .catch(e => { setError(e.message); setLoading(false); });
+  }, [days]);
+
+  useEffect(() => {
+    load(days);
+    // health check sin auth para mostrar status
+    fetch('/api/seo/health').then(r => r.json()).then(setHealth).catch(()=>{});
+  }, [days, load]);
+
+  const fmtPct = (n) => `${(n * 100).toFixed(2)}%`;
+  const fmtPos = (n) => n ? n.toFixed(1) : '-';
+  const fmtNum = (n) => (n || 0).toLocaleString('es-CL');
+
+  const gscStatus = data?.sources?.gsc;
+
+  return (
+    <div>
+      <div className="header-row">
+        <div className="h1">📊 SEO Dashboard</div>
+        <div style={{display:'flex',gap:8}}>
+          {[7, 28, 90].map(d => (
+            <button
+              key={d}
+              onClick={() => setDays(d)}
+              className={`btn ${days === d ? 'btn-primary' : 'btn-ghost'}`}
+              style={{padding:'8px 14px',fontSize:13, color: days === d ? '#0a0a0b' : '#1a1a1d', borderColor: days === d ? 'transparent' : 'rgba(0,0,0,0.15)'}}
+            >Últimos {d}d</button>
+          ))}
+          <button onClick={() => load()} className="btn btn-ghost" style={{padding:'8px 14px',fontSize:13, color: '#1a1a1d', borderColor: 'rgba(0,0,0,0.15)'}}>🔄 Refresh</button>
+        </div>
+      </div>
+
+      {/* Health status */}
+      {health && (
+        <div className="dashboard-health">
+          <span className="dh-pill" style={{background: health.gscConfig === 'ok' ? 'rgba(46,125,50,0.1)' : 'rgba(198,40,40,0.1)', color: health.gscConfig === 'ok' ? '#2e7d32' : '#c62828'}}>
+            GSC config: {health.gscConfig}
+          </span>
+          <span className="dh-pill" style={{background: health.authToken === 'ok' ? 'rgba(46,125,50,0.1)' : 'rgba(198,40,40,0.1)', color: health.authToken === 'ok' ? '#2e7d32' : '#c62828'}}>
+            Auth Google: {health.authToken}
+          </span>
+          <span className="dh-pill" style={{background: health.env.BING_API_KEY === 'present' ? 'rgba(46,125,50,0.1)' : 'rgba(243,146,0,0.1)', color: health.env.BING_API_KEY === 'present' ? '#2e7d32' : '#c66800'}}>
+            Bing API: {health.env.BING_API_KEY}
+          </span>
+          <span className="dh-pill-mono">{health.serviceAccountEmail}</span>
+        </div>
+      )}
+
+      {loading && <div className="empty-state">Cargando data de GSC…</div>}
+
+      {error && (
+        <div className="dashboard-error">
+          <strong>Error:</strong> {error}
+        </div>
+      )}
+
+      {data && gscStatus !== 'ok' && gscStatus !== 'no_data' && (
+        <div className="dashboard-error">
+          <strong>GSC no devuelve data todavía.</strong>
+          <p>Status: <code>{gscStatus}</code>. Razones posibles:</p>
+          <ul style={{marginLeft:20,marginTop:8}}>
+            <li>El service account <code>{health?.serviceAccountEmail}</code> aún no está agregado en GSC → Settings → Users (permission Restricted).</li>
+            <li>Propagación de Google está tardando (esperar 5-10 min después de agregarlo).</li>
+            <li>La property <code>{data.range && process.env.GSC_PROPERTY_URL}</code> no existe o no es la correcta.</li>
+          </ul>
+          {data.errors.length > 0 && (
+            <pre style={{marginTop:12,padding:12,background:'rgba(0,0,0,0.05)',borderRadius:6,fontSize:11,overflow:'auto'}}>
+              {JSON.stringify(data.errors, null, 2)}
+            </pre>
+          )}
+        </div>
+      )}
+
+      {data && data.summary && (gscStatus === 'ok' || gscStatus === 'no_data') && (
+        <>
+          <div className="stats-grid" style={{marginTop:24}}>
+            <div className="stat-card">
+              <div className="stat-label">Clicks</div>
+              <div className="stat-value">{fmtNum(data.summary.clicks)}</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-label">Impresiones</div>
+              <div className="stat-value">{fmtNum(data.summary.impressions)}</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-label">CTR</div>
+              <div className="stat-value">{fmtPct(data.summary.ctr)}</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-label">Posición promedio</div>
+              <div className="stat-value">{fmtPos(data.summary.position)}</div>
+            </div>
+          </div>
+
+          <div className="dashboard-row">
+            <div className="dashboard-card">
+              <div className="dashboard-card-head">
+                <span>Top queries (búsquedas que te encuentran)</span>
+                <Tooltip text="Las palabras o frases que los usuarios buscaron en Google y aparecieron una página tuya en los resultados. Ordenadas por clicks." />
+              </div>
+              {data.topQueries.length === 0 && <div className="dashboard-empty">Sin data aún. GSC tarda 24-48h en mostrar queries para nuevas URLs.</div>}
+              {data.topQueries.length > 0 && (
+                <table className="dashboard-table">
+                  <thead><tr><th>Query</th><th>Clicks</th><th>Impr.</th><th>CTR</th><th>Pos</th></tr></thead>
+                  <tbody>
+                    {data.topQueries.map((q, i) => (
+                      <tr key={i}>
+                        <td className="dt-query">{q.query}</td>
+                        <td className="dt-num">{fmtNum(q.clicks)}</td>
+                        <td className="dt-num">{fmtNum(q.impressions)}</td>
+                        <td className="dt-num">{fmtPct(q.ctr)}</td>
+                        <td className="dt-num">{fmtPos(q.position)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+
+            <div className="dashboard-card">
+              <div className="dashboard-card-head">
+                <span>Top páginas (las que reciben más impresiones)</span>
+                <Tooltip text="URLs de tu sitio que más aparecen en resultados de Google. Si una página tiene muchas impresiones pero pocos clicks, optimiza el title y la description (CTR bajo)." />
+              </div>
+              {data.topPages.length === 0 && <div className="dashboard-empty">Sin data aún.</div>}
+              {data.topPages.length > 0 && (
+                <table className="dashboard-table">
+                  <thead><tr><th>Página</th><th>Clicks</th><th>Impr.</th><th>CTR</th><th>Pos</th></tr></thead>
+                  <tbody>
+                    {data.topPages.map((p, i) => (
+                      <tr key={i}>
+                        <td className="dt-query"><a href={p.page} target="_blank" rel="noopener noreferrer">{p.page.replace('https://www.intothecom.com', '')}</a></td>
+                        <td className="dt-num">{fmtNum(p.clicks)}</td>
+                        <td className="dt-num">{fmtNum(p.impressions)}</td>
+                        <td className="dt-num">{fmtPct(p.ctr)}</td>
+                        <td className="dt-num">{fmtPos(p.position)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
+
+          <div className="dashboard-row">
+            <div className="dashboard-card">
+              <div className="dashboard-card-head">
+                <span>Por dispositivo</span>
+                <Tooltip text="Cómo se distribuyen tus clicks entre mobile, desktop y tablet. Si mobile pesa más pero su CTR es bajo, revisa diseño responsive." />
+              </div>
+              {data.byDevice.length === 0 && <div className="dashboard-empty">Sin data aún.</div>}
+              {data.byDevice.length > 0 && (
+                <table className="dashboard-table">
+                  <thead><tr><th>Device</th><th>Clicks</th><th>Impr.</th><th>CTR</th></tr></thead>
+                  <tbody>
+                    {data.byDevice.map((d, i) => (
+                      <tr key={i}>
+                        <td>{d.device}</td>
+                        <td className="dt-num">{fmtNum(d.clicks)}</td>
+                        <td className="dt-num">{fmtNum(d.impressions)}</td>
+                        <td className="dt-num">{fmtPct(d.ctr)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+
+            <div className="dashboard-card">
+              <div className="dashboard-card-head">
+                <span>Top países</span>
+                <Tooltip text="Países desde los que recibís clicks. Útil para validar tus mercados objetivo (CL, US, ES, CO, PE). Si aparece otro país con peso, podrías expandir contenido." />
+              </div>
+              {data.byCountry.length === 0 && <div className="dashboard-empty">Sin data aún.</div>}
+              {data.byCountry.length > 0 && (
+                <table className="dashboard-table">
+                  <thead><tr><th>País</th><th>Clicks</th><th>Impr.</th></tr></thead>
+                  <tbody>
+                    {data.byCountry.map((c, i) => (
+                      <tr key={i}>
+                        <td>{c.country.toUpperCase()}</td>
+                        <td className="dt-num">{fmtNum(c.clicks)}</td>
+                        <td className="dt-num">{fmtNum(c.impressions)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
+
+          {data.sitemaps && data.sitemaps.length > 0 && (
+            <div className="dashboard-card" style={{marginTop:16}}>
+              <div className="dashboard-card-head">
+                <span>Sitemaps</span>
+                <Tooltip text="Estado de los sitemaps submitidos a Google. lastDownloaded indica la última vez que Google lo descargó. warnings o errors >0 requieren revisar." />
+              </div>
+              <table className="dashboard-table">
+                <thead><tr><th>Path</th><th>Last submitted</th><th>Last downloaded</th><th>Warnings</th><th>Errors</th></tr></thead>
+                <tbody>
+                  {data.sitemaps.map((s, i) => (
+                    <tr key={i}>
+                      <td><a href={s.path} target="_blank" rel="noopener noreferrer">{s.path.replace('https://www.intothecom.com', '')}</a></td>
+                      <td className="dt-num">{s.lastSubmitted ? new Date(s.lastSubmitted).toLocaleDateString('es-CL') : '-'}</td>
+                      <td className="dt-num">{s.lastDownloaded ? new Date(s.lastDownloaded).toLocaleDateString('es-CL') : '-'}</td>
+                      <td className="dt-num" style={{color: s.warnings > 0 ? '#c66800' : 'inherit'}}>{s.warnings || 0}</td>
+                      <td className="dt-num" style={{color: s.errors > 0 ? '#c62828' : 'inherit'}}>{s.errors || 0}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
+// ============================================================================
+// AdminApp (lista + editor + dashboard)
 // ============================================================================
 function AdminApp() {
   const [user, setUser] = useState(null);
@@ -968,6 +1207,9 @@ function AdminApp() {
           <button className="admin-nav-item" onClick={handleNew}>
             ＋ Nuevo artículo
           </button>
+          <button className={`admin-nav-item ${view === 'seo' ? 'active' : ''}`} onClick={() => {setView('seo'); setEditing(null);}}>
+            📊 SEO Dashboard
+          </button>
           <div className="admin-divider" />
           <a className="admin-nav-item" href="https://github.com/imc400/intothecom/commits/main" target="_blank" rel="noopener noreferrer">
             🔍 Ver commits GitHub
@@ -1067,6 +1309,8 @@ function AdminApp() {
             allArticles={articles}
           />
         )}
+
+        {view === 'seo' && <SeoDashboard />}
       </main>
     </div>
   );
