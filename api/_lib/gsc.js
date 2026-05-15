@@ -1,13 +1,20 @@
 /* api/_lib/gsc.js — Helper para Google Search Console API.
-   Autenticación: Service Account JWT → access_token → API calls.
+   Soporta DOS flows de autenticación (priorizado en este orden):
 
-   Service Account JSON en env var GSC_SERVICE_ACCOUNT_JSON.
+   1. OAuth 2.0 refresh_token (PREFERIDO, no afectado por bug GSC 23-04-2026)
+      - Requiere: GSC_OAUTH_REFRESH_TOKEN + GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET
+      - Autentica como usuario humano que ya es Owner de la property
+   2. Service Account JWT (fallback)
+      - Requiere: GSC_SERVICE_ACCOUNT_JSON
+      - Autentica como SA — pero falla si GSC no lo reconoce como user
+
    Property URL en GSC_PROPERTY_URL (ej. "sc-domain:intothecom.com").
 
    Public API:
    - loadServiceAccount(): valida y devuelve el SA parseado
-   - getAccessToken(): firma JWT + obtiene access_token (cacheado)
+   - getAccessToken(): obtiene access_token usando el flow disponible
    - query(body): hace POST a searchAnalytics/query
+   - getAuthMethod(): retorna 'oauth' | 'service_account' | 'none'
 */
 
 const https = require('https');
@@ -18,6 +25,14 @@ const SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
 
 // Cache de token en memoria del Lambda (expires después de 1h)
 let _tokenCache = null;
+
+function getAuthMethod() {
+  if (process.env.GSC_OAUTH_REFRESH_TOKEN &&
+      process.env.GOOGLE_CLIENT_ID &&
+      process.env.GOOGLE_CLIENT_SECRET) return 'oauth';
+  if (process.env.GSC_SERVICE_ACCOUNT_JSON) return 'service_account';
+  return 'none';
+}
 
 function loadServiceAccount() {
   const raw = process.env.GSC_SERVICE_ACCOUNT_JSON;
@@ -86,12 +101,7 @@ function httpPost({ hostname, path, body, headers, timeoutMs = 10000 }) {
   });
 }
 
-async function getAccessToken(forceFresh = false) {
-  // Use cache si no expiró (renovamos 5min antes de expirar)
-  if (!forceFresh && _tokenCache && _tokenCache.expiresAt > Date.now() + 5 * 60 * 1000) {
-    return _tokenCache.token;
-  }
-
+async function getAccessTokenViaServiceAccount() {
   const sa = loadServiceAccount();
   const jwt = signJWT(sa, SCOPE);
   const body = `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${jwt}`;
@@ -104,14 +114,61 @@ async function getAccessToken(forceFresh = false) {
   });
 
   if (result.status !== 200) {
-    throw new Error(`Token exchange failed: ${result.status} ${JSON.stringify(result.body)}`);
+    throw new Error(`Token exchange (SA) failed: ${result.status} ${JSON.stringify(result.body)}`);
+  }
+  return { access_token: result.body.access_token, expires_in: result.body.expires_in };
+}
+
+async function getAccessTokenViaRefreshToken() {
+  const clientId = process.env.GOOGLE_CLIENT_ID;
+  const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
+  const refreshToken = process.env.GSC_OAUTH_REFRESH_TOKEN;
+
+  if (!clientId || !clientSecret || !refreshToken) {
+    throw new Error('OAuth env vars missing: GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET + GSC_OAUTH_REFRESH_TOKEN');
   }
 
+  const params = new URLSearchParams({
+    client_id: clientId,
+    client_secret: clientSecret,
+    refresh_token: refreshToken,
+    grant_type: 'refresh_token'
+  });
+
+  const result = await httpPost({
+    hostname: 'oauth2.googleapis.com',
+    path: '/token',
+    body: params.toString(),
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+  });
+
+  if (result.status !== 200) {
+    throw new Error(`Token exchange (OAuth refresh) failed: ${result.status} ${JSON.stringify(result.body)}`);
+  }
+  return { access_token: result.body.access_token, expires_in: result.body.expires_in };
+}
+
+async function getAccessToken(forceFresh = false) {
+  // Use cache si no expiró (renovamos 5min antes de expirar)
+  if (!forceFresh && _tokenCache && _tokenCache.expiresAt > Date.now() + 5 * 60 * 1000) {
+    return _tokenCache.token;
+  }
+
+  const method = getAuthMethod();
+  if (method === 'none') {
+    throw new Error('No GSC auth method configured. Need either GSC_OAUTH_REFRESH_TOKEN+GOOGLE_CLIENT_* or GSC_SERVICE_ACCOUNT_JSON');
+  }
+
+  const { access_token, expires_in } = method === 'oauth'
+    ? await getAccessTokenViaRefreshToken()
+    : await getAccessTokenViaServiceAccount();
+
   _tokenCache = {
-    token: result.body.access_token,
-    expiresAt: Date.now() + (result.body.expires_in * 1000)
+    token: access_token,
+    expiresAt: Date.now() + (expires_in * 1000),
+    method
   };
-  return result.body.access_token;
+  return access_token;
 }
 
 // Hace POST a searchanalytics/query con el body de GSC API
@@ -158,4 +215,4 @@ async function getSitemaps() {
   });
 }
 
-module.exports = { loadServiceAccount, getAccessToken, query, getSitemaps };
+module.exports = { loadServiceAccount, getAccessToken, query, getSitemaps, getAuthMethod };
