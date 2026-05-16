@@ -159,4 +159,4 @@ Disallow: /*?*
 # ============================================
 # Sitemap
 # ============================================
-Sitemap: https://intothecom.com/sitemap.xml
+Sitemap: https://www.intothecom.com/sitemap.xml

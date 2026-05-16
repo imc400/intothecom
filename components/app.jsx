@@ -95,7 +95,7 @@ function App() {
     const isArticleRoute = route.startsWith('/recursos/') && route !== '/recursos';
     if (isArticleRoute) {
       /* Solo actualizar canonical + og:url segun la ruta (esos no varian por articulo) */
-      const url = `https://intothecom.com${route}`;
+      const url = `https://www.intothecom.com${route}`;
       const setMeta = (sel, attr, value) => {
         const el = document.querySelector(sel);
         if (el) el.setAttribute(attr, value);
@@ -112,7 +112,7 @@ function App() {
       setMeta('meta[name="description"]', 'content', meta.description);
       setMeta('meta[property="og:title"]', 'content', meta.title);
       setMeta('meta[property="og:description"]', 'content', meta.description);
-      const url = `https://intothecom.com${route === '/' ? '/' : route}`;
+      const url = `https://www.intothecom.com${route === '/' ? '/' : route}`;
       setMeta('meta[property="og:url"]', 'content', url);
       setMeta('link[rel="canonical"]', 'href', url);
       setMeta('meta[name="twitter:title"]', 'content', meta.title);
@@ -151,7 +151,7 @@ function App() {
           "@type": "ListItem",
           "position": i + 1,
           "name": c.name,
-          "item": `https://intothecom.com${c.path === '/' ? '/' : c.path}`
+          "item": `https://www.intothecom.com${c.path === '/' ? '/' : c.path}`
         }))
       });
     }

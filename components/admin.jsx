@@ -1519,7 +1519,7 @@ function AdminApp() {
             🔍 Bing Webmaster
           </a>
           <div className="admin-divider" />
-          <a className="admin-nav-item" href="https://intothecom.com" target="_blank" rel="noopener noreferrer">
+          <a className="admin-nav-item" href="https://www.intothecom.com" target="_blank" rel="noopener noreferrer">
             🏠 Ver sitio público
           </a>
         </nav>
@@ -1585,7 +1585,7 @@ function AdminApp() {
                     </div>
                     <div className="row-buttons" style={{marginTop:10}}>
                       <button onClick={() => handleEdit(a)}>editar</button>
-                      <a href={`https://intothecom.com/recursos/${a.slug}`} target="_blank" rel="noopener noreferrer" style={{display:'inline-block',background:'rgba(26,26,29,0.05)',color:'#1a1a1d',padding:'4px 10px',fontSize:11,fontFamily:'JetBrains Mono, monospace',textTransform:'uppercase',letterSpacing:1,border:'1px solid transparent',borderRadius:4,textDecoration:'none'}}>ver público</a>
+                      <a href={`https://www.intothecom.com/recursos/${a.slug}`} target="_blank" rel="noopener noreferrer" style={{display:'inline-block',background:'rgba(26,26,29,0.05)',color:'#1a1a1d',padding:'4px 10px',fontSize:11,fontFamily:'JetBrains Mono, monospace',textTransform:'uppercase',letterSpacing:1,border:'1px solid transparent',borderRadius:4,textDecoration:'none'}}>ver público</a>
                       <button onClick={() => handleDelete(a.slug)} className="danger">eliminar</button>
                     </div>
                   </div>

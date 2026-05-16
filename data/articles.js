@@ -15,7 +15,7 @@
   // Cache-busting: el build inyecta el hash actual de articles.json. Si está
   // sin reemplazar (dev/sin build) usa fetch normal. En producción cada deploy
   // cambia el query string, invalidando el cache del navegador automáticamente.
-  var ARTICLES_VERSION = '2616489e';
+  var ARTICLES_VERSION = 'a5ac44f4';
   var articlesUrl = '/data/articles.json' + (ARTICLES_VERSION && ARTICLES_VERSION.indexOf('__') !== 0 ? '?v=' + ARTICLES_VERSION : '');
 
   window.ARTICLES_PROMISE = fetch(articlesUrl, { cache: 'default' })

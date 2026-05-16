@@ -80,7 +80,7 @@ const ROUTE_META = {
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Servicios', path: '/servicios'}, {name: 'Desarrollo Web', path: '/desarrollo-web'}]
   },
   '/community-management': {
-    title: 'Community Management · Contenido editorial y comunidad real | Intothecom',
+    title: 'Community Management · Contenido y comunidad B2B | Intothecom',
     description: 'Línea editorial documentada, producción mensual de foto y video, gestión de DMs y crisis. Comunidad que compra, no vanity metrics.',
     noscript: 'Community Management con Intothecom: línea editorial documentada, producción mensual de foto y video, gestión de DMs y crisis management. Instagram, TikTok y LinkedIn. Comunidad que compra, no vanity metrics. Reportes mensuales con métricas reales.',
     ogImage: '/assets/og/community-management.jpg',
@@ -112,7 +112,7 @@ const ROUTE_META = {
   },
   '/recursos': {
     title: 'Recursos · Guías técnicas de marketing B2B LATAM | Intothecom',
-    description: 'Pillar pages, casos de estudio y benchmarks de marketing digital B2B, GEO, AEO, paid media, email automation y desarrollo web. Editados por consultores con +100 implementaciones reales.',
+    description: 'Pillar pages y benchmarks de marketing digital B2B LATAM, GEO, AEO, paid media, email automation y agentes IA. Por consultores con +100 implementaciones.',
     noscript: 'Recursos Intothecom: blog con pillar pages y guías técnicas sobre marketing digital B2B en LATAM, Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), paid media B2B, email marketing automation con Klaviyo y HubSpot, desarrollo web headless con Next.js y Shopify, agentes IA empresariales, y community management estratégico. Editado por consultores con +100 implementaciones reales en Chile, USA, España, Colombia y Perú.',
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Recursos', path: '/recursos'}]
   }
@@ -128,7 +128,7 @@ try {
   console.warn('⚠️  No se pudo cargar data/articles.js:', e.message);
 }
 
-const DOMAIN = 'https://intothecom.com';
+const DOMAIN = 'https://www.intothecom.com';
 
 function buildBreadcrumbJSON(crumbs) {
   return JSON.stringify({
@@ -467,10 +467,10 @@ async function run() {
     const blogPostingSchema = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "@id": `https://intothecom.com${articleRoute}#article`,
+      "@id": `https://www.intothecom.com${articleRoute}#article`,
       "headline": article.title,
       "description": article.description,
-      "image": [`https://intothecom.com${article.heroImage || '/assets/og-cover.jpg'}`],
+      "image": [`https://www.intothecom.com${article.heroImage || '/assets/og-cover.jpg'}`],
       "datePublished": article.publishedAt,
       "dateModified": article.updatedAt,
       "inLanguage": "es-CL",
@@ -481,15 +481,15 @@ async function run() {
       "articleBody": articleBodyPlain,
       "author": {
         "@type": "Person",
-        "@id": "https://intothecom.com/equipo/ignacio-blanco#person",
+        "@id": "https://www.intothecom.com/equipo/ignacio-blanco#person",
         "name": article.author,
         "jobTitle": article.authorRole,
-        "worksFor": {"@id": "https://intothecom.com/#org"}
+        "worksFor": {"@id": "https://www.intothecom.com/#org"}
       },
-      "publisher": {"@id": "https://intothecom.com/#org"},
+      "publisher": {"@id": "https://www.intothecom.com/#org"},
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `https://intothecom.com${articleRoute}`
+        "@id": `https://www.intothecom.com${articleRoute}`
       }
     };
 
@@ -499,7 +499,7 @@ async function run() {
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="${article.publishedAt}T00:00:00Z"/>
 <meta property="article:modified_time" content="${article.updatedAt}T00:00:00Z"/>
-<meta property="article:author" content="https://intothecom.com/equipo/ignacio-blanco#person"/>
+<meta property="article:author" content="https://www.intothecom.com/equipo/ignacio-blanco#person"/>
 <meta property="article:section" content="${article.category}"/>
 ${(article.tags || []).map(t => `<meta property="article:tag" content="${t}"/>`).join('\n')}
 <meta property="og:image:alt" content="${ogImageAlt}"/>
@@ -508,7 +508,7 @@ ${(article.tags || []).map(t => `<meta property="article:tag" content="${t}"/>`)
     const faqSchema = article.faq && article.faq.length > 0 ? {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "@id": `https://intothecom.com${articleRoute}#faq`,
+      "@id": `https://www.intothecom.com${articleRoute}#faq`,
       "mainEntity": article.faq.map(qa => ({
         "@type": "Question",
         "name": qa.q,
@@ -526,7 +526,7 @@ ${(article.tags || []).map(t => `<meta property="article:tag" content="${t}"/>`)
         extraSchemas.push({
           "@context": "https://schema.org",
           "@type": "ItemList",
-          "@id": `https://intothecom.com${articleRoute}#itemlist`,
+          "@id": `https://www.intothecom.com${articleRoute}#itemlist`,
           "itemListOrder": "https://schema.org/ItemListOrderAscending",
           "numberOfItems": h3Items.length,
           "itemListElement": h3Items.map((s, i) => ({
@@ -545,7 +545,7 @@ ${(article.tags || []).map(t => `<meta property="article:tag" content="${t}"/>`)
         extraSchemas.push({
           "@context": "https://schema.org",
           "@type": "HowTo",
-          "@id": `https://intothecom.com${articleRoute}#howto`,
+          "@id": `https://www.intothecom.com${articleRoute}#howto`,
           "name": article.title,
           "description": article.description,
           "totalTime": "PT2H",
@@ -553,7 +553,7 @@ ${(article.tags || []).map(t => `<meta property="article:tag" content="${t}"/>`)
             "@type": "HowToStep",
             "position": i + 1,
             "name": s.text,
-            "url": `https://intothecom.com${articleRoute}#${s.id || ''}`
+            "url": `https://www.intothecom.com${articleRoute}#${s.id || ''}`
           }))
         });
       }
