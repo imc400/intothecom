@@ -12,7 +12,13 @@
   window.PLANNED_PILLARS = [];
   window.ARTICLES_READY = false;
 
-  window.ARTICLES_PROMISE = fetch('/data/articles.json', { cache: 'force-cache' })
+  // Cache-busting: el build inyecta el hash actual de articles.json. Si está
+  // sin reemplazar (dev/sin build) usa fetch normal. En producción cada deploy
+  // cambia el query string, invalidando el cache del navegador automáticamente.
+  var ARTICLES_VERSION = '2616489e';
+  var articlesUrl = '/data/articles.json' + (ARTICLES_VERSION && ARTICLES_VERSION.indexOf('__') !== 0 ? '?v=' + ARTICLES_VERSION : '');
+
+  window.ARTICLES_PROMISE = fetch(articlesUrl, { cache: 'default' })
     .then(function (r) { return r.json(); })
     .then(function (data) {
       window.ARTICLES = data.articles || [];

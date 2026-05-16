@@ -301,13 +301,26 @@ async function run() {
     'page-recursos.js': contentHash(path.join(outdir, 'page-recursos.js')),
     'app.js': contentHash(path.join(outdir, 'app.js'))
   };
-  const articlesHash = contentHash(path.join(root, 'data', 'articles.js'));
+  // articles.json es la fuente real → su hash es el que invalida cache cuando
+  // publicamos artículos nuevos. Inyectamos ese hash dentro de data/articles.js
+  // para que el fetch incluya ?v=<hash>, evitando que clientes con cache viejo
+  // queden mostrando 404 en artículos recién publicados.
+  const articlesJsonHash = contentHash(path.join(root, 'data', 'articles.json'));
+  const articlesJsPath = path.join(root, 'data', 'articles.js');
+  let articlesJsSrc = fs.readFileSync(articlesJsPath, 'utf-8');
+  const newArticlesJs = articlesJsSrc.replace(/var ARTICLES_VERSION = '[^']*';/, `var ARTICLES_VERSION = '${articlesJsonHash}';`);
+  if (newArticlesJs !== articlesJsSrc) {
+    fs.writeFileSync(articlesJsPath, newArticlesJs);
+    console.log('   ✓ Inyectado ARTICLES_VERSION en data/articles.js:', articlesJsonHash);
+  }
+  const articlesHash = contentHash(articlesJsPath);
   console.log('   shared.js:', hashes['shared.js']);
   console.log('   page-home.js:', hashes['page-home.js']);
   console.log('   pages.js:', hashes['pages.js']);
   console.log('   page-recursos.js:', hashes['page-recursos.js']);
   console.log('   app.js:', hashes['app.js']);
   console.log('   data/articles.js:', articlesHash);
+  console.log('   data/articles.json:', articlesJsonHash);
 
   // 2. Prerender HTML per route
   console.log('\n📄 Prerendering per-route HTML files...');
