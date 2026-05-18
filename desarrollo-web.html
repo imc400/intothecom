@@ -349,55 +349,121 @@
 </head>
 <body>
 <a href="#main" class="skip-link">Saltar al contenido</a>
-<div id="boot"><span class="dot"></span>cargando intothecom</div>
-<div id="root"><!-- SSR shell para crawlers + bots IA. React lo reemplaza al hidratar.
-     No usar 'hidden' (puede considerarse cloaking por Google). El boot screen lo
-     oculta visualmente para usuarios durante los pocos ms antes de React rendering. -->
-<article class="ssr-home-shell" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
-  <header>
-    <h1>Marketing digital, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Combinamos marketing digital B2B, desarrollo de software a medida y agentes IA para empresas que quieren resultados medibles, no entregables sin contexto. Operamos en Chile, USA, España, Colombia y Perú con +100 negocios asesorados.</p>
-  </header>
-
-  <section>
-    <h2>5 servicios integrados</h2>
-    <ul>
-      <li><a href="/software-ia">Software & IA a medida</a> — agentes IA, automatización de procesos, asistentes para atención al cliente y operaciones.</li>
-      <li><a href="/paid-media">Paid Media B2B</a> — Google Ads, Meta, LinkedIn Ads y TikTok con atribución multi-touch real, no MQLs vanity.</li>
-      <li><a href="/email-marketing">Email Marketing</a> — flows en Klaviyo y HubSpot, automation y recovery de carritos abandonados.</li>
-      <li><a href="/desarrollo-web">Diseño y Desarrollo Web</a> — sitios headless con Next.js, integración Shopify, optimización Core Web Vitals.</li>
-      <li><a href="/community-management">Community Management</a> — línea editorial documentada, producción mensual de foto y video, gestión de DMs y crisis.</li>
-    </ul>
+<div id="boot" aria-hidden="true"><span class="dot"></span>cargando intothecom</div>
+<div id="root">
+<!--SSR_START-->
+<div class="ssr-shell" data-route="/desarrollo-web">
+  <nav class="ssr-nav" aria-label="Navegación principal"><ul><li><a href="/">Inicio</a></li><li><a href="/servicios">Servicios</a></li><li><a href="/software-ia">Software &amp; IA</a></li><li><a href="/nosotros">Nosotros</a></li><li><a href="/recursos">Recursos</a></li><li><a href="/contacto">Contacto</a></li></ul></nav>
+  <main class="ssr-main">
+    <section class="ssr-hero">
+      <div class="ssr-eyebrow">Diseño y desarrollo web · WEB-01 · 6–12 semanas</div>
+<h1>Sitios que venden.</h1>
+<p class="ssr-lead">Diseñamos y desarrollamos sitios web y e-commerce de forma personalizada. Cada decisión —velocidad, jerarquía, copy, microinteracción— está al servicio de la conversión. Lighthouse 90+ no negociable.</p>
+<div class="ssr-cta-row"><a class="ssr-btn ssr-btn-primary" href="https://wa.me/56974143642?text=Hola%20Intothecom%2C%20me%20interesa%20Desarrollo%20Web." target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp ↗</a></div>
+<div class="ssr-meta"><div class="ssr-meta-row"><span>Servicio</span><span>WEB-01</span></div><div class="ssr-meta-row"><span>Disponibilidad</span><span>CL · BR · US · ES</span></div><div class="ssr-meta-row"><span>Duración</span><span>6–12 semanas</span></div><div class="ssr-meta-row"><span>Stack</span><span>Next.js · Shopify · Webflow · Headless</span></div></div>
+    </section>
+    
+    <section class="ssr-section"><div class="ssr-eyebrow">/ qué es</div>
+<h2>Tu sitio es tu mejor vendedor.</h2>
+<p>Diseñamos y desarrollamos sitios web y e-commerce de forma personalizada. Cada decisión está al servicio de la conversión.</p>
+<ul class="ssr-bullets"><li>Diseño UI/UX con foco en conversión, no en estética vacía.</li><li>Performance: Core Web Vitals en verde, LCP &lt;2.5s, CLS &lt;0.1.</li><li>SEO técnico integrado: estructura semántica, schema.org, sitemap dinámico.</li><li>Stack moderno: Next.js, headless commerce, CMS desacoplado editable.</li></ul></section>
+<section class="ssr-section"><div class="ssr-eyebrow">/ proceso</div>
+<h2>Diseño y código bajo el mismo techo.</h2>
+<ol class="ssr-steps">
+    <li class="ssr-step">
+      <span class="ssr-step-num">01</span>
+      <div>
+        <h3>Discovery</h3>
+        <p>Definimos KPIs del sitio antes de tocar Figma. Sin objetivos medibles, no hay diseño.</p>
+      </div>
+    </li>
+    <li class="ssr-step">
+      <span class="ssr-step-num">02</span>
+      <div>
+        <h3>Diseño</h3>
+        <p>Wireframes, sistema de diseño documentado, prototipos navegables aprobados.</p>
+      </div>
+    </li>
+    <li class="ssr-step">
+      <span class="ssr-step-num">03</span>
+      <div>
+        <h3>Desarrollo</h3>
+        <p>Código limpio, componentizado, con CMS para que tu equipo edite sin desarrollador.</p>
+      </div>
+    </li>
+    <li class="ssr-step">
+      <span class="ssr-step-num">04</span>
+      <div>
+        <h3>Lanzamiento</h3>
+        <p>QA cross-browser, migración de contenido, redirects 301, monitoreo post-launch.</p>
+      </div>
+    </li></ol></section>
+<section class="ssr-section"><div class="ssr-eyebrow">/ qué obtienes</div>
+<h2>Sitios construidos para vender.</h2>
+<ul class="ssr-bullets"><li>Conversión medible: sitios construidos para vender, con tracking limpio desde el primer pixel.</li><li>Performance que se siente: Lighthouse 90+ no negociable. Cada milisegundo cuenta.</li><li>Editable por tu equipo: CMS amigable. Editas textos e imágenes sin llamarnos.</li></ul></section>
+    
+    <section class="ssr-section">
+      <div class="ssr-eyebrow">/ otros servicios</div>
+      <h2>Más disciplinas del estudio.</h2>
+      <ul class="ssr-services">
+    <li class="ssr-service">
+      <span class="ssr-service-num">02</span>
+      <a class="ssr-service-link" href="/software-ia">
+        <h3>Software &amp; IA</h3>
+        <p>Productos digitales a medida.</p>
+      </a>
+    </li>
+    <li class="ssr-service">
+      <span class="ssr-service-num">03</span>
+      <a class="ssr-service-link" href="/paid-media">
+        <h3>Paid Media</h3>
+        <p>Tráfico calificado para tu nuevo sitio.</p>
+      </a>
+    </li>
+    <li class="ssr-service">
+      <span class="ssr-service-num">04</span>
+      <a class="ssr-service-link" href="/email-marketing">
+        <h3>Email Marketing</h3>
+        <p>Convierte tráfico en clientes recurrentes.</p>
+      </a>
+    </li></ul>
+    </section>
+    <section class="ssr-faq" aria-labelledby="ssr-faq-title">
+    <h2 id="ssr-faq-title">Preguntas frecuentes</h2>
+    
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Hacen e-commerce o solo institucionales?</h3>
+      <p class="ssr-faq-a">Ambos. Para e-commerce trabajamos con Shopify (recomendado para &gt;$5K MRR) o headless con Next.js + Shopify Storefront API. Para institucionales, Next.js + CMS (Sanity, Contentful).</p>
+    </div>
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Qué pasa con SEO post-launch?</h3>
+      <p class="ssr-faq-a">Entregamos schema.org completo, sitemap, redirects 301 desde sitio anterior y reporte de Search Console primer mes. SEO ongoing es servicio aparte.</p>
+    </div>
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Mi equipo puede editar el sitio?</h3>
+      <p class="ssr-faq-a">Sí. Todos los sitios incluyen CMS editable. Capacitación de 1h al final del proyecto. Textos, imágenes y bloques se editan sin tocar código.</p>
+    </div>
   </section>
-
-  <section>
-    <h2>Por qué clientes B2B nos eligen</h2>
-    <ul>
-      <li>Equipo senior dedicado, no juniors rotando entre cuentas.</li>
-      <li>Reportería con datos reales y atribución pipeline, no impresiones vanity.</li>
-      <li>+5 años, +100 marcas asesoradas en 5 países hispanohablantes.</li>
-      <li>Stack tecnológico moderno: GA4, HubSpot, Klaviyo, Next.js, agentes IA con MCP.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Recursos publicados</h2>
-    <ul>
-      <li><a href="/recursos/agentes-ia-para-empresas-2026">Asistente IA y agentes IA para empresas — guía completa 2026</a></li>
-      <li><a href="/recursos/asistente-ia-atencion-cliente-2026">Asistente IA para atención al cliente: 7 casos LATAM B2B</a></li>
-      <li><a href="/recursos/crm-b2b-que-es-como-elegir-2026">CRM B2B: qué es y cómo elegir el adecuado</a></li>
-      <li><a href="/recursos/marketing-digital-b2b-latam-2026">Marketing digital B2B en LATAM 2026</a></li>
-      <li><a href="/recursos/paid-media-b2b-2026">Paid Media B2B 2026: Google, Meta, LinkedIn, TikTok</a></li>
-      <li><a href="/recursos/klaviyo-hubspot-email-automation-2026">Email automation con Klaviyo y HubSpot</a></li>
-      <li><a href="/recursos">Ver todos los recursos →</a></li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Contacto</h2>
-    <p>WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · email <a href="mailto:info@intothecom.com">info@intothecom.com</a> · oficina Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile. Horario: Lunes a Viernes 9:00–19:00 hora Santiago.</p>
-  </section>
-</article>
+  </main>
+  <footer class="ssr-footer">
+    <div class="ssr-footer-col">
+      <h3>Intothecom</h3>
+      <p>Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile</p>
+      <p><strong>Mercados:</strong> Chile · USA · España · Colombia · Perú</p>
+      <p><strong>Horario:</strong> Lunes a Viernes 9:00–19:00 hora Santiago</p>
+    </div>
+    <div class="ssr-footer-col">
+      <h3>Servicios</h3>
+      <ul><li><a href="/software-ia">Software &amp; IA</a></li><li><a href="/paid-media">Paid Media</a></li><li><a href="/email-marketing">Email Marketing</a></li><li><a href="/desarrollo-web">Desarrollo Web</a></li><li><a href="/community-management">Community Management</a></li></ul>
+    </div>
+    <div class="ssr-footer-col">
+      <h3>Contacto</h3>
+      <p><a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
+      <p><a href="https://wa.me/56974143642?text=Hola%20Intothecom%2C%20me%20gustar%C3%ADa%20cotizar%20un%20servicio." target="_blank" rel="noopener noreferrer">WhatsApp +56 9 7414 3642</a></p>
+    </div>
+  </footer>
+</div>
+<!--SSR_END-->
 </div>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>

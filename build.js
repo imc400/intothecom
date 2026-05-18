@@ -128,7 +128,194 @@ try {
   console.warn('⚠️  No se pudo cargar data/articles.js:', e.message);
 }
 
+// === SSR CONTENT POR RUTA (cargado desde data/ssr-content.js) ===
+// Necesario para que Google AdsBot vea contenido único y visible por landing.
+// Sin esto, AdsBot rechaza anuncios por "contenido original insuficiente"
+// porque todas las URLs entregan el mismo shell genérico.
+let SSR_CONTENT = {};
+let SSR_COMMON = { COMMON_NAV: [], COMMON_FOOTER: {} };
+try {
+  const ssrModule = require(path.join(root, 'data', 'ssr-content.js'));
+  SSR_CONTENT = ssrModule.SSR_CONTENT || {};
+  SSR_COMMON.COMMON_NAV = ssrModule.COMMON_NAV || [];
+  SSR_COMMON.COMMON_FOOTER = ssrModule.COMMON_FOOTER || {};
+} catch (e) {
+  console.warn('⚠️  No se pudo cargar data/ssr-content.js:', e.message);
+}
+
 const DOMAIN = 'https://www.intothecom.com';
+
+/* SSR rendering helpers — generan HTML semántico visible por ruta.
+   Crítico: nada off-screen, ningún display:none, ningún visibility:hidden.
+   AdsBot debe ver contenido REAL al rastrear la URL sin ejecutar JS. */
+
+function ssrEscape(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function renderSSRNav(currentPath) {
+  const items = SSR_COMMON.COMMON_NAV.map(item => {
+    const isActive = item.path === currentPath;
+    const aria = isActive ? ' aria-current="page"' : '';
+    return `<li><a href="${ssrEscape(item.path)}"${aria}>${ssrEscape(item.label)}</a></li>`;
+  }).join('');
+  return `<nav class="ssr-nav" aria-label="Navegación principal"><ul>${items}</ul></nav>`;
+}
+
+function renderSSRCTAs(ctas) {
+  if (!Array.isArray(ctas) || ctas.length === 0) return '';
+  const buttons = ctas.map(cta => {
+    const cls = cta.primary ? 'ssr-btn ssr-btn-primary' : 'ssr-btn ssr-btn-ghost';
+    const attrs = cta.external ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<a class="${cls}" href="${ssrEscape(cta.href)}"${attrs}>${ssrEscape(cta.text)} ↗</a>`;
+  }).join('');
+  return `<div class="ssr-cta-row">${buttons}</div>`;
+}
+
+function renderSSRMeta(meta) {
+  if (!Array.isArray(meta) || meta.length === 0) return '';
+  const rows = meta.map(m => `<div class="ssr-meta-row"><span>${ssrEscape(m.label)}</span><span>${ssrEscape(m.value)}</span></div>`).join('');
+  return `<div class="ssr-meta">${rows}</div>`;
+}
+
+function renderSSRStats(stats) {
+  if (!Array.isArray(stats) || stats.length === 0) return '';
+  const items = stats.map(s => {
+    const sub = s.sub ? `<div class="ssr-stat-sub">${ssrEscape(s.sub)}</div>` : '';
+    return `<div class="ssr-stat"><div class="ssr-stat-num">${ssrEscape(s.num)}</div><div class="ssr-stat-lbl">${ssrEscape(s.label)}</div>${sub}</div>`;
+  }).join('');
+  return `<div class="ssr-stats">${items}</div>`;
+}
+
+function renderSSRBullets(items) {
+  if (!Array.isArray(items) || items.length === 0) return '';
+  return `<ul class="ssr-bullets">${items.map(b => `<li>${ssrEscape(b)}</li>`).join('')}</ul>`;
+}
+
+function renderSSRSteps(steps) {
+  if (!Array.isArray(steps) || steps.length === 0) return '';
+  const items = steps.map((s, i) => `
+    <li class="ssr-step">
+      <span class="ssr-step-num">0${i + 1}</span>
+      <div>
+        <h3>${ssrEscape(s.t)}</h3>
+        <p>${ssrEscape(s.d)}</p>
+      </div>
+    </li>`).join('');
+  return `<ol class="ssr-steps">${items}</ol>`;
+}
+
+function renderSSRServices(services) {
+  if (!Array.isArray(services) || services.length === 0) return '';
+  const items = services.map(s => `
+    <li class="ssr-service">
+      <span class="ssr-service-num">${ssrEscape(s.num)}</span>
+      <a class="ssr-service-link" href="${ssrEscape(s.path)}">
+        <h3>${ssrEscape(s.t)}</h3>
+        <p>${ssrEscape(s.desc)}</p>
+      </a>
+    </li>`).join('');
+  return `<ul class="ssr-services">${items}</ul>`;
+}
+
+function renderSSRContactGrid(grid) {
+  if (!Array.isArray(grid) || grid.length === 0) return '';
+  const items = grid.map(c => {
+    const inner = c.href
+      ? `<a href="${ssrEscape(c.href)}"${c.href.startsWith('http') && !c.href.includes('intothecom.com') ? ' target="_blank" rel="noopener noreferrer"' : ''}>${ssrEscape(c.value)}</a>`
+      : ssrEscape(c.value);
+    return `<div class="ssr-contact-cell"><div class="ssr-contact-lbl">${ssrEscape(c.label)}</div><div class="ssr-contact-val">${inner}</div></div>`;
+  }).join('');
+  return `<div class="ssr-contact-grid">${items}</div>`;
+}
+
+function renderSSRFAQ(faq) {
+  if (!Array.isArray(faq) || faq.length === 0) return '';
+  const items = faq.map(qa => `
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">${ssrEscape(qa.q)}</h3>
+      <p class="ssr-faq-a">${ssrEscape(qa.a)}</p>
+    </div>`).join('');
+  return `<section class="ssr-faq" aria-labelledby="ssr-faq-title">
+    <h2 id="ssr-faq-title">Preguntas frecuentes</h2>
+    ${items}
+  </section>`;
+}
+
+function renderSSRSection(section) {
+  const parts = [];
+  if (section.eyebrow) parts.push(`<div class="ssr-eyebrow">${ssrEscape(section.eyebrow)}</div>`);
+  if (section.h2) parts.push(`<h2>${ssrEscape(section.h2)}</h2>`);
+  if (section.body) parts.push(`<p>${ssrEscape(section.body)}</p>`);
+  if (section.bullets) parts.push(renderSSRBullets(section.bullets));
+  if (section.steps) parts.push(renderSSRSteps(section.steps));
+  if (section.services) parts.push(renderSSRServices(section.services));
+  if (section.contactGrid) parts.push(renderSSRContactGrid(section.contactGrid));
+  return `<section class="ssr-section">${parts.join('\n')}</section>`;
+}
+
+function renderSSRFooter() {
+  const f = SSR_COMMON.COMMON_FOOTER;
+  const services = (f.services || []).map(s => `<li><a href="${ssrEscape(s.path)}">${ssrEscape(s.label)}</a></li>`).join('');
+  return `<footer class="ssr-footer">
+    <div class="ssr-footer-col">
+      <h3>Intothecom</h3>
+      <p>${ssrEscape(f.address || '')}</p>
+      <p><strong>Mercados:</strong> ${ssrEscape(f.markets || '')}</p>
+      <p><strong>Horario:</strong> ${ssrEscape(f.hours || '')}</p>
+    </div>
+    <div class="ssr-footer-col">
+      <h3>Servicios</h3>
+      <ul>${services}</ul>
+    </div>
+    <div class="ssr-footer-col">
+      <h3>Contacto</h3>
+      <p><a href="mailto:${ssrEscape(f.email)}">${ssrEscape(f.email)}</a></p>
+      <p><a href="${ssrEscape(f.whatsapp)}" target="_blank" rel="noopener noreferrer">WhatsApp ${ssrEscape(f.phone)}</a></p>
+    </div>
+  </footer>`;
+}
+
+function renderSSRPage(route, ssrData, meta) {
+  if (!ssrData) return '';
+
+  const hero = ssrData.hero || {};
+  const heroParts = [];
+  if (hero.eyebrow) heroParts.push(`<div class="ssr-eyebrow">${ssrEscape(hero.eyebrow)}</div>`);
+  if (hero.h1) heroParts.push(`<h1>${ssrEscape(hero.h1)}</h1>`);
+  if (hero.body) heroParts.push(`<p class="ssr-lead">${ssrEscape(hero.body)}</p>`);
+  if (hero.ctas) heroParts.push(renderSSRCTAs(hero.ctas));
+  if (hero.meta) heroParts.push(renderSSRMeta(hero.meta));
+
+  const sections = (ssrData.sections || []).map(renderSSRSection).join('\n');
+  const stats = ssrData.stats ? renderSSRStats(ssrData.stats) : '';
+  const others = ssrData.others ? `
+    <section class="ssr-section">
+      <div class="ssr-eyebrow">/ otros servicios</div>
+      <h2>Más disciplinas del estudio.</h2>
+      ${renderSSRServices(ssrData.others)}
+    </section>` : '';
+  const faq = ssrData.faq ? renderSSRFAQ(ssrData.faq) : '';
+
+  return `<div class="ssr-shell" data-route="${ssrEscape(route)}">
+  ${renderSSRNav(route)}
+  <main class="ssr-main">
+    <section class="ssr-hero">
+      ${heroParts.join('\n')}
+    </section>
+    ${stats}
+    ${sections}
+    ${others}
+    ${faq}
+  </main>
+  ${renderSSRFooter()}
+</div>`;
+}
 
 function buildBreadcrumbJSON(crumbs) {
   return JSON.stringify({
@@ -269,6 +456,22 @@ function prerenderRoute(masterHtml, route, meta) {
   </div>
 </noscript>`;
     html = html.replace(/<\/body>/, noscriptBlock + '\n</body>');
+  }
+
+  // === Inyectar SSR content visible específico por ruta ===
+  // Reemplaza TODO el contenido entre <!--SSR_START--> y <!--SSR_END--> con HTML
+  // semántico real para esta URL. Crítico para Google AdsBot (que no ejecuta JS
+  // como Googlebot) y para LLM crawlers que leen HTML inicial.
+  //
+  // El contenido es VISIBLE (no off-screen, no display:none). React lo reemplaza
+  // al montar via createRoot.render(), lo cual es comportamiento estándar de SPA.
+  const ssrData = SSR_CONTENT[route];
+  const ssrHtml = ssrData ? renderSSRPage(route, ssrData, meta) : '';
+  if (ssrHtml) {
+    html = html.replace(
+      /<!--SSR_START-->[\s\S]*?<!--SSR_END-->/,
+      `<!--SSR_START-->\n${ssrHtml}\n<!--SSR_END-->`
+    );
   }
 
   return html;

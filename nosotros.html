@@ -343,55 +343,65 @@
 </head>
 <body>
 <a href="#main" class="skip-link">Saltar al contenido</a>
-<div id="boot"><span class="dot"></span>cargando intothecom</div>
-<div id="root"><!-- SSR shell para crawlers + bots IA. React lo reemplaza al hidratar.
-     No usar 'hidden' (puede considerarse cloaking por Google). El boot screen lo
-     oculta visualmente para usuarios durante los pocos ms antes de React rendering. -->
-<article class="ssr-home-shell" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
-  <header>
-    <h1>Marketing digital, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Combinamos marketing digital B2B, desarrollo de software a medida y agentes IA para empresas que quieren resultados medibles, no entregables sin contexto. Operamos en Chile, USA, España, Colombia y Perú con +100 negocios asesorados.</p>
-  </header>
-
-  <section>
-    <h2>5 servicios integrados</h2>
-    <ul>
-      <li><a href="/software-ia">Software & IA a medida</a> — agentes IA, automatización de procesos, asistentes para atención al cliente y operaciones.</li>
-      <li><a href="/paid-media">Paid Media B2B</a> — Google Ads, Meta, LinkedIn Ads y TikTok con atribución multi-touch real, no MQLs vanity.</li>
-      <li><a href="/email-marketing">Email Marketing</a> — flows en Klaviyo y HubSpot, automation y recovery de carritos abandonados.</li>
-      <li><a href="/desarrollo-web">Diseño y Desarrollo Web</a> — sitios headless con Next.js, integración Shopify, optimización Core Web Vitals.</li>
-      <li><a href="/community-management">Community Management</a> — línea editorial documentada, producción mensual de foto y video, gestión de DMs y crisis.</li>
-    </ul>
+<div id="boot" aria-hidden="true"><span class="dot"></span>cargando intothecom</div>
+<div id="root">
+<!--SSR_START-->
+<div class="ssr-shell" data-route="/nosotros">
+  <nav class="ssr-nav" aria-label="Navegación principal"><ul><li><a href="/">Inicio</a></li><li><a href="/servicios">Servicios</a></li><li><a href="/software-ia">Software &amp; IA</a></li><li><a href="/nosotros" aria-current="page">Nosotros</a></li><li><a href="/recursos">Recursos</a></li><li><a href="/contacto">Contacto</a></li></ul></nav>
+  <main class="ssr-main">
+    <section class="ssr-hero">
+      <div class="ssr-eyebrow">El estudio · est. 2019 · 4 mercados activos</div>
+<h1>Cinco años haciendo crecer negocios.</h1>
+<p class="ssr-lead">Empezamos en 2019 como una agencia de marketing digital en Chile. Cinco años después operamos en cuatro mercados, hemos asesorado más de 100 negocios y construimos software &amp; IA a medida para clientes que necesitan más que campañas. Nos motiva el crecimiento medible. Si no se puede medir, no lo hacemos.</p>
+<div class="ssr-cta-row"><a class="ssr-btn ssr-btn-primary" href="https://wa.me/56974143642?text=Hola%20Intothecom%2C%20me%20gustar%C3%ADa%20cotizar%20un%20servicio." target="_blank" rel="noopener noreferrer">Agendar por WhatsApp ↗</a><a class="ssr-btn ssr-btn-ghost" href="/hablemos">Escribir un brief ↗</a></div>
+    </section>
+    <div class="ssr-stats"><div class="ssr-stat"><div class="ssr-stat-num">+100</div><div class="ssr-stat-lbl">Negocios asesorados</div></div><div class="ssr-stat"><div class="ssr-stat-num">+5M</div><div class="ssr-stat-lbl">USD vendidos por RRSS</div></div><div class="ssr-stat"><div class="ssr-stat-num">+5</div><div class="ssr-stat-lbl">Años en industria</div></div><div class="ssr-stat"><div class="ssr-stat-num">04</div><div class="ssr-stat-lbl">Mercados activos</div></div></div>
+    <section class="ssr-section"><div class="ssr-eyebrow">/ qué somos</div>
+<h2>Una agencia con obsesión por los datos.</h2>
+<p>Empezamos en 2019 como una agencia de marketing digital en Chile. Cinco años después operamos en cuatro mercados, hemos asesorado más de 100 negocios y construimos software &amp; IA a medida para clientes que necesitan más que campañas. Nos motiva el crecimiento medible. Si no se puede medir, no lo hacemos.</p></section>
+<section class="ssr-section"><div class="ssr-eyebrow">/ principios</div>
+<h2>Cómo trabajamos.</h2>
+<ul class="ssr-bullets"><li>Data sobre opinión: cada decisión está respaldada por números. Las opiniones son hipótesis hasta que se prueban.</li><li>Transparencia radical: reportes honestos, incluyendo lo que no funcionó. No tenemos nada que ocultar.</li><li>Foco en negocio: no optimizamos métricas vanidosas. Optimizamos ingresos, margen y LTV.</li><li>Equipo senior: quien vende es quien ejecuta. No hay mid-funnel: trabajas directo con quien sabe.</li></ul></section>
+<section class="ssr-section"><div class="ssr-eyebrow">/ siguiente paso</div>
+<h2>¿Te suena? Hablemos.</h2>
+<p>45 minutos sin costo, sin venta dura. Revisamos tu negocio, identificamos los 3 mayores bloqueos y te entregamos un plan accionable. Si encajamos, seguimos. Si no, te sales con valor.</p></section>
+    
+    <section class="ssr-faq" aria-labelledby="ssr-faq-title">
+    <h2 id="ssr-faq-title">Preguntas frecuentes</h2>
+    
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Quién es Intothecom?</h3>
+      <p class="ssr-faq-a">Estudio digital chileno fundado en 2019. Operamos en cinco mercados (Chile, USA, España, Colombia, Perú) con +100 negocios asesorados, +5M USD generados vía RRSS para clientes y -50% CAC promedio.</p>
+    </div>
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Quiénes son los founders?</h3>
+      <p class="ssr-faq-a">Ignacio Blanco (Co-founder &amp; Strategy Lead). Equipo senior in-house con especialistas por disciplina.</p>
+    </div>
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Tienen oficina física?</h3>
+      <p class="ssr-faq-a">Sí. Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile. Recibimos visitas con cita previa.</p>
+    </div>
   </section>
-
-  <section>
-    <h2>Por qué clientes B2B nos eligen</h2>
-    <ul>
-      <li>Equipo senior dedicado, no juniors rotando entre cuentas.</li>
-      <li>Reportería con datos reales y atribución pipeline, no impresiones vanity.</li>
-      <li>+5 años, +100 marcas asesoradas en 5 países hispanohablantes.</li>
-      <li>Stack tecnológico moderno: GA4, HubSpot, Klaviyo, Next.js, agentes IA con MCP.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Recursos publicados</h2>
-    <ul>
-      <li><a href="/recursos/agentes-ia-para-empresas-2026">Asistente IA y agentes IA para empresas — guía completa 2026</a></li>
-      <li><a href="/recursos/asistente-ia-atencion-cliente-2026">Asistente IA para atención al cliente: 7 casos LATAM B2B</a></li>
-      <li><a href="/recursos/crm-b2b-que-es-como-elegir-2026">CRM B2B: qué es y cómo elegir el adecuado</a></li>
-      <li><a href="/recursos/marketing-digital-b2b-latam-2026">Marketing digital B2B en LATAM 2026</a></li>
-      <li><a href="/recursos/paid-media-b2b-2026">Paid Media B2B 2026: Google, Meta, LinkedIn, TikTok</a></li>
-      <li><a href="/recursos/klaviyo-hubspot-email-automation-2026">Email automation con Klaviyo y HubSpot</a></li>
-      <li><a href="/recursos">Ver todos los recursos →</a></li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Contacto</h2>
-    <p>WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · email <a href="mailto:info@intothecom.com">info@intothecom.com</a> · oficina Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile. Horario: Lunes a Viernes 9:00–19:00 hora Santiago.</p>
-  </section>
-</article>
+  </main>
+  <footer class="ssr-footer">
+    <div class="ssr-footer-col">
+      <h3>Intothecom</h3>
+      <p>Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile</p>
+      <p><strong>Mercados:</strong> Chile · USA · España · Colombia · Perú</p>
+      <p><strong>Horario:</strong> Lunes a Viernes 9:00–19:00 hora Santiago</p>
+    </div>
+    <div class="ssr-footer-col">
+      <h3>Servicios</h3>
+      <ul><li><a href="/software-ia">Software &amp; IA</a></li><li><a href="/paid-media">Paid Media</a></li><li><a href="/email-marketing">Email Marketing</a></li><li><a href="/desarrollo-web">Desarrollo Web</a></li><li><a href="/community-management">Community Management</a></li></ul>
+    </div>
+    <div class="ssr-footer-col">
+      <h3>Contacto</h3>
+      <p><a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
+      <p><a href="https://wa.me/56974143642?text=Hola%20Intothecom%2C%20me%20gustar%C3%ADa%20cotizar%20un%20servicio." target="_blank" rel="noopener noreferrer">WhatsApp +56 9 7414 3642</a></p>
+    </div>
+  </footer>
+</div>
+<!--SSR_END-->
 </div>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
