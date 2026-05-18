@@ -12,7 +12,7 @@
    en navegación pública — endpoint interno.
 */
 
-const { query, getAccessToken } = require('../_lib/gsc.js');
+const { query, getAccessToken, urlInspect } = require('../_lib/gsc.js');
 
 const PILLAR_SLUGS = [
   'agentes-ia-para-empresas-2026',
@@ -153,9 +153,11 @@ module.exports = async (req, res) => {
     };
   } catch (e) { result.errors.push({ task: 'legacyBlog', error: e.message }); }
 
-  // 5. Indexación de nuestros 13 pillars (impressions = está indexado y aparece en SERP)
+  // 5. Indexación de nuestros 13 pillars (combina: GSC SERP appearance + URL Inspection API)
   try {
+    const inspect = url.searchParams.get('inspect') === '1';
     const pillarChecks = await Promise.all(PILLAR_SLUGS.map(async slug => {
+      const pageUrl = `https://www.intothecom.com/recursos/${slug}`;
       const r = await gscQuery({
         ...dates,
         dimensions: ['page'],
@@ -165,13 +167,33 @@ module.exports = async (req, res) => {
         }]
       });
       const row = (r.body.rows && r.body.rows[0]) || null;
-      return {
+      const base = {
         slug,
-        indexed: !!row,
+        url: pageUrl,
+        serpAppearances: !!row,
         impressions: row ? row.impressions : 0,
         clicks: row ? row.clicks : 0,
         position: row ? +row.position.toFixed(1) : null
       };
+      if (!inspect) return base;
+      // URL Inspection API (más costoso, llama solo si ?inspect=1)
+      try {
+        const ins = await urlInspect(pageUrl);
+        const idx = ins.body && ins.body.inspectionResult && ins.body.inspectionResult.indexStatusResult;
+        return {
+          ...base,
+          inspection: idx ? {
+            verdict: idx.verdict,
+            coverageState: idx.coverageState,
+            robotsTxtState: idx.robotsTxtState,
+            indexingState: idx.indexingState,
+            lastCrawlTime: idx.lastCrawlTime,
+            pageFetchState: idx.pageFetchState,
+            googleCanonical: idx.googleCanonical,
+            userCanonical: idx.userCanonical
+          } : { error: 'no inspection data', raw: ins.body }
+        };
+      } catch (e) { return { ...base, inspection: { error: e.message } }; }
     }));
     result.pillarIndexation = pillarChecks;
   } catch (e) { result.errors.push({ task: 'pillarIndexation', error: e.message }); }
