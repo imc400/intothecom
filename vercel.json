@@ -6,216 +6,1368 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/la-agencia", "destination": "/nosotros", "permanent": true },
-    { "source": "/la-agencia/", "destination": "/nosotros", "permanent": true },
-    { "source": "/seo-y-posicionamiento-web", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/seo-y-posicionamiento-web/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/diseno-y-desarrollo-web", "destination": "/desarrollo-web", "permanent": true },
-    { "source": "/diseno-y-desarrollo-web/", "destination": "/desarrollo-web", "permanent": true },
-    { "source": "/marketing-digital", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/marketing-digital/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/redes-sociales", "destination": "/community-management", "permanent": true },
-    { "source": "/redes-sociales/", "destination": "/community-management", "permanent": true },
-    { "source": "/email-marketing-old", "destination": "/email-marketing", "permanent": true },
-    { "source": "/branding", "destination": "/recursos/community-management-b2b-2026", "permanent": true },
-    { "source": "/branding/", "destination": "/recursos/community-management-b2b-2026", "permanent": true },
-    { "source": "/consultoria", "destination": "/servicios", "permanent": true },
-    { "source": "/consultoria/", "destination": "/servicios", "permanent": true },
-    { "source": "/sobre-nosotros", "destination": "/nosotros", "permanent": true },
-    { "source": "/sobre-nosotros/", "destination": "/nosotros", "permanent": true },
-    { "source": "/quienes-somos", "destination": "/nosotros", "permanent": true },
-    { "source": "/quienes-somos/", "destination": "/nosotros", "permanent": true },
-    { "source": "/portafolio", "destination": "/casos", "permanent": true },
-    { "source": "/portafolio/", "destination": "/casos", "permanent": true },
-    { "source": "/trabajos", "destination": "/casos", "permanent": true },
-    { "source": "/trabajos/", "destination": "/casos", "permanent": true },
-    { "source": "/clientes", "destination": "/casos", "permanent": true },
-    { "source": "/clientes/", "destination": "/casos", "permanent": true },
-    { "source": "/seo", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/seo/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog", "destination": "/recursos", "permanent": true },
-    { "source": "/blog/", "destination": "/recursos", "permanent": true },
-    { "source": "/blog/page/:n", "destination": "/recursos", "permanent": true },
-    { "source": "/blog/category/:cat", "destination": "/recursos", "permanent": true },
-    { "source": "/blog/category/:cat/", "destination": "/recursos", "permanent": true },
-    { "source": "/blog/tag/:tag", "destination": "/recursos", "permanent": true },
-    { "source": "/blog/tag/:tag/", "destination": "/recursos", "permanent": true },
-    { "source": "/blog/que-es-un-crm-para-que-sirve-y-caracteristicas", "destination": "/recursos/crm-b2b-que-es-como-elegir-2026", "permanent": true },
-    { "source": "/blog/que-es-un-crm-para-que-sirve-y-caracteristicas/", "destination": "/recursos/crm-b2b-que-es-como-elegir-2026", "permanent": true },
-    { "source": "/blog/reunion-kick-off-que-es", "destination": "/recursos/kick-off-proyecto-guia-completa-2026", "permanent": true },
-    { "source": "/blog/reunion-kick-off-que-es/", "destination": "/recursos/kick-off-proyecto-guia-completa-2026", "permanent": true },
-    { "source": "/blog/que-son-los-gpts-personalizados-y-como-crearlos", "destination": "/recursos/agentes-ia-para-empresas-2026", "permanent": true },
-    { "source": "/blog/que-son-los-gpts-personalizados-y-como-crearlos/", "destination": "/recursos/agentes-ia-para-empresas-2026", "permanent": true },
-    { "source": "/blog/como-impulsar-el-crecimiento-de-un-ecommerce", "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026", "permanent": true },
-    { "source": "/blog/como-impulsar-el-crecimiento-de-un-ecommerce/", "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026", "permanent": true },
-    { "source": "/blog/que-es-branding-en-marketing", "destination": "/recursos/community-management-b2b-2026", "permanent": true },
-    { "source": "/blog/que-es-branding-en-marketing/", "destination": "/recursos/community-management-b2b-2026", "permanent": true },
-    { "source": "/blog/que-es-community-management", "destination": "/recursos/community-management-b2b-2026", "permanent": true },
-    { "source": "/blog/que-es-community-management/", "destination": "/recursos/community-management-b2b-2026", "permanent": true },
-    { "source": "/blog/que-es-el-anchor-text", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/que-es-el-anchor-text/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/google-core-update-de-noviembre-2024-que-cambios-trae-y-su-impacto-web", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/google-core-update-de-noviembre-2024-que-cambios-trae-y-su-impacto-web/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/aplicacion-de-business-intelligence-en-una-empresa", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/aplicacion-de-business-intelligence-en-una-empresa/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/que-es-el-big-data-y-business-intelligence", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/que-es-el-big-data-y-business-intelligence/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/que-es-un-kick-off", "destination": "/recursos/kick-off-proyecto-guia-completa-2026", "permanent": true },
-    { "source": "/blog/que-es-un-kick-off/", "destination": "/recursos/kick-off-proyecto-guia-completa-2026", "permanent": true },
-    { "source": "/blog/kick-off-en-proyectos", "destination": "/recursos/kick-off-proyecto-guia-completa-2026", "permanent": true },
-    { "source": "/blog/kick-off-en-proyectos/", "destination": "/recursos/kick-off-proyecto-guia-completa-2026", "permanent": true },
-    { "source": "/blog/programa-crm-para-que-sirve", "destination": "/recursos/crm-b2b-que-es-como-elegir-2026", "permanent": true },
-    { "source": "/blog/programa-crm-para-que-sirve/", "destination": "/recursos/crm-b2b-que-es-como-elegir-2026", "permanent": true },
-    { "source": "/blog/engagement-en-marketing-digital", "destination": "/recursos/community-management-b2b-2026", "permanent": true },
-    { "source": "/blog/engagement-en-marketing-digital/", "destination": "/recursos/community-management-b2b-2026", "permanent": true },
-    { "source": "/blog/que-son-las-palabras-claves", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/que-son-las-palabras-claves/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/palabras-claves", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/palabras-claves/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/keyword-research", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/blog/keyword-research/", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-    { "source": "/equipo", "destination": "/nosotros", "permanent": true },
-    { "source": "/author/ignaciointothecom-com", "destination": "/equipo/ignacio-blanco", "permanent": true },
-    { "source": "/author/ignaciointothecom-com/", "destination": "/equipo/ignacio-blanco", "permanent": true },
-    { "source": "/author/:author", "destination": "/nosotros", "permanent": true },
-    { "source": "/author/:author/", "destination": "/nosotros", "permanent": true },
-    { "source": "/feed", "destination": "/recursos", "permanent": true },
-    { "source": "/feed/", "destination": "/recursos", "permanent": true },
-    { "source": "/comments/feed", "destination": "/recursos", "permanent": true },
-    { "source": "/comments/feed/", "destination": "/recursos", "permanent": true },
-    { "source": "/sitemap_index.xml", "destination": "/sitemap.xml", "permanent": true },
-    { "source": "/post-sitemap.xml", "destination": "/sitemap.xml", "permanent": true },
-    { "source": "/page-sitemap.xml", "destination": "/sitemap.xml", "permanent": true },
-    { "source": "/wp-sitemap.xml", "destination": "/sitemap.xml", "permanent": true },
-    { "source": "/blogs/noticias", "destination": "/recursos", "permanent": true },
-    { "source": "/blogs/noticias/google-ads", "destination": "/recursos/paid-media-b2b-2026", "permanent": true },
-    { "source": "/blogs/noticias/meta-ads", "destination": "/recursos/paid-media-b2b-2026", "permanent": true },
-    { "source": "/blogs/noticias/mail-marketing", "destination": "/recursos/klaviyo-hubspot-email-automation-2026", "permanent": true },
-    { "source": "/blogs/noticias/shopify-partners", "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026", "permanent": true },
-    { "source": "/blogs/noticias/wareclouds", "destination": "/casos", "permanent": true },
-    { "source": "/blogs/:path*", "destination": "/recursos", "permanent": true },
-    { "source": "/pages/contacto", "destination": "/contacto", "permanent": true },
-    { "source": "/pages/hablemos-de-ecommerce", "destination": "/hablemos", "permanent": true },
-    { "source": "/pages/fullcommerce", "destination": "/desarrollo-web", "permanent": true },
-    { "source": "/pages/google-ads", "destination": "/recursos/paid-media-b2b-2026", "permanent": true },
-    { "source": "/pages/shopify-partners", "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026", "permanent": true },
-    { "source": "/pages/:path*", "destination": "/servicios", "permanent": true },
-    { "source": "/products/estructura-klaviyo", "destination": "/recursos/klaviyo-hubspot-email-automation-2026", "permanent": true },
-    { "source": "/products/integraciones-para-tu-e-commerce", "destination": "/desarrollo-web", "permanent": true },
-    { "source": "/products/:path*", "destination": "/servicios", "permanent": true },
-    { "source": "/collections/:path*", "destination": "/servicios", "permanent": true },
-    { "source": "/privacy", "destination": "/contacto", "permanent": true },
-    { "source": "/privacidad", "destination": "/contacto", "permanent": true },
-    { "source": "/terms", "destination": "/contacto", "permanent": true },
-    { "source": "/terminos", "destination": "/contacto", "permanent": true },
-    { "source": "/cookies", "destination": "/contacto", "permanent": true },
-    { "source": "/aviso-legal", "destination": "/contacto", "permanent": true },
-    { "source": "/legal", "destination": "/contacto", "permanent": true },
-
-    { "source": "/diseno-web", "destination": "/desarrollo-web", "permanent": true },
-    { "source": "/diseno-grafico", "destination": "/desarrollo-web", "permanent": true },
-    { "source": "/publicidad", "destination": "/paid-media", "permanent": true },
-    { "source": "/publicidad-online", "destination": "/paid-media", "permanent": true },
-    { "source": "/redes", "destination": "/community-management", "permanent": true },
-    { "source": "/social-media", "destination": "/community-management", "permanent": true },
-    { "source": "/marketing-de-contenidos", "destination": "/recursos", "permanent": true },
-    { "source": "/content-marketing", "destination": "/recursos", "permanent": true },
-    { "source": "/inbound-marketing", "destination": "/recursos/marketing-digital-b2b-latam-2026", "permanent": true },
-
-    { "source": "/ecommerce", "destination": "/desarrollo-web", "permanent": true },
-    { "source": "/e-commerce", "destination": "/desarrollo-web", "permanent": true },
-    { "source": "/tienda-online", "destination": "/desarrollo-web", "permanent": true },
-    { "source": "/shopify", "destination": "/desarrollo-web", "permanent": true },
-    { "source": "/shopify-chile", "destination": "/desarrollo-web", "permanent": true },
-
-    { "source": "/noticias", "destination": "/recursos", "permanent": true },
-    { "source": "/actualidad", "destination": "/recursos", "permanent": true },
-    { "source": "/novedades", "destination": "/recursos", "permanent": true },
-    { "source": "/eventos", "destination": "/recursos", "permanent": true },
-    { "source": "/page/:n", "destination": "/", "permanent": true },
-    { "source": "/categoria/:cat", "destination": "/recursos", "permanent": true },
-    { "source": "/categoria/:cat/", "destination": "/recursos", "permanent": true },
-    { "source": "/tag/:tag", "destination": "/recursos", "permanent": true },
-    { "source": "/tag/:tag/", "destination": "/recursos", "permanent": true },
-
-    { "source": "/precios", "destination": "/hablemos", "permanent": true },
-    { "source": "/planes", "destination": "/hablemos", "permanent": true },
-    { "source": "/tarifas", "destination": "/hablemos", "permanent": true },
-    { "source": "/cotizacion", "destination": "/hablemos", "permanent": true },
-    { "source": "/cotizar", "destination": "/hablemos", "permanent": true },
-    { "source": "/proceso", "destination": "/nosotros", "permanent": true },
-    { "source": "/metodologia", "destination": "/nosotros", "permanent": true },
-
-    { "source": "/about", "destination": "/nosotros", "permanent": true },
-    { "source": "/about-us", "destination": "/nosotros", "permanent": true },
-    { "source": "/contact", "destination": "/contacto", "permanent": true },
-    { "source": "/get-in-touch", "destination": "/contacto", "permanent": true },
-    { "source": "/team", "destination": "/nosotros", "permanent": true },
-    { "source": "/staff", "destination": "/nosotros", "permanent": true },
-    { "source": "/portfolio", "destination": "/casos", "permanent": true },
-    { "source": "/work", "destination": "/casos", "permanent": true },
-    { "source": "/services", "destination": "/servicios", "permanent": true },
-    { "source": "/our-services", "destination": "/servicios", "permanent": true },
-
-    { "source": "/sobre", "destination": "/nosotros", "permanent": true },
-    { "source": "/sobre-intothecom", "destination": "/nosotros", "permanent": true },
-    { "source": "/intothecom", "destination": "/", "permanent": true },
-    { "source": "/agencia", "destination": "/nosotros", "permanent": true },
-    { "source": "/agencia-chile", "destination": "/nosotros", "permanent": true },
-    { "source": "/agencia-digital", "destination": "/nosotros", "permanent": true },
-
-    { "source": "/wa", "destination": "https://wa.me/56974143642", "permanent": false },
-    { "source": "/whatsapp", "destination": "https://wa.me/56974143642", "permanent": false },
-
-    { "source": "/blog/:path*", "destination": "/recursos", "permanent": true }
+    {
+      "source": "/la-agencia",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/la-agencia/",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/seo-y-posicionamiento-web",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/seo-y-posicionamiento-web/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/diseno-y-desarrollo-web",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/diseno-y-desarrollo-web/",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/marketing-digital",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/marketing-digital/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/redes-sociales",
+      "destination": "/community-management",
+      "permanent": true
+    },
+    {
+      "source": "/redes-sociales/",
+      "destination": "/community-management",
+      "permanent": true
+    },
+    {
+      "source": "/email-marketing-old",
+      "destination": "/email-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/branding",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/branding/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/consultoria",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/consultoria/",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/sobre-nosotros",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/sobre-nosotros/",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/quienes-somos",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/quienes-somos/",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/portafolio",
+      "destination": "/casos",
+      "permanent": true
+    },
+    {
+      "source": "/portafolio/",
+      "destination": "/casos",
+      "permanent": true
+    },
+    {
+      "source": "/trabajos",
+      "destination": "/casos",
+      "permanent": true
+    },
+    {
+      "source": "/trabajos/",
+      "destination": "/casos",
+      "permanent": true
+    },
+    {
+      "source": "/clientes",
+      "destination": "/casos",
+      "permanent": true
+    },
+    {
+      "source": "/clientes/",
+      "destination": "/casos",
+      "permanent": true
+    },
+    {
+      "source": "/seo",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/seo/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/page/:n",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/diseno-web",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/diseno-web/",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/marketing-digital",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/marketing-digital/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/paid-media",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/paid-media/",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/email-marketing",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/email-marketing/",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/seo-sem",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/seo-sem/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/:cat",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/category/:cat/",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/:tag",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tag/:tag/",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-un-crm-para-que-sirve-y-caracteristicas",
+      "destination": "/recursos/crm-b2b-que-es-como-elegir-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-un-crm-para-que-sirve-y-caracteristicas/",
+      "destination": "/recursos/crm-b2b-que-es-como-elegir-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/reunion-kick-off-que-es",
+      "destination": "/recursos/kick-off-proyecto-guia-completa-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/reunion-kick-off-que-es/",
+      "destination": "/recursos/kick-off-proyecto-guia-completa-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-son-los-gpts-personalizados-y-como-crearlos",
+      "destination": "/recursos/agentes-ia-para-empresas-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-son-los-gpts-personalizados-y-como-crearlos/",
+      "destination": "/recursos/agentes-ia-para-empresas-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-impulsar-el-crecimiento-de-un-ecommerce",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-impulsar-el-crecimiento-de-un-ecommerce/",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-branding-en-marketing",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-branding-en-marketing/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-community-management",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-community-management/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-anchor-text",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-anchor-text/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/google-core-update-de-noviembre-2024-que-cambios-trae-y-su-impacto-web",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/google-core-update-de-noviembre-2024-que-cambios-trae-y-su-impacto-web/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aplicacion-de-business-intelligence-en-una-empresa",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aplicacion-de-business-intelligence-en-una-empresa/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-big-data-y-business-intelligence",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-big-data-y-business-intelligence/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-un-kick-off",
+      "destination": "/recursos/kick-off-proyecto-guia-completa-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-un-kick-off/",
+      "destination": "/recursos/kick-off-proyecto-guia-completa-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kick-off-en-proyectos",
+      "destination": "/recursos/kick-off-proyecto-guia-completa-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kick-off-en-proyectos/",
+      "destination": "/recursos/kick-off-proyecto-guia-completa-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/programa-crm-para-que-sirve",
+      "destination": "/recursos/crm-b2b-que-es-como-elegir-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/programa-crm-para-que-sirve/",
+      "destination": "/recursos/crm-b2b-que-es-como-elegir-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/engagement-en-marketing-digital",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/engagement-en-marketing-digital/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-son-las-palabras-claves",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-son-las-palabras-claves/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/palabras-claves",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/palabras-claves/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/keyword-research",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/keyword-research/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-un-experto-seo",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-un-experto-seo/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-seo-o-search-engine-optimization",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-seo-o-search-engine-optimization/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-crear-base-de-datos-para-email-marketing",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-crear-base-de-datos-para-email-marketing/",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-diseno-adaptativo-o-responsive-design",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-diseno-adaptativo-o-responsive-design/",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-customer-journey-map",
+      "destination": "/recursos/funnel-aarrr-pirate-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-customer-journey-map/",
+      "destination": "/recursos/funnel-aarrr-pirate-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-un-mrp-y-sus-beneficios",
+      "destination": "/recursos/tech-stack-minimo-growth-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-un-mrp-y-sus-beneficios/",
+      "destination": "/recursos/tech-stack-minimo-growth-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-son-las-relaciones-publicas",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-son-las-relaciones-publicas/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/community-management-que-es-y-sus-funciones",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/community-management-que-es-y-sus-funciones/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tipos-de-redes-sociales-en-el-marketing-digital",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tipos-de-redes-sociales-en-el-marketing-digital/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/search-engine-marketing",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/search-engine-marketing/",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-posicionamiento-seo-local",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-posicionamiento-seo-local/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-seo-tecnico",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-seo-tecnico/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tipos-de-campanas-de-email-marketing",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tipos-de-campanas-de-email-marketing/",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-tipos-de-campanas-de-google-ads-existen",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-tipos-de-campanas-de-google-ads-existen/",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-un-marketplace-tipos-y-beneficios",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-un-marketplace-tipos-y-beneficios/",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/proteccion-de-datos-personales-en-email-marketing",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/proteccion-de-datos-personales-en-email-marketing/",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-metricas-de-email-marketing-debes-medir",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-metricas-de-email-marketing-debes-medir/",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/estrategia-black-hat-seo-y-su-impacto",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/estrategia-black-hat-seo-y-su-impacto/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-engagement-en-marketing",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-engagement-en-marketing/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-son-las-campanas-demand-gen-google-ads",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-son-las-campanas-demand-gen-google-ads/",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/marketing-estacional-y-su-impacto-en-las-campanas",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/marketing-estacional-y-su-impacto-en-las-campanas/",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/estrategias-marketing-digital-tofu-mofu-bofu",
+      "destination": "/recursos/funnel-aarrr-pirate-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/estrategias-marketing-digital-tofu-mofu-bofu/",
+      "destination": "/recursos/funnel-aarrr-pirate-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/optimizar-imagenes-y-su-relacion-con-seo",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/optimizar-imagenes-y-su-relacion-con-seo/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-una-etiqueta-meta",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-una-etiqueta-meta/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/segmentacion-de-mercado-y-marketing-digital",
+      "destination": "/recursos/buyer-personas-b2b-chile-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/segmentacion-de-mercado-y-marketing-digital/",
+      "destination": "/recursos/buyer-personas-b2b-chile-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-son-los-registros-dns",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-son-los-registros-dns/",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/por-que-invertir-en-meta-ads",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/por-que-invertir-en-meta-ads/",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ab-testing-en-email-marketing",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ab-testing-en-email-marketing/",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-usar-el-planificador-de-palabras-clave-de-google",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-usar-el-planificador-de-palabras-clave-de-google/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-funciona-la-inteligencia-artificial-de-google-ads",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-funciona-la-inteligencia-artificial-de-google-ads/",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/siete-cargos-en-marketing-digital-indispensables",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/siete-cargos-en-marketing-digital-indispensables/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-prompt-engineering-en-la-ia",
+      "destination": "/recursos/agentes-ia-para-empresas-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-prompt-engineering-en-la-ia/",
+      "destination": "/recursos/agentes-ia-para-empresas-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/campanas-google-ads-performance-max",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/campanas-google-ads-performance-max/",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mejores-practicas-diseno-web",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mejores-practicas-diseno-web/",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/influencer-marketing-estrategia-para-redes-sociales",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/influencer-marketing-estrategia-para-redes-sociales/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/campanas-de-remarketing-en-google-ads",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/campanas-de-remarketing-en-google-ads/",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-seo-on-page",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-seo-on-page/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-evitar-que-tus-envios-terminen-como-correo-spam",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-evitar-que-tus-envios-terminen-como-correo-spam/",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-hosting-web-y-aspectos-claves",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-hosting-web-y-aspectos-claves/",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/temblor-chile-como-verlo-desde-el-marketing",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/temblor-chile-como-verlo-desde-el-marketing/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-social-media-listening",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-social-media-listening/",
+      "destination": "/recursos/community-management-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-el-seo-y-sem-trabajan-en-conjunto",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-el-seo-y-sem-trabajan-en-conjunto/",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/google-ads-que-es-y-como-funciona",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/google-ads-que-es-y-como-funciona/",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/equipo",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/author/ignaciointothecom-com",
+      "destination": "/equipo/ignacio-blanco",
+      "permanent": true
+    },
+    {
+      "source": "/author/ignaciointothecom-com/",
+      "destination": "/equipo/ignacio-blanco",
+      "permanent": true
+    },
+    {
+      "source": "/author/:author",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/author/:author/",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/feed/",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/comments/feed",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/comments/feed/",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/post-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/page-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/wp-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/noticias",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/noticias/google-ads",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/noticias/meta-ads",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/noticias/mail-marketing",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/noticias/shopify-partners",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/noticias/wareclouds",
+      "destination": "/casos",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/:path*",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/pages/contacto",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/pages/hablemos-de-ecommerce",
+      "destination": "/hablemos",
+      "permanent": true
+    },
+    {
+      "source": "/pages/fullcommerce",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/pages/google-ads",
+      "destination": "/recursos/paid-media-b2b-2026",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shopify-partners",
+      "destination": "/recursos/desarrollo-web-headless-nextjs-shopify-2026",
+      "permanent": true
+    },
+    {
+      "source": "/pages/:path*",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/products/estructura-klaviyo",
+      "destination": "/recursos/klaviyo-hubspot-email-automation-2026",
+      "permanent": true
+    },
+    {
+      "source": "/products/integraciones-para-tu-e-commerce",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/products/:path*",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/collections/:path*",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/privacidad",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/terminos",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/cookies",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/aviso-legal",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/legal",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/diseno-web",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/diseno-grafico",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/publicidad",
+      "destination": "/paid-media",
+      "permanent": true
+    },
+    {
+      "source": "/publicidad-online",
+      "destination": "/paid-media",
+      "permanent": true
+    },
+    {
+      "source": "/redes",
+      "destination": "/community-management",
+      "permanent": true
+    },
+    {
+      "source": "/social-media",
+      "destination": "/community-management",
+      "permanent": true
+    },
+    {
+      "source": "/marketing-de-contenidos",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/content-marketing",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/inbound-marketing",
+      "destination": "/recursos/marketing-digital-b2b-latam-2026",
+      "permanent": true
+    },
+    {
+      "source": "/ecommerce",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/e-commerce",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/tienda-online",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/shopify",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/shopify-chile",
+      "destination": "/desarrollo-web",
+      "permanent": true
+    },
+    {
+      "source": "/noticias",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/actualidad",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/novedades",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/eventos",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/page/:n",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/categoria/:cat",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/categoria/:cat/",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:tag",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:tag/",
+      "destination": "/recursos",
+      "permanent": true
+    },
+    {
+      "source": "/precios",
+      "destination": "/hablemos",
+      "permanent": true
+    },
+    {
+      "source": "/planes",
+      "destination": "/hablemos",
+      "permanent": true
+    },
+    {
+      "source": "/tarifas",
+      "destination": "/hablemos",
+      "permanent": true
+    },
+    {
+      "source": "/cotizacion",
+      "destination": "/hablemos",
+      "permanent": true
+    },
+    {
+      "source": "/cotizar",
+      "destination": "/hablemos",
+      "permanent": true
+    },
+    {
+      "source": "/proceso",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/metodologia",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/get-in-touch",
+      "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/team",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/staff",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/casos",
+      "permanent": true
+    },
+    {
+      "source": "/work",
+      "destination": "/casos",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/our-services",
+      "destination": "/servicios",
+      "permanent": true
+    },
+    {
+      "source": "/sobre",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/sobre-intothecom",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/intothecom",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/agencia",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/agencia-chile",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/agencia-digital",
+      "destination": "/nosotros",
+      "permanent": true
+    },
+    {
+      "source": "/wa",
+      "destination": "https://wa.me/56974143642",
+      "permanent": false
+    },
+    {
+      "source": "/whatsapp",
+      "destination": "https://wa.me/56974143642",
+      "permanent": false
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/recursos",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/", "destination": "/admin/index.html" },
-    { "source": "/:path((?!assets|dist|data|api|admin|robots\\.txt|sitemap\\.xml|llms\\.txt|cb1731ec3af4f7044b282eee96cd9c48\\.txt|favicon\\.ico|og-cover|servicios|software-ia|paid-media|email-marketing|desarrollo-web|community-management|nosotros|hablemos|contacto|casos|recursos|equipo).*)", "destination": "/index.html" }
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/admin/",
+      "destination": "/admin/index.html"
+    },
+    {
+      "source": "/:path((?!assets|dist|data|api|admin|robots\\.txt|sitemap\\.xml|llms\\.txt|cb1731ec3af4f7044b282eee96cd9c48\\.txt|favicon\\.ico|og-cover|servicios|software-ia|paid-media|email-marketing|desarrollo-web|community-management|nosotros|hablemos|contacto|casos|recursos|equipo).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" }
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+        }
       ]
     },
     {
       "source": "/recursos/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400, must-revalidate" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400, must-revalidate"
+        }
+      ]
     },
     {
       "source": "/equipo/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400, must-revalidate" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400, must-revalidate"
+        }
+      ]
     },
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/dist/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/data/articles.json",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=60, s-maxage=300, stale-while-revalidate=86400, must-revalidate" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60, s-maxage=300, stale-while-revalidate=86400, must-revalidate"
+        }
+      ]
     },
     {
       "source": "/data/articles.js",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=300, s-maxage=3600, must-revalidate" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, s-maxage=3600, must-revalidate"
+        }
+      ]
     },
     {
       "source": "/sitemap.xml",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=300, s-maxage=3600, must-revalidate" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, s-maxage=3600, must-revalidate"
+        }
+      ]
     },
     {
       "source": "/robots.txt",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=86400"
+        }
+      ]
     }
   ]
 }
