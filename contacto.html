@@ -343,55 +343,55 @@
 </head>
 <body>
 <a href="#main" class="skip-link">Saltar al contenido</a>
-<div id="boot"><span class="dot"></span>cargando intothecom</div>
-<div id="root"><!-- SSR shell para crawlers + bots IA. React lo reemplaza al hidratar.
-     No usar 'hidden' (puede considerarse cloaking por Google). El boot screen lo
-     oculta visualmente para usuarios durante los pocos ms antes de React rendering. -->
-<article class="ssr-home-shell" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
-  <header>
-    <h1>Marketing digital, software & IA para crecer en serio</h1>
-    <p>Intothecom es un estudio digital chileno fundado en 2019. Combinamos marketing digital B2B, desarrollo de software a medida y agentes IA para empresas que quieren resultados medibles, no entregables sin contexto. Operamos en Chile, USA, España, Colombia y Perú con +100 negocios asesorados.</p>
-  </header>
-
-  <section>
-    <h2>5 servicios integrados</h2>
-    <ul>
-      <li><a href="/software-ia">Software & IA a medida</a> — agentes IA, automatización de procesos, asistentes para atención al cliente y operaciones.</li>
-      <li><a href="/paid-media">Paid Media B2B</a> — Google Ads, Meta, LinkedIn Ads y TikTok con atribución multi-touch real, no MQLs vanity.</li>
-      <li><a href="/email-marketing">Email Marketing</a> — flows en Klaviyo y HubSpot, automation y recovery de carritos abandonados.</li>
-      <li><a href="/desarrollo-web">Diseño y Desarrollo Web</a> — sitios headless con Next.js, integración Shopify, optimización Core Web Vitals.</li>
-      <li><a href="/community-management">Community Management</a> — línea editorial documentada, producción mensual de foto y video, gestión de DMs y crisis.</li>
-    </ul>
+<div id="boot" aria-hidden="true"><span class="dot"></span>cargando intothecom</div>
+<div id="root">
+<!--SSR_START-->
+<div class="ssr-shell" data-route="/contacto">
+  <nav class="ssr-nav" aria-label="Navegación principal"><ul><li><a href="/">Inicio</a></li><li><a href="/servicios">Servicios</a></li><li><a href="/software-ia">Software &amp; IA</a></li><li><a href="/nosotros">Nosotros</a></li><li><a href="/recursos">Recursos</a></li><li><a href="/contacto" aria-current="page">Contacto</a></li></ul></nav>
+  <main class="ssr-main">
+    <section class="ssr-hero">
+      <div class="ssr-eyebrow">Contacto · oficinas y canales</div>
+<h1>Hablemos.</h1>
+<p class="ssr-lead">WhatsApp Business +56 9 7414 3642 con respuesta en menos de 1 hora hábil. Email info@intothecom.com para briefs estructurados. Oficina HQ en Providencia, Santiago. Operamos en Chile, USA, España, Colombia y Perú.</p>
+<div class="ssr-cta-row"><a class="ssr-btn ssr-btn-primary" href="https://wa.me/56974143642?text=Hola%20Intothecom%2C%20me%20gustar%C3%ADa%20cotizar%20un%20servicio." target="_blank" rel="noopener noreferrer">WhatsApp +56 9 7414 3642 ↗</a></div>
+    </section>
+    
+    <section class="ssr-section"><div class="ssr-eyebrow">/ canales</div>
+<h2>Cómo contactarnos.</h2>
+<div class="ssr-contact-grid"><div class="ssr-contact-cell"><div class="ssr-contact-lbl">Email general</div><div class="ssr-contact-val"><a href="mailto:info@intothecom.com">info@intothecom.com</a></div></div><div class="ssr-contact-cell"><div class="ssr-contact-lbl">Email founder</div><div class="ssr-contact-val"><a href="mailto:ignacio@intothecom.com">ignacio@intothecom.com</a></div></div><div class="ssr-contact-cell"><div class="ssr-contact-lbl">WhatsApp</div><div class="ssr-contact-val"><a href="https://wa.me/56974143642?text=Hola%20Intothecom%2C%20me%20gustar%C3%ADa%20cotizar%20un%20servicio." target="_blank" rel="noopener noreferrer">+56 9 7414 3642</a></div></div><div class="ssr-contact-cell"><div class="ssr-contact-lbl">Oficina HQ</div><div class="ssr-contact-val"><a href="https://www.google.com/maps/search/?api=1&amp;query=Almirante+Pastene+333+Providencia+Santiago+Chile" target="_blank" rel="noopener noreferrer">Almirante Pastene 333, of. 402, Providencia, Santiago</a></div></div><div class="ssr-contact-cell"><div class="ssr-contact-lbl">Otras ciudades</div><div class="ssr-contact-val">Miami · Madrid · Bogotá · Lima</div></div><div class="ssr-contact-cell"><div class="ssr-contact-lbl">Horario</div><div class="ssr-contact-val">Lun–Vie · 9:00–19:00 SCL</div></div></div></section>
+    
+    <section class="ssr-faq" aria-labelledby="ssr-faq-title">
+    <h2 id="ssr-faq-title">Preguntas frecuentes</h2>
+    
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Atienden fuera de Chile?</h3>
+      <p class="ssr-faq-a">Sí. Reuniones por Google Meet, contratos en USD o moneda local. Operamos con clientes en USA, España, Colombia y Perú.</p>
+    </div>
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Tienen oficina en otras ciudades?</h3>
+      <p class="ssr-faq-a">HQ está en Santiago. Tenemos presencia comercial en Miami, Madrid, Bogotá y Lima vía partners.</p>
+    </div>
   </section>
-
-  <section>
-    <h2>Por qué clientes B2B nos eligen</h2>
-    <ul>
-      <li>Equipo senior dedicado, no juniors rotando entre cuentas.</li>
-      <li>Reportería con datos reales y atribución pipeline, no impresiones vanity.</li>
-      <li>+5 años, +100 marcas asesoradas en 5 países hispanohablantes.</li>
-      <li>Stack tecnológico moderno: GA4, HubSpot, Klaviyo, Next.js, agentes IA con MCP.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Recursos publicados</h2>
-    <ul>
-      <li><a href="/recursos/agentes-ia-para-empresas-2026">Asistente IA y agentes IA para empresas — guía completa 2026</a></li>
-      <li><a href="/recursos/asistente-ia-atencion-cliente-2026">Asistente IA para atención al cliente: 7 casos LATAM B2B</a></li>
-      <li><a href="/recursos/crm-b2b-que-es-como-elegir-2026">CRM B2B: qué es y cómo elegir el adecuado</a></li>
-      <li><a href="/recursos/marketing-digital-b2b-latam-2026">Marketing digital B2B en LATAM 2026</a></li>
-      <li><a href="/recursos/paid-media-b2b-2026">Paid Media B2B 2026: Google, Meta, LinkedIn, TikTok</a></li>
-      <li><a href="/recursos/klaviyo-hubspot-email-automation-2026">Email automation con Klaviyo y HubSpot</a></li>
-      <li><a href="/recursos">Ver todos los recursos →</a></li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Contacto</h2>
-    <p>WhatsApp <a href="https://wa.me/56974143642">+56 9 7414 3642</a> · email <a href="mailto:info@intothecom.com">info@intothecom.com</a> · oficina Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile. Horario: Lunes a Viernes 9:00–19:00 hora Santiago.</p>
-  </section>
-</article>
+  </main>
+  <footer class="ssr-footer">
+    <div class="ssr-footer-col">
+      <h3>Intothecom</h3>
+      <p>Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile</p>
+      <p><strong>Mercados:</strong> Chile · USA · España · Colombia · Perú</p>
+      <p><strong>Horario:</strong> Lunes a Viernes 9:00–19:00 hora Santiago</p>
+    </div>
+    <div class="ssr-footer-col">
+      <h3>Servicios</h3>
+      <ul><li><a href="/software-ia">Software &amp; IA</a></li><li><a href="/paid-media">Paid Media</a></li><li><a href="/email-marketing">Email Marketing</a></li><li><a href="/desarrollo-web">Desarrollo Web</a></li><li><a href="/community-management">Community Management</a></li></ul>
+    </div>
+    <div class="ssr-footer-col">
+      <h3>Contacto</h3>
+      <p><a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
+      <p><a href="https://wa.me/56974143642?text=Hola%20Intothecom%2C%20me%20gustar%C3%ADa%20cotizar%20un%20servicio." target="_blank" rel="noopener noreferrer">WhatsApp +56 9 7414 3642</a></p>
+    </div>
+  </footer>
+</div>
+<!--SSR_END-->
 </div>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
