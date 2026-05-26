@@ -18,13 +18,19 @@ const waLink = (key = 'default') => {
 const trackWhatsAppClick = (source = 'unknown') => {
   if (window.fbqTrack) window.fbqTrack('Contact', { method: 'whatsapp', source });
   if (window.fbqTrackCustom) window.fbqTrackCustom('WhatsAppClick', { source });
-  // Google Ads conversion: WhatsApp Click (secundaria — no se usa para optimizar pujas,
-  // solo se registra como dato observacional bajo "Contacto" en AW-16641850844)
   if (window.gtag) {
+    // Google Ads conversion: WhatsApp Click (secundaria — no se usa para optimizar pujas,
+    // solo se registra como dato observacional bajo "Contacto" en AW-16641850844)
     window.gtag('event', 'conversion', {
       send_to: 'AW-16641850844/I5_ZCMH05bMcENz7uf89',
       value: 1000.0,
       currency: 'CLP',
+    });
+    // GA4 evento recomendado: contact (G-QEC8Y49YWX) — aparece en reportes
+    // con dimension method=whatsapp para segmentación.
+    window.gtag('event', 'contact', {
+      method: 'whatsapp',
+      source: source,
     });
   }
 };

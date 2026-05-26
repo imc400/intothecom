@@ -294,15 +294,17 @@
 }
 </script>
 
-<!-- Google tag (gtag.js) — Google Ads AW-16641850844 (cuenta ignacio@intothecom.com).
+<!-- Google tag (gtag.js) — Google Ads + GA4 (cuenta ignacio@intothecom.com).
      Async para no bloquear LCP. Carga temprano para que _gcl_aw cookie capture
-     gclid del referrer de Google Ads antes de cualquier interacción/rebote. -->
+     gclid del referrer de Google Ads antes de cualquier interacción/rebote.
+     Un solo script maneja ambos destinos (AW- y G-) sin overhead extra. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16641850844"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'AW-16641850844');
+  gtag('config', 'G-QEC8Y49YWX');
 </script>
 
 <!-- Meta Pixel Code · lazy-loaded para no bloquear LCP/INP (Agent5 fix #4) -->
@@ -584,9 +586,9 @@
 <script defer src="/data/articles.js?v=fbb4da9c"></script>
 
 <!-- Pre-compiled JSX bundles (esbuild). Order: shared → page-home → pages → page-recursos → app -->
-<script defer src="/dist/shared.js?v=72fa52da"></script>
+<script defer src="/dist/shared.js?v=b7ef72eb"></script>
 <script defer src="/dist/page-home.js?v=2b2a3888"></script>
-<script defer src="/dist/pages.js?v=9af98b0b"></script>
+<script defer src="/dist/pages.js?v=dd2f7357"></script>
 <script defer src="/dist/page-recursos.js?v=97496103"></script>
 <script defer src="/dist/app.js?v=aa3f2863"></script>
 <noscript>
