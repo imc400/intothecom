@@ -755,7 +755,7 @@ function Hablemos({ navigate }) {
     } catch (err) {
       // Fallback amigable: si /api/lead falla, dirigir a WhatsApp (canal alternativo
       // confiable) en lugar de mailto: que abre cliente externo y rompe el flow.
-      setError('Hubo un problema al enviar tu brief. Escribinos por WhatsApp y respondemos al toque: https://wa.me/56974143642');
+      setError('Hubo un problema al enviar tu brief. Escríbenos por WhatsApp y respondemos al instante: https://wa.me/56974143642');
     } finally {
       setSubmitting(false);
     }
@@ -910,130 +910,6 @@ function Hablemos({ navigate }) {
   );
 }
 
-function Contacto({ navigate }) {
-  const mapsQuery = encodeURIComponent('Almirante Pastene 333, Providencia, Santiago, Chile');
-  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
-  const mapsEmbed = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
-  return (
-    <>
-      <section className="hero" data-screen-label="Contacto" style={{paddingBottom:48}}>
-        <DarkCanvas density={0.7}/>
-        <div className="hero-inner">
-          <div className="hero-top">
-            <span>Contacto · oficinas + canales</span>
-            <span>Respuesta &lt; 1h hábil</span>
-            <span>Lun–Vie · 9:00–19:00 SCL</span>
-          </div>
-          <h1 className="hero-headline" style={{maxWidth:'20ch'}}>
-            Conversemos en <span className="it">persona,</span> por mail o por WhatsApp.
-          </h1>
-        </div>
-        <div className="hero-inner">
-          <div className="hero-bottom" style={{gridTemplateColumns:'1fr', gap:0}}>
-            <p className="lead" style={{maxWidth:'56ch'}}>
-              Atendemos desde Providencia, Santiago. Coordinamos reuniones presenciales o por Meet con clientes en Chile, USA, España, Colombia y Perú.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="contact-layout">
-            <Reveal>
-              <div className="contact-channels">
-                <div className="contact-channel">
-                  <div className="contact-channel-label">/ WhatsApp Business</div>
-                  <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('contacto-channel')} className="contact-channel-value contact-channel-link">
-                    +56 9 7414 3642
-                  </a>
-                  <div className="contact-channel-meta">Respuesta promedio &lt; 1h hábil</div>
-                </div>
-                <div className="contact-channel">
-                  <div className="contact-channel-label">/ Email general</div>
-                  <a href="mailto:info@intothecom.com" className="contact-channel-value contact-channel-link">
-                    info@intothecom.com
-                  </a>
-                  <div className="contact-channel-meta">Briefs, prensa, partners</div>
-                </div>
-                <div className="contact-channel">
-                  <div className="contact-channel-label">/ Email founder</div>
-                  <a href="mailto:ignacio@intothecom.com" className="contact-channel-value contact-channel-link">
-                    ignacio@intothecom.com
-                  </a>
-                  <div className="contact-channel-meta">Conversaciones estratégicas</div>
-                </div>
-                <div className="contact-channel">
-                  <div className="contact-channel-label">/ Teléfono</div>
-                  <a href="tel:+56974143642" className="contact-channel-value contact-channel-link">
-                    +56 9 7414 3642
-                  </a>
-                  <div className="contact-channel-meta">Lun–Vie · 9:00–19:00 SCL</div>
-                </div>
-                <div className="contact-channel">
-                  <div className="contact-channel-label">/ Oficina central</div>
-                  <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="contact-channel-value contact-channel-link">
-                    Almirante Pastene 333, of. 402
-                  </a>
-                  <div className="contact-channel-meta">Providencia · Santiago de Chile</div>
-                </div>
-                <div className="contact-channel">
-                  <div className="contact-channel-label">/ Otras ciudades</div>
-                  <div className="contact-channel-value">Miami · Madrid · Bogotá · Lima</div>
-                  <div className="contact-channel-meta">Reuniones por Meet o presenciales</div>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal delay={120}>
-              <div className="contact-map-wrap">
-                <iframe
-                  title="Oficina Intothecom — Almirante Pastene 333, Providencia"
-                  src={mapsEmbed}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="contact-map"
-                  allowFullScreen
-                ></iframe>
-                <a href={mapsLink} target="_blank" rel="noopener noreferrer" className="contact-map-link">
-                  Abrir en Google Maps <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="section dark tight">
-        <div className="container">
-          <div className="split">
-            <Reveal className="split-title">
-              <div className="eyebrow mb-md" style={{opacity:0.55}}>/ camino rápido</div>
-              <h2 className="h1" style={{maxWidth:'18ch'}}>
-                ¿Quieres ir <span className="it">directo al grano?</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={120}>
-              <p className="body-lg" style={{maxWidth:'48ch', opacity:0.85}}>
-                Escríbenos por WhatsApp Business y respondemos en menos de una hora hábil. Sin formularios, sin call-center.
-              </p>
-              <div style={{display:'flex', gap:14, flexWrap:'wrap', marginTop:32}}>
-                <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('contacto-final')} className="btn hoverable">
-                  Cotizar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
-                </a>
-                <a href="/hablemos"
-                   onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}
-                   className="btn ghost hoverable">
-                  Escribir un brief <span className="arrow" aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
-
 function Casos({ navigate }) {
   const cases = [
     { sector:'Retail · LatAm', client:'Bullpadel Chile', title:'E-commerce headless con tracking server-side', summary:'Migración a Shopify Hydrogen + atribución limpia + paid integrado. Mes 1 de tracking nuevo desbloqueó audiencias que estaban siendo subreportadas un 38%.', metrics:[['+213%','revenue YoY'],['ROAS 6.2×','blended Q3'],['9 meses','time-to-result']] },
@@ -1126,5 +1002,4 @@ window.Servicios = Servicios;
 window.SoftwareIA = SoftwareIA;
 window.Nosotros = Nosotros;
 window.Hablemos = Hablemos;
-window.Contacto = Contacto;
 window.Casos = Casos;

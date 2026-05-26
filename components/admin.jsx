@@ -289,7 +289,7 @@ function SectionEditor({section, index, onChange, onDelete, onMoveUp, onMoveDown
         </Field>
         <Field
           label="Anchor ID"
-          tooltip="ID HTML para que se pueda linkear con /recursos/slug#anchor. Si lo dejás vacío, se auto-genera del texto."
+          tooltip="ID HTML para que se pueda linkear con /recursos/slug#anchor. Si lo dejas vacío, se auto-genera del texto."
           hint={`Auto: ${slugify(section.text || '') || '(escribí el texto primero)'}`}
         >
           <input value={section.id || ''} onChange={e => update('id', e.target.value)} placeholder={slugify(section.text || '')} />
@@ -667,7 +667,7 @@ function ArticleEditor({article, onSave, onCancel, isNew, allArticles}) {
 
         {/* === SEO KEYWORDS === */}
         <Collapsible title="2. Keywords + autor" defaultOpen={false}>
-          <Field label="Keyword principal" tooltip="La palabra clave para la que querés rankear. Aparecerá en title, description, H1, primera línea y al menos 2 H2.">
+          <Field label="Keyword principal" tooltip="La palabra clave para la que quieres rankear. Aparecerá en title, description, H1, primera línea y al menos 2 H2.">
             <input value={draft.keyword || ''} onChange={e => update('keyword', e.target.value)}/>
           </Field>
           <Field label="Secondary keywords" tooltip="Variaciones long-tail separadas por coma. Cada una debería aparecer naturalmente 1-2 veces en el artículo." hint="Separadas por coma">

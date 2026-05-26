@@ -188,11 +188,11 @@ Responder a este email contesta directamente al lead (${txt(email)}).
     <div style="padding:32px;font-size:15px;line-height:1.6">
       <p>Hola <strong>${escapeHtml(name)}</strong>,</p>
       <p>Gracias por escribirnos. Tu brief llegó al equipo y <strong>te respondemos en menos de 1 hora hábil</strong> (Lun–Vie 9:00–19:00 hora Santiago).</p>
-      <p>Si tu consulta es urgente o preferís conversar al toque:</p>
+      <p>Si tu consulta es urgente o prefieres conversar al instante:</p>
       <p style="text-align:center;margin:24px 0">
         <a href="https://wa.me/56974143642" style="display:inline-block;padding:14px 28px;background:#f39200;color:#1a1a1d;text-decoration:none;border-radius:999px;font-weight:600">WhatsApp +56 9 7414 3642 →</a>
       </p>
-      <p>Mientras tanto, podés revisar:</p>
+      <p>Mientras tanto, puedes revisar:</p>
       <ul style="padding-left:20px">
         <li><a href="https://www.intothecom.com/casos" style="color:#f39200">Casos de éxito</a> — métricas reales de +100 clientes</li>
         <li><a href="https://www.intothecom.com/recursos" style="color:#f39200">Guías técnicas B2B</a> — paid media, email, agentes IA y más</li>
@@ -210,10 +210,10 @@ Responder a este email contesta directamente al lead (${txt(email)}).
 
 Gracias por escribirnos. Tu brief llegó al equipo y te respondemos en menos de 1 hora hábil (Lun–Vie 9:00–19:00 hora Santiago).
 
-Si tu consulta es urgente o preferís conversar al toque:
+Si tu consulta es urgente o prefieres conversar al instante:
 WhatsApp +56 9 7414 3642 → https://wa.me/56974143642
 
-Mientras tanto, podés revisar:
+Mientras tanto, puedes revisar:
 - Casos de éxito: https://www.intothecom.com/casos
 - Guías técnicas B2B: https://www.intothecom.com/recursos
 
