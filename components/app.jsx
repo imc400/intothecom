@@ -84,6 +84,28 @@ function App() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
+  /* Capturar UTM, gclid, referrer y landing path al primer mount.
+     Persiste en sessionStorage para que el form /hablemos los lea después,
+     aunque el usuario navegue vía SPA y los UTMs ya no estén en la URL.
+     Primera escritura gana — si el usuario navega home → /hablemos, el referrer
+     y landing capturados son los del primer hit (no del paso intermedio). */
+  _useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const setOnce = (key, value) => {
+        if (!sessionStorage.getItem(key) && value) sessionStorage.setItem(key, value);
+      };
+      setOnce('utm_gclid', params.get('gclid'));
+      setOnce('utm_source', params.get('utm_source'));
+      setOnce('utm_medium', params.get('utm_medium'));
+      setOnce('utm_campaign', params.get('utm_campaign'));
+      setOnce('utm_content', params.get('utm_content'));
+      setOnce('utm_term', params.get('utm_term'));
+      setOnce('utm_landing', window.location.pathname + window.location.search);
+      setOnce('utm_referrer', document.referrer);
+    } catch (e) { /* sessionStorage bloqueado en algunos navegadores */ }
+  }, []);
+
   _useEffect(() => {
     /* NO sobreescribir title/meta para rutas /recursos/<slug>:
        ResourceArticle se encarga de actualizar title/desc segun el articulo.

@@ -704,14 +704,47 @@ function Hablemos({ navigate }) {
     setSubmitting(true);
     setError(null);
     try {
-      const res = await fetch('https://formsubmit.co/ajax/info@intothecom.com', {
+      // Recuperar atribución capturada en el primer hit del sitio (app.jsx).
+      const ss = (k) => { try { return sessionStorage.getItem(k) || ''; } catch (e) { return ''; } };
+      const gclid = ss('utm_gclid');
+      const utm_source = ss('utm_source');
+      const utm_medium = ss('utm_medium');
+      const utm_campaign = ss('utm_campaign');
+      const utm_content = ss('utm_content');
+      const utm_term = ss('utm_term');
+      const landing = ss('utm_landing');
+      const referrer = ss('utm_referrer');
+
+      // Subject inteligente: prioriza datos calificadores para triage en inbox.
+      const subjectParts = [form.name];
+      if (form.service) subjectParts.push(form.service);
+      if (form.budget) subjectParts.push(form.budget);
+      const subject = `Brief — ${subjectParts.join(' · ')}`;
+
+      // Auto-reply al lead: confirmación inmediata para reducir ansiedad y duplicados.
+      const autoresponse = `Hola ${form.name},
+
+Recibimos tu brief. Te respondemos en menos de 1 hora hábil (Lun–Vie 9–19 SCL).
+
+Si tu consulta es urgente, escríbenos directo por WhatsApp:
+https://wa.me/56974143642
+
+Mientras tanto, podés revisar nuestros casos de éxito y recursos:
+- Casos: https://www.intothecom.com/casos
+- Recursos: https://www.intothecom.com/recursos
+
+— Equipo Intothecom`;
+
+      const res = await fetch('https://formsubmit.co/ajax/2faf305e216cb052ecb76c81c9de32a7', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          _subject: `Nuevo brief desde intothecom.com — ${form.name}`,
+          _subject: subject,
           _cc: 'ignacio@intothecom.com',
           _template: 'table',
           _captcha: 'false',
+          _autoresponse: autoresponse,
+          _honey: '', // honeypot anti-spam: bots llenan este campo, humanos no
           name: form.name,
           email: form.email,
           message: form.message,
@@ -719,6 +752,14 @@ function Hablemos({ navigate }) {
           service: form.service || '—',
           budget: form.budget || '—',
           source: 'intothecom.com /hablemos',
+          gclid: gclid || '—',
+          utm_source: utm_source || '—',
+          utm_medium: utm_medium || '—',
+          utm_campaign: utm_campaign || '—',
+          utm_content: utm_content || '—',
+          utm_term: utm_term || '—',
+          landing: landing || '—',
+          referrer: referrer || '—',
         }),
       });
       if (!res.ok) throw new Error('formsubmit failed');
@@ -784,6 +825,10 @@ function Hablemos({ navigate }) {
               </div>
 
               <form className="form" onSubmit={submit} noValidate aria-label="Brief de contacto">
+                {/* Honeypot anti-spam: campo escondido que los bots automáticos llenan.
+                    Humanos no lo ven (display:none + tabIndex -1 + autocomplete off).
+                    FormSubmit descarta submits donde _honey tiene valor. */}
+                <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:'absolute', left:'-9999px', width:'1px', height:'1px', opacity:0}}/>
                 <div className="form-row">
                   <label htmlFor="f-name">01 / Nombre <span aria-label="requerido">*</span></label>
                   <input id="f-name" required type="text" autoComplete="name" placeholder="Tu nombre completo" value={form.name} onChange={e=>update('name', e.target.value)} aria-required="true"/>
@@ -844,8 +889,8 @@ function Hablemos({ navigate }) {
             <Reveal>
               <div style={{textAlign:'center', padding:'60px 0'}}>
                 <div className="eyebrow mb-md" style={{justifyContent:'center'}}>/ mensaje recibido</div>
-                <h2 className="h-display" style={{maxWidth:'14ch', margin:'0 auto'}}>
-                  Gracias, <span className="it">{form.name || 'tu mensaje'}</span>.<br/>Te respondemos en 24h.
+                <h2 className="h-display" style={{maxWidth:'18ch', margin:'0 auto'}}>
+                  Gracias, <span className="it">{form.name || 'tu mensaje'}</span>.<br/>Te respondemos en &lt; 1h hábil.
                 </h2>
                 <button className="btn hoverable" style={{marginTop:32}} onClick={()=>navigate('/')}>
                   Volver al inicio <span className="arrow">↗</span>
