@@ -707,69 +707,40 @@ function Hablemos({ navigate }) {
       // Honeypot anti-spam: si el campo invisible tiene valor, es un bot.
       // Fingimos éxito (no levantar sospechas) pero NO enviamos.
       const honeyField = e.currentTarget.querySelector('input[name="_honey"]');
-      if (honeyField && honeyField.value) {
+      const honey = (honeyField && honeyField.value) || '';
+      if (honey) {
         setSubmitted(true);
         return;
       }
 
       // Recuperar atribución capturada en el primer hit del sitio (app.jsx).
       const ss = (k) => { try { return sessionStorage.getItem(k) || ''; } catch (e) { return ''; } };
-      const gclid = ss('utm_gclid');
-      const utm_source = ss('utm_source');
-      const utm_medium = ss('utm_medium');
-      const utm_campaign = ss('utm_campaign');
-      const utm_content = ss('utm_content');
-      const utm_term = ss('utm_term');
-      const landing = ss('utm_landing');
-      const referrer = ss('utm_referrer');
 
-      // Subject inteligente: prioriza datos calificadores para triage en inbox.
-      const subjectParts = [form.name];
-      if (form.service) subjectParts.push(form.service);
-      if (form.budget) subjectParts.push(form.budget);
-      const subject = `Brief — ${subjectParts.join(' · ')}`;
-
-      // Auto-reply al lead: confirmación inmediata para reducir ansiedad y duplicados.
-      const autoresponse = `Hola ${form.name},
-
-Recibimos tu brief. Te respondemos en menos de 1 hora hábil (Lun–Vie 9–19 SCL).
-
-Si tu consulta es urgente, escríbenos directo por WhatsApp:
-https://wa.me/56974143642
-
-Mientras tanto, podés revisar nuestros casos de éxito y recursos:
-- Casos: https://www.intothecom.com/casos
-- Recursos: https://www.intothecom.com/recursos
-
-— Equipo Intothecom`;
-
-      const res = await fetch('https://formsubmit.co/ajax/info@intothecom.com', {
+      // POST al endpoint propio /api/lead (Resend backed).
+      // El server arma el subject inteligente, el HTML, y manda auto-reply al lead.
+      const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          _subject: subject,
-          _cc: 'ignacio@intothecom.com',
-          _template: 'table',
-          _captcha: 'false',
-          _autoresponse: autoresponse,
           name: form.name,
           email: form.email,
           message: form.message,
-          company: form.company || '—',
-          service: form.service || '—',
-          budget: form.budget || '—',
+          company: form.company,
+          service: form.service,
+          budget: form.budget,
           source: 'intothecom.com /hablemos',
-          gclid: gclid || '—',
-          utm_source: utm_source || '—',
-          utm_medium: utm_medium || '—',
-          utm_campaign: utm_campaign || '—',
-          utm_content: utm_content || '—',
-          utm_term: utm_term || '—',
-          landing: landing || '—',
-          referrer: referrer || '—',
+          gclid: ss('utm_gclid'),
+          utm_source: ss('utm_source'),
+          utm_medium: ss('utm_medium'),
+          utm_campaign: ss('utm_campaign'),
+          utm_content: ss('utm_content'),
+          utm_term: ss('utm_term'),
+          landing: ss('utm_landing'),
+          referrer: ss('utm_referrer'),
+          _honey: honey,
         }),
       });
-      if (!res.ok) throw new Error('formsubmit failed');
+      if (!res.ok) throw new Error('api/lead failed');
       if (window.fbqTrack) window.fbqTrack('Lead', { content_name: 'brief_form', value: 1, currency: 'CLP' });
       if (window.fbqTrackCustom) window.fbqTrackCustom('FormSubmit', { service: form.service || 'unspecified' });
       // Google Ads conversion: Envío de formulario para clientes potenciales (AW-16641850844)
@@ -782,12 +753,9 @@ Mientras tanto, podés revisar nuestros casos de éxito y recursos:
       }
       setSubmitted(true);
     } catch (err) {
-      const subject = encodeURIComponent(`Brief desde intothecom.com — ${form.name}`);
-      const body = encodeURIComponent(
-        `Nombre: ${form.name}\nEmail: ${form.email}\nEmpresa: ${form.company || '—'}\nServicio: ${form.service || '—'}\nPresupuesto: ${form.budget || '—'}\n\nMensaje:\n${form.message}`
-      );
-      window.location.href = `mailto:info@intothecom.com?cc=ignacio@intothecom.com&subject=${subject}&body=${body}`;
-      setError('No pudimos enviar automáticamente. Te abrimos tu cliente de correo como respaldo.');
+      // Fallback amigable: si /api/lead falla, dirigir a WhatsApp (canal alternativo
+      // confiable) en lugar de mailto: que abre cliente externo y rompe el flow.
+      setError('Hubo un problema al enviar tu brief. Escribinos por WhatsApp y respondemos al toque: https://wa.me/56974143642');
     } finally {
       setSubmitting(false);
     }

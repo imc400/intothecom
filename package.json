@@ -8,6 +8,9 @@
     "build": "node build.js",
     "dev": "python3 -m http.server 5500"
   },
+  "dependencies": {
+    "resend": "^4.0.0"
+  },
   "devDependencies": {
     "esbuild": "^0.24.0",
     "sharp": "^0.34.5"
