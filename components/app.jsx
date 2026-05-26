@@ -38,10 +38,6 @@ const ROUTE_META = {
     title: 'Hablemos · Cotiza tu proyecto en menos de 1 hora | Intothecom',
     description: 'Escríbenos por WhatsApp o brief. Respuesta < 1h hábil. Primera reunión sin costo de 45 min con auditoría aplicable. Lun–Vie 9–19 SCL.'
   },
-  '/contacto': {
-    title: 'Contacto · Oficina, WhatsApp, email | Intothecom',
-    description: 'Almirante Pastene 333, of. 402, Providencia, Santiago. WhatsApp +56 9 7414 3642 · info@intothecom.com · ignacio@intothecom.com.'
-  },
   '/casos': {
     title: 'Casos de éxito · Resultados verificables | Intothecom',
     description: 'Casos seleccionados con métricas reales. Equifax, Bullpadel, Imanix y +100 marcas. Cuando los datos hablan, la propuesta sobra.'
@@ -134,7 +130,6 @@ function App() {
           '/nosotros': 'Nosotros',
           '/casos': 'Casos de éxito',
           '/hablemos': 'Hablemos',
-          '/contacto': 'Contacto',
           '/recursos': 'Recursos'
         };
         const label = ROUTE_LABELS[route] || route.replace('/','').replace(/-/g,' ');
@@ -181,7 +176,7 @@ function App() {
     if (route === '/') return 'home';
     if (route === '/software-ia') return 'software-ia';
     if (route === '/nosotros') return 'nosotros';
-    if (route === '/contacto') return 'contacto';
+    if (route === '/hablemos' || route === '/contacto') return 'hablemos';
     if (route === '/servicios' || SERVICE_DATA[route.replace('/','')]) return 'servicios';
     return '';
   })();
@@ -190,8 +185,7 @@ function App() {
   if (route === '/') page = <Home navigate={navigate}/>;
   else if (route === '/software-ia') page = <SoftwareIA navigate={navigate}/>;
   else if (route === '/nosotros') page = <Nosotros navigate={navigate}/>;
-  else if (route === '/hablemos') page = <Hablemos navigate={navigate}/>;
-  else if (route === '/contacto') page = <Contacto navigate={navigate}/>;
+  else if (route === '/hablemos' || route === '/contacto') page = <Hablemos navigate={navigate}/>;
   else if (route === '/casos') page = <Casos navigate={navigate}/>;
   else if (route === '/servicios') page = <Servicios navigate={navigate}/>;
   else if (route === '/recursos') page = <RecursosHub navigate={navigate}/>;

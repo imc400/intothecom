@@ -459,7 +459,7 @@ function MobileMenu({ navigate, currentNav, open, onClose }) {
           <a href="/software-ia" className={currentNav==='software-ia'?'active':''} onClick={go('/software-ia')}>IA &amp; Software</a>
           <a href="/recursos" className={currentNav==='recursos'?'active':''} onClick={go('/recursos')}>Recursos</a>
           <a href="/nosotros" className={currentNav==='nosotros'?'active':''} onClick={go('/nosotros')}>Estudio</a>
-          <a href="/contacto" className={currentNav==='contacto'?'active':''} onClick={go('/contacto')}>Contacto</a>
+          <a href="/hablemos" className={currentNav==='hablemos'?'active':''} onClick={go('/hablemos')}>Hablemos</a>
         </nav>
 
         <div className="mobile-menu-groups">
@@ -519,7 +519,7 @@ function Nav({ navigate, currentNav }) {
           <a href="/software-ia" aria-current={currentNav==='software-ia'?'page':undefined} className={currentNav==='software-ia'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/software-ia');}}>IA & Software</a>
           <RecursosDropdown navigate={navigate} currentNav={currentNav} />
           <a href="/nosotros" aria-current={currentNav==='nosotros'?'page':undefined} className={currentNav==='nosotros'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/nosotros');}}>Estudio</a>
-          <a href="/contacto" aria-current={currentNav==='contacto'?'page':undefined} className={currentNav==='contacto'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Contacto</a>
+          <a href="/hablemos" aria-current={currentNav==='hablemos'?'page':undefined} className={currentNav==='hablemos'?'active':''} onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}>Hablemos</a>
         </div>
         <div className="nav-right">
           <a href={waLink('default')} target="_blank" rel="noopener noreferrer" className="nav-cta hoverable" onClick={onWaClick('nav')}>
@@ -648,12 +648,12 @@ function Footer({ navigate }) {
           <h4>/ Estudio</h4>
           <a href="/nosotros" onClick={(e)=>{e.preventDefault();navigate('/nosotros');}}>Sobre nosotros</a>
           <a href="/casos" onClick={(e)=>{e.preventDefault();navigate('/casos');}}>Casos de éxito</a>
-          <a href="/contacto" onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Contacto</a>
+          <a href="/hablemos" onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}>Hablemos</a>
           <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('footer-secondary')}>Cotizar por WhatsApp</a>
         </div>
         <div className="footer-col">
           <h4>/ Contacto</h4>
-          <a href="/contacto" onClick={(e)=>{e.preventDefault();navigate('/contacto');}}>Almirante Pastene 333, of. 402<br/>Providencia · Santiago, CL</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Almirante+Pastene+333+Providencia+Santiago+Chile" target="_blank" rel="noopener noreferrer">Almirante Pastene 333, of. 402<br/>Providencia · Santiago, CL</a>
           <a href="mailto:info@intothecom.com">info@intothecom.com</a>
           <a href="mailto:ignacio@intothecom.com">ignacio@intothecom.com</a>
           <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('footer')}>WhatsApp +56 9 7414 3642</a>

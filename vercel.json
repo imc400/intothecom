@@ -7,6 +7,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/contacto",
+      "destination": "/hablemos",
+      "permanent": true
+    },
+    {
+      "source": "/contacto/",
+      "destination": "/hablemos",
+      "permanent": true
+    },
+    {
       "source": "/la-agencia",
       "destination": "/nosotros",
       "permanent": true
@@ -928,7 +938,7 @@
     },
     {
       "source": "/pages/contacto",
-      "destination": "/contacto",
+      "destination": "/hablemos",
       "permanent": true
     },
     {
@@ -978,37 +988,37 @@
     },
     {
       "source": "/privacy",
-      "destination": "/contacto",
+      "destination": "/hablemos",
       "permanent": true
     },
     {
       "source": "/privacidad",
-      "destination": "/contacto",
+      "destination": "/hablemos",
       "permanent": true
     },
     {
       "source": "/terms",
-      "destination": "/contacto",
+      "destination": "/hablemos",
       "permanent": true
     },
     {
       "source": "/terminos",
-      "destination": "/contacto",
+      "destination": "/hablemos",
       "permanent": true
     },
     {
       "source": "/cookies",
-      "destination": "/contacto",
+      "destination": "/hablemos",
       "permanent": true
     },
     {
       "source": "/aviso-legal",
-      "destination": "/contacto",
+      "destination": "/hablemos",
       "permanent": true
     },
     {
       "source": "/legal",
-      "destination": "/contacto",
+      "destination": "/hablemos",
       "permanent": true
     },
     {
@@ -1173,12 +1183,12 @@
     },
     {
       "source": "/contact",
-      "destination": "/contacto",
+      "destination": "/hablemos",
       "permanent": true
     },
     {
       "source": "/get-in-touch",
-      "destination": "/contacto",
+      "destination": "/hablemos",
       "permanent": true
     },
     {

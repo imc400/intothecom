@@ -22,7 +22,7 @@ const COMMON_NAV = [
   { label: 'Software & IA', path: '/software-ia' },
   { label: 'Nosotros', path: '/nosotros' },
   { label: 'Recursos', path: '/recursos' },
-  { label: 'Contacto', path: '/contacto' }
+  { label: 'Hablemos', path: '/hablemos' }
 ];
 
 const COMMON_FOOTER = {
@@ -501,35 +501,6 @@ const SSR_CONTENT = {
       { q: '¿Cuánto cuesta una primera reunión?', a: 'Es sin costo. 45 minutos con un lead senior. Si no encajamos, te llevas un plan accionable de todos modos.' },
       { q: '¿Tienen rango mínimo de presupuesto?', a: 'Para servicios continuos, USD 1.5K/mes (retainer base). Para Software & IA, proyectos desde USD 8K. Si tu presupuesto es menor, te recomendamos alternativas honestas.' },
       { q: '¿Trabajan con freelancers o equipo in-house?', a: 'Equipo senior in-house. No tercerizamos ejecución a freelancers externos. Quien vende es quien ejecuta.' }
-    ]
-  },
-
-  '/contacto': {
-    hero: {
-      eyebrow: 'Contacto · oficinas y canales',
-      h1: 'Hablemos.',
-      body: 'WhatsApp Business +56 9 7414 3642 con respuesta en menos de 1 hora hábil. Email info@intothecom.com para briefs estructurados. Oficina HQ en Providencia, Santiago. Operamos en Chile, USA, España, Colombia y Perú.',
-      ctas: [
-        { text: 'WhatsApp +56 9 7414 3642', href: WA_DEFAULT, primary: true, external: true }
-      ]
-    },
-    sections: [
-      {
-        eyebrow: '/ canales',
-        h2: 'Cómo contactarnos.',
-        contactGrid: [
-          { label: 'Email general', value: 'info@intothecom.com', href: 'mailto:info@intothecom.com' },
-          { label: 'Email founder', value: 'ignacio@intothecom.com', href: 'mailto:ignacio@intothecom.com' },
-          { label: 'WhatsApp', value: '+56 9 7414 3642', href: WA_DEFAULT },
-          { label: 'Oficina HQ', value: 'Almirante Pastene 333, of. 402, Providencia, Santiago', href: 'https://www.google.com/maps/search/?api=1&query=Almirante+Pastene+333+Providencia+Santiago+Chile' },
-          { label: 'Otras ciudades', value: 'Miami · Madrid · Bogotá · Lima' },
-          { label: 'Horario', value: 'Lun–Vie · 9:00–19:00 SCL' }
-        ]
-      }
-    ],
-    faq: [
-      { q: '¿Atienden fuera de Chile?', a: 'Sí. Reuniones por Google Meet, contratos en USD o moneda local. Operamos con clientes en USA, España, Colombia y Perú.' },
-      { q: '¿Tienen oficina en otras ciudades?', a: 'HQ está en Santiago. Tenemos presencia comercial en Miami, Madrid, Bogotá y Lima vía partners.' }
     ]
   },
 

@@ -98,12 +98,6 @@ const ROUTE_META = {
     noscript: 'Hablemos · Cotiza tu proyecto con Intothecom en menos de 1 hora. WhatsApp +56 9 7414 3642. Primera reunión sin costo de 45 min con auditoría aplicable al proyecto. Lunes a Viernes 9:00-19:00 hora Santiago. Equipo senior responde directamente.',
     breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Hablemos', path: '/hablemos'}]
   },
-  '/contacto': {
-    title: 'Contacto · Oficina, WhatsApp, email | Intothecom',
-    description: 'Almirante Pastene 333, of. 402, Providencia, Santiago. WhatsApp +56 9 7414 3642 · info@intothecom.com · ignacio@intothecom.com.',
-    noscript: 'Contacto Intothecom: Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile. WhatsApp +56 9 7414 3642. Email: info@intothecom.com / ignacio@intothecom.com. Horario: Lunes a Viernes 9:00-19:00 hora Santiago. Operamos en Chile, USA, España, Colombia y Perú.',
-    breadcrumb: [{name: 'Inicio', path: '/'}, {name: 'Contacto', path: '/contacto'}]
-  },
   '/casos': {
     title: 'Casos de éxito · Resultados verificables | Intothecom',
     description: 'Casos seleccionados con métricas reales. Equifax, Bullpadel, Imanix y +100 marcas. Cuando los datos hablan, la propuesta sobra.',

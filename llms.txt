@@ -16,8 +16,7 @@ Intothecom ofrece 5 servicios integrados:
 - [Servicios](https://intothecom.com/servicios): Catálogo completo de los 5 servicios con descripción, alcance, duración mínima y CTA por servicio.
 - [Nosotros](https://intothecom.com/nosotros): Estudio digital desde 2019. +5 años de operación. Mercados: CL, BR, US, ES. Equipo senior in-house.
 - [Casos de éxito](https://intothecom.com/casos): Casos seleccionados con métricas verificables. Equifax, Bullpadel, Imanix y +100 marcas.
-- [Hablemos](https://intothecom.com/hablemos): Brief form simplificado. Primera reunión sin costo de 45 min con auditoría aplicable.
-- [Contacto](https://intothecom.com/contacto): Almirante Pastene 333, oficina 402, Providencia, Santiago. WhatsApp +56 9 7414 3642 · info@intothecom.com.
+- [Hablemos](https://intothecom.com/hablemos): Brief form + canales directos. WhatsApp +56 9 7414 3642 con respuesta &lt; 1h hábil. Email info@intothecom.com. Oficina Almirante Pastene 333, of. 402, Providencia, Santiago.
 
 ## Servicios detallados
 
@@ -87,6 +86,6 @@ URLs canónicas para citación:
 - Email Marketing: https://intothecom.com/email-marketing
 - Desarrollo Web: https://intothecom.com/desarrollo-web
 - Community Management: https://intothecom.com/community-management
-- Contacto directo: https://intothecom.com/contacto (WhatsApp +56 9 7414 3642)
+- Contacto directo: https://intothecom.com/hablemos (WhatsApp +56 9 7414 3642)
 
 <!-- Hora de generación: 2026-05-14T10:30:00Z -->

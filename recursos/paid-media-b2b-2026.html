@@ -469,10 +469,111 @@
 <div id="boot" aria-hidden="true"><span class="dot"></span>cargando intothecom</div>
 <div id="root">
 <!--SSR_START-->
-<!-- Pre-rendered SSR content per route — inyectado por build.js desde data/ssr-content.js.
-     Contenido visible y semánticamente correcto para AdsBot y LLM crawlers.
-     React lo reemplaza al montar via createRoot.render() (comportamiento estándar SPA).
-     Único por ruta: cada landing tiene H1, secciones, FAQ y CTAs específicos. -->
+<div class="ssr-shell" data-route="/">
+  <nav class="ssr-nav" aria-label="Navegación principal"><ul><li><a href="/" aria-current="page">Inicio</a></li><li><a href="/servicios">Servicios</a></li><li><a href="/software-ia">Software &amp; IA</a></li><li><a href="/nosotros">Nosotros</a></li><li><a href="/recursos">Recursos</a></li><li><a href="/hablemos">Hablemos</a></li></ul></nav>
+  <main class="ssr-main">
+    <section class="ssr-hero">
+      <div class="ssr-eyebrow">Estudio digital · est. 2019 · Chile · USA · España · Colombia · Perú</div>
+<h1>Marketing, software &amp; inteligencia.</h1>
+<p class="ssr-lead">Diseñamos estrategias, productos digitales y agentes de IA a medida para negocios que crecen en serio. Cinco años de operación, +5M USD generados vía RRSS para nuestros clientes. Verificable.</p>
+<div class="ssr-cta-row"><a class="ssr-btn ssr-btn-primary" href="https://wa.me/56974143642?text=Hola%20Intothecom%2C%20me%20gustar%C3%ADa%20cotizar%20un%20servicio." target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp ↗</a><a class="ssr-btn ssr-btn-ghost" href="/servicios">Ver servicios ↗</a></div>
+    </section>
+    <div class="ssr-stats"><div class="ssr-stat"><div class="ssr-stat-num">+100</div><div class="ssr-stat-lbl">Negocios asesorados</div><div class="ssr-stat-sub">2019–2026 · CL/BR/US/ES</div></div><div class="ssr-stat"><div class="ssr-stat-num">+5M</div><div class="ssr-stat-lbl">USD generados vía RRSS</div><div class="ssr-stat-sub">verificable con clientes ref.</div></div><div class="ssr-stat"><div class="ssr-stat-num">−50%</div><div class="ssr-stat-lbl">CAC promedio</div><div class="ssr-stat-sub">vs. baseline pre-Intothecom</div></div></div>
+    <section class="ssr-section"><div class="ssr-eyebrow">/ qué hacemos</div>
+<h2>Construimos el motor digital de tu negocio. Pieza por pieza.</h2>
+<p>Intothecom es un estudio digital chileno fundado en 2019. Operamos en cinco mercados (Chile, USA, España, Colombia, Perú) con foco en empresas B2B que necesitan resultados medibles, no entregables sin contexto.</p></section>
+<section class="ssr-section"><div class="ssr-eyebrow">/ servicios · 05</div>
+<h2>Cinco servicios integrados para escalar tu negocio.</h2>
+<ul class="ssr-services">
+    <li class="ssr-service">
+      <span class="ssr-service-num">01</span>
+      <a class="ssr-service-link" href="/software-ia">
+        <h3>Software &amp; IA a medida</h3>
+        <p>Agentes, automatizaciones y productos digitales construidos para tu operación.</p>
+      </a>
+    </li>
+    <li class="ssr-service">
+      <span class="ssr-service-num">02</span>
+      <a class="ssr-service-link" href="/paid-media">
+        <h3>Paid Media</h3>
+        <p>Campañas en Google, Meta, TikTok y LinkedIn con foco en ROAS y CAC.</p>
+      </a>
+    </li>
+    <li class="ssr-service">
+      <span class="ssr-service-num">03</span>
+      <a class="ssr-service-link" href="/email-marketing">
+        <h3>Email Marketing</h3>
+        <p>Segmentación quirúrgica, automatizaciones y flows que convierten.</p>
+      </a>
+    </li>
+    <li class="ssr-service">
+      <span class="ssr-service-num">04</span>
+      <a class="ssr-service-link" href="/desarrollo-web">
+        <h3>Desarrollo Web</h3>
+        <p>Sitios y e-commerce headless, rápidos y diseñados para vender.</p>
+      </a>
+    </li>
+    <li class="ssr-service">
+      <span class="ssr-service-num">05</span>
+      <a class="ssr-service-link" href="/community-management">
+        <h3>Community Management</h3>
+        <p>Contenido con criterio editorial y comunidad real, no vanity metrics.</p>
+      </a>
+    </li></ul></section>
+<section class="ssr-section"><div class="ssr-eyebrow">/ 5+ años en industria</div>
+<h2>Datos, no promesas.</h2>
+<p>Cinco años construyendo el motor digital de empresas B2B en LATAM, USA y España. Casos verificables, métricas reales y un equipo senior que no terceriza.</p></section>
+<section class="ssr-section"><div class="ssr-eyebrow">/ garantías</div>
+<h2>Sin contratos eternos. Sin sorpresas.</h2>
+<p>Mes 1 es onboarding. Si al mes 3 no se cumplieron los KPIs acordados por escrito, devolvemos el último mes o ajustamos scope sin costo. Una marca por categoría dentro de un mismo mercado: exclusividad real.</p></section>
+    
+    <section class="ssr-faq" aria-labelledby="ssr-faq-title">
+    <h2 id="ssr-faq-title">Preguntas frecuentes</h2>
+    
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Cuánto demora ver resultados?</h3>
+      <p class="ssr-faq-a">Paid Media: 2 a 3 semanas. Email: primer flow en vivo en 30 días. Web: 6 a 12 semanas. Software &amp; IA: prototipo funcional en 3 semanas.</p>
+    </div>
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Trabajan con retainer mensual o por proyecto?</h3>
+      <p class="ssr-faq-a">Ambos. Servicios continuos son retainer 3 meses mínimo. Web y software son fixed-scope con hito de pago.</p>
+    </div>
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Trabajan con clientes fuera de Chile?</h3>
+      <p class="ssr-faq-a">60% de nuestros clientes opera en mercados externos. Reuniones por Meet, contratos en USD o moneda local, facturamos como prestador en CL/ES.</p>
+    </div>
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Tienen exclusividad por industria?</h3>
+      <p class="ssr-faq-a">Sí. Una marca por categoría dentro de un mismo mercado.</p>
+    </div>
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Qué pasa si no veo resultados?</h3>
+      <p class="ssr-faq-a">Mes 1 es onboarding. Si al mes 3 no se cumplieron los KPIs acordados por escrito, devolvemos el último mes o ajustamos scope sin costo.</p>
+    </div>
+    <div class="ssr-faq-item">
+      <h3 class="ssr-faq-q">¿Quién ejecuta mi cuenta?</h3>
+      <p class="ssr-faq-a">Un lead senior más un especialista. No tercerizamos a freelancers.</p>
+    </div>
+  </section>
+  </main>
+  <footer class="ssr-footer">
+    <div class="ssr-footer-col">
+      <h3>Intothecom</h3>
+      <p>Almirante Pastene 333, oficina 402, Providencia, Santiago, Chile</p>
+      <p><strong>Mercados:</strong> Chile · USA · España · Colombia · Perú</p>
+      <p><strong>Horario:</strong> Lunes a Viernes 9:00–19:00 hora Santiago</p>
+    </div>
+    <div class="ssr-footer-col">
+      <h3>Servicios</h3>
+      <ul><li><a href="/software-ia">Software &amp; IA</a></li><li><a href="/paid-media">Paid Media</a></li><li><a href="/email-marketing">Email Marketing</a></li><li><a href="/desarrollo-web">Desarrollo Web</a></li><li><a href="/community-management">Community Management</a></li></ul>
+    </div>
+    <div class="ssr-footer-col">
+      <h3>Contacto</h3>
+      <p><a href="mailto:info@intothecom.com">info@intothecom.com</a></p>
+      <p><a href="https://wa.me/56974143642?text=Hola%20Intothecom%2C%20me%20gustar%C3%ADa%20cotizar%20un%20servicio." target="_blank" rel="noopener noreferrer">WhatsApp +56 9 7414 3642</a></p>
+    </div>
+  </footer>
+</div>
 <!--SSR_END-->
 </div>
 
@@ -483,11 +584,11 @@
 <script defer src="/data/articles.js?v=0d204aff"></script>
 
 <!-- Pre-compiled JSX bundles (esbuild). Order: shared → page-home → pages → page-recursos → app -->
-<script defer src="/dist/shared.js?v=431948a3"></script>
+<script defer src="/dist/shared.js?v=72fa52da"></script>
 <script defer src="/dist/page-home.js?v=499b1d0d"></script>
 <script defer src="/dist/pages.js?v=464b6adc"></script>
 <script defer src="/dist/page-recursos.js?v=97496103"></script>
-<script defer src="/dist/app.js?v=266aea48"></script>
+<script defer src="/dist/app.js?v=b222a4d2"></script>
 <noscript>
   <div style="max-width:720px;margin:48px auto;padding:24px;font-family:system-ui,sans-serif;line-height:1.6;color:#1a1a1d;">
     <h1>Guía Paid Media B2B 2026: Google, Meta, LinkedIn y TikTok Ads para empresas | Recursos Intothecom</h1>

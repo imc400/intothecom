@@ -65,7 +65,7 @@ function suggestRedirect(deadUrl) {
   if (pathname.includes('email') || pathname.includes('klaviyo') || pathname.includes('hubspot')) return '/email-marketing';
   if (pathname.includes('ia') || pathname.includes('inteligencia-artificial') || pathname.includes('agentes')) return '/software-ia';
   if (pathname.includes('agencia') || pathname.includes('nosotros') || pathname.includes('equipo')) return '/nosotros';
-  if (pathname.includes('contacto')) return '/contacto';
+  if (pathname.includes('contacto')) return '/hablemos';
   if (pathname.includes('casos') || pathname.includes('portfolio') || pathname.includes('clientes')) return '/casos';
   if (pathname.includes('servicio')) return '/servicios';
   if (pathname.includes('seo') || pathname.includes('posicionamiento')) return '/recursos/marketing-digital-b2b-latam-2026';

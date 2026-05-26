@@ -16,7 +16,6 @@ const STATIC_PAGES = [
   { loc: '/nosotros', priority: 0.7, changefreq: 'monthly' },
   { loc: '/casos', priority: 0.85, changefreq: 'weekly' },
   { loc: '/hablemos', priority: 0.8, changefreq: 'monthly' },
-  { loc: '/contacto', priority: 0.8, changefreq: 'monthly' },
   { loc: '/recursos', priority: 0.85, changefreq: 'weekly' }
 ];
 
@@ -115,7 +114,7 @@ ${articlesList}
 - Email Marketing: ${DOMAIN}/email-marketing
 - Desarrollo Web: ${DOMAIN}/desarrollo-web
 - Community Management: ${DOMAIN}/community-management
-- Contacto directo: ${DOMAIN}/contacto (WhatsApp +56 9 7414 3642)
+- Contacto directo: ${DOMAIN}/hablemos (WhatsApp +56 9 7414 3642)
 
 <!-- Hora de generación: ${today} -->
 `;
