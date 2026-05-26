@@ -704,6 +704,14 @@ function Hablemos({ navigate }) {
     setSubmitting(true);
     setError(null);
     try {
+      // Honeypot anti-spam: si el campo invisible tiene valor, es un bot.
+      // Fingimos éxito (no levantar sospechas) pero NO enviamos.
+      const honeyField = e.currentTarget.querySelector('input[name="_honey"]');
+      if (honeyField && honeyField.value) {
+        setSubmitted(true);
+        return;
+      }
+
       // Recuperar atribución capturada en el primer hit del sitio (app.jsx).
       const ss = (k) => { try { return sessionStorage.getItem(k) || ''; } catch (e) { return ''; } };
       const gclid = ss('utm_gclid');
@@ -735,7 +743,7 @@ Mientras tanto, podés revisar nuestros casos de éxito y recursos:
 
 — Equipo Intothecom`;
 
-      const res = await fetch('https://formsubmit.co/ajax/2faf305e216cb052ecb76c81c9de32a7', {
+      const res = await fetch('https://formsubmit.co/ajax/info@intothecom.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
@@ -744,7 +752,6 @@ Mientras tanto, podés revisar nuestros casos de éxito y recursos:
           _template: 'table',
           _captcha: 'false',
           _autoresponse: autoresponse,
-          _honey: '', // honeypot anti-spam: bots llenan este campo, humanos no
           name: form.name,
           email: form.email,
           message: form.message,
