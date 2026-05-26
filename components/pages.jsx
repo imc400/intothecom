@@ -717,6 +717,14 @@ function Hablemos({ navigate }) {
       if (!res.ok) throw new Error('formsubmit failed');
       if (window.fbqTrack) window.fbqTrack('Lead', { content_name: 'brief_form', value: 1, currency: 'CLP' });
       if (window.fbqTrackCustom) window.fbqTrackCustom('FormSubmit', { service: form.service || 'unspecified' });
+      // Google Ads conversion: Envío de formulario para clientes potenciales (AW-16641850844)
+      if (window.gtag) {
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-16641850844/T8tHCKqooMIZENz7uf89',
+          value: 1.0,
+          currency: 'CLP',
+        });
+      }
       setSubmitted(true);
     } catch (err) {
       const subject = encodeURIComponent(`Brief desde intothecom.com — ${form.name}`);
