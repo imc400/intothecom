@@ -30,10 +30,10 @@ function Home({ navigate }) {
             <a href={waLink('default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick('hero-home')} className="btn hoverable">
               Cotizar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
             </a>
-            <a href="/servicios"
-               onClick={(e)=>{e.preventDefault();navigate('/servicios');}}
-               className="btn ghost hoverable">
-              Ver servicios <span className="arrow" aria-hidden="true">↗</span>
+            <a href="/hablemos"
+               onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}
+               className="btn invert hoverable">
+              Solicitar brief <span className="arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>

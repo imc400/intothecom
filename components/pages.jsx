@@ -157,9 +157,16 @@ function ServicePage({ navigate, data }) {
             <div className="row"><span>Disponibilidad</span><span>CL · BR · US · ES</span></div>
             <div className="row"><span>Duración mín.</span><span>{data.duration}</span></div>
             <div className="row"><span>Categorías</span><span>{data.categories}</span></div>
-            <a href={waLink(data.waKey || 'default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick(`svc-${data.waKey || 'default'}-hero`)} className="btn invert hoverable" style={{marginTop:24}}>
-              Cotizar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
-            </a>
+            <div style={{display:'flex', flexDirection:'column', gap:12, marginTop:24}}>
+              <a href={waLink(data.waKey || 'default')} target="_blank" rel="noopener noreferrer" onClick={onWaClick(`svc-${data.waKey || 'default'}-hero`)} className="btn invert hoverable">
+                Cotizar por WhatsApp <span className="arrow" aria-hidden="true">↗</span>
+              </a>
+              <a href="/hablemos"
+                 onClick={(e)=>{e.preventDefault();navigate('/hablemos');}}
+                 className="btn hoverable">
+                Solicitar brief <span className="arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
