@@ -5,6 +5,7 @@
   "description": "Intothecom — sitio web 2026",
   "homepage": "https://intothecom.com",
   "scripts": {
+    "test:class": "node --test tests/class-registration.test.js",
     "build": "node build.js",
     "dev": "python3 -m http.server 5500"
   },

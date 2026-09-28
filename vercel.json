@@ -1269,6 +1269,10 @@
   ],
   "rewrites": [
     {
+      "source": "/clase-en-vivo",
+      "destination": "/clase-en-vivo.html"
+    },
+    {
       "source": "/admin",
       "destination": "/admin/index.html"
     },
