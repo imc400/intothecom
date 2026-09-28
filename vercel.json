@@ -7,6 +7,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/clase-en-vivo.html",
+      "destination": "https://soynachowhite.cl/clase-en-vivo",
+      "permanent": false
+    },
+    {
+      "source": "/clase-en-vivo",
+      "destination": "https://soynachowhite.cl/clase-en-vivo",
+      "permanent": false
+    },
+    {
       "source": "/contacto",
       "destination": "/hablemos",
       "permanent": true

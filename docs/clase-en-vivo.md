@@ -1,3 +1,7 @@
+# Migración a Soy Nacho White
+
+La clase ahora tiene una web propia: https://soynachowhite.cl/clase-en-vivo. Las rutas anteriores redirigen temporalmente a esta dirección. Activar esta versión sólo después de validar el dominio, el correo y las inscripciones de la web personal. Los contactos previos de Resend se conservan; no se marcan automáticamente como confirmados. La documentación siguiente corresponde a la primera landing de Intothecom.
+
 # Clase de Soy Nacho White
 
 Página: `/clase-en-vivo`. Shopify + Meta Ads, gratuita, domingo 4 de octubre de 2026 a las 18:00 en `America/Santiago` (21:00 UTC). No se ha definido duración ni enlace de reunión.
