@@ -522,6 +522,12 @@ async function run() {
   // 2. Prerender HTML per route
   console.log('\n📄 Prerendering per-route HTML files...');
   let masterHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf-8');
+  const metaPixelId = process.env.META_PIXEL_ID || '1332352548957136';
+  if (!/^\d+$/.test(metaPixelId)) throw new Error('Invalid META_PIXEL_ID');
+  masterHtml = masterHtml.replace(/window\.META_PIXEL_ID = "\d+";/, `window.META_PIXEL_ID = "${metaPixelId}";`);
+  masterHtml = masterHtml.replace(/src="\/assets\/meta\.js(?:\?v=[a-f0-9]+)?"/, `src="/assets/meta.js?v=${contentHash(path.join(root, 'assets/meta.js'))}"`);
+  masterHtml = masterHtml.replace(/href="\/assets\/meta\.css(?:\?v=[a-f0-9]+)?"/, `href="/assets/meta.css?v=${contentHash(path.join(root, 'assets/meta.css'))}"`);
+
 
   // Inyectar cache busting versions en los src
   // articles.js ahora es fetch async internamente → defer es seguro y mejora FCP

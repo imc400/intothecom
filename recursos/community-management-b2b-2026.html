@@ -307,42 +307,10 @@
   gtag('config', 'G-QEC8Y49YWX');
 </script>
 
-<!-- Meta Pixel Code · lazy-loaded para no bloquear LCP/INP (Agent5 fix #4) -->
-<script>
-  window.META_PIXEL_ID = "1332352548957136";
-  // Cola para tracks que ocurran ANTES de que cargue el pixel
-  window._fbqQueue = window._fbqQueue || [];
-  window.fbqTrack = (event, params) => {
-    if (window.fbq) { try { fbq('track', event, params || {}); } catch(e){} }
-    else { window._fbqQueue.push(['track', event, params || {}]); }
-  };
-  window.fbqTrackCustom = (event, params) => {
-    if (window.fbq) { try { fbq('trackCustom', event, params || {}); } catch(e){} }
-    else { window._fbqQueue.push(['trackCustom', event, params || {}]); }
-  };
-
-  function loadMetaPixel() {
-    if (window.fbq) return;
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', window.META_PIXEL_ID);
-    fbq('track', 'PageView');
-    // Drenar cola pendiente
-    (window._fbqQueue || []).forEach(args => { try { fbq.apply(null, args); } catch(e){} });
-    window._fbqQueue = [];
-  }
-  // Cargar tras idle (max 2.5s) o primera interacción real
-  if ('requestIdleCallback' in window) requestIdleCallback(loadMetaPixel, { timeout: 2500 });
-  else setTimeout(loadMetaPixel, 2000);
-  ['scroll','mousedown','touchstart','keydown','pointerdown'].forEach(ev =>
-    window.addEventListener(ev, loadMetaPixel, { once: true, passive: true })
-  );
-</script>
-<noscript><img height="1" width="1" style="display:none" alt="" aria-hidden="true"
-  src="https://www.facebook.com/tr?id=1332352548957136&ev=PageView&noscript=1"/></noscript>
+<!-- Meta Pixel + CAPI: shared IDs and optional consent. -->
+<script>window.META_PIXEL_ID = "1332352548957136";</script>
+<link rel="stylesheet" href="/assets/meta.css?v=9e95b64a">
+<script defer src="/assets/meta.js?v=1ee8c21b"></script>
 
 <style>
   /* Loader: avoid flash before React mounts */
@@ -576,9 +544,9 @@
 <script defer src="/data/articles.js?v=fbb4da9c"></script>
 
 <!-- Pre-compiled JSX bundles (esbuild). Order: shared → page-home → pages → page-recursos → app -->
-<script defer src="/dist/shared.js?v=b7ef72eb"></script>
+<script defer src="/dist/shared.js?v=b2e1d33e"></script>
 <script defer src="/dist/page-home.js?v=2b2a3888"></script>
-<script defer src="/dist/pages.js?v=dd2f7357"></script>
+<script defer src="/dist/pages.js?v=137435ec"></script>
 <script defer src="/dist/page-recursos.js?v=97496103"></script>
 <script defer src="/dist/app.js?v=aa3f2863"></script>
 <noscript>

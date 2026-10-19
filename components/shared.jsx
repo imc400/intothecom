@@ -17,7 +17,6 @@ const waLink = (key = 'default') => {
 };
 const trackWhatsAppClick = (source = 'unknown') => {
   if (window.fbqTrack) window.fbqTrack('Contact', { method: 'whatsapp', source });
-  if (window.fbqTrackCustom) window.fbqTrackCustom('WhatsAppClick', { source });
   if (window.gtag) {
     // Google Ads conversion: WhatsApp Click (secundaria — no se usa para optimizar pujas,
     // solo se registra como dato observacional bajo "Contacto" en AW-16641850844)
@@ -659,6 +658,8 @@ function Footer({ navigate }) {
         </div>
         <div className="footer-col">
           <h4>/ Contacto</h4>
+          <a href="/privacidad">Privacidad</a>
+          <button className="meta-preferences" type="button" onClick={() => window.intoMetaPreferences?.()}>Medición de Meta</button>
           <a href="https://www.google.com/maps/search/?api=1&query=Almirante+Pastene+333+Providencia+Santiago+Chile" target="_blank" rel="noopener noreferrer">Almirante Pastene 333, of. 402<br/>Providencia · Santiago, CL</a>
           <a href="mailto:info@intothecom.com">info@intothecom.com</a>
           <a href="mailto:ignacio@intothecom.com">ignacio@intothecom.com</a>

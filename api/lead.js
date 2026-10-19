@@ -17,23 +17,13 @@
 */
 
 const { Resend } = require('resend');
+const meta = require('./_lib/meta');
 
 const ALLOWED_ORIGINS = [
   'https://www.intothecom.com',
   'https://intothecom.com',
 ];
 
-function readJsonBody(req) {
-  return new Promise((resolve, reject) => {
-    let chunks = '';
-    req.on('data', (c) => chunks += c);
-    req.on('end', () => {
-      try { resolve(chunks ? JSON.parse(chunks) : {}); }
-      catch (e) { reject(new Error('Invalid JSON body')); }
-    });
-    req.on('error', reject);
-  });
-}
 
 function isValidEmail(email) {
   return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -74,6 +64,9 @@ module.exports = async (req, res) => {
     return;
   }
 
+  if (!ALLOWED_ORIGINS.includes(origin)) return res.status(403).json({ ok: false, error: 'Origin not allowed' });
+  res.setHeader('Cache-Control', 'no-store');
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error('[lead] RESEND_API_KEY no configurada en env vars');
@@ -82,8 +75,10 @@ module.exports = async (req, res) => {
   }
 
   let body;
-  try { body = await readJsonBody(req); }
+  try { body = await meta.readBody(req); }
   catch (e) { res.status(400).json({ ok: false, error: 'Invalid JSON' }); return; }
+
+  if (!body || typeof body !== 'object' || Array.isArray(body)) return res.status(400).json({ ok: false, error: 'Invalid body' });
 
   // Honeypot anti-spam: si el campo _honey tiene valor, es bot. Devolvemos 200
   // para no revelar la trampa, pero no enviamos el email.
@@ -223,6 +218,8 @@ https://www.intothecom.com
 `;
 
   const resend = new Resend(apiKey);
+  const submissionId = meta.UUID.test(body.submission_id || '') ? body.submission_id : meta.randomUUID();
+  let measurement;
 
   try {
     // 1. Notificación interna al equipo (info + cc ignacio)
@@ -234,12 +231,14 @@ https://www.intothecom.com
       subject,
       html: internalHtml,
       text: internalText,
-    });
+    }, { idempotencyKey: 'into-brief-' + submissionId });
 
     if (internalResult.error) {
       console.error('[lead] internal send failed:', internalResult.error);
       return res.status(500).json({ ok: false, error: 'Failed to send notification' });
     }
+
+    measurement = meta.leadReceipt(req, email, internalResult.data?.id);
 
     // 2. Auto-reply al lead (no bloquea: si falla, el internal ya fue OK)
     try {
@@ -250,7 +249,7 @@ https://www.intothecom.com
         subject: 'Recibimos tu brief — Intothecom',
         html: replyHtml,
         text: replyText,
-      });
+      }, { idempotencyKey: 'into-reply-' + submissionId });
       if (replyResult.error) {
         console.warn('[lead] autoreply failed (no afecta lead capture):', replyResult.error);
       }
@@ -269,7 +268,7 @@ https://www.intothecom.com
       ts: new Date().toISOString(),
     }));
 
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({ ok: true, ...(measurement ? { meta: measurement } : {}) });
   } catch (err) {
     console.error('[lead] exception:', err);
     return res.status(500).json({ ok: false, error: 'Email send failed' });

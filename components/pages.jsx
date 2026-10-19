@@ -698,7 +698,8 @@ function Hablemos({ navigate }) {
   const [error, setError] = React.useState(null);
   const [showMore, setShowMore] = React.useState(false);
   const [form, setForm] = React.useState({ name:'', company:'', email:'', service:'', budget:'', message:'' });
-  const update = (k,v) => setForm(f => ({...f, [k]:v}));
+  const submissionId = React.useRef(crypto.randomUUID());
+  const update = (k,v) => { submissionId.current = crypto.randomUUID(); setForm(f => ({...f, [k]:v})); };
   const submit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -729,6 +730,7 @@ function Hablemos({ navigate }) {
           service: form.service,
           budget: form.budget,
           source: 'intothecom.com /hablemos',
+          submission_id: submissionId.current,
           gclid: ss('utm_gclid'),
           utm_source: ss('utm_source'),
           utm_medium: ss('utm_medium'),
@@ -741,8 +743,9 @@ function Hablemos({ navigate }) {
         }),
       });
       if (!res.ok) throw new Error('api/lead failed');
-      if (window.fbqTrack) window.fbqTrack('Lead', { content_name: 'brief_form', value: 1, currency: 'CLP' });
-      if (window.fbqTrackCustom) window.fbqTrackCustom('FormSubmit', { service: form.service || 'unspecified' });
+      const result = await res.json();
+      if (!result.ok) throw new Error('api/lead rejected');
+      if (window.intoMetaLead) window.intoMetaLead(result.meta);
       // Google Ads conversion: Envío de formulario para clientes potenciales (AW-16641850844)
       // GA4 evento estándar: generate_lead (G-QEC8Y49YWX) — aparece en reportes y embudos.
       if (window.gtag) {
@@ -863,7 +866,7 @@ function Hablemos({ navigate }) {
                 </div>
                 {error && <p className="form-error" role="alert">{error}</p>}
                 <p className="form-privacy">
-                  Al enviar aceptas que usemos tu información solo para responderte. Sin spam, sin listas. Cumplimos Ley 19.628 (CL) y GDPR.
+                  Usaremos tus datos para responder tu solicitud. La medición de Meta depende de tu preferencia. <a href="/privacidad">Ver privacidad</a>.
                 </p>
               </form>
             </>

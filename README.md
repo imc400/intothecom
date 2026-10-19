@@ -63,10 +63,19 @@ Sitio web institucional de [Intothecom](https://intothecom.com) — estudio digi
 - Skip-link, `<main>` landmark, `aria-current` en nav, `aria-controls` en FAQ
 - `prefers-reduced-motion` honored
 
-## Analytics
+## Medición de Meta
 
-- **Meta Pixel** integrado vía `index.html`. Reemplazar `YOUR_META_PIXEL_ID` por el ID real (línea ~125 de `index.html`).
-- Eventos: `PageView` automático en cada hashchange con `route` como param
+El píxel existente `1332352548957136` se carga desde `assets/meta.js` después de aceptar la medición de Meta. Las preferencias se pueden cambiar desde el pie de página. Google Ads y Analytics conservan su integración separada.
+
+Configurar en Vercel producción `META_PIXEL_ID` y `META_CONVERSIONS_ACCESS_TOKEN` (secreto). El token nunca se incluye en HTML o JavaScript del navegador. Un cambio de ID requiere volver a publicar.
+
+- `PageView`: una visita a una ruta pública, también en navegación SPA.
+- `Contact`: clic en WhatsApp; no confirma un mensaje enviado.
+- `Lead`: el brief fue aceptado por Resend. El correo se normaliza y transforma con SHA-256 solo con consentimiento. No se envían mensaje, empresa, presupuesto ni datos privados.
+
+Navegador y servidor usan el mismo `event_id`. Los reenvíos del mismo formulario conservan la clave de idempotencia de Resend y el ID de conversión. Un fallo de Meta no bloquea el formulario. Los logs `[meta] accepted` / `[meta] rejected` permiten verificar la recepción sin registrar credenciales o datos de contacto.
+
+`npm test` verifica consentimiento, rutas privadas, duplicados, reintentos, fallos de Meta y la entrega real del formulario con proveedores simulados. Las pruebas contra Meta deben pasar `test_event_code` explícitamente; no se guarda como variable de producción.
 
 ## Desarrollo local
 

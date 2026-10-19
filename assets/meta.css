@@ -1,0 +1,6 @@
+#into-meta-notice { position:fixed; z-index:10020; bottom:18px; left:18px; right:18px; max-width:1040px; margin:auto; padding:22px 24px; display:flex; align-items:center; gap:24px; background:#f4efe6; color:#1a1a1d; border:1px solid #d5caba; border-radius:12px; box-shadow:0 8px 40px #0003; font-family:system-ui,sans-serif; }
+#into-meta-notice strong { font-size:16px; } #into-meta-notice p { font-size:13px; line-height:1.55; margin:7px 0 0; } #into-meta-notice a { color:inherit; text-decoration:underline; }
+.into-meta-actions { display:flex; flex-shrink:0; gap:8px; } .into-meta-actions button { padding:11px 14px; border:1px solid #62513b; border-radius:6px; background:#fff; color:#1a1a1d; font:600 13px system-ui,sans-serif; cursor:pointer; } .into-meta-actions button:last-child { background:#f39200; }
+.into-meta-actions button:focus-visible { outline:3px solid #8a4a00; outline-offset:3px; }
+.meta-preferences { border:0; padding:0; background:none; color:inherit; font:inherit; text-align:left; cursor:pointer; }
+@media(max-width:700px) { #into-meta-notice { flex-direction:column; align-items:stretch; gap:14px; padding:18px; left:12px; right:12px; bottom:12px; max-height:50vh; overflow:auto; } .into-meta-actions button { flex:1; } }
