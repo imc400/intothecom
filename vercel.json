@@ -998,12 +998,7 @@
     },
     {
       "source": "/privacy",
-      "destination": "/hablemos",
-      "permanent": true
-    },
-    {
-      "source": "/privacidad",
-      "destination": "/hablemos",
+      "destination": "/privacidad",
       "permanent": true
     },
     {
@@ -1291,7 +1286,7 @@
       "destination": "/admin/index.html"
     },
     {
-      "source": "/:path((?!assets|dist|data|api|admin|robots\\.txt|sitemap\\.xml|llms\\.txt|cb1731ec3af4f7044b282eee96cd9c48\\.txt|favicon\\.ico|og-cover|servicios|software-ia|paid-media|email-marketing|desarrollo-web|community-management|nosotros|hablemos|contacto|casos|recursos|equipo).*)",
+      "source": "/:path((?!assets|dist|data|api|admin|robots\\.txt|sitemap\\.xml|llms\\.txt|cb1731ec3af4f7044b282eee96cd9c48\\.txt|favicon\\.ico|og-cover|servicios|software-ia|paid-media|email-marketing|desarrollo-web|community-management|nosotros|hablemos|contacto|casos|recursos|equipo|privacidad).*)",
       "destination": "/index.html"
     }
   ],
