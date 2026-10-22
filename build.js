@@ -522,11 +522,25 @@ async function run() {
   // 2. Prerender HTML per route
   console.log('\n📄 Prerendering per-route HTML files...');
   let masterHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf-8');
+  const openaiPixelId = process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production' ? '' : (process.env.OPENAI_ADS_PIXEL_ID || '');
+  if (openaiPixelId && !/^[A-Za-z0-9_-]{1,200}$/.test(openaiPixelId)) throw new Error('Invalid OPENAI_ADS_PIXEL_ID');
+  const openaiConfig = `window.OPENAI_ADS_PIXEL_ID = "${openaiPixelId}";`;
+  const openaiScript = `/assets/openai-ads.js?v=${contentHash(path.join(root, 'assets/openai-ads.js'))}`;
+  masterHtml = masterHtml.replace(/window\.OPENAI_ADS_PIXEL_ID = "[^"]*";/, openaiConfig);
+  masterHtml = masterHtml.replace(/src="\/assets\/openai-ads\.js(?:\?v=[a-f0-9]+)?"/, `src="${openaiScript}"`);
   const metaPixelId = process.env.META_PIXEL_ID || '1332352548957136';
   if (!/^\d+$/.test(metaPixelId)) throw new Error('Invalid META_PIXEL_ID');
   masterHtml = masterHtml.replace(/window\.META_PIXEL_ID = "\d+";/, `window.META_PIXEL_ID = "${metaPixelId}";`);
   masterHtml = masterHtml.replace(/src="\/assets\/meta\.js(?:\?v=[a-f0-9]+)?"/, `src="/assets/meta.js?v=${contentHash(path.join(root, 'assets/meta.js'))}"`);
   masterHtml = masterHtml.replace(/href="\/assets\/meta\.css(?:\?v=[a-f0-9]+)?"/, `href="/assets/meta.css?v=${contentHash(path.join(root, 'assets/meta.css'))}"`);
+
+  // The standalone privacy page shares the same consent controls and cache versions.
+  const privacyPath = path.join(root, 'privacidad.html');
+  let privacyHtml = fs.readFileSync(privacyPath, 'utf-8');
+  privacyHtml = privacyHtml.replace(/window\.OPENAI_ADS_PIXEL_ID = "[^"]*";/, openaiConfig)
+    .replace(/src="\/assets\/openai-ads\.js(?:\?v=[a-f0-9]+)?"/, `src="${openaiScript}"`)
+    .replace(/src="\/assets\/meta\.js(?:\?v=[a-f0-9]+)?"/, `src="/assets/meta.js?v=${contentHash(path.join(root, 'assets/meta.js'))}"`);
+  fs.writeFileSync(privacyPath, privacyHtml);
 
 
   // Inyectar cache busting versions en los src

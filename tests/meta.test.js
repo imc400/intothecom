@@ -38,6 +38,7 @@ beforeEach(() => {
 afterEach(async () => { await Promise.all(pending.splice(0)); global.fetch = realFetch; });
 
 test('CAPI excludes private URLs and only hashes email with Meta consent', () => {
+  assert.equal(meta.publicUrl('/?oppref=openai-click'), origin + '/');
   for (const url of ['/admin', '/api/auth/callback?code=secret', '/hablemos?email=a@example.com', '/?utm_campaign=a%40example.com', 'https://other.example/']) assert.equal(meta.publicUrl(url), null);
   const input = { name: 'Lead', id: 'test', url: '/hablemos?utm_source=instagram', email: ' PERSON@example.com ', contentName: 'brief_form' };
   assert.equal(meta.eventFor(req({}, { cookie: '' }), input), null);
@@ -105,6 +106,7 @@ function browser(cookie = consent, path = '/') {
   return { window, document, location, fb, network, loaded };
 }
 test('browser tracking gates consent, avoids duplicate initial views and shares IDs with server', () => {
+  const openaiLanding = browser(consent, '/?oppref=openai-click'); openaiLanding.window.fbqTrack('PageView'); assert.equal(openaiLanding.network.length, 1);
   const declined = browser('into_meta_consent=rejected.2026-10-19'); declined.window.fbqTrack('PageView'); assert.equal(declined.network.length, 0);
   const privatePage = browser(consent, '/admin'); privatePage.window.fbqTrack('PageView'); assert.equal(privatePage.loaded.length, 0);
   const b = browser(); b.window.fbqTrack('PageView'); b.window.fbqTrack('PageView');

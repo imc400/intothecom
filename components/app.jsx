@@ -77,6 +77,7 @@ function App() {
         setRoute(newRoute);
         window.scrollTo(0, 0);
         if (window.fbqTrack) window.fbqTrack('PageView', { route: newRoute });
+        if (window.intoOpenAI) window.intoOpenAI.track('page_viewed');
         setTimeout(() => setTransitioning(false), 50);
       }, 480);
     };
@@ -190,6 +191,7 @@ function App() {
       setRoute(path);
       window.scrollTo(0, 0);
       if (window.fbqTrack) window.fbqTrack('PageView', { route: path });
+      if (window.intoOpenAI) window.intoOpenAI.track('page_viewed');
       setTimeout(() => setTransitioning(false), 50);
     }, 480);
   };
