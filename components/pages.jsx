@@ -746,6 +746,7 @@ function Hablemos({ navigate }) {
       const result = await res.json();
       if (!result.ok) throw new Error('api/lead rejected');
       if (window.intoMetaLead) window.intoMetaLead(result.meta);
+      if (window.intoOpenAI) window.intoOpenAI.lead(result.openai);
       // Google Ads conversion: Envío de formulario para clientes potenciales (AW-16641850844)
       // GA4 evento estándar: generate_lead (G-QEC8Y49YWX) — aparece en reportes y embudos.
       if (window.gtag) {

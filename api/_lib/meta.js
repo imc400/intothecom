@@ -18,7 +18,7 @@ function publicUrl(value) {
     if (!ORIGINS.includes(url.origin)) return null;
     const path = url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
     if (!['/', '/servicios', '/software-ia', '/paid-media', '/email-marketing', '/desarrollo-web', '/community-management', '/nosotros', '/hablemos', '/casos', '/recursos', '/equipo/ignacio-blanco'].includes(path) && !/^\/recursos\/[a-z0-9-]{1,120}$/.test(path)) return null;
-    for (const [key, val] of url.searchParams) if (!/^(utm_(source|medium|campaign|content|term)|fbclid|gclid|gbraid|wbraid)$/.test(key) || val.length > 512 || val.includes('@')) return null;
+    for (const [key, val] of url.searchParams) if (!/^(utm_(source|medium|campaign|content|term)|oppref|fbclid|gclid|gbraid|wbraid)$/.test(key) || val.length > (key === 'oppref' ? 4096 : 512) || val.includes('@')) return null;
     return ORIGINS[0] + path;
   } catch { return null; }
 }

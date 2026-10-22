@@ -77,6 +77,22 @@ Navegador y servidor usan el mismo `event_id`. Los reenvíos del mismo formulari
 
 `npm test` verifica consentimiento, rutas privadas, duplicados, reintentos, fallos de Meta y la entrega real del formulario con proveedores simulados. Las pruebas contra Meta deben pasar `test_event_code` explícitamente; no se guarda como variable de producción.
 
+## Medición de OpenAI Ads
+
+Configurar `OPENAI_ADS_PIXEL_ID` y `OPENAI_ADS_CONVERSIONS_API_KEY` (secreto) en Vercel **producción** y volver a desplegar. El ID se inyecta al compilar; la clave se usa exclusivamente en `api/_lib/openai-ads.js`. Los previews desactivan la integración. Sin ID no se carga el SDK ni se envían eventos.
+
+- `page_viewed`: carga y navegación a páginas públicas, con consentimiento.
+- `custom` / `whatsapp_clicked`: apertura de WhatsApp; no confirma un lead.
+- `lead_created`: recepción del brief confirmada por Resend, por navegador y servidor. Ambos usan el mismo ID derivado de la entrega de Resend; los reintentos conservan ese ID.
+
+El consentimiento de OpenAI usa `into_openai_consent` y no se hereda de la elección anterior de Meta. El aviso informa de ambos proveedores. Rechazar elimina `__oppref` y `__obref`; la API comprueba el consentimiento antes de leerlos. Solo se envía el correo normalizado con SHA-256, metadatos técnicos y referencias de atribución; nunca el contenido del brief. La coincidencia automática del SDK se configura en Ads Manager.
+
+`npm test` cubre consentimiento, idempotencia, atribución y fallos. `node scripts/validate-openai-ads.js` valida un evento sintético con `validate_only: true`, sin registrar una conversión ni enviar correos. Los logs `[openai-ads] accepted/rejected/unavailable` omiten claves y datos personales. Se hace un reintento ante errores transitorios; no hay cola persistente, por lo que una caída prolongada puede perder eventos de servidor.
+
+En Ads Manager: crear/reutilizar la fuente de Intothecom y su clave de conversiones, crear el evento `lead_created` para esa fuente y comprobar el flujo de eventos. La integración no cambia presupuestos ni objetivos de campañas.
+
+Referencias: [Measurement Pixel](https://developers.openai.com/ads/measurement-pixel), [Conversions API](https://developers.openai.com/ads/conversions-api).
+
 ## Desarrollo local
 
 ```bash

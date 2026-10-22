@@ -18,6 +18,7 @@
 
 const { Resend } = require('resend');
 const meta = require('./_lib/meta');
+const openaiAds = require('./_lib/openai-ads');
 
 const ALLOWED_ORIGINS = [
   'https://www.intothecom.com',
@@ -220,6 +221,7 @@ https://www.intothecom.com
   const resend = new Resend(apiKey);
   const submissionId = meta.UUID.test(body.submission_id || '') ? body.submission_id : meta.randomUUID();
   let measurement;
+  let openaiMeasurement;
 
   try {
     // 1. Notificación interna al equipo (info + cc ignacio)
@@ -239,6 +241,7 @@ https://www.intothecom.com
     }
 
     measurement = meta.leadReceipt(req, email, internalResult.data?.id);
+    openaiMeasurement = openaiAds.leadReceipt(req, email, internalResult.data?.id);
 
     // 2. Auto-reply al lead (no bloquea: si falla, el internal ya fue OK)
     try {
@@ -268,7 +271,7 @@ https://www.intothecom.com
       ts: new Date().toISOString(),
     }));
 
-    return res.status(200).json({ ok: true, ...(measurement ? { meta: measurement } : {}) });
+    return res.status(200).json({ ok: true, ...(measurement ? { meta: measurement } : {}), ...(openaiMeasurement ? { openai: openaiMeasurement } : {}) });
   } catch (err) {
     console.error('[lead] exception:', err);
     return res.status(500).json({ ok: false, error: 'Email send failed' });

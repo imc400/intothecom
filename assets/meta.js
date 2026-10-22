@@ -14,7 +14,7 @@
   function publicPage() {
     var path = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
     if (!publicPaths.includes(path) && !/^\/recursos\/[a-z0-9-]{1,120}$/.test(path)) return false;
-    for (var pair of new URLSearchParams(location.search)) if (!/^(utm_(source|medium|campaign|content|term)|fbclid|gclid|gbraid|wbraid)$/.test(pair[0]) || pair[1].length > 512 || pair[1].includes('@')) return false;
+    for (var pair of new URLSearchParams(location.search)) if (!/^(utm_(source|medium|campaign|content|term)|oppref|fbclid|gclid|gbraid|wbraid)$/.test(pair[0]) || pair[1].length > (pair[0] === 'oppref' ? 4096 : 512) || pair[1].includes('@')) return false;
     return true;
   }
   function allowed() { return accepted() && publicPage() && /^(www\.)?intothecom\.com$/.test(location.hostname) && /^\d+$/.test(pixelId); }
@@ -57,6 +57,7 @@
     } catch (_) { /* A delivered brief remains successful when Meta is blocked. */ }
   };
   function choose(accept) {
+    if (window.intoOpenAI && window.intoOpenAI.configured()) window.intoOpenAI.setConsent(accept);
     document.cookie = cookieName + '=' + (accept ? 'accepted.' : 'rejected.') + version + '; Path=/; Max-Age=15552000; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
     if (!accept) {
       try { if (window.fbq) window.fbq('consent', 'revoke'); } catch (_) {}
@@ -67,15 +68,16 @@
   }
   window.intoMetaPreferences = function () {
     if (document.getElementById('into-meta-notice')) return;
-    var notice = document.createElement('section'); notice.id = 'into-meta-notice'; notice.setAttribute('aria-label', 'Medición publicitaria de Meta');
-    notice.innerHTML = '<div><strong>Medición de nuestros anuncios</strong><p>Con tu permiso compartimos con Meta visitas, clics en WhatsApp y solicitudes de contacto para saber qué anuncios funcionan. Puedes rechazar y usar todos los servicios. <a href="/privacidad">Ver detalles</a>.</p></div><div class="into-meta-actions"><button type="button" data-meta-choice="reject">Rechazar</button><button type="button" data-meta-choice="accept">Aceptar medición</button></div>';
+    var providers = window.intoOpenAI && window.intoOpenAI.configured() ? 'Meta y OpenAI' : 'Meta';
+    var notice = document.createElement('section'); notice.id = 'into-meta-notice'; notice.setAttribute('aria-label', 'Medición publicitaria');
+    notice.innerHTML = '<div><strong>Medición de nuestros anuncios</strong><p>Con tu permiso compartimos con ' + providers + ' visitas, clics en WhatsApp y solicitudes de contacto, junto con identificadores de cookies y datos de contacto transformados mediante hash, para saber qué anuncios funcionan. Puedes rechazar y usar todos los servicios. <a href="/privacidad">Ver detalles</a>.</p></div><div class="into-meta-actions"><button type="button" data-meta-choice="reject">Rechazar</button><button type="button" data-meta-choice="accept">Aceptar medición</button></div>';
     notice.querySelector('[data-meta-choice="reject"]').addEventListener('click', function () { choose(false); });
     notice.querySelector('[data-meta-choice="accept"]').addEventListener('click', function () { choose(true); });
     document.body.appendChild(notice);
   };
   function ready() {
     if (location.pathname.startsWith('/admin')) return;
-    if (!['accepted', 'rejected'].includes(choice()) || !readCookie(cookieName).endsWith('.' + version)) window.intoMetaPreferences();
+    if (!['accepted', 'rejected'].includes(choice()) || !readCookie(cookieName).endsWith('.' + version) || (window.intoOpenAI && window.intoOpenAI.needsChoice())) window.intoMetaPreferences();
     track('PageView');
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready); else ready();
